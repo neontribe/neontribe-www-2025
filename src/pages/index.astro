@@ -1,16 +1,20 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import Hero from '../components/sections/Hero.astro';
+import LatestWork from '../components/sections/LatestWork.astro';
+import HowWeCanHelp from '../components/sections/HowWeCanHelp.astro';
+import Testimonials from '../components/sections/Testimonials.astro';
+import GetInTouch from '../components/sections/GetInTouch.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Neontribe" description="Digital services committed to tech for good">
+  <Header />
+  <Hero />
+  <LatestWork />
+  <HowWeCanHelp />
+  <Testimonials />
+  <GetInTouch />
+  <Footer />
+</Layout>

@@ -1,0 +1,25 @@
+---
+import Button from '../ui/Button.astro';
+---
+
+<header class="bg-black text-white">
+  <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center space-x-8">
+      <div class="flex items-center space-x-4">
+        <span class="text-xl font-bold">neontribe</span>
+        <span class="text-gray-400">|</span>
+        <span class="text-gray-400 text-sm">Part of the dxw family</span>
+      </div>
+      
+      <nav class="flex items-center space-x-6">
+        <a href="/case-studies" class="text-white hover:text-gray-300">Case Studies</a>
+        <a href="/how-we-work" class="text-white hover:text-gray-300">How We Work</a>
+        <a href="/advice-service" class="text-white hover:text-gray-300">Advice Service</a>
+        <a href="/blog/test-post" class="text-white hover:text-gray-300">Blog</a>
+        <Button variant="teal" size="sm">
+          Talk to us
+        </Button>
+      </nav>
+    </div>
+  </div>
+</header>

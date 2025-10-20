@@ -1,0 +1,44 @@
+---
+export interface Props {
+  href?: string;
+  variant?: 'primary' | 'secondary' | 'teal' | 'purple';
+  size?: 'sm' | 'md' | 'lg';
+  children: any;
+  external?: boolean;
+}
+
+const { 
+  href, 
+  variant = 'primary', 
+  size = 'md', 
+  children, 
+  external = false
+} = Astro.props;
+
+const baseClasses = "rounded-lg font-semibold flex items-center space-x-2 transition-colors";
+const sizeClasses = {
+  sm: "px-4 py-2 text-sm",
+  md: "px-6 py-3",
+  lg: "px-8 py-4 text-lg"
+};
+const variantClasses = {
+  primary: "bg-purple-600 hover:bg-purple-700 text-white",
+  secondary: "bg-gray-200 hover:bg-gray-300 text-gray-800",
+  teal: "bg-teal-500 hover:bg-teal-600 text-white",
+  purple: "bg-purple-600 hover:bg-purple-700 text-white"
+};
+
+const classes = `${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]}`;
+---
+
+{href ? (
+  <a href={href} class={classes} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined}>
+    <span>{children}</span>
+    <span>→</span>
+  </a>
+) : (
+  <button class={classes}>
+    <span>{children}</span>
+    <span>→</span>
+  </button>
+)}
