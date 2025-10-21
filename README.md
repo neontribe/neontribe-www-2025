@@ -38,3 +38,10 @@ All commands are run from the root of the project, from a terminal:
 ## Learn more?
 
 [Astro documentation](https://docs.astro.build) 
+
+## Setup summary
+
+- Astro project bootstrapped
+- Prototype components added
+- `.gitignore` configured
+
