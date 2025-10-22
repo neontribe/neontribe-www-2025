@@ -1,8 +1,10 @@
 ---
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/layout/Header.astro';
 import Footer from '../../components/layout/Footer.astro';
+import arcOptimised from '../../assets/arc-optimised.jpg';
 
 // This function tells Astro what pages to generate at build time
 export async function getStaticPaths() {
@@ -29,6 +31,17 @@ const { Content } = await caseStudy.render();
       <header class="mb-8">
         <h1 class="text-4xl font-bold mb-4">{caseStudy.data.title}</h1>
         <p class="text-xl text-gray-600 mb-6">{caseStudy.data.description}</p>
+        
+        <!-- Optimised image using Astro's Image component -->
+        <div class="mb-8">
+          <Image 
+            src={arcOptimised} 
+            alt="ARC Case Study - Optimised Image" 
+            width={800}
+            height={400}
+            class="rounded-lg shadow-lg"
+          />
+        </div>
       </header>
 
       <!-- Render the markdown content -->
