@@ -42,3 +42,29 @@ test('case study page uses correct meta tags', async ({ page }) => {
   const metaDescription = await page.locator('meta[name="description"]').getAttribute('content');
   expect(metaDescription).toContain('The Alexandra Rose Charity needed to scale their service');
 });
+
+test('case study page renders both optimised and unoptimised images', async ({ page }) => {
+  await page.goto('/case-studies/arc');
+  
+ 
+  const optimisedImage = page.locator('img[alt="ARC Case Study - Optimised Image"]');
+  await expect(optimisedImage).toBeVisible();
+  
+
+  const unoptimisedImage = page.locator('img[alt="ARC Case Study Image"]');
+  await expect(unoptimisedImage).toBeVisible();
+  
+ 
+  const optimisedImageSrc = await optimisedImage.getAttribute('src');
+  const unoptimisedImageSrc = await unoptimisedImage.getAttribute('src');
+  
+  expect(optimisedImageSrc).toBeTruthy();
+  expect(unoptimisedImageSrc).toBeTruthy();
+  
+
+  const optimisedImageBox = await optimisedImage.boundingBox();
+  const unoptimisedImageBox = await unoptimisedImage.boundingBox();
+  
+  expect(optimisedImageBox).toBeTruthy();
+  expect(unoptimisedImageBox).toBeTruthy();
+});
