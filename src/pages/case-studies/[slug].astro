@@ -1,0 +1,42 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/layout/Header.astro';
+import Footer from '../../components/layout/Footer.astro';
+
+// This function tells Astro what pages to generate at build time
+export async function getStaticPaths() {
+  // Get all case studies from our content collection
+  const caseStudies = await getCollection('case-studies');
+  
+  // Return an array of objects with params for each case study
+  return caseStudies.map((caseStudy) => ({
+    params: { slug: caseStudy.slug },
+    props: { caseStudy },
+  }));
+}
+
+// Get the case study data passed from getStaticPaths
+const { caseStudy } = Astro.props;
+// Render the markdown content
+const { Content } = await caseStudy.render();
+---
+
+<Layout title={caseStudy.data.title} description={caseStudy.data.description}>
+  <Header />
+  <main class="container mx-auto px-6 py-16">
+    <article class="max-w-4xl mx-auto">
+      <!-- Display the frontmatter data -->
+      <header class="mb-8">
+        <h1 class="text-4xl font-bold mb-4">{caseStudy.data.title}</h1>
+        <p class="text-xl text-gray-600 mb-6">{caseStudy.data.description}</p>
+      </header>
+
+      <!-- Render the markdown content -->
+      <div class="prose prose-lg max-w-none">
+        <Content />
+      </div>
+    </article>
+  </main>
+  <Footer />
+</Layout>
