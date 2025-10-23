@@ -1,0 +1,49 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/layout/Header.astro';
+import Footer from '../../components/layout/Footer.astro';
+import { Image } from 'astro:assets';
+import arcOptimised from '../../assets/arc-optimised.jpg';
+
+export async function getStaticPaths() {
+  const caseStudies = await getCollection('case-studies');
+  return caseStudies.map((entry) => ({
+    params: { slug: entry.id }, 
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<Layout title={entry.data.title} description={entry.data.description}>
+  <Header />
+  <main class="container mx-auto px-6 py-16">
+    <article class="max-w-4xl mx-auto">
+      <header class="mb-8">
+        <h1 class="text-4xl font-bold mb-4">{entry.data.title}</h1>
+        <p class="text-xl text-gray-600 mb-6">{entry.data.description}</p>
+        
+        
+        <!-- Astro's Image component -->
+        <div class="mb-8">
+          <Image 
+            src={arcOptimised} 
+            alt="ARC Case Study - Optimised Image" 
+            width={800}
+            height={400}
+            class="rounded-lg shadow-lg"
+          />
+        </div>
+      </header>
+
+      <!-- Render the markdown content -->
+      <div class="prose prose-lg max-w-none">
+        <Content />
+      </div>
+    </article>
+  </main>
+  <Footer />
+</Layout>

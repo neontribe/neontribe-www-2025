@@ -17,8 +17,8 @@ test('core routes load successfully', async ({ page }) => {
   await expect(page.getByRole('heading')).toHaveText('Advice service');
   
 
-  await page.goto('/case-study/example');
-  await expect(page.getByRole('heading')).toHaveText('Case study: example');
+  await page.goto('/case-studies/arc');
+  await expect(page.locator('h1.text-4xl')).toHaveText('Helping Alexandra Rose Charity support vulnerable families');
 });
 
 test('navigation links work', async ({ page }) => {
@@ -39,7 +39,7 @@ test('case study link from listing page', async ({ page }) => {
   await page.goto('/case-studies');
   
 
-  await page.click('a[href="/case-study/example"]');
-  await expect(page.getByRole('heading')).toHaveText('Case study: example');
+  await page.click('a[href="/case-studies/arc"]');
+  await expect(page.locator('h1.text-4xl')).toHaveText('Helping Alexandra Rose Charity support vulnerable families');
 });
 
