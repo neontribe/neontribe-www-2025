@@ -19,15 +19,15 @@ This information was critical for understanding where and when vouchers were bei
 
 ## What we did
 
-We worked closely with ARC to understand requirements and built a digital solution that enables the operations team, market traders, and children's centres to **scan Rose Vouchers** easily. A new mobile app (usable on any handset) streamlines the process and **improves data accuracy** by removing the potential for human error inherent in manual recording.
+We worked closely with ARC to understand requirements and built a digital solution that enables the operations team, market traders, and children's centres to scan Rose Vouchers easily. A new mobile app (usable on any handset) streamlines the process and improves data accuracy by removing the potential for human error inherent in manual recording.
 
 ## Result
 
 Digitising the process gives ARC a complete view of each voucher's journey:
 
-- **When and where** a voucher was issued.
-- **By which trader** it was redeemed.
-- **How long** it was in circulation before use.
+- When and where a voucher was issued.
+- By which trader it was redeemed.
+- How long it was in circulation before use.
 
 With richer data and reporting, ARC can better understand:
 
@@ -36,20 +36,20 @@ With richer data and reporting, ARC can better understand:
 - Where to apply interventions to help families who may be struggling.
 - Potential fraudulent transactions.
 
-ARC can also record how many families receive support from initiatives like **Healthy Start**, making it easier to provide trackable statistics for local authorities and funders.
+ARC can also record how many families receive support from initiatives like Healthy Start, making it easier to provide trackable statistics for local authorities and funders.
 
 ### Growth & impact
 
 Since 2014, the number of:
 
-- **Traders** has increased from 5 to **62**.  
-- **Families** has risen from **1,116** to **4,000+** (2023–24).  
-- **Children's centres** has grown from 15 to **73**.
+- Traders has increased from 5 to 62.  
+- Families has risen from 1,116 to 4,000+ (2023–24).  
+- Children's centres has grown from 15 to 73.
 
 Milestones:
 
-- **May 2023:** 2 million vouchers distributed and spent with 62 traders  
-- **June 2024:** 3 million vouchers distributed  
+- May 2023: 2 million vouchers distributed and spent with 62 traders  
+- June 2024: 3 million vouchers distributed  
 - The first million took 7 years — the second, only 18 months  
 
 ## What ARC says
