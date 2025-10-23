@@ -1,38 +1,33 @@
 ---
-import { getCollection } from 'astro:content';
-import { Image } from 'astro:assets';
+import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/layout/Header.astro';
 import Footer from '../../components/layout/Footer.astro';
+import { Image } from 'astro:assets';
 import arcOptimised from '../../assets/arc-optimised.jpg';
 
-// This function tells Astro what pages to generate at build time
 export async function getStaticPaths() {
-  // Get all case studies from our content collection
   const caseStudies = await getCollection('case-studies');
-  
-  // Return an array of objects with params for each case study
-  return caseStudies.map((caseStudy) => ({
-    params: { slug: caseStudy.slug },
-    props: { caseStudy },
+  return caseStudies.map((entry) => ({
+    params: { slug: entry.id }, 
+    props: { entry },
   }));
 }
 
-// Get the case study data passed from getStaticPaths
-const { caseStudy } = Astro.props;
-const { Content } = await caseStudy.render();
+const { entry } = Astro.props;
+const { Content } = await render(entry);
 ---
 
-<Layout title={caseStudy.data.title} description={caseStudy.data.description}>
+<Layout title={entry.data.title} description={entry.data.description}>
   <Header />
   <main class="container mx-auto px-6 py-16">
     <article class="max-w-4xl mx-auto">
-      <!-- Display the frontmatter data -->
       <header class="mb-8">
-        <h1 class="text-4xl font-bold mb-4">{caseStudy.data.title}</h1>
-        <p class="text-xl text-gray-600 mb-6">{caseStudy.data.description}</p>
+        <h1 class="text-4xl font-bold mb-4">{entry.data.title}</h1>
+        <p class="text-xl text-gray-600 mb-6">{entry.data.description}</p>
         
-        <!-- Optimised image using Astro's Image component -->
+        
+        <!-- Astro's Image component -->
         <div class="mb-8">
           <Image 
             src={arcOptimised} 
@@ -45,7 +40,7 @@ const { Content } = await caseStudy.render();
       </header>
 
       <!-- Render the markdown content -->
-      <div class="prose prose-lg max-w-none prose-headings:font-semibold prose-h1:text-3xl prose-h1:mb-6 prose-h2:text-2xl prose-h2:mb-4 prose-h2:mt-8 prose-h3:text-xl prose-h3:mb-3 prose-h3:mt-6 prose-p:text-gray-800 prose-p:leading-relaxed prose-p:mb-4 prose-blockquote:border-l-4 prose-blockquote:border-blue-500 prose-blockquote:bg-blue-50 prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:rounded-r-lg prose-blockquote:italic prose-blockquote:text-lg prose-blockquote:font-medium prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-strong:font-semibold prose-ul:space-y-2 prose-li:marker:text-blue-500 prose-li:mb-1">
+      <div class="prose prose-lg max-w-none">
         <Content />
       </div>
     </article>
