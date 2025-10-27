@@ -45,3 +45,6 @@ All commands are run from the root of the project, from a terminal:
 - Prototype components added
 - `.gitignore` configured
 
+## Vercel
+
+This repo has vercel watching `main`.
