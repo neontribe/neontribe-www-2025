@@ -1,0 +1,92 @@
+/* ===== COLORS ===== */
+:root {
+  /* Brand Colors */
+  --color-accent-amethyst: #4B00E7;
+  --color-accent-turquoise: #48E9CE;
+  
+  /* Background Colors */
+  --color-bg-dark: #090909;
+  --color-bg-light: #F5F5F5;
+  
+  /* Text Colors */
+  --color-text-light: #FFFFFF;
+  --color-text-dark: #374151; 
+  --color-text-darker: #1f2937; 
+  --color-neutral-grey: #D9D9D9;
+  
+}
+
+/* ===== TYPOGRAPHY ===== */
+:root {
+  /* Font Families */
+  --font-heading: 'Outfit', 'Keep Calm', sans-serif;
+  --font-body: 'Mulish', sans-serif;
+  
+  /* Font Sizes */
+  --text-xs: 0.75rem;      /* 12px */
+  --text-sm: 0.875rem;     /* 14px */
+  --text-base: 1.125rem;   /* 18px - Body text */
+  --text-lg: 1.25rem;      /* 20px - Links, buttons */
+  --text-xl: 1.5rem;       /* 24px */
+  --text-2xl: 2.625rem;     /* 42px - Headings */
+  
+  /* Line Heights */
+  --leading-tight: 1.2;    /* For headings */
+  --leading-normal: 1.5;   /* For links, buttons */
+  --leading-relaxed: 1.75; /* For body text */
+  
+  /* Font Weights */
+  --font-regular: 400;
+  --font-bold: 700;
+}
+
+/* ===== SPACING ===== */
+:root {
+  /* Spacing Scale (8px grid) */
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+  --space-20: 5rem;     /* 80px */
+  
+  /* Layout Spacing */
+  --gutter: 2rem;        /* 32px - Space between columns */
+  --margin-mobile: 1.5rem;  /* 24px */
+  --margin-desktop: 5rem;   /* 80px */
+}
+
+/* ===== LAYOUT ===== */
+:root {
+  /* Container Widths */
+  --container-max: 75rem;    /* 1200px */
+  --container-padding-mobile: 1.5rem;  /* 24px */
+  --container-padding-desktop: 5rem;  /* 80px */
+  
+}
+
+/* ===== COMPONENT-SPECIFIC ===== */
+:root {
+  /* Button Styles */
+  --button-font-family: var(--font-heading);
+  --button-font-size: var(--text-lg);
+  --button-font-weight: var(--font-regular);
+  --button-line-height: var(--leading-normal);
+  
+  /* Quote Styles */
+  --quote-font-family: var(--font-body);
+  --quote-font-size: var(--text-base);
+  --quote-font-weight: var(--font-regular);
+  --quote-line-height: var(--leading-relaxed);
+  --quote-color: var(--color-text-light);
+  
+  /* Customer Name Styles */
+  --customer-name-font-family: var(--font-body);
+  --customer-name-font-size: var(--text-2xl);
+  --customer-name-font-weight: var(--font-bold);
+  --customer-name-color: var(--color-text-darker);
+}
