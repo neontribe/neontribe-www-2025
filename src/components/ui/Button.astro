@@ -1,7 +1,7 @@
 ---
 export interface Props {
   href?: string;
-  variant?: 'primary' | 'secondary' | 'teal' | 'purple';
+  variant?: 'primary' | 'secondary' | 'teal' | 'amethyst';
   size?: 'sm' | 'md' | 'lg';
   children: any;
   external?: boolean;
@@ -22,22 +22,30 @@ const sizeClasses = {
   lg: "px-8 py-4 text-lg"
 };
 const variantClasses = {
-  primary: "bg-purple-600 hover:bg-purple-700 text-white",
-  secondary: "bg-gray-200 hover:bg-gray-300 text-gray-800",
-  teal: "bg-teal-500 hover:bg-teal-600 text-white",
-  purple: "bg-purple-600 hover:bg-purple-700 text-white"
+  primary: "text-white",
+  secondary: "bg-neutral-grey hover:bg-neutral-grey/80 text-text-darker",
+  teal: "text-white",
+  amethyst: "text-white"
+};
+
+const variantStyles = {
+  primary: "background-color: var(--color-accent-amethyst);",
+  secondary: "",
+  teal: "background-color: var(--color-accent-turquoise);",
+  amethyst: "background-color: var(--color-accent-amethyst);"
 };
 
 const classes = `${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]}`;
+const style = variantStyles[variant];
 ---
 
 {href ? (
-  <a href={href} class={classes} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined}>
+  <a href={href} class={classes} style={style} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined}>
     <span>{children}</span>
     <span>→</span>
   </a>
 ) : (
-  <button class={classes}>
+  <button class={classes} style={style}>
     <span>{children}</span>
     <span>→</span>
   </button>
