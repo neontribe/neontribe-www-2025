@@ -28,18 +28,18 @@ export default function InteractiveTestimonial() {
   const current = testimonials[currentTestimonial];
   
   return (
-    <div className="bg-purple-600 text-white p-6 rounded-lg">
+    <div className="bg-brand-amethyst text-white p-6 rounded-lg">
       <p className="mb-4">"{current.quote}"</p>
       <div className="flex items-center space-x-2 mb-4">
         <div className="w-6 h-6 bg-gray-300 rounded-full"></div>
         <div>
           <p className="font-bold">{current.name}</p>
-          <p className="text-sm text-purple-200">{current.organization}</p>
+          <p className="text-sm text-white opacity-80">{current.organization}</p>
         </div>
       </div>
       <button 
         onClick={nextTestimonial}
-        className="bg-purple-700 hover:bg-purple-800 text-white px-4 py-2 rounded text-sm transition-colors"
+        className="bg-brand-amethyst hover:opacity-90 text-white px-4 py-2 rounded text-sm transition-colors"
       >
         Next Testimonial ({currentTestimonial + 1}/{testimonials.length})
       </button>
