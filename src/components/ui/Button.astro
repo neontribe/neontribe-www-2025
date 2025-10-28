@@ -20,10 +20,10 @@ const VARIANT: Record<
   NonNullable<Props["variant"]>,
   { bg: string; color: string; hover: string; iconColor: string }
 > = {
-  teal:      { bg: "#48E9CE", color: "#111827", hover: "filter: brightness(0.95);", iconColor: "#111827" },
-  amethyst:  { bg: "#4B00E7", color: "#FFFFFF", hover: "filter: brightness(1.1);",  iconColor: "#FFFFFF" },
-  primary:   { bg: "#4B00E7", color: "#FFFFFF", hover: "filter: brightness(1.1);",  iconColor: "#FFFFFF" },
-  secondary: { bg: "#D1D5DB", color: "#111827", hover: "filter: brightness(0.95);", iconColor: "#111827" },
+  teal:      { bg: "#48E9CE", color: "#111827", hover: "filter: brightness(0.95);", iconColor: "#4B00E7" },
+  amethyst:  { bg: "#4B00E7", color: "#FFFFFF", hover: "filter: brightness(1.1);",  iconColor: "#48E9CE" },
+  primary:   { bg: "#4B00E7", color: "#FFFFFF", hover: "filter: brightness(1.1);",  iconColor: "#48E9CE" },
+  secondary: { bg: "#D1D5DB", color: "#111827", hover: "filter: brightness(0.95);", iconColor: "#4B00E7" },
 };
 
 const { bg, color, hover, iconColor } = VARIANT[variant];
@@ -40,7 +40,7 @@ const baseStyle = `
   align-items: center;
   gap: 10px;
   border-radius: 1px;
-  font-family: "Keep Calm", sans-serif;
+  font-family: "Keep Calm", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-weight: 500;
   font-style: normal;
   font-size: 20px;
@@ -71,7 +71,7 @@ const commonA11y = `
     onmouseup={`this.style.transform='none'`}
   >
     <span><slot /></span>
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0;">
       <path d="M6 12L10 8L6 4" stroke={iconColor} stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </a>
@@ -86,7 +86,7 @@ const commonA11y = `
     onmouseup={`this.style.transform='none'`}
   >
     <span><slot /></span>
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0;">
       <path d="M6 12L10 8L6 4" stroke={iconColor} stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </button>
