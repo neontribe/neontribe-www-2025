@@ -63,10 +63,24 @@
 /* ===== LAYOUT ===== */
 :root {
   /* Container Widths */
-  --container-max: 75rem;    /* 1200px */
+  --container-max: 75rem;    /* 1200px - Max content width */
+  --frame-max: 94.5rem;      /* 1512px - Desktop frame width */
   --container-padding-mobile: 1.5rem;  /* 24px */
   --container-padding-desktop: 5rem;  /* 80px */
   
+  /* Breakpoints */
+  --breakpoint-sm: 40rem;    /* 640px - Mobile landscape */
+  --breakpoint-md: 48rem;    /* 768px - Tablet portrait */
+  --breakpoint-lg: 64rem;    /* 1024px - Tablet landscape */
+  --breakpoint-xl: 80rem;    /* 1280px - Desktop */
+  --breakpoint-2xl: 94.5rem; /* 1512px - Large desktop */
+  
+  /* Grid System */
+  --grid-columns: 12;
+  --grid-gutter: 2rem;       /* 32px - Space between columns */
+  
+  /* Touch Targets */
+  --tap-target-min: 2.75rem; /* 44px - Minimum tap target size */
 }
 
 /* ===== COMPONENT-SPECIFIC ===== */
