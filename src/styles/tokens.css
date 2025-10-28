@@ -19,7 +19,7 @@
 /* ===== TYPOGRAPHY ===== */
 :root {
   /* Font Families */
-  --font-heading: 'Outfit', 'Keep Calm', sans-serif;
+  --font-heading: 'Mulish', sans-serif;
   --font-body: 'Mulish', sans-serif;
   
   /* Font Sizes */
@@ -28,12 +28,12 @@
   --text-base: 1.125rem;   /* 18px - Body text */
   --text-lg: 1.25rem;      /* 20px - Links, buttons */
   --text-xl: 1.5rem;       /* 24px */
-  --text-2xl: 2.625rem;     /* 42px - Headings */
+  --text-2xl: 1.75rem;     /* 28px - Headings */
   
   /* Line Heights */
-  --leading-tight: 1.2;    /* For headings */
-  --leading-normal: 1.5;   /* For links, buttons */
-  --leading-relaxed: 1.75; /* For body text */
+  --leading-tight: 1.0;    /* 100% for headings */
+  --leading-normal: 1.0;   /* 100% for body text */
+  --leading-relaxed: 1.0;  /* 100% for body text */
   
   /* Font Weights */
   --font-regular: 400;
