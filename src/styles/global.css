@@ -25,6 +25,40 @@
   white-space: normal;
 }
 
+/* ===== LAYOUT UTILITIES ===== */
+.container {
+  @apply mx-auto px-6 lg:px-20;
+  max-width: 1200px; /* Max content width from Figma */
+}
+
+.container-full {
+  @apply mx-auto px-6 lg:px-20;
+  max-width: 1512px; /* Desktop frame width from Figma */
+}
+
+.section {
+  @apply w-full;
+}
+
+.section-dark {
+  background-color: #090909; 
+  color: #FFFFFF;
+}
+
+.section-light {
+  background-color: #F5F5F5; 
+  color: #090909;
+}
+
+/* Grid system utilities */
+.grid-12 {
+  @apply grid grid-cols-12 gap-8;
+}
+
+.grid-responsive {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8;
+}
+
 /* ===== BASE STYLES ===== */
 html {
   font-family: var(--font-body);
