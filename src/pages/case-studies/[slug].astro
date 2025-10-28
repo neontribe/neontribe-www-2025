@@ -20,7 +20,8 @@ const { Content } = await render(entry);
 
 <Layout title={entry.data.title} description={entry.data.description}>
   <Header />
-  <main class="max-w-container mx-auto px-mobile lg:px-desktop py-16">
+  <main id="content" class="section section-light py-16">
+    <div class="container">
     <article class="max-w-4xl mx-auto">
       <header class="mb-8">
         <h1 class="text-heading font-heading text-text-darker mb-6">{entry.data.title}</h1>
@@ -44,6 +45,7 @@ const { Content } = await render(entry);
         <Content />
       </div>
     </article>
+    </div>
   </main>
   <Footer />
 </Layout>
