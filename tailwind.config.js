@@ -9,24 +9,24 @@ export default {
         'bg-dark': '#090909',
         'bg-light': '#F5F5F5',
         'text-light': '#FFFFFF',
-        'text-dark': '#374151',
-        'text-darker': '#1f2937',
+        'text-dark': '#090909',
+        'text-darker': '#090909',
         'neutral-grey': '#D9D9D9',
       },
       fontFamily: {
-        'heading': ['Outfit', 'sans-serif'],
+        'heading': ['Mulish', 'sans-serif'],
         'body': ['Mulish', 'sans-serif'],
         'sans': ['Mulish', 'sans-serif'], // default
       },
       fontSize: {
-        'xs': ['0.75rem', '1.5'],
-        'sm': ['0.875rem', '1.5'],
-        'base': ['1.125rem', '1.75'], // 18px body text
-        'lg': ['1.25rem', '1.5'], // 20px links, buttons
-        'xl': ['1.5rem', '1.5'], // 24px
-        '2xl': ['2.625rem', '1.2'], // 42px headings
-        'heading': ['2.625rem', '2.25rem'], // 42px with tight line height
-        'link': ['1.25rem', '1.5'], // 20px links
+        'xs': ['0.75rem', '1.0'],
+        'sm': ['0.875rem', '1.0'],
+        'base': ['1.125rem', '1.0'], 
+        'lg': ['1.25rem', '1.0'],
+        'xl': ['1.5rem', '1.0'], 
+        '2xl': ['1.75rem', '1.0'], 
+        'heading': ['1.75rem', '1.0'], 
+        'link': ['1.25rem', '1.0'], 
       },
       maxWidth: {
         'container': '1200px',
