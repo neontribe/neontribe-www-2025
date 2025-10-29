@@ -1,25 +1,320 @@
 ---
 import Button from '../ui/Button.astro';
-import Logo from '../ui/Logo.astro';
+
+const currentPath = Astro.url.pathname;
 ---
 
-<header class="section section-dark">
-  <div class="container py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-    <div class="flex items-center space-x-4 sm:space-x-8">
-      <div class="flex items-center space-x-4">
-        <Logo />
-        <span class="text-gray-400">|</span>
-        <span class="text-gray-400 text-sm">Part of the dxw family</span>
-      </div>
+<header class="section section-dark w-full" client:idle>
+  <a href="#content" class="skip-link">Skip to main content</a>
+  
+  <div class="container flex items-center justify-between" style="height: 64px; padding-top: 16px; padding-bottom: 8px;">
+    <!-- Logo Group -->
+    <div class="flex-shrink-0">
+      <img src="/src/assets/Frame-85.svg" alt="neontribe | Part of the dxw family" class="h-6 w-auto" />
     </div>
     
-    <nav class="flex flex-wrap items-center gap-4 sm:gap-6">
-      <a href="/case-studies" class="text-white hover:text-gray-300 text-lg transition-colors">Case Studies</a>
-      <a href="/how-we-work" class="text-white hover:text-gray-300 text-lg transition-colors">How We Work</a>
-      <a href="/advice-service" class="text-white hover:text-gray-300 text-lg transition-colors">Advice Service</a>
+    <!-- Desktop Navigation -->
+    <nav class="hidden sm:flex items-center gap-6" aria-label="Main navigation">
+      <a 
+        href="/case-studies" 
+        class={`nav-link ${currentPath === '/case-studies' ? 'active' : ''}`}
+        aria-current={currentPath === '/case-studies' ? 'page' : undefined}
+      >
+        Case Studies
+      </a>
+      <a 
+        href="/how-we-work" 
+        class={`nav-link ${currentPath === '/how-we-work' ? 'active' : ''}`}
+        aria-current={currentPath === '/how-we-work' ? 'page' : undefined}
+      >
+        How We Work
+      </a>
+      <a 
+        href="/advice-service" 
+        class={`nav-link ${currentPath === '/advice-service' ? 'active' : ''}`}
+        aria-current={currentPath === '/advice-service' ? 'page' : undefined}
+      >
+        Advice Service
+      </a>
       <Button variant="teal" size="sm">
         Talk to us
       </Button>
     </nav>
+
+    <!-- Mobile Menu Button -->
+    <button 
+      class="mobile-toggle" 
+      aria-expanded="false" 
+      aria-controls="mobile-menu"
+      aria-label="Toggle navigation menu"
+    >
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
   </div>
+
+  <!-- Mobile Menu -->
+  <nav id="mobile-menu" class="mobile-menu hidden" aria-label="Mobile navigation" aria-hidden="true">
+    <div class="mobile-content">
+      <a href="/case-studies" class={`mobile-link ${currentPath === '/case-studies' ? 'active' : ''}`}>
+        Case Studies
+      </a>
+      <a href="/how-we-work" class={`mobile-link ${currentPath === '/how-we-work' ? 'active' : ''}`}>
+        How We Work
+      </a>
+      <a href="/advice-service" class={`mobile-link ${currentPath === '/advice-service' ? 'active' : ''}`}>
+        Advice Service
+      </a>
+      <div class="mobile-cta">
+        <Button variant="teal" size="sm">Talk to us</Button>
+      </div>
+    </div>
+  </nav>
 </header>
+
+<style>
+  /* Skip link */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #4B00E7;
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 1000;
+    transition: top 0.3s;
+  }
+
+  .skip-link:focus {
+    top: 6px;
+  }
+
+  /* Navigation links */
+  .nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1.125rem;
+    font-weight: 400;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link:hover {
+    color: #48E9CE;
+  }
+
+  .nav-link.active {
+    color: #48E9CE;
+    font-weight: 600;
+  }
+
+  /* Mobile menu toggle - Hidden by default */
+  .mobile-toggle {
+    display: none !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+    z-index: 1001;
+  }
+
+  .mobile-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .mobile-toggle:focus {
+    outline: 2px solid #48E9CE;
+    outline-offset: 2px;
+  }
+
+  /* Show hamburger menu only on mobile */
+  @media (max-width: 640px) {
+    .mobile-toggle {
+      display: flex !important;
+    }
+  }
+
+  .hamburger-line {
+    width: 18px;
+    height: 2px;
+    background-color: white;
+    transition: all 0.3s ease;
+  }
+
+  .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(4px, 4px);
+  }
+
+  .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(4px, -4px);
+  }
+
+  /* Mobile menu */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .mobile-menu:not(.hidden) {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .mobile-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  /* Hide on desktop */
+  @media (min-width: 640px) {
+    .mobile-menu {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+    }
+  }
+
+  /* Body scroll lock */
+  body.menu-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
+
+  .mobile-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 12px 24px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s ease;
+  }
+
+  .mobile-link:hover {
+    color: #d1d5db;
+  }
+
+  .mobile-link:focus {
+    outline: 2px solid #4B00E7;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  .mobile-link.active {
+    color: #48E9CE;
+  }
+
+  .mobile-cta {
+    margin-top: 1rem;
+  }
+
+  /* Responsive mobile menu */
+  @media (max-width: 480px) {
+    .mobile-content {
+      padding: 1.5rem 1rem;
+      gap: 1.5rem;
+    }
+    
+    .mobile-link {
+      font-size: 1.25rem;
+      padding: 12px 20px;
+    }
+  }
+</style>
+
+<script>
+  function initMobileMenu() {
+    const toggle = document.querySelector('.mobile-toggle');
+    const menu = document.querySelector('#mobile-menu');
+    const links = document.querySelectorAll('.mobile-link');
+    const body = document.body;
+
+    if (!toggle || !menu) return;
+
+    let isOpen = false;
+
+    const closeMenu = () => {
+      isOpen = false;
+      toggle.setAttribute('aria-expanded', 'false');
+      menu.setAttribute('aria-hidden', 'true');
+      menu.classList.add('hidden');
+      body.style.overflow = '';
+      body.classList.remove('menu-open');
+    };
+
+    const openMenu = () => {
+      isOpen = true;
+      toggle.setAttribute('aria-expanded', 'true');
+      menu.setAttribute('aria-hidden', 'false');
+      menu.classList.remove('hidden');
+      body.style.overflow = 'hidden';
+      body.classList.add('menu-open');
+    };
+
+    // Toggle menu
+    toggle.addEventListener('click', () => {
+      if (isOpen) closeMenu();
+      else openMenu();
+    });
+
+   
+    links.forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+  
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isOpen) closeMenu();
+    });
+
+    
+    menu.addEventListener('click', (e) => {
+      if (e.target === menu) closeMenu();
+    });
+
+    
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 640 && isOpen) closeMenu();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMobileMenu);
+  } else {
+    initMobileMenu();
+  }
+</script>
