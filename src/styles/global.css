@@ -68,9 +68,19 @@ html {
 
 body {
   color: var(--color-text-dark);
-  background-color: var(--color-bg-light);
+  background-color: #000000;
   margin: 0;
   padding: 0;
+}
+
+/* Remove any potential separator lines */
+hr {
+  display: none;
+}
+
+/* Remove any potential gap between header and hero section */
+header.section-dark + section.section-dark {
+  margin-top: 0;
 }
 
 /* ===== MARKDOWN CONTENT STYLING ===== */
