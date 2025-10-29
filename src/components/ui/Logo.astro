@@ -1,0 +1,72 @@
+---
+import halfGreen from '../../assets/half-green.svg';
+import halfPink from '../../assets/half-pink.svg';
+---
+
+<div class="logo">
+  <span class="logo-text">n</span>
+  <span class="logo-text">e</span>
+  <div class="logo-o-container">
+    <img src={halfGreen.src} alt="" class="logo-o-half logo-o-left" />
+    <img src={halfPink.src} alt="" class="logo-o-half logo-o-right" />
+  </div>
+  <span class="logo-text">n</span>
+  <span class="logo-text">t</span>
+  <span class="logo-text">r</span>
+  <span class="logo-text">i</span>
+  <span class="logo-text">b</span>
+  <span class="logo-text">e</span>
+</div>
+
+<style>
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 800;
+    font-size: 2rem;
+  }
+
+  /* Apply uniform negative margin-right to all children except the last */
+  .logo > *:not(:last-child) {
+    margin-right: -0.02em;
+  }
+
+  .logo-text {
+    color: white;
+    display: inline-block;
+  }
+
+  .logo-o-container {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo-o-half {
+    height: 0.75em;
+    width: auto;
+  }
+
+  .logo-o-left {
+    margin-right: -1px; /* Overlap the halves slightly */
+  }
+
+  .logo-o-right {
+    margin-left: -1px; /* Overlap the halves slightly */
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .logo {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .logo {
+      font-size: 1.25rem;
+    }
+  }
+</style>
