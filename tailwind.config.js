@@ -16,8 +16,8 @@ export default {
         'bg-dark': '#090909',
         'bg-light': '#F5F5F5',
         'text-light': '#FFFFFF',
-        'text-dark': '#090909',
-        'text-darker': '#090909',
+        'text-dark': '#374151',
+        'text-darker': '#1f2937',
         'neutral-grey': '#D9D9D9',
       },
       fontFamily: {
@@ -32,7 +32,7 @@ export default {
         'lg': ['1.25rem', '1.0'],
         'xl': ['1.5rem', '1.0'], 
         '2xl': ['1.75rem', '1.0'], 
-        'heading': ['1.75rem', '1.0'], 
+        'heading': ['2.625rem', '1.2'], 
         'link': ['1.25rem', '1.0'], 
       },
       maxWidth: {
