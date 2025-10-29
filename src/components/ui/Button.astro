@@ -1,7 +1,7 @@
 ---
 export interface Props {
   href?: string;
-  variant?: "primary" | "secondary" | "teal" | "amethyst";
+  variant?: "primary" | "secondary" | "teal" | "link";
   size?: "sm" | "md" | "lg" | "get-in-touch";
   external?: boolean;
   ariaLabel?: string;
@@ -18,15 +18,15 @@ const {
 
 const VARIANT: Record<
   NonNullable<Props["variant"]>,
-  { bg: string; color: string; hover: string; iconColor: string }
+  { bg: string; color: string; hover: string; iconColor: string; textDecoration?: string }
 > = {
-  teal:      { bg: "#48E9CE", color: "#111827", hover: "filter: brightness(0.95);", iconColor: "#4B00E7" },
-  amethyst:  { bg: "#4B00E7", color: "#FFFFFF", hover: "filter: brightness(1.1);",  iconColor: "#48E9CE" },
   primary:   { bg: "#4B00E7", color: "#FFFFFF", hover: "filter: brightness(1.1);",  iconColor: "#48E9CE" },
   secondary: { bg: "#D1D5DB", color: "#111827", hover: "filter: brightness(0.95);", iconColor: "#4B00E7" },
+  teal:      { bg: "#48E9CE", color: "#111827", hover: "filter: brightness(0.95);", iconColor: "#4B00E7" },
+  link:      { bg: "transparent", color: "#4B00E7", hover: "opacity: 0.8;", iconColor: "#4B00E7", textDecoration: "underline" },
 };
 
-const { bg, color, hover, iconColor } = VARIANT[variant];
+const { bg, color, hover, iconColor, textDecoration } = VARIANT[variant];
 
 const SIZE: Record<NonNullable<Props["size"]>, string> = {
   sm: "padding: 8px 16px; height: 40px;",
@@ -42,19 +42,18 @@ const baseStyle = `
   border-radius: 1px;
   font-family: "Keep Calm", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-weight: 500;
-  font-style: normal;
   font-size: 20px;
   line-height: 100%;
-  letter-spacing: 0%;
-  text-decoration: none;
-  transition: filter 0.15s ease, transform 0.05s ease;
+  text-decoration: ${textDecoration || 'none'};
+  transition: filter 0.15s ease, transform 0.05s ease, opacity 0.15s ease;
   background-color: ${bg};
   color: ${color};
   ${SIZE[size]}
 `;
 
-const commonA11y = `
-  outline: none;
+const focusStyle = variant === 'link' ? '' : `
+  outline: 2px solid #4B00E7;
+  outline-offset: 2px;
 `;
 ---
 
@@ -64,9 +63,11 @@ const commonA11y = `
     target={external ? "_blank" : undefined}
     rel={external ? "noopener noreferrer" : undefined}
     aria-label={ariaLabel}
-    style={`${baseStyle} ${commonA11y}`}
-    onmouseover={`this.style.cssText='${baseStyle}${commonA11y}${hover}'`}
-    onmouseout={`this.style.cssText='${baseStyle}${commonA11y}'`}
+    style={baseStyle}
+    onmouseover={`this.style.cssText='${baseStyle}${hover}'`}
+    onmouseout={`this.style.cssText='${baseStyle}'`}
+    onfocus={`this.style.cssText='${baseStyle}${hover}${focusStyle}'`}
+    onblur={`this.style.cssText='${baseStyle}'`}
     onmousedown={`this.style.transform='translateY(1px)'`}
     onmouseup={`this.style.transform='none'`}
   >
@@ -77,9 +78,11 @@ const commonA11y = `
   <button
     type="button"
     aria-label={ariaLabel}
-    style={`${baseStyle} ${commonA11y}; border: none; cursor: pointer;`}
-    onmouseover={`this.style.cssText='${baseStyle}${commonA11y}${hover}; border: none; cursor: pointer;'`}
-    onmouseout={`this.style.cssText='${baseStyle}${commonA11y}; border: none; cursor: pointer;'`}
+    style={`${baseStyle}; border: none; cursor: pointer;`}
+    onmouseover={`this.style.cssText='${baseStyle}${hover}; border: none; cursor: pointer;'`}
+    onmouseout={`this.style.cssText='${baseStyle}; border: none; cursor: pointer;'`}
+    onfocus={`this.style.cssText='${baseStyle}${hover}${focusStyle}; border: none; cursor: pointer;'`}
+    onblur={`this.style.cssText='${baseStyle}; border: none; cursor: pointer;'`}
     onmousedown={`this.style.transform='translateY(1px)'`}
     onmouseup={`this.style.transform='none'`}
   >
