@@ -23,9 +23,17 @@ import Button from '../ui/Button.astro';
         <p class="text-base text-gray-600 mb-8 leading-relaxed">
           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </p>
-        <Button href="/blog/test-post" variant="link">
-          read full case study
-        </Button>
+        <div class="flex flex-wrap gap-4">
+          <Button variant="teal" size="sm">
+            Get in touch
+          </Button>
+          <Button href="/blog/test-post" variant="primary">
+            read full case study
+          </Button>
+          <Button href="/blog/test-post" variant="link">
+            read full case study
+          </Button>
+        </div>
       </div>
       <div class="bg-gray-200 h-96 rounded-lg flex items-center justify-center">
         <span class="text-gray-500">Case Study Image</span>
