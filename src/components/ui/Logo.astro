@@ -6,10 +6,8 @@ import halfPink from '../../assets/half-pink.svg';
 <div class="logo">
   <span class="logo-text">n</span>
   <span class="logo-text">e</span>
-  <div class="logo-o-container">
-    <img src={halfGreen.src} alt="" class="logo-o-half logo-o-left" />
-    <img src={halfPink.src} alt="" class="logo-o-half logo-o-right" />
-  </div>
+  <img src={halfGreen.src} alt="" class="logo-o-half logo-o-left" />
+  <img src={halfPink.src} alt="" class="logo-o-half logo-o-right" />
   <span class="logo-text">n</span>
   <span class="logo-text">t</span>
   <span class="logo-text">r</span>
@@ -27,35 +25,41 @@ import halfPink from '../../assets/half-pink.svg';
     font-size: 2rem;
   }
 
-  /* Apply uniform negative margin-right to all children except the last */
-  .logo > *:not(:last-child) {
-    margin-right: -0.02em;
-  }
-
+  /* Apply uniform negative margin-right to text letters */
   .logo-text {
     color: white;
     display: inline-block;
+    margin-right: -0.02em;
   }
 
-  .logo-o-container {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+  /* Last letter doesn't need margin */
+  .logo-text:last-child {
+    margin-right: 0;
   }
+
+  /* Remove margins for letters adjacent to the O */
+  .logo-text:nth-child(2) { /* "e" before O */
+    margin-right: -0.10em;
+  }
+
 
   .logo-o-half {
     height: 0.75em;
     width: auto;
+    vertical-align: middle;
+    display: inline-block;
   }
 
+  /* Spacing around the O halves */
   .logo-o-left {
-    margin-right: -1px; /* Overlap the halves slightly */
+    margin-right: -0.25em;
   }
 
   .logo-o-right {
-    margin-left: -1px; /* Overlap the halves slightly */
+    margin-right: 0.02em;
+    margin-left: 0.15em;
   }
+
 
   /* Responsive */
   @media (max-width: 768px) {
