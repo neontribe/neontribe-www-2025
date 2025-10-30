@@ -1,5 +1,6 @@
 ---
 import Button from '../ui/Button.astro';
+import fullLogo from '../../assets/Full-logo.svg'; // ✅ import SVG correctly
 const currentPath = Astro.url.pathname;
 ---
 
@@ -10,7 +11,7 @@ const currentPath = Astro.url.pathname;
     <!-- Logo -->
     <div class="flex-shrink-0">
       <a href="/" aria-label="Go to homepage">
-        <img src="/src/assets/Frame-85.svg" alt="Neontribe" class="h-6 w-auto" />
+        <img src={fullLogo.src} alt="Neontribe" class="h-6 w-auto" />
       </a>
     </div>
 
