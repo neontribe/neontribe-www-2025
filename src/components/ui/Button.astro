@@ -5,6 +5,7 @@ export interface Props {
   size?: "sm" | "md" | "lg" | "get-in-touch";
   external?: boolean;
   ariaLabel?: string;
+  class?: string;
 }
 
 const {
@@ -13,6 +14,7 @@ const {
   size = "md",
   external = false,
   ariaLabel,
+  class: className,
 } = Astro.props;
 
 
@@ -32,7 +34,7 @@ const SIZE: Record<NonNullable<Props["size"]>, string> = {
   sm: "padding: 8px 16px; height: 40px;",
   md: "padding: 12px 24px; height: 48px;",
   lg: "padding: 16px 32px; height: 56px;",
-  "get-in-touch": "padding: 12px 24px; height: 48px; width: 205px;",
+  "get-in-touch": "padding: 12px 24px; height: 48px;",
 };
 
 const baseStyle = `
@@ -63,7 +65,9 @@ const focusStyle = variant === 'link' ? '' : `
     target={external ? "_blank" : undefined}
     rel={external ? "noopener noreferrer" : undefined}
     aria-label={ariaLabel}
+    class={className}
     style={baseStyle}
+    
     onmouseover={`this.style.cssText='${baseStyle}${hover}'`}
     onmouseout={`this.style.cssText='${baseStyle}'`}
     onfocus={`this.style.cssText='${baseStyle}${hover}${focusStyle}'`}
@@ -78,7 +82,9 @@ const focusStyle = variant === 'link' ? '' : `
   <button
     type="button"
     aria-label={ariaLabel}
+    class={className}
     style={`${baseStyle}; border: none; cursor: pointer;`}
+    
     onmouseover={`this.style.cssText='${baseStyle}${hover}; border: none; cursor: pointer;'`}
     onmouseout={`this.style.cssText='${baseStyle}; border: none; cursor: pointer;'`}
     onfocus={`this.style.cssText='${baseStyle}${hover}${focusStyle}; border: none; cursor: pointer;'`}
@@ -90,3 +96,5 @@ const focusStyle = variant === 'link' ? '' : `
     <span style={`color: ${iconColor}; font-size: 16px; line-height: 1;`}>→</span>
   </button>
 )}
+
+
