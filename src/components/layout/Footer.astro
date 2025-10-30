@@ -1,12 +1,33 @@
 ---
+import neontribeLogo from '../../assets/neontribe-logo.svg';
 ---
 
-<footer class="section section-dark py-8">
-  <div class="container flex flex-col sm:flex-row justify-between items-center gap-4">
-    <div class="text-xl font-bold text-white">neontribe</div>
-    <div class="text-gray-400 text-sm flex flex-wrap gap-4">
-      <span>social links?</span>
-      <span>privacy policy</span>
+<footer class="section section-dark py-10">
+  <div class="container flex flex-col sm:flex-row justify-between sm:items-end items-start gap-8">
+    
+    <!-- Brand -->
+    <div class="flex justify-start w-full sm:w-auto">
+      <a href="/" aria-label="Go to homepage">
+        <img src={neontribeLogo.src} alt="Neontribe logo" class="h-8 w-auto" />
+      </a>
     </div>
+
+    <!-- Footer Links -->
+    <nav class="flex flex-col sm:flex-row gap-4 sm:gap-6 text-sm text-left w-full sm:w-auto" aria-label="Footer navigation">
+      <a href="/social-links" class="footer-link">social links?</a>
+      <a href="/privacy-policy" class="footer-link">privacy policy</a>
+    </nav>
   </div>
 </footer>
+
+<style>
+  .footer-link {
+    color: var(--color-text-light);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>
+
+
+
+
