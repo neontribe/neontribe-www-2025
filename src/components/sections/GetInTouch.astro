@@ -1,22 +1,37 @@
 ---
 import Button from '../ui/Button.astro';
+import halfGreen from '../../assets/half-green.svg';
+import halfPink from '../../assets/half-pink.svg';
 ---
 
-<section class="section section-dark py-16">
-  <div class="container">
-    <div class="grid md:grid-cols-2 gap-12 items-center">
-      <div>
-        <h2 class="text-4xl font-bold mb-6">Get in touch</h2>
-        <p class="text-gray-300 mb-8">
-          Interested in working with us? Please feel free to get in touch by emailing hello@neontribe.co.uk or clicking the link below.
+<section class="section section-dark py-10 md:py-0 md:min-h-[320px]">
+  <div class="container h-full">
+    <!-- Full height to match 320px; left column vertically centred on md+ -->
+    <div class="grid md:grid-cols-12 md:items-center h-full gap-8 md:gap-12">
+
+      <!-- Left content -->
+      <div class="md:col-span-7 flex flex-col justify-center items-start gap-[39px] max-w-[828px]">
+        <h2 class="text-2xl font-bold leading-tight text-white">Get in touch</h2>
+
+        <p class="text-base leading-normal text-white">
+          Interested in working with us? Please feel free to get in touch by emailing
+          hello@neontribe.co.uk or clicking the link below.
         </p>
-        <Button variant="teal" size="get-in-touch">
-          Get in touch
-        </Button>
+
+        <Button variant="teal" size="get-in-touch">Get in touch</Button>
       </div>
-      <div>
-        <!-- Empty space for now -->
+
+      <!-- Right images -->
+      <div class="hidden md:flex md:col-span-5 justify-end items-center">
+        <div class="relative h-52 w-52 lg:h-60 lg:w-60" aria-hidden="true">
+          <img src={halfGreen.src} alt="" class="absolute left-0 top-1/2 -translate-y-1/2 h-full w-auto" />
+          <img src={halfPink.src} alt="" class="absolute right-0 top-1/2 -translate-y-1/2 h-full w-auto" />
+        </div>
       </div>
+
     </div>
   </div>
 </section>
+
+
+
