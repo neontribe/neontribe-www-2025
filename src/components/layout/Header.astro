@@ -3,34 +3,33 @@ import Button from '../ui/Button.astro';
 const currentPath = Astro.url.pathname;
 ---
 
-<header id="site-header" class="section section-dark w-full" client:idle>
+<header id="site-header" class="section section-dark w-full">
   <a href="#content" class="skip-link">Skip to main content</a>
-  
+
   <div class="container flex items-center justify-between h-16 pt-4 pb-2">
     <!-- Logo -->
-        <!-- Logo -->
-        <div class="flex-shrink-0">
-          <a href="/" aria-label="Go to homepage">
-            <img src="/src/assets/Frame-85.svg" alt="Neontribe" class="h-6 w-auto" />
-          </a>
-        </div>    
-    
+    <div class="flex-shrink-0">
+      <a href="/" aria-label="Go to homepage">
+        <img src="/src/assets/Frame-85.svg" alt="Neontribe" class="h-6 w-auto" />
+      </a>
+    </div>
+
     <!-- Desktop Navigation -->
     <nav class="hidden sm:flex items-center gap-6" aria-label="Main navigation">
-      <a 
-        href="/case-studies" 
+      <a
+        href="/case-studies"
         class={`nav-link ${currentPath === '/case-studies' ? 'active' : ''}`}
         aria-current={currentPath === '/case-studies' ? 'page' : undefined}
       >Case Studies</a>
 
-      <a 
-        href="/how-we-work" 
+      <a
+        href="/how-we-work"
         class={`nav-link ${currentPath === '/how-we-work' ? 'active' : ''}`}
         aria-current={currentPath === '/how-we-work' ? 'page' : undefined}
       >How We Work</a>
 
-      <a 
-        href="/advice-service" 
+      <a
+        href="/advice-service"
         class={`nav-link ${currentPath === '/advice-service' ? 'active' : ''}`}
         aria-current={currentPath === '/advice-service' ? 'page' : undefined}
       >Advice Service</a>
@@ -39,9 +38,9 @@ const currentPath = Astro.url.pathname;
     </nav>
 
     <!-- Mobile Menu Button -->
-    <button 
+    <button
       class="mobile-toggle sm:hidden flex flex-col justify-center items-center gap-[3px] w-8 h-8 bg-transparent border-0 cursor-pointer p-1 rounded"
-      aria-expanded="false" 
+      aria-expanded="false"
       aria-controls="mobile-menu"
       aria-label="Toggle navigation menu"
     >
@@ -66,15 +65,12 @@ const currentPath = Astro.url.pathname;
 
 <!-- Global rules that must escape component scoping -->
 <style is:global>
-  /* Lock background when menu open */
   body.menu-open { overflow: hidden; position: fixed; width: 100%; }
-
-  /* Keep the hamburger/X visible & clickable above overlay when open */
   body.menu-open .mobile-toggle {
     position: fixed;
     top: 12px;
     right: 16px;
-    z-index: 1101; /* higher than .mobile-menu (1000) */
+    z-index: 1101;
     background: transparent;
   }
 </style>
@@ -94,7 +90,7 @@ const currentPath = Astro.url.pathname;
   .nav-link:hover{ color:var(--color-accent-turquoise); }
   .nav-link.active{ color:var(--color-accent-turquoise); font-weight:600; }
 
-  .mobile-toggle{ z-index:1101; } /* above header content */
+  .mobile-toggle{ z-index:1101; }
   .mobile-toggle:focus{ outline:2px solid var(--color-accent-turquoise); outline-offset:2px; }
   .mobile-toggle:hover{ background:rgba(255,255,255,.1); }
   .hamburger-line{ width:18px; height:2px; background:var(--color-text-light); transition:transform .3s, opacity .3s; }
@@ -102,12 +98,11 @@ const currentPath = Astro.url.pathname;
   .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(2){ opacity:0; }
   .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(3){ transform:rotate(-45deg) translate(4px,-4px); }
 
-  /* Overlay: hidden when closed; scrollable when open */
   .mobile-menu{
     position:fixed; inset:0; background:rgba(0,0,0,.95); z-index:1000;
     display:none; opacity:0; visibility:hidden; pointer-events:none;
     align-items:center; justify-content:center;
-    overflow-y:auto; /* allow scrolling inside overlay */
+    overflow-y:auto;
     transition:opacity .3s, visibility .3s;
   }
   .mobile-menu:not(.hidden){
@@ -140,7 +135,7 @@ const currentPath = Astro.url.pathname;
   }
 </style>
 
-<script>
+<script is:inline>
   function initMobileMenu(){
     const root   = document.getElementById('site-header');
     const toggle = root?.querySelector('.mobile-toggle');
@@ -168,16 +163,22 @@ const currentPath = Astro.url.pathname;
     };
 
     toggle.addEventListener('click', ()=> (isOpen ? closeMenu() : openMenu()));
-    links.forEach(a => a.addEventListener('click', closeMenu));
-    document.addEventListener('keydown', e => { if(e.key==='Escape' && isOpen) closeMenu(); });
-    menu.addEventListener('click', e => { if(e.target === menu) closeMenu(); });
-    window.addEventListener('resize', ()=> { if(window.innerWidth >= 640 && isOpen) closeMenu(); });
+
+    
+    Array.from(links).forEach((a) => {
+      if (a instanceof HTMLAnchorElement) a.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('keydown', (e) => { if(e.key==='Escape' && isOpen) closeMenu(); });
+    menu.addEventListener('click', (e) => { if(e.target === menu) closeMenu(); });
+    window.addEventListener('resize', () => { if(window.innerWidth >= 640 && isOpen) closeMenu(); });
   }
 
-  if(document.readyState === 'loading'){
+  if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initMobileMenu);
   } else {
     initMobileMenu();
   }
 </script>
+
 
