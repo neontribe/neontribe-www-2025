@@ -1,16 +1,21 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/layout/Header.astro';
+import HeaderHeroContainer from '../components/sections/HeaderHeroContainer.astro';
 import Footer from '../components/layout/Footer.astro';
 ---
 
 <Layout title="How we work">
-  <Header />
-  <main id="content" class="section section-light py-16">
-    <div class="container">
-      <h1 class="text-2xl font-bold text-text-dark mb-6">How we work</h1>
-      <p class="text-base text-text-dark">Placeholder.</p>
-    </div>
+  <HeaderHeroContainer 
+    title="How we work" 
+    subtitle="You can expect us to be open, honest and expert; and based on those three principles, to become your trusted digital partner."
+    icon="how-we-work" 
+  />
+  <main id="content">
+    <section class="section section-light py-16">
+      <div class="container">
+        <p class="text-base text-text-dark">Placeholder.</p>
+      </div>
+    </section>
   </main>
   <Footer />
 </Layout>
