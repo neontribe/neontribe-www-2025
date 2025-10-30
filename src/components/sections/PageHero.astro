@@ -1,0 +1,41 @@
+---
+export interface Props {
+  title: string;
+  subtitle: string;
+  icon?: 'case-studies' | 'how-we-work' | 'advice-service' | 'talk-to-us';
+}
+
+const { title, subtitle, icon = 'case-studies' } = Astro.props;
+
+const iconMap = {
+  'case-studies': '/src/assets/Search.svg',
+  'how-we-work': '/src/assets/Circle.svg', 
+  'advice-service': '/src/assets/Search.svg',
+  'talk-to-us': '/src/assets/Smile.svg'
+};
+---
+
+<section class="section section-dark py-8" style="min-height: 160px;">
+  <div class="container max-w-7xl mx-auto px-8">
+    <div class="flex items-center gap-12 h-full">
+      <!-- Icon - properly sized -->
+      <div class="w-24 h-24 flex items-center justify-center flex-shrink-0">
+        <img 
+          src={iconMap[icon]} 
+          alt={`${title} icon`} 
+          class="w-full h-full object-contain" 
+        />
+      </div>
+      
+      <!-- Content -->
+      <div class="flex-1 max-w-4xl">
+        <h1 class="text-3xl font-bold text-white mb-3 leading-tight">
+          {title}
+        </h1>
+        <p class="text-xl text-white/90 leading-relaxed max-w-3xl font-normal" style="font-family: 'Mulish', sans-serif; font-weight: 400; font-size: 20px;">
+          {subtitle}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
