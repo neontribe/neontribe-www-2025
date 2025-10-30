@@ -1,16 +1,21 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/layout/Header.astro';
+import HeaderHeroContainer from '../components/sections/HeaderHeroContainer.astro';
 import Footer from '../components/layout/Footer.astro';
 ---
 
 <Layout title="Advice Service">
-  <Header />
-  <main id="content" class="section section-light py-16">
-    <div class="container">
-      <h1 class="text-2xl font-bold text-text-dark mb-6">Advice service</h1>
-      <p class="text-base text-text-dark">Service placeholder.</p>
-    </div>
+  <HeaderHeroContainer 
+    title="Advice service" 
+    subtitle="We're always happy to lend charities our minds for an hour or so. If there's something you think a bit of digital expertise could help, just drop us a line."
+    icon="advice-service" 
+  />
+  <main id="content">
+    <section class="section section-light py-16">
+      <div class="container">
+        <p class="text-base text-text-dark">Service placeholder.</p>
+      </div>
+    </section>
   </main>
   <Footer />
 </Layout>
