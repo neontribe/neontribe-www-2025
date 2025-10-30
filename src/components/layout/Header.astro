@@ -99,7 +99,7 @@ const currentPath = Astro.url.pathname;
   .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(2){ opacity:0; }
   .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(3){ transform:rotate(-45deg) translate(4px,-4px); }
 
-  /* Overlay: truly hidden when closed; scrollable when open */
+  /* Overlay: hidden when closed; scrollable when open */
   .mobile-menu{
     position:fixed; inset:0; background:rgba(0,0,0,.95); z-index:1000;
     display:none; opacity:0; visibility:hidden; pointer-events:none;
