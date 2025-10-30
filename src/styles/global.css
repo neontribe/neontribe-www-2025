@@ -1,7 +1,9 @@
 @import "tailwindcss";
 @import "./tokens.css";
 
-/* ===== ACCESSIBILITY ===== */
+/* =========================
+   ACCESSIBILITY UTILITIES
+========================= */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -25,15 +27,17 @@
   white-space: normal;
 }
 
-/* ===== LAYOUT UTILITIES ===== */
+/* =========================
+   LAYOUT UTILITIES
+========================= */
 .container {
   @apply mx-auto px-6 lg:px-20;
-  max-width: 1200px; /* Max content width from Figma */
+  max-width: var(--container-max);
 }
 
 .container-full {
   @apply mx-auto px-6 lg:px-20;
-  max-width: 1512px; /* Desktop frame width from Figma */
+  max-width: var(--frame-max);
 }
 
 .section {
@@ -41,16 +45,16 @@
 }
 
 .section-dark {
-  background-color: #090909; 
-  color: #FFFFFF;
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-light);
 }
 
 .section-light {
-  background-color: #F5F5F5; 
-  color: #090909;
+  background-color: var(--color-bg-light);
+  color: var(--color-text-dark);
 }
 
-/* Grid system utilities */
+/* Grid utilities */
 .grid-12 {
   @apply grid grid-cols-12 gap-8;
 }
@@ -59,7 +63,9 @@
   @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8;
 }
 
-/* ===== BASE STYLES ===== */
+/* =========================
+   BASE STYLES
+========================= */
 html {
   font-family: var(--font-body);
   font-size: 16px;
@@ -68,22 +74,23 @@ html {
 
 body {
   color: var(--color-text-dark);
-  background-color: #000000;
+  background-color: var(--color-bg-dark);
   margin: 0;
   padding: 0;
 }
 
-/* Remove any potential separator lines */
 hr {
   display: none;
 }
 
-/* Remove any potential gap between header and hero section */
+/* Remove spacing between header + hero */
 header.section-dark + section.section-dark {
   margin-top: 0;
 }
 
-/* ===== MARKDOWN CONTENT STYLING ===== */
+/* =========================
+   TYPOGRAPHY / MARKDOWN
+========================= */
 .markdown-content {
   line-height: var(--leading-relaxed);
   color: var(--color-text-dark);
@@ -118,12 +125,16 @@ header.section-dark + section.section-dark {
   font-family: var(--font-body);
 }
 
-.markdown-content ul, .markdown-content ol {
+.markdown-content ul,
+.markdown-content ol {
   margin-top: var(--space-6);
   margin-bottom: var(--space-6);
   padding-left: var(--space-8);
-  list-style-type: disc;
   list-style-position: outside;
+}
+
+.markdown-content ul {
+  list-style-type: disc;
 }
 
 .markdown-content ul ul {
@@ -141,17 +152,17 @@ header.section-dark + section.section-dark {
   line-height: var(--leading-normal);
 }
 
+/* Blockquotes */
 .markdown-content blockquote {
   border-left: 4px solid var(--color-accent-turquoise);
-  padding-left: var(--space-6);
-  margin: var(--space-8) 0;
-  font-style: italic;
   background-color: var(--color-bg-light);
+  color: var(--color-text-dark);
   padding: var(--space-6);
+  margin: var(--space-8) 0;
   border-radius: 0.5rem;
+  font-style: italic;
   font-family: var(--font-body);
   font-size: var(--text-base);
-  color: var(--color-text-dark);
 }
 
 .markdown-content strong {
@@ -159,12 +170,30 @@ header.section-dark + section.section-dark {
   color: inherit;
 }
 
+/* Links */
 .markdown-content a {
-  color: var(--color-link);
+  color: var(--color-accent-amethyst);
   text-decoration: underline;
+  transition: color 0.2s ease;
 }
 
 .markdown-content a:hover {
-  color: var(--color-link-hover);
+  color: var(--color-accent-turquoise);
   text-decoration: none;
+}
+
+/* =========================
+   GLOBAL FOCUS & MOTION
+========================= */
+:focus-visible {
+  outline: 2px solid var(--color-accent-amethyst);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
 }

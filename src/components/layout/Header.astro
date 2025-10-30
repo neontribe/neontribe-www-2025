@@ -1,25 +1,185 @@
 ---
 import Button from '../ui/Button.astro';
-import Logo from '../ui/Logo.astro';
+import fullLogo from '../../assets/Full-logo.svg'; 
+const currentPath = Astro.url.pathname;
 ---
 
-<header class="section section-dark">
-  <div class="container py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-    <div class="flex items-center space-x-4 sm:space-x-8">
-      <div class="flex items-center space-x-4">
-        <Logo />
-        <span class="text-gray-400">|</span>
-        <span class="text-gray-400 text-sm">Part of the dxw family</span>
+<header id="site-header" class="section section-dark w-full">
+  <a href="#content" class="skip-link">Skip to main content</a>
+
+  <div class="container flex items-center justify-between h-16 pt-4 pb-2">
+    <!-- Logo -->
+    <div class="flex-shrink-0">
+      <a href="/" aria-label="Go to homepage">
+        <img src={fullLogo.src} alt="Neontribe" class="h-6 w-auto" />
+      </a>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden sm:flex items-center gap-6" aria-label="Main navigation">
+      <a
+        href="/case-studies"
+        class={`nav-link ${currentPath === '/case-studies' ? 'active' : ''}`}
+        aria-current={currentPath === '/case-studies' ? 'page' : undefined}
+      >Case Studies</a>
+
+      <a
+        href="/how-we-work"
+        class={`nav-link ${currentPath === '/how-we-work' ? 'active' : ''}`}
+        aria-current={currentPath === '/how-we-work' ? 'page' : undefined}
+      >How We Work</a>
+
+      <a
+        href="/advice-service"
+        class={`nav-link ${currentPath === '/advice-service' ? 'active' : ''}`}
+        aria-current={currentPath === '/advice-service' ? 'page' : undefined}
+      >Advice Service</a>
+
+      <Button variant="teal" size="sm">Talk to us</Button>
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button
+      class="mobile-toggle sm:hidden flex flex-col justify-center items-center gap-[3px] w-8 h-8 bg-transparent border-0 cursor-pointer p-1 rounded"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      aria-label="Toggle navigation menu"
+    >
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu Overlay -->
+  <nav id="mobile-menu" class="mobile-menu hidden" aria-label="Mobile navigation" aria-hidden="true">
+    <div class="mobile-content">
+      <a href="/case-studies"  class={`mobile-link ${currentPath === '/case-studies'  ? 'active' : ''}`}>Case Studies</a>
+      <a href="/how-we-work"   class={`mobile-link ${currentPath === '/how-we-work'   ? 'active' : ''}`}>How We Work</a>
+      <a href="/advice-service" class={`mobile-link ${currentPath === '/advice-service' ? 'active' : ''}`}>Advice Service</a>
+      <div class="mobile-cta">
+        <Button variant="teal" size="sm">Talk to us</Button>
       </div>
     </div>
-    
-    <nav class="flex flex-wrap items-center gap-4 sm:gap-6">
-      <a href="/case-studies" class="text-white hover:text-gray-300 text-lg transition-colors">Case Studies</a>
-      <a href="/how-we-work" class="text-white hover:text-gray-300 text-lg transition-colors">How We Work</a>
-      <a href="/advice-service" class="text-white hover:text-gray-300 text-lg transition-colors">Advice Service</a>
-      <Button variant="teal" size="sm">
-        Talk to us
-      </Button>
-    </nav>
-  </div>
+  </nav>
 </header>
+
+<!-- Global rules that must escape component scoping -->
+<style is:global>
+  body.menu-open { overflow: hidden; position: fixed; width: 100%; }
+  body.menu-open .mobile-toggle {
+    position: fixed;
+    top: 12px;
+    right: 16px;
+    z-index: 1101;
+    background: transparent;
+  }
+</style>
+
+<style>
+  .skip-link{
+    position:absolute; top:-40px; left:6px;
+    background:var(--color-accent-amethyst); color:var(--color-text-light);
+    padding:8px; border-radius:4px; z-index:1000; transition:top .3s;
+  }
+  .skip-link:focus{ top:6px; }
+
+  .nav-link{
+    color:var(--color-text-light); text-decoration:none; font-size:1.125rem; font-weight:400;
+    transition:color .2s ease; padding-block:.25rem;
+  }
+  .nav-link:hover{ color:var(--color-accent-turquoise); }
+  .nav-link.active{ color:var(--color-accent-turquoise); font-weight:600; }
+
+  .mobile-toggle{ z-index:1101; }
+  .mobile-toggle:focus{ outline:2px solid var(--color-accent-turquoise); outline-offset:2px; }
+  .mobile-toggle:hover{ background:rgba(255,255,255,.1); }
+  .hamburger-line{ width:18px; height:2px; background:var(--color-text-light); transition:transform .3s, opacity .3s; }
+  .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(1){ transform:rotate(45deg) translate(4px,4px); }
+  .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(2){ opacity:0; }
+  .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(3){ transform:rotate(-45deg) translate(4px,-4px); }
+
+  .mobile-menu{
+    position:fixed; inset:0; background:rgba(0,0,0,.95); z-index:1000;
+    display:none; opacity:0; visibility:hidden; pointer-events:none;
+    align-items:center; justify-content:center;
+    overflow-y:auto;
+    transition:opacity .3s, visibility .3s;
+  }
+  .mobile-menu:not(.hidden){
+    display:flex; opacity:1; visibility:visible; pointer-events:auto;
+  }
+
+  .mobile-content{
+    display:flex; flex-direction:column; align-items:center; text-align:center;
+    gap:1.5rem; padding:2rem; width:100%; max-width:400px;
+    min-height:100vh; box-sizing:border-box; justify-content:center;
+  }
+  @supports (height: 100dvh){
+    .mobile-content{ min-height:100dvh; }
+  }
+
+  .mobile-link{
+    color:var(--color-text-light); text-decoration:none; font-size:1.5rem; font-weight:500;
+    padding:12px 24px; min-height:44px; display:flex; align-items:center; transition:color .2s ease;
+    white-space:nowrap;
+  }
+  .mobile-link:hover{ color:#d1d5db; }
+  .mobile-link:focus{ outline:2px solid var(--color-accent-amethyst); outline-offset:2px; border-radius:2px; }
+  .mobile-link.active{ color:var(--color-accent-turquoise); }
+
+  .mobile-cta{ margin-top:1rem; }
+
+  @media (max-width:480px){
+    .mobile-content{ padding:1.5rem 1rem; }
+    .mobile-link{ font-size:1.25rem; padding:12px 20px; }
+  }
+</style>
+
+<script is:inline>
+  function initMobileMenu(){
+    const root   = document.getElementById('site-header');
+    const toggle = root?.querySelector('.mobile-toggle');
+    const menu   = root?.querySelector('#mobile-menu');
+    const links  = root?.querySelectorAll('.mobile-link') ?? [];
+    const body   = document.body;
+    if(!toggle || !menu) return;
+
+    let isOpen = false;
+
+    const closeMenu = ()=>{
+      isOpen = false;
+      toggle.setAttribute('aria-expanded','false');
+      menu.setAttribute('aria-hidden','true');
+      menu.classList.add('hidden');
+      body.classList.remove('menu-open');
+    };
+
+    const openMenu = ()=>{
+      isOpen = true;
+      toggle.setAttribute('aria-expanded','true');
+      menu.setAttribute('aria-hidden','false');
+      menu.classList.remove('hidden');
+      body.classList.add('menu-open');
+    };
+
+    toggle.addEventListener('click', ()=> (isOpen ? closeMenu() : openMenu()));
+
+    
+    Array.from(links).forEach((a) => {
+      if (a instanceof HTMLAnchorElement) a.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('keydown', (e) => { if(e.key==='Escape' && isOpen) closeMenu(); });
+    menu.addEventListener('click', (e) => { if(e.target === menu) closeMenu(); });
+    window.addEventListener('resize', () => { if(window.innerWidth >= 640 && isOpen) closeMenu(); });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMobileMenu);
+  } else {
+    initMobileMenu();
+  }
+</script>
+
+
