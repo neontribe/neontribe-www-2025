@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import HeaderHeroContainer from '../components/sections/HeaderHeroContainer.astro';
 import GetInTouch from '../components/sections/GetInTouch.astro';
 import Footer from '../components/layout/Footer.astro';
+import HowWeCanHelp from '../components/sections/HowWeCanHelp.astro';
 ---
 
 <Layout title="How we work">
@@ -12,10 +13,21 @@ import Footer from '../components/layout/Footer.astro';
     icon="how-we-work" 
   />
   <main id="content">
-    <section class="section section-light py-10 lg:py-12">
-      <div class="container">
-        <p class="text-base text-text-dark">Placeholder.</p>
-      </div>
+
+    <!-- White background section -->
+    <section class="section section-light py-16 md:py-20">
+    </section>
+    
+    <HowWeCanHelp 
+      title="Our ways of working"
+      paragraphs={[
+        "Our work follows the Design Council's \"Double Diamond\" model; discovery, definition, development and delivery. We like to start with a question from you: somewhere you think we can help.",
+        "In that context, we'd explore your recipients' journeys and pain points, focus in on a well-understood problem, explore the ways in which that problem can be solved, then ship a solution.",
+        "If you'd like to read about that in more depth; we've got a series of blog posts about a project for NCS/CAST where the question was \"How might we support young people to become thoughtful makers and critical users of this technology?\""
+      ]}
+    />
+    <!-- White background section -->
+    <section class="section section-light py-16 md:py-20">
     </section>
   </main>
   <div class="bg-bg-dark w-full">

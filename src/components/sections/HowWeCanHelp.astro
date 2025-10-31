@@ -1,29 +1,52 @@
 ---
+export interface Props {
+  title: string;
+  paragraphs: string[];
+  buttonText?: string;
+  buttonHref?: string;
+}
+
+const {
+  title,
+  paragraphs,
+  buttonText = "Sound good? Let's chat",
+  buttonHref = "/talk-to-us",
+} = Astro.props;
+
 import Button from '../ui/Button.astro';
+import howWeWorkDiagram from '../../assets/How-we-work.svg';
 ---
 
-<section class="section section-dark py-10 lg:py-12">
-  <div class="container">
-    <div class="grid md:grid-cols-2 gap-8 lg:gap-10 items-center">
-      <div>
-        <h2 class="text-4xl font-bold mb-4">
-          How we can help....
-        </h2>
-        <p class="text-gray-300 mb-3">
-          understanding the issues they working to help others...
-        </p>
-        <p class="text-gray-300 mb-3">
-          ...talk to charities, and then suggest a way
-        </p>
-        <p class="text-gray-300 mb-6">
-         ...... and we'll get straight back to you. 
-        </p>
-        <Button variant="teal">
-          Sound good? Let's chat
-        </Button>
+<section 
+  class="section section-dark"
+  style="max-width: 1512px; min-height: 578px; margin: 0 auto;"
+>
+  <div class="container-full">
+    <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center py-16 md:py-20" style="min-height: 578px;">
+      <!-- Image: first on mobile, second (right) on desktop -->
+      <div class="relative flex items-center justify-center order-1 md:order-2" style="min-height: 400px;">
+        <img 
+          src={howWeWorkDiagram.src} 
+          alt="Design process: Discover, Define, Develop, Deliver"
+          class="w-full max-w-[500px] h-auto"
+        />
       </div>
-      <div>
-        <!-- Empty space for now -->
+
+      <!-- Text: second on mobile, first (left) on desktop -->
+      <div style="width: 100%; max-width: 572px; min-height: 353px;" class="flex flex-col justify-center order-2 md:order-1">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">
+          {title}
+        </h2>
+        {paragraphs.map((paragraph) => (
+          <p class="text-base md:text-lg leading-relaxed text-white mb-4 last:mb-8">
+            {paragraph}
+          </p>
+        ))}
+        <div class="mt-2">
+          <Button href={buttonHref} variant="teal" class="w-full md:w-auto">
+            {buttonText}
+          </Button>
+        </div>
       </div>
     </div>
   </div>
