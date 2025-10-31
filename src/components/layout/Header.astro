@@ -35,7 +35,7 @@ const currentPath = Astro.url.pathname;
         aria-current={currentPath === '/advice-service' ? 'page' : undefined}
       >Advice Service</a>
 
-      <Button variant="teal" size="sm">Talk to us</Button>
+      <Button href="/talk-to-us" variant="teal" size="sm">Talk to us</Button>
     </nav>
 
     <!-- Mobile Menu Button -->
@@ -58,7 +58,7 @@ const currentPath = Astro.url.pathname;
       <a href="/how-we-work"   class={`mobile-link ${currentPath === '/how-we-work'   ? 'active' : ''}`}>How We Work</a>
       <a href="/advice-service" class={`mobile-link ${currentPath === '/advice-service' ? 'active' : ''}`}>Advice Service</a>
       <div class="mobile-cta">
-        <Button variant="teal" size="sm">Talk to us</Button>
+        <Button href="/talk-to-us" variant="teal" size="sm">Talk to us</Button>
       </div>
     </div>
   </nav>
