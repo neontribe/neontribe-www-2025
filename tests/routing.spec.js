@@ -6,19 +6,21 @@ test('core routes load successfully', async ({ page }) => {
   
 
   await page.goto('/case-studies');
-  await expect(page.getByRole('heading')).toHaveText('Case studies');
+  await expect(page.getByRole('heading', { name: 'Case studies' })).toBeVisible();
   
   
   await page.goto('/how-we-work');
-  await expect(page.getByRole('heading')).toHaveText('How we work');
+  await expect(page.getByRole('heading', { name: 'How we work' })).toBeVisible();
   
  
   await page.goto('/advice-service');
-  await expect(page.getByRole('heading')).toHaveText('Advice service');
+  await expect(page.getByRole('heading', { name: 'Advice service' })).toBeVisible();
   
+  await page.goto('/talk-to-us');
+  await expect(page.getByRole('heading', { name: 'Talk to us' })).toBeVisible();
 
   await page.goto('/case-studies/arc');
-  await expect(page.locator('h1.text-4xl')).toHaveText('Helping Alexandra Rose Charity support vulnerable families');
+  await expect(page.locator('h1.text-heading')).toHaveText('Helping Alexandra Rose Charity support vulnerable families');
 });
 
 test('navigation links work', async ({ page }) => {
@@ -26,13 +28,13 @@ test('navigation links work', async ({ page }) => {
   
   // Test header navigation
   await page.click('a[href="/case-studies"]');
-  await expect(page.getByRole('heading')).toHaveText('Case studies');
+  await expect(page.getByRole('heading', { name: 'Case studies' })).toBeVisible();
   
   await page.click('a[href="/how-we-work"]');
-  await expect(page.getByRole('heading')).toHaveText('How we work');
+  await expect(page.getByRole('heading', { name: 'How we work' })).toBeVisible();
   
   await page.click('a[href="/advice-service"]');
-  await expect(page.getByRole('heading')).toHaveText('Advice service');
+  await expect(page.getByRole('heading', { name: 'Advice service' })).toBeVisible();
 });
 
 test('case study link from listing page', async ({ page }) => {
@@ -40,6 +42,6 @@ test('case study link from listing page', async ({ page }) => {
   
 
   await page.click('a[href="/case-studies/arc"]');
-  await expect(page.locator('h1.text-4xl')).toHaveText('Helping Alexandra Rose Charity support vulnerable families');
+  await expect(page.locator('h1.text-heading')).toHaveText('Helping Alexandra Rose Charity support vulnerable families');
 });
 

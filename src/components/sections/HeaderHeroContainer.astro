@@ -12,7 +12,7 @@ const { title, subtitle, icon = 'case-studies' } = Astro.props;
 ---
 
 <!-- Container that matches Figma: 1512px width, 576px height -->
-<div class="header-hero-container w-full max-w-frame mx-auto flex flex-col overflow-hidden 2xl:w-[1512px]">
+<div class="header-hero-container bg-bg-dark w-full flex flex-col overflow-hidden">
   <Header />
   <PageHero title={title} subtitle={subtitle} icon={icon} />
 </div>
@@ -20,11 +20,10 @@ const { title, subtitle, icon = 'case-studies' } = Astro.props;
 <style>
   /* Make PageHero fill remaining space after header */
   .header-hero-container :global(.section-dark) {
-    background-color: transparent;
     flex: 1;
     display: flex;
     align-items: center;
-    padding: 8px 0px 12px 0px;
-    min-height: 0;
+    padding: 0px 0px 34px 0px;
+    min-height: auto;
   }
 </style>

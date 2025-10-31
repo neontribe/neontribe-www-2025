@@ -35,7 +35,7 @@ const currentPath = Astro.url.pathname;
         aria-current={currentPath === '/advice-service' ? 'page' : undefined}
       >Advice Service</a>
 
-      <Button variant="teal" size="sm">Talk to us</Button>
+      <Button href="/talk-to-us" variant="teal" size="sm">Talk to us</Button>
     </nav>
 
     <!-- Mobile Menu Button -->
@@ -54,11 +54,11 @@ const currentPath = Astro.url.pathname;
   <!-- Mobile Menu Overlay -->
   <nav id="mobile-menu" class="mobile-menu hidden" aria-label="Mobile navigation" aria-hidden="true">
     <div class="mobile-content">
-      <a href="/case-studies"  class={`mobile-link ${currentPath === '/case-studies'  ? 'active' : ''}`}>Case Studies</a>
-      <a href="/how-we-work"   class={`mobile-link ${currentPath === '/how-we-work'   ? 'active' : ''}`}>How We Work</a>
-      <a href="/advice-service" class={`mobile-link ${currentPath === '/advice-service' ? 'active' : ''}`}>Advice Service</a>
+      <a href="/case-studies"  class={`mobile-link ${currentPath === '/case-studies'  ? 'active' : ''}`} aria-current={currentPath === '/case-studies' ? 'page' : undefined}>Case Studies</a>
+      <a href="/how-we-work"   class={`mobile-link ${currentPath === '/how-we-work'   ? 'active' : ''}`} aria-current={currentPath === '/how-we-work' ? 'page' : undefined}>How We Work</a>
+      <a href="/advice-service" class={`mobile-link ${currentPath === '/advice-service' ? 'active' : ''}`} aria-current={currentPath === '/advice-service' ? 'page' : undefined}>Advice Service</a>
       <div class="mobile-cta">
-        <Button variant="teal" size="sm">Talk to us</Button>
+        <Button href="/talk-to-us" variant="teal" size="sm">Talk to us</Button>
       </div>
     </div>
   </nav>

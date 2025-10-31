@@ -21,8 +21,10 @@ const { title, description = "Neontribe digital agency" } = Astro.props;
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Mulish:wght@400;700&display=swap" rel="stylesheet">
   </head>
-  <body class="bg-gray-50 text-text-dark">
+  <body class="text-text-dark" style="background-color: var(--color-bg-light); min-height: 100vh; display: flex; flex-direction: column;">
     <a href="#content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded z-50">Skip to content</a>
-    <slot />
+    <div style="display: flex; flex-direction: column; flex: 1;">
+      <slot />
+    </div>
   </body>
 </html>
