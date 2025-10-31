@@ -2,11 +2,11 @@
 import Button from '../ui/Button.astro';
 import twoHalLogo from '../../assets/Two-hal-logo.svg';
 ---
-<section class="section section-dark py-16 md:py-20">
+<section class="section section-dark py-6 md:py-8">
   <div class="container">
-    <div class="grid md:grid-cols-12 md:items-center md:gap-16 lg:gap-20">
+    <div class="grid md:grid-cols-12 md:items-center md:gap-12 lg:gap-16">
       <!-- Left content -->
-      <div class="md:col-span-7 lg:col-span-8 flex flex-col gap-8 md:gap-6">
+      <div class="md:col-span-7 lg:col-span-8 flex flex-col gap-4 md:gap-3">
         <h2 class="text-5xl md:text-6xl font-bold leading-tight text-white">
           Get in touch
         </h2>
@@ -16,13 +16,13 @@ import twoHalLogo from '../../assets/Two-hal-logo.svg';
           <img 
             src={twoHalLogo.src} 
             alt="" 
-            class="w-[280px] h-auto"
+            class="w-[240px] h-auto"
           />
         </div>
         
-        <p class="text-lg md:text-base leading-relaxed text-white max-w-none md:max-w-[520px]">
-          Interested in working with us? Please feel free to get in touch by emailing hello@neontribe.co.uk or clicking the link below.
-        </p>
+        <div class="text-lg md:text-base leading-relaxed text-white max-w-none">
+          <p>Interested in working with us? Please feel free to get in touch by emailing <br/> hello@neontribe.co.uk or clicking the link below.</p>
+        </div>
         
         <div class="mt-2 w-full md:w-auto">
           <Button href="/talk-to-us" ariaLabel="Talk to us" variant="teal" size="get-in-touch" class="w-full md:w-auto">
@@ -36,7 +36,7 @@ import twoHalLogo from '../../assets/Two-hal-logo.svg';
           <img 
             src={twoHalLogo.src} 
             alt="" 
-            class="w-[180px] lg:w-[200px] h-auto"
+            class="w-[140px] lg:w-[160px] h-auto"
           />
         </div>
       </div>

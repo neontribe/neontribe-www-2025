@@ -1,0 +1,30 @@
+---
+import Header from '../layout/Header.astro';
+import PageHero from './PageHero.astro';
+
+export interface Props {
+  title: string;
+  subtitle: string;
+  icon?: 'case-studies' | 'how-we-work' | 'advice-service' | 'talk-to-us';
+}
+
+const { title, subtitle, icon = 'case-studies' } = Astro.props;
+---
+
+<!-- Container that matches Figma: 1512px width, 576px height -->
+<div class="header-hero-container w-full max-w-frame mx-auto flex flex-col overflow-hidden 2xl:w-[1512px]">
+  <Header />
+  <PageHero title={title} subtitle={subtitle} icon={icon} />
+</div>
+
+<style>
+  /* Make PageHero fill remaining space after header */
+  .header-hero-container :global(.section-dark) {
+    background-color: transparent;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 8px 0px 12px 0px;
+    min-height: 0;
+  }
+</style>
