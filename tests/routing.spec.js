@@ -16,6 +16,8 @@ test('core routes load successfully', async ({ page }) => {
   await page.goto('/advice-service');
   await expect(page.getByRole('heading')).toHaveText('Advice service');
   
+  await page.goto('/talk-to-us');
+  await expect(page.getByRole('heading', { name: 'Talk to us' })).toBeVisible();
 
   await page.goto('/case-studies/arc');
   await expect(page.locator('h1.text-4xl')).toHaveText('Helping Alexandra Rose Charity support vulnerable families');
