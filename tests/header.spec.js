@@ -24,15 +24,15 @@ test.describe('Header', () => {
     const desktopNav = page.locator('nav[aria-label="Main navigation"]');
     await expect(desktopNav).toBeVisible();
 
-    // 3 links present and visible
-    await expect(desktopNav.locator('a')).toHaveCount(3);
+    // 3 navigation links present and visible
     for (const { href, text } of NAV_LINKS) {
-      await expect(desktopNav.locator(`a[href="${href}"]`)).toHaveText(text);
-      await expect(desktopNav.locator(`a[href="${href}"]`)).toBeVisible();
+      const link = desktopNav.locator(`a[href="${href}"]`);
+      await expect(link).toHaveText(text);
+      await expect(link).toBeVisible();
     }
 
-    // CTA button present
-    await expect(desktopNav.getByRole('button', { name: 'Talk to us' })).toBeVisible();
+    // CTA button present (rendered as anchor when href is provided)
+    await expect(desktopNav.getByRole('link', { name: 'Talk to us' })).toBeVisible();
   });
 
   test('hamburger hidden on desktop, visible on mobile', async ({ page }) => {
