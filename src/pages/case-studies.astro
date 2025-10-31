@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import HeaderHeroContainer from '../components/sections/HeaderHeroContainer.astro';
+import GetInTouch from '../components/sections/GetInTouch.astro';
 import Footer from '../components/layout/Footer.astro';
 ---
 
@@ -11,14 +12,32 @@ import Footer from '../components/layout/Footer.astro';
     icon="case-studies" 
   />
   <main id="content">
-    <section class="section section-light py-16">
+    <section class="section section-light py-10 lg:py-12">
       <div class="container">
         <p class="text-base text-text-dark mb-6">Listing placeholder.</p>
         <a href="/case-studies/arc" class="text-blue-600 text-lg hover:text-blue-800 hover:underline">View Example Case Study</a>
       </div>
     </section>
   </main>
-  <Footer />
+  <div class="footer-dark-wrapper">
+    <GetInTouch />
+    <Footer />
+  </div>
 </Layout>
+
+<style>
+  .footer-dark-wrapper {
+    background-color: var(--color-bg-dark);
+    width: 100%;
+    max-width: 1512px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 1512px) {
+    .footer-dark-wrapper {
+      width: 1512px;
+    }
+  }
+</style>
 
 
