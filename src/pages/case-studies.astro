@@ -1,19 +1,28 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/layout/Header.astro';
+import HeaderHeroContainer from '../components/sections/HeaderHeroContainer.astro';
+import GetInTouch from '../components/sections/GetInTouch.astro';
 import Footer from '../components/layout/Footer.astro';
 ---
 
 <Layout title="Case studies">
-  <Header />
-  <main id="content" class="section section-light py-16">
-    <div class="container">
-      <h1 class="text-2xl font-bold text-text-dark mb-6">Case studies</h1>
-      <p class="text-base text-text-dark mb-6">Listing placeholder.</p>
-      <a href="/case-studies/arc" class="text-blue-600 text-lg hover:text-blue-800 hover:underline">View Example Case Study</a>
-    </div>
+  <HeaderHeroContainer 
+    title="Case studies" 
+    subtitle="A brief description of the case studies here and the types of organisations that we work with. Should be no more than two sentences."
+    icon="case-studies" 
+  />
+  <main id="content">
+    <section class="section section-light py-10 lg:py-12">
+      <div class="container">
+        <p class="text-base text-text-dark mb-6">Listing placeholder.</p>
+        <a href="/case-studies/arc" class="text-blue-600 text-lg hover:text-blue-800 hover:underline">View Example Case Study</a>
+      </div>
+    </section>
   </main>
-  <Footer />
+  <div class="bg-bg-dark w-full">
+    <GetInTouch />
+    <Footer />
+  </div>
 </Layout>
 
 

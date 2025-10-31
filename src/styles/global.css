@@ -31,7 +31,7 @@
    LAYOUT UTILITIES
 ========================= */
 .container {
-  @apply mx-auto px-6 lg:px-20;
+  @apply mx-auto px-6 lg:px-8;
   max-width: var(--container-max);
 }
 
@@ -70,6 +70,7 @@ html {
   font-family: var(--font-body);
   font-size: 16px;
   line-height: var(--leading-relaxed);
+  height: 100%;
 }
 
 body {
@@ -77,6 +78,12 @@ body {
   background-color: var(--color-bg-dark);
   margin: 0;
   padding: 0;
+  height: 100%;
+}
+
+/* Ensure main content grows to push footer down */
+main {
+  flex: 1;
 }
 
 hr {

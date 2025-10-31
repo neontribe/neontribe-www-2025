@@ -1,12 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/layout/Header.astro';
+import HeaderHeroContainer from '../components/sections/HeaderHeroContainer.astro';
+import GetInTouch from '../components/sections/GetInTouch.astro';
 import Footer from '../components/layout/Footer.astro';
 import HowWeCanHelp from '../components/sections/HowWeCanHelp.astro';
 ---
 
 <Layout title="How we work">
-  <Header />
+  <HeaderHeroContainer 
+    title="How we work" 
+    subtitle="You can expect us to be open, honest and expert; and based on those three principles, to become your trusted digital partner."
+    icon="how-we-work" 
+  />
   <main id="content">
     <HowWeCanHelp 
       title="Our ways of working"
@@ -17,7 +22,10 @@ import HowWeCanHelp from '../components/sections/HowWeCanHelp.astro';
       ]}
     />
   </main>
-  <Footer />
+  <div class="bg-bg-dark w-full">
+    <GetInTouch />
+    <Footer />
+  </div>
 </Layout>
 
 

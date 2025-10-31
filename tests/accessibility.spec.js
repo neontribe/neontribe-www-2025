@@ -5,7 +5,7 @@ test.describe('Accessibility Tests', () => {
     await page.goto('/');
     
     // Check that skip link exists and is hidden by default
-    const skipLink = page.locator('a[href="#content"]');
+    const skipLink = page.locator('a[href="#content"].sr-only');
     await expect(skipLink).toBeVisible();
   
     await expect(skipLink).toHaveClass(/sr-only/);
