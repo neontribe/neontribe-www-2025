@@ -13,8 +13,9 @@ test.describe('Header', () => {
   });
 
   test('renders logo', async ({ page }) => {
-    // Logo image 
-    await expect(page.locator('img[alt*="Neontribe" i]')).toBeVisible();
+    const header = page.locator('header#site-header');
+    const logo = header.locator('img[alt="Neontribe"]');
+    await expect(logo).toBeVisible();
   });
 
   test('shows desktop nav links and CTA on desktop', async ({ page }) => {
