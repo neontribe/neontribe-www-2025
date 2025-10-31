@@ -1,0 +1,74 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+// import { Image } from 'astro:assets';
+// import QuestionImage from '../assets/Question.svg';
+---
+
+<Layout title="Talk to us" description="Get in touch with Neontribe for digital expertise and advice">
+  <Header />
+  <main id="content">
+    <!-- Hero Section with Question Icon -->
+    <section class="section section-dark py-16 md:py-20">
+      <div class="container">
+        <div class="grid md:grid-cols-12 md:items-center md:gap-16 lg:gap-20">
+          <!-- Left: Question Icon (Desktop) -->
+          <!-- TODO: Add image  -->
+          <div class="hidden md:flex md:col-span-4 lg:col-span-5 justify-center md:justify-start items-center" aria-hidden="true">
+            <div class="relative w-full max-w-[280px] lg:max-w-[320px]">
+              <!-- Image placeholder   -->
+            </div>
+          </div>
+          
+          <!-- Center/Right: Content -->
+          <div class="md:col-span-8 lg:col-span-7 flex flex-col gap-6 md:gap-8">
+            <!-- Mobile: Question Icon -->
+            <!-- TODO: Add image  -->
+            <div class="md:hidden flex justify-center py-4" aria-hidden="true">
+              <div class="relative w-full max-w-[280px]">
+                <!-- Image placeholder  -->
+              </div>
+            </div>
+            
+            <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-white text-center md:text-left">
+              Talk to us
+            </h1>
+            
+            <p class="text-lg md:text-xl leading-relaxed text-white text-center md:text-left max-w-none md:max-w-[600px]">
+              We're always happy to lend charities our minds for an hour or so. If there's something you think a bit of digital expertise could help, just <a href="mailto:hello@neontribe.co.uk" class="text-underline underline underline-offset-3 hover:text-turquoise transition-colors">drop us a line</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- White background section -->
+    <section class="section section-light py-16 md:py-20">
+      <div class="container">
+        <!-- Empty section -->
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .text-underline {
+    color: var(--color-text-light);
+  }
+  
+  .hover\:text-turquoise:hover {
+    color: var(--color-accent-turquoise);
+  }
+  
+  .text-turquoise {
+    color: var(--color-accent-turquoise);
+  }
+  
+  .focus\:outline-amethyst:focus {
+    outline-color: var(--color-accent-amethyst);
+  }
+  
+</style>
+
