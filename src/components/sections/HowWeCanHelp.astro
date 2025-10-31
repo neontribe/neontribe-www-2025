@@ -23,8 +23,8 @@ import howWeWorkDiagram from '../../assets/How-we-work.svg';
 >
   <div class="container-full">
     <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center py-16 md:py-20" style="min-height: 578px;">
-      <!-- Right: image (first on mobile) -->
-      <div class="relative flex items-center justify-center order-1 md:order-0" style="min-height: 400px;">
+      <!-- Image: first on mobile, second (right) on desktop -->
+      <div class="relative flex items-center justify-center order-1 md:order-2" style="min-height: 400px;">
         <img 
           src={howWeWorkDiagram.src} 
           alt="Design process: Discover, Define, Develop, Deliver"
@@ -32,8 +32,8 @@ import howWeWorkDiagram from '../../assets/How-we-work.svg';
         />
       </div>
 
-      <!-- Left: Text and Button Container (second on mobile) -->
-      <div style="width: 100%; max-width: 572px; min-height: 353px;" class="flex flex-col justify-center order-2 md:order-0">
+      <!-- Text: second on mobile, first (left) on desktop -->
+      <div style="width: 100%; max-width: 572px; min-height: 353px;" class="flex flex-col justify-center order-2 md:order-1">
         <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">
           {title}
         </h2>
