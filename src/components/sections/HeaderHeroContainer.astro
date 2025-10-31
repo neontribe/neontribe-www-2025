@@ -11,38 +11,37 @@ export interface Props {
 const { title, subtitle, icon = 'case-studies' } = Astro.props;
 ---
 
-<!-- Container that matches Figma specifications: 1512px width, 576px height, #090909 background -->
-<div class="header-hero-container" style="width: 1512px; height: 576px; background-color: #090909; margin: 0 auto; position: relative;">
+<!-- Container that matches Figma: 1512px width, 576px height -->
+<div class="header-hero-container">
   <Header />
   <PageHero title={title} subtitle={subtitle} icon={icon} />
 </div>
 
 <style>
   .header-hero-container {
-    max-width: 100%;
     width: 100%;
+    max-width: 1512px;
+    min-height: auto;
+    background-color: #090909;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
   }
-  
+
   @media (min-width: 1512px) {
     .header-hero-container {
       width: 1512px;
     }
   }
-  
-  /* Ensure the PageHero fits within the container height */
-  .header-hero-container .section-dark {
+
+  /* Make PageHero fill remaining space after header */
+  .header-hero-container :global(.section-dark) {
     background-color: transparent;
-  }
-  
-  /* Remove all padding from PageHero to eliminate gap */
-  .header-hero-container .section-dark:last-child {
-    padding: 0;
-    min-height: calc(576px - 4rem); /* Subtract header height */
-  }
-  
-  /* Add padding to the inner container instead */
-  .header-hero-container .section-dark:last-child .container {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 8px 0px 12px 0px;
+    min-height: 0;
   }
 </style>
