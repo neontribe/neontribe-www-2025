@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import HeaderHeroContainer from '../components/sections/HeaderHeroContainer.astro';
 import GetInTouch from '../components/sections/GetInTouch.astro';
 import Footer from '../components/layout/Footer.astro';
+import CaseStudyContent from '../components/cards/CaseStudyContent.astro';
+import cardImage from '../assets/CardImage.svg';
 ---
 
 <Layout title="Case studies">
@@ -14,8 +16,23 @@ import Footer from '../components/layout/Footer.astro';
   <main id="content">
     <section class="section section-light py-10 lg:py-12">
       <div class="container">
-        <p class="text-base text-text-dark mb-6">Listing placeholder.</p>
-        <a href="/case-studies/arc" class="text-blue-600 text-lg hover:text-blue-800 hover:underline">View Example Case Study</a>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <CaseStudyContent
+            title="Digital parenting advice"
+            summary="A brief description of the project problem and the process we took to solve it."
+            imageSrc={cardImage}
+            altText="Digital parenting advice case study"
+            linkHref="/case-studies/arc"
+          />
+          
+          <CaseStudyContent
+            title="Helping Alexandra Rose Charity support vulnerable families"
+            summary="How Neontribe helped the Alexandra Rose Charity digitise Rose Vouchers to reach more families, reduce admin, and improve data insight."
+            imageSrc={cardImage}
+            altText="ARC case study"
+            linkHref="/case-studies/arc"
+          />
+        </div>
       </div>
     </section>
   </main>
