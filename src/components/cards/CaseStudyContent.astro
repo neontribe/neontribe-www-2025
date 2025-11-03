@@ -4,6 +4,7 @@ export interface Props {
   summary?: string;
   imageSrc?: string | { src: string } | any;
   altText?: string;
+  linkHref?: string;
   linkText?: string;
   class?: string;
 }
@@ -13,6 +14,7 @@ const {
   summary,
   imageSrc,
   altText = '',
+  linkHref = '#',
   linkText = 'read full case study',
   class: className = '',
 } = Astro.props;
@@ -35,7 +37,11 @@ const {
     </div>
   )}
 
-  <span class="case-study-content__link">{linkText} →</span>
+  {linkHref && linkText && (
+    <a href={linkHref} class="case-study-content__link" aria-label={`${linkText} - ${title}`}>
+      {linkText} →
+    </a>
+  )}
 </div>
 
 <style>
@@ -48,7 +54,8 @@ const {
   .case-study-content__body {
     display: flex;
     flex-direction: column;
-    gap: var(--space-4); 
+    gap: var(--space-4);
+    height: 180px; 
   }
 
   .case-study-content__title {
@@ -57,7 +64,6 @@ const {
     line-height: var(--leading-tight);
     font-weight: var(--font-bold);
     color: var(--color-text-darker);
-    margin: 0;
   }
 
   .case-study-content__summary {
@@ -66,7 +72,6 @@ const {
     font-weight: var(--font-regular);
     line-height: var(--leading-relaxed);
     color: var(--color-text-dark);
-    margin: 0;
   }
 
   .case-study-content__image-wrapper {
@@ -74,7 +79,6 @@ const {
     width: 100%;
     aspect-ratio: 4 / 3;
     overflow: hidden;
-    margin-top: var(--space-4);
     margin-bottom: var(--space-4);
   }
 
@@ -87,20 +91,37 @@ const {
 
   .case-study-content__link {
     margin-top: auto;
+    display: inline-block;
     color: var(--color-accent-amethyst);
     font-family: var(--font-heading);
     font-size: var(--text-lg);
     font-weight: var(--font-bold);
     text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .case-study-content__link:hover {
+    opacity: 0.8;
+  }
+
+  .case-study-content__link:focus-visible {
+    outline: 2px solid var(--color-accent-amethyst);
+    outline-offset: 2px;
+    border-radius: 2px;
   }
 
   @media (max-width: 768px) {
+    .case-study-content__body {
+      height: auto; 
+    }
+
     .case-study-content__title {
       font-size: var(--text-xl);
     }
 
     .case-study-content__summary {
       font-size: var(--text-sm);
+      margin-bottom: var(--space-2);
     }
   }
 </style>
