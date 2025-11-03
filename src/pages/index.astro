@@ -7,7 +7,6 @@ import LatestWork from '../components/sections/LatestWork.astro';
 import HowWeCanHelp from '../components/sections/HowWeCanHelp.astro';
 import Testimonials from '../components/sections/Testimonials.astro';
 import GetInTouch from '../components/sections/GetInTouch.astro';
-import Button from '../components/ui/Button.astro';
 ---
 
 <Layout title="Neontribe" description="Digital services committed to tech for good">
@@ -15,7 +14,14 @@ import Button from '../components/ui/Button.astro';
   <main id="content">
     <Hero />
     <LatestWork />
-    <HowWeCanHelp />
+    <HowWeCanHelp 
+      title="How we can help"
+      paragraphs={[
+        "We're happiest starting with people; understanding the issues they face in their daily lives and in working to help others.",
+        "And we're always happy to talk to charities, and then suggest a way forward.",
+        "So drop us a line to have that first conversation, and we'll get straight back to you. No charge."
+      ]}
+    />
     <Testimonials />
     <GetInTouch />
   </main>
