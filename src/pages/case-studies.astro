@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import HeaderHeroContainer from '../components/sections/HeaderHeroContainer.astro';
 import GetInTouch from '../components/sections/GetInTouch.astro';
 import Footer from '../components/layout/Footer.astro';
-import CaseStudyContent from '../components/cards/CaseStudyContent.astro';
+import CaseStudyCard from '../components/cards/CaseStudyCard.astro';
 import cardImage from '../assets/CardImage.svg';
 ---
 
@@ -16,8 +16,9 @@ import cardImage from '../assets/CardImage.svg';
   <main id="content">
     <section class="section section-light py-10 lg:py-12">
       <div class="container">
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <CaseStudyContent
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+          <CaseStudyCard
+            category="Parenting smart"
             title="Digital parenting advice"
             summary="A brief description of the project problem and the process we took to solve it."
             imageSrc={cardImage}
@@ -25,7 +26,8 @@ import cardImage from '../assets/CardImage.svg';
             linkHref="/case-studies/arc"
           />
           
-          <CaseStudyContent
+          <CaseStudyCard
+            category="Digital services"
             title="Helping Alexandra Rose Charity support vulnerable families"
             summary="How Neontribe helped the Alexandra Rose Charity digitise Rose Vouchers to reach more families, reduce admin, and improve data insight."
             imageSrc={cardImage}
