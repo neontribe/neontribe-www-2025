@@ -1,0 +1,115 @@
+---
+import { Image } from 'astro:assets';
+import Button from '../ui/Button.astro';
+
+export interface Props {
+  title: string;
+  summary?: string;
+  imageSrc: any;
+  altText: string;
+  linkHref: string;
+  linkText?: string;
+  class?: string;
+}
+
+const {
+  title,
+  summary,
+  imageSrc,
+  altText,
+  linkHref,
+  linkText = "read full case study",
+  class: className = "",
+} = Astro.props;
+---
+
+<div class={`case-study-content ${className}`}>
+  <div class="case-study-content__body">
+    <h3 class="case-study-content__title">{title}</h3>
+    
+    {summary && (
+      <p class="case-study-content__summary">{summary}</p>
+    )}
+  </div>
+  
+  {imageSrc && (
+    <div class="case-study-content__image-wrapper">
+      <Image
+        src={imageSrc}
+        alt={altText}
+        width={800}
+        height={400}
+        class="case-study-content__image"
+      />
+    </div>
+  )}
+  
+  <Button
+    href={linkHref}
+    variant="link"
+    ariaLabel={`${linkText}: ${title}`}
+    class="case-study-content__link"
+  >
+    {linkText}
+  </Button>
+</div>
+
+<style>
+  .case-study-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .case-study-content__image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    margin: var(--space-4) 0;
+  }
+
+  .case-study-content__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .case-study-content__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    margin-bottom: var(--space-4);
+  }
+
+  .case-study-content__title {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    color: var(--color-text-darker);
+    line-height: var(--leading-tight);
+    margin: 0;
+  }
+
+  .case-study-content__summary {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    color: var(--color-text-dark);
+    line-height: var(--leading-relaxed);
+    margin: 0;
+  }
+
+  .case-study-content__link {
+    margin-top: var(--space-4);
+  }
+
+  @media (max-width: 768px) {
+    .case-study-content__title {
+      font-size: var(--text-lg);
+    }
+    
+    .case-study-content__summary {
+      font-size: var(--text-sm);
+    }
+  }
+</style>
+
