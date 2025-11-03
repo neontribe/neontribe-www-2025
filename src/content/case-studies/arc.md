@@ -1,6 +1,7 @@
 ---
 title: "Helping Alexandra Rose Charity support vulnerable families"
 description: "How Neontribe helped the Alexandra Rose Charity digitise Rose Vouchers to reach more families, reduce admin, and improve data insight."
+category: "Digital services"
 ---
 
 Alexandra Rose Charity (ARC) is on a mission to address health inequalities and food poverty in the UK. It tackles food inequality directly by giving families access to fresh fruit and vegetables at their local market or greengrocer through the **Rose Vouchers for Fruit & Veg Project**.

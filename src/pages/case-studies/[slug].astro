@@ -5,6 +5,7 @@ import Header from '../../components/layout/Header.astro';
 import Footer from '../../components/layout/Footer.astro';
 import { Image } from 'astro:assets';
 import arcOptimised from '../../assets/arc-optimised.jpg';
+import Tag from '../../components/ui/Tag.astro';
 
 export async function getStaticPaths() {
   const caseStudies = await getCollection('case-studies');
@@ -24,6 +25,11 @@ const { Content } = await render(entry);
     <div class="container">
     <article class="max-w-4xl mx-auto">
       <header class="mb-8">
+        {entry.data.category && (
+          <div class="mb-4">
+            <Tag label={entry.data.category} />
+          </div>
+        )}
         <h1 class="text-heading font-heading text-text-darker mb-6">{entry.data.title}</h1>
         <p class="text-xl font-body text-text-dark leading-relaxed mb-6">{entry.data.description}</p>
         
