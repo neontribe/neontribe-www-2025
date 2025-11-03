@@ -1,0 +1,74 @@
+---
+import Tag from '../ui/Tag.astro';
+import CaseStudyContent from './CaseStudyContent.astro';
+
+export interface Props {
+  category?: string;
+  title: string;
+  summary?: string;
+  imageSrc?: string | { src: string } | any;
+  altText?: string;
+  linkHref: string;
+  linkText?: string;
+  class?: string;
+}
+
+const {
+  category, title, summary, imageSrc, altText = '',
+  linkHref, linkText, class: className = ''
+} = Astro.props;
+---
+
+<a href={linkHref} class={`case-study-card ${className}`} aria-label={`View case study: ${title}`}>
+  {category && (
+    <div class="case-study-card__tag">
+      <Tag label={category} />
+    </div>
+  )}
+
+  <CaseStudyContent
+    title={title}
+    summary={summary}
+    imageSrc={imageSrc}
+    altText={altText}
+    linkText={linkText}
+  />
+</a>
+
+<style>
+  .case-study-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: #fff;
+    border: 1px solid var(--color-neutral-light-grey);
+    padding: var(--card-padding-top) var(--card-padding-sides) var(--card-padding-bottom);
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
+    transition: box-shadow .2s ease, transform .05s ease;
+  }
+
+  .case-study-card:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, .1), 0 2px 4px -1px rgba(0, 0, 0, .06);
+  }
+
+  .case-study-card:focus-visible {
+    outline: 2px solid var(--color-accent-amethyst);
+    outline-offset: 2px;
+  }
+
+  .case-study-card:active {
+    transform: translateY(1px);
+  }
+
+  /* Position tag inside card at top-left */
+  .case-study-card__tag {
+    position: absolute;
+    left: 0; 
+    top: 0; 
+    z-index: 1;
+  }
+</style>
+
