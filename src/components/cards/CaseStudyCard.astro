@@ -19,9 +19,9 @@ const {
 } = Astro.props;
 ---
 
-<div class={`case-study-card ${className}`}>
+<div class={`relative flex flex-col h-full bg-white text-inherit ${className}`} style="padding: var(--card-padding-top) var(--card-padding-sides) var(--card-padding-bottom);">
   {category && (
-    <div class="case-study-card__tag">
+    <div class="absolute left-0 top-0 z-10">
       <Tag label={category} />
     </div>
   )}
@@ -35,24 +35,4 @@ const {
     linkText={linkText}
   />
 </div>
-
-<style>
-  .case-study-card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    background: #fff;
-    padding: var(--card-padding-top) var(--card-padding-sides) var(--card-padding-bottom);
-    color: inherit;
-  }
-
-  /* Position tag inside card at top-left */
-  .case-study-card__tag {
-    position: absolute;
-    left: 0; 
-    top: 0; 
-    z-index: 1;
-  }
-</style>
 
