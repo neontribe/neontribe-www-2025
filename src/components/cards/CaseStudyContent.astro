@@ -1,0 +1,82 @@
+---
+export interface Props {
+  title: string;
+  summary?: string;
+  imageSrc?: string | { src: string } | any;
+  altText?: string;
+  linkHref?: string;
+  linkText?: string;
+  class?: string;
+}
+
+const {
+  title,
+  summary,
+  imageSrc,
+  altText = '',
+  linkHref = '#',
+  linkText = 'read full case study',
+  class: className = '',
+} = Astro.props;
+---
+
+<div class={`flex flex-col h-full ${className}`}>
+  <div class="flex flex-col gap-4 h-auto md:h-[180px]">
+    <h3 class="case-study-content__title -mt-2">{title}</h3>
+    {summary && <p class="case-study-content__summary">{summary}</p>}
+  </div>
+
+  {imageSrc && (
+    <div class="relative w-full aspect-[4/3] overflow-hidden mb-4">
+      <img 
+        src={typeof imageSrc === 'string' ? imageSrc : imageSrc.src} 
+        alt={altText} 
+        loading="lazy" 
+        class="w-full h-full object-cover block" 
+      />
+    </div>
+  )}
+
+  {linkHref && linkText && (
+    <a href={linkHref} class="mt-auto inline-block no-underline transition-opacity duration-200 hover:opacity-80 focus-visible:outline-2 focus-visible:outline-[var(--color-accent-amethyst)] focus-visible:outline-offset-2 focus-visible:rounded-sm case-study-content__link" aria-label={`${linkText} - ${title}`}>
+      {linkText} →
+    </a>
+  )}
+</div>
+
+<style>
+  .case-study-content__title {
+    font-family: var(--font-heading);
+    font-size: var(--text-lg); /* 20px - Mulish bold */
+    line-height: var(--leading-tight);
+    font-weight: var(--font-bold);
+    color: var(--color-text-darker);
+  }
+
+  .case-study-content__summary {
+    font-family: var(--font-body);
+    font-size: var(--text-base); /* 18px - Mulish regular */
+    font-weight: var(--font-regular);
+    line-height: var(--leading-relaxed);
+    color: var(--color-text-dark);
+  }
+
+  .case-study-content__link {
+    color: var(--color-accent-amethyst);
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    font-weight: var(--font-bold);
+  }
+
+  @media (max-width: 768px) {
+    .case-study-content__title {
+      font-size: var(--text-xl);
+    }
+
+    .case-study-content__summary {
+      font-size: var(--text-sm);
+      margin-bottom: var(--space-2);
+    }
+  }
+</style>
+

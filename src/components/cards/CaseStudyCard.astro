@@ -1,0 +1,38 @@
+---
+import Tag from '../ui/Tag.astro';
+import CaseStudyContent from './CaseStudyContent.astro';
+
+export interface Props {
+  category?: string;
+  title: string;
+  summary?: string;
+  imageSrc?: string | { src: string } | any;
+  altText?: string;
+  linkHref: string;
+  linkText?: string;
+  class?: string;
+}
+
+const {
+  category, title, summary, imageSrc, altText = '',
+  linkHref, linkText, class: className = ''
+} = Astro.props;
+---
+
+<div class={`relative flex flex-col h-full bg-white text-inherit ${className}`} style="padding: var(--card-padding-top) var(--card-padding-sides) var(--card-padding-bottom);">
+  {category && (
+    <div class="absolute left-0 top-0 z-10">
+      <Tag label={category} />
+    </div>
+  )}
+
+  <CaseStudyContent
+    title={title}
+    summary={summary}
+    imageSrc={imageSrc}
+    altText={altText}
+    linkHref={linkHref}
+    linkText={linkText}
+  />
+</div>
+
