@@ -21,29 +21,74 @@ interface Props {
 }
 
 const { entry } = Astro.props;
+const slug = Astro.params.slug;
 
 const { Content } = await entry.render();
-const { title, description, customer } = entry.data;
+const {
+  title,
+  description,
+  customer,
+  categories = [],
+  statistic,
+  heroImage,
+  heroImageAlt,
+  tags = [],
+} = entry.data;
 ---
 
 <Layout title={title} description={description}>
   <Header />
   <main id="content" class="section section-light py-16">
     <div class="container">
-      <article class="max-w-4xl mx-auto">
-        <header class="mb-8">
-          <h1 class="text-heading font-heading text-text-darker mb-6">{title}</h1>
-          <p class="text-xl font-body text-text-dark leading-relaxed mb-6">{description}</p>
+      <article class="max-w-6xl mx-auto">
+        <header class="mb-12">
+          <!-- Top section: Title/Customer/Categories on left, Image on right -->
+          <div class="grid md:grid-cols-2 gap-8 items-start mb-8">
+            <!-- Left: Title, Customer, Categories -->
+            <div>
+              <h1 class="text-4xl md:text-5xl font-bold font-heading text-text-darker mb-4 leading-tight">{title}</h1>
+              
+              {customer && (
+                <p class="text-lg font-semibold text-text-darker mb-2">{customer}</p>
+              )}
+              
+              {categories.length > 0 && (
+                <p class="text-base text-text-dark">
+                  {categories.join(', ')}
+                </p>
+              )}
+            </div>
+            
+            <!-- Right: Image aligned to top -->
+            {heroImage && (
+              <div class="flex justify-center md:justify-end items-start">
+                <img 
+                  src={heroImage.src} 
+                  alt={heroImageAlt || title}
+                  width={heroImage.width || 300}
+                  height={heroImage.height || 600}
+                  class="max-w-full h-auto"
+                  loading="lazy"
+                />
+              </div>
+            )}
+          </div>
           
-          {customer && (
-            <p class="text-lg font-semibold text-text-darker mb-2">Client: {customer}</p>
-          )}
+          <!-- Description below -->
+          <div class="mb-6">
+            <p class="text-xl font-body text-text-dark leading-relaxed mb-4">{description}</p>
+            {statistic && (
+              <span class="inline-flex items-center px-3 py-1 rounded-md bg-bg-dark text-text-light text-sm">
+                {statistic}
+              </span>
+            )}
+          </div>
         </header>
 
-        <!-- Render the markdown/MDX body content using Astro's Content component -->
-        <article class="prose prose-lg max-w-none">
+      
+        <div class="markdown-content">
           <Content />
-        </article>
+        </div>
       </article>
     </div>
   </main>
