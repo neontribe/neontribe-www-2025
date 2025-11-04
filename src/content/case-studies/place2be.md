@@ -1,7 +1,16 @@
 ---
 title: 'Evidence-based development of Parenting Smart, a repository for digital parenting advice'
-description: 'Research, prototype, and build an online service that supports parents nationwide by expanding the reach of Place2Be knowledge and expertise.'
+description: "Research, prototype, and build an online service that supports parents nationwide by expanding the reach of Place2Be's knowledge and expertise."
 customer: 'Place2Be'
+categories:
+  - Discovery
+  - Alpha
+  - Beta
+  - Live
+statistic: 'A Net Promoter score of 41% - Great'
+heroImage: ./images/parenting-smart-phone.png
+heroImageAlt: 'Parenting Smart on a smartphone'
+
 ---
 
 ## Introduction
