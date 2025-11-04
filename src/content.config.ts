@@ -1,13 +1,14 @@
 import { defineCollection, z } from 'astro:content';
-import { glob } from 'astro/loaders';
 
-const caseStudies = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/case-studies' }),
+export const caseStudiesCollection = defineCollection({
+  type: 'content',
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    category: z.string().optional(),
+    customer: z.string().optional(),
   }),
 });
 
-export const collections = { 'case-studies': caseStudies };
+export const collections = {
+  'case-studies': caseStudiesCollection,
+};
