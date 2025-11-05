@@ -8,10 +8,10 @@ import { getCollection } from 'astro:content';
 import cardImage from '../assets/CardImage.svg';
 
 const caseStudies = await getCollection('case-studies');
-// Create array with 8 items: 6 real case studies + 2 placeholder cards
+// Create array with case studies + 2 placeholder cards
 const allCards = [...caseStudies];
 // Add 2 placeholder entries
-while (allCards.length < 8) {
+while (allCards.length < caseStudies.length + 2) {
   allCards.push(null);
 }
 ---
