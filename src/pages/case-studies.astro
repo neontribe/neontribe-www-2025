@@ -4,7 +4,16 @@ import HeaderHeroContainer from '../components/sections/HeaderHeroContainer.astr
 import GetInTouch from '../components/sections/GetInTouch.astro';
 import Footer from '../components/layout/Footer.astro';
 import CaseStudyCard from '../components/cards/CaseStudyCard.astro';
+import { getCollection } from 'astro:content';
 import cardImage from '../assets/CardImage.svg';
+
+const caseStudies = await getCollection('case-studies');
+// Create array with case studies + 2 placeholder cards
+const allCards = [...caseStudies];
+// Add 2 placeholder entries
+while (allCards.length < caseStudies.length + 2) {
+  allCards.push(null);
+}
 ---
 
 <Layout title="Case studies">
@@ -17,86 +26,34 @@ import cardImage from '../assets/CardImage.svg';
     <section class="section section-light py-10 lg:py-12">
       <div class="container">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
-          <CaseStudyCard
-            category="Parenting smart"
-            title="Digital parenting advice"
-            summary="Evidence-based development of Parenting Smart, a repository for digital parenting advice."
-            imageSrc={cardImage}
-            altText="Digital parenting advice case study"
-            linkHref="/case-studies/place2be"
-          />
-          
-          <CaseStudyCard
-            category="Digital services"
-            title="Helping Alexandra Rose Charity support vulnerable families"
-            summary="How Neontribe helped the Alexandra Rose Charity digitise Rose Vouchers to reach more families, reduce admin, and improve data insight."
-            imageSrc={cardImage}
-            altText="ARC case study"
-            linkHref="/case-studies/arc"
-          />
-
-          <CaseStudyCard
-            category="Parenting smart"
-            title="Digital parenting advice"
-            summary="A brief description of the project problem and the process we took to solve it."
-            imageSrc={cardImage}
-            altText="Digital parenting advice case study"
-            linkHref="/case-studies/arc"
-          />
-          
-          <CaseStudyCard
-            category="Digital services"
-            title="Helping Alexandra Rose Charity support vulnerable families"
-            summary="How Neontribe helped the Alexandra Rose Charity digitise Rose Vouchers to reach more families, reduce admin, and improve data insight."
-            imageSrc={cardImage}
-            altText="ARC case study"
-            linkHref="/case-studies/arc"
-          />
-
-          <CaseStudyCard
-            category="Parenting smart"
-            title="Digital parenting advice"
-            summary="A brief description of the project problem and the process we took to solve it."
-            imageSrc={cardImage}
-            altText="Digital parenting advice case study"
-            linkHref="/case-studies/arc"
-          />
-          
-          <CaseStudyCard
-            category="Digital services"
-            title="Helping Alexandra Rose Charity support vulnerable families"
-            summary="How Neontribe helped the Alexandra Rose Charity digitise Rose Vouchers to reach more families, reduce admin, and improve data insight."
-            imageSrc={cardImage}
-            altText="ARC case study"
-            linkHref="/case-studies/arc"
-          />
-
-          <CaseStudyCard
-            category="Parenting smart"
-            title="Digital parenting advice"
-            summary="A brief description of the project problem and the process we took to solve it."
-            imageSrc={cardImage}
-            altText="Digital parenting advice case study"
-            linkHref="/case-studies/arc"
-          />
-          
-          <CaseStudyCard
-            category="Digital services"
-            title="Helping Alexandra Rose Charity support vulnerable families"
-            summary="How Neontribe helped the Alexandra Rose Charity digitise Rose Vouchers to reach more families, reduce admin, and improve data insight."
-            imageSrc={cardImage}
-            altText="ARC case study"
-            linkHref="/case-studies/arc"
-          />
-
-          <CaseStudyCard
-            category="Parenting smart"
-            title="Digital parenting advice"
-            summary="A brief description of the project problem and the process we took to solve it."
-            imageSrc={cardImage}
-            altText="Digital parenting advice case study"
-            linkHref="/case-studies/arc"
-          />
+          {allCards.map((entry, index) => {
+            if (entry) {
+              const slug = entry.id.replace(/\.md$/, '');
+              const firstCategory = entry.data.categories?.[0] || '';
+              return (
+                <CaseStudyCard
+                  category={firstCategory}
+                  title={entry.data.title}
+                  summary={entry.data.description}
+                  imageSrc={cardImage}
+                  altText={entry.data.title}
+                  linkHref={`/case-studies/${slug}`}
+                />
+              );
+            } else {
+              // Placeholder card
+              return (
+                <CaseStudyCard
+                  category="Category"
+                  title="Case Study Title"
+                  summary="A brief description of the project problem and the process we took to solve it."
+                  imageSrc={cardImage}
+                  altText="Case study placeholder"
+                  linkHref="/case-studies/arc"
+                />
+              );
+            }
+          })}
         </div>
       </div>
     </section>
