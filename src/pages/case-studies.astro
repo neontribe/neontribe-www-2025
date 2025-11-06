@@ -29,10 +29,10 @@ while (allCards.length < caseStudies.length + 2) {
           {allCards.map((entry, index) => {
             if (entry) {
               const slug = entry.id.replace(/\.md$/, '');
-              const firstCategory = entry.data.categories?.[0] || '';
+              const customer = entry.data.customer || '';
               return (
                 <CaseStudyCard
-                  category={firstCategory}
+                  customer={customer}
                   title={entry.data.title}
                   summary={entry.data.description}
                   imageSrc={cardImage}
@@ -44,7 +44,7 @@ while (allCards.length < caseStudies.length + 2) {
               // Placeholder card
               return (
                 <CaseStudyCard
-                  category="Category"
+                  customer="Client Name"
                   title="Case Study Title"
                   summary="A brief description of the project problem and the process we took to solve it."
                   imageSrc={cardImage}
