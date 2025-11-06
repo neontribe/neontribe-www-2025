@@ -8,10 +8,58 @@ import { getCollection } from 'astro:content';
 import cardImage from '../assets/CardImage.svg';
 
 const caseStudies = await getCollection('case-studies');
-// Create array with case studies + 2 placeholder cards
-const allCards = [...caseStudies];
-// Add 2 placeholder entries
-while (allCards.length < caseStudies.length + 2) {
+
+// Returns a Date object or null if invalid
+function parseUKDate(dateString: string | undefined): Date | null {
+  if (!dateString) return null;
+  
+  const parts = dateString.split('/');
+  if (parts.length !== 3) return null;
+  
+  const day = parseInt(parts[0], 10);
+  const monthRaw = parseInt(parts[1], 10);
+  const year = parseInt(parts[2], 10);
+  
+  // Validate all parts are numbers
+  if (isNaN(day) || isNaN(monthRaw) || isNaN(year)) return null;
+  
+  // Validate month is between 1 and 12
+  if (monthRaw < 1 || monthRaw > 12) return null;
+  
+  const month = monthRaw - 1; // Month is 0-indexed in Date
+  const date = new Date(year, month, day);
+  
+  // Validate the date was created correctly 
+  if (date.getDate() !== day || date.getMonth() !== month || date.getFullYear() !== year) {
+    return null;
+  }
+  
+  return date;
+}
+
+// Sort case studies by date descending (newest first)
+const sortedCaseStudies = [...caseStudies].sort((a, b) => {
+  const dateA = parseUKDate(a.data.date);
+  const dateB = parseUKDate(b.data.date);
+  
+  // If both have valid dates, compare them
+  if (dateA && dateB) {
+    return dateB.getTime() - dateA.getTime(); 
+  }
+  
+  // If only A has a date, it comes first
+  if (dateA && !dateB) return -1;
+  
+  // If only B has a date, it comes first
+  if (!dateA && dateB) return 1;
+  
+  // If neither has a date, maintain original order
+  return 0;
+});
+
+// Array with case studies + 2 placeholder cards
+const allCards = [...sortedCaseStudies];
+while (allCards.length < sortedCaseStudies.length + 2) {
   allCards.push(null);
 }
 ---
