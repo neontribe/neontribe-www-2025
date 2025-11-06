@@ -5,7 +5,6 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/layout/Header.astro';
 import Footer from '../../components/layout/Footer.astro';
 import GetInTouch from '../../components/sections/GetInTouch.astro';
-import Tag from '../../components/ui/Tag.astro';
 import smallLensIcon from '../../content/case-studies/images/Small-lens.svg';
 
 export async function getStaticPaths() {
@@ -58,9 +57,9 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
               </h1>
               
               {displayCustomer && (
-                <div class="mb-4 md:mb-6">
-                  <Tag label={displayCustomer} />
-                </div>
+                <p class="mb-4 md:mb-6" style="font-family: 'Keep Calm', sans-serif; font-weight: 400; font-size: 22px; color: #87FAE7;">
+                  {displayCustomer}
+                </p>
               )}
               
               {categories.length > 0 && (
