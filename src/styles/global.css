@@ -50,7 +50,12 @@
 }
 
 .section-light {
-  background-color: var(--color-bg-light);
+  background-color: #ffffff;
+  color: var(--color-text-dark);
+}
+
+.section-intro {
+  background-color: #f2f2f2;
   color: var(--color-text-dark);
 }
 
@@ -170,6 +175,104 @@ header.section-dark + section.section-dark {
   font-style: italic;
   font-family: var(--font-body);
   font-size: var(--text-base);
+}
+
+/* Case Study Detail Page Specific Styles */
+.case-study-content {
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-16);
+}
+
+/* Result Section with Sidebar Layout */
+.case-study-content .result-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  margin: var(--space-8) 0;
+}
+
+@media (min-width: 768px) {
+  .case-study-content .result-section {
+    grid-template-columns: 2fr 1fr;
+    gap: var(--space-8);
+    margin: var(--space-10) 0;
+  }
+}
+
+.case-study-content .result-section__main {
+  display: flex;
+  flex-direction: column;
+}
+
+.case-study-content .result-section__sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+/* Quote blocks in Result section - Purple background */
+.case-study-content .result-section blockquote,
+.case-study-content blockquote.quote-block {
+  background-color: var(--color-accent-amethyst);
+  color: var(--color-text-light);
+  border-left: none;
+  padding: var(--space-8);
+  margin: 0;
+  border-radius: 0.5rem;
+  font-style: normal;
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+}
+
+.case-study-content .result-section blockquote p,
+.case-study-content blockquote.quote-block p {
+  margin-bottom: var(--space-4);
+  color: var(--color-text-light);
+}
+
+.case-study-content .result-section blockquote p:first-child {
+  margin-top: 0;
+}
+
+.case-study-content .result-section blockquote p:nth-last-child(2) {
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-2);
+  font-weight: var(--font-bold);
+  font-size: var(--text-base);
+}
+
+.case-study-content .result-section blockquote p:last-child {
+  margin-bottom: 0;
+  font-size: var(--text-sm);
+  opacity: 0.9;
+}
+
+.case-study-content .result-section blockquote strong,
+.case-study-content blockquote.quote-block strong {
+  color: var(--color-text-light);
+  font-weight: var(--font-bold);
+}
+
+/* Statistics block - Dark background */
+.case-study-content .statistics-block {
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-light);
+  padding: var(--space-6);
+  margin: 0;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+}
+
+.case-study-content .statistics-block::before {
+  content: "💬";
+  font-size: var(--text-xl);
+  flex-shrink: 0;
+  line-height: 1;
+  filter: hue-rotate(120deg) saturate(2);
 }
 
 .markdown-content strong {
