@@ -29,7 +29,7 @@ while (allCards.length < caseStudies.length + 2) {
           {allCards.map((entry, index) => {
             if (entry) {
               const slug = entry.id.replace(/\.md$/, '');
-              const customer = entry.data.customer || '';
+              const customer = slug === 'infosecurity' ? 'Infosec at Neontribe' : (entry.data.customer || '');
               return (
                 <CaseStudyCard
                   customer={customer}
