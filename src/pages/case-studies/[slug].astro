@@ -4,6 +4,7 @@ import type { CollectionEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/layout/Header.astro';
 import Footer from '../../components/layout/Footer.astro';
+import Tag from '../../components/ui/Tag.astro';
 
 export async function getStaticPaths() {
   const caseStudies = await getCollection('case-studies');
@@ -49,7 +50,9 @@ const {
               <h1 class="text-4xl md:text-5xl font-bold font-heading text-text-darker mb-4 leading-tight">{title}</h1>
               
               {customer && (
-                <p class="text-lg font-semibold text-text-darker mb-2">{customer}</p>
+                <div class="mb-3">
+                  <Tag label={customer} />
+                </div>
               )}
               
               {categories.length > 0 && (
