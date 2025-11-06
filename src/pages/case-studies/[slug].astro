@@ -35,6 +35,9 @@ const {
   heroImageAlt,
   tags = [],
 } = entry.data;
+
+// Special exception for infosecurity case study
+const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : customer;
 ---
 
 <Layout title={title} description={description}>
@@ -49,9 +52,9 @@ const {
             <div>
               <h1 class="text-4xl md:text-5xl font-bold font-heading text-text-darker mb-4 leading-tight">{title}</h1>
               
-              {customer && (
+              {displayCustomer && (
                 <div class="mb-3">
-                  <Tag label={customer} />
+                  <Tag label={displayCustomer} />
                 </div>
               )}
               
