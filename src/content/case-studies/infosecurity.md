@@ -8,7 +8,7 @@ categories:
   - 'Charity Sector'
 heroImage: ./images/infosec-case-study-image.png
 heroImageAlt: 'A graphic of a mobile phone displaying the Digital Candle, Alexandra Rose Charity, Mind Of My Own and Norfolk Community Arts logos'
-date: '07/07/2024'
+date: '2024-07-07'
 ---
 
 At Neontribe, we are passionate about helping organisations with a social purpose to help the people who need it most. Those people are often from vulnerable groups, and so we have had to develop real expertise in information security and information management. 
