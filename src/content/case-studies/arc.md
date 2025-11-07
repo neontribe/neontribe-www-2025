@@ -8,7 +8,7 @@ categories:
   - 'Beta'
   - 'Live'
 statistic: 'In June 2024 vouchers distributed reached three million.'
-heroImage: ./images/arc-case-study-image.png
+heroImage: ./images/arc.png
 heroImageAlt: 'Alexandra Rose Charity case study'
 date: '2019-06-26'
 ---

@@ -8,7 +8,7 @@ categories:
   - 'Beta'
   - 'Live'
 statistic: 'More than 300 organisations now use Mind of my Own products.'
-heroImage: ./images/mind-of-my-own-phone.png
+heroImage: ./images/momo.png
 heroImageAlt: 'A graphic of the Mind Of My Own One app on a mobile phone.'
 date: '2019-06-26'
 ---
