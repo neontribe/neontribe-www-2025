@@ -6,6 +6,12 @@ import Footer from '../components/layout/Footer.astro';
 import CaseStudyCard from '../components/cards/CaseStudyCard.astro';
 import { getCollection } from 'astro:content';
 import cardImage from '../assets/CardImage.svg';
+import arcCardImage from '../content/case-studies/images/arc-card.png';
+import infosecCardImage from '../content/case-studies/images/infosec-card.png';
+import momoCardImage from '../content/case-studies/images/momo-card.png';
+import npcCardImage from '../content/case-studies/images/npc-card.png';
+import parentingSmartCardImage from '../content/case-studies/images/parenting-smart-card.png';
+import realChatAiCardImage from '../content/case-studies/images/real-chat-ai-card.png';
 
 const caseStudies = await getCollection('case-studies');
 // Create array with case studies + 2 placeholder cards
@@ -30,13 +36,23 @@ while (allCards.length < caseStudies.length + 2) {
             if (entry) {
               const slug = entry.id.replace(/\.md$/, '');
               const customer = slug === 'infosecurity' ? 'Infosec at Neontribe' : (entry.data.customer || '');
+              // Map slugs to optimized card images
+              const cardImageMap = {
+                'arc': arcCardImage,
+                'infosecurity': infosecCardImage,
+                'momo': momoCardImage,
+                'npc': npcCardImage,
+                'place2be': parentingSmartCardImage,
+                'ncs-realchat-ai': realChatAiCardImage,
+              };
+              const imageSrc = cardImageMap[slug] || cardImage;
               return (
                 <CaseStudyCard
                   customer={customer}
                   title={entry.data.title}
                   summary={entry.data.description}
-                  imageSrc={cardImage}
-                  altText={entry.data.title}
+                  imageSrc={imageSrc}
+                  altText={entry.data.heroImageAlt || entry.data.title}
                   linkHref={`/case-studies/${slug}`}
                 />
               );
