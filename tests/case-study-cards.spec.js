@@ -48,8 +48,9 @@ test.describe('Case Study Cards', () => {
     
     const firstTitle = page.locator('.case-study-content__title').first();
     const secondTitle = page.locator('.case-study-content__title').nth(1);
-    const firstImage = page.locator('.case-study-content__image-wrapper').first();
-    const secondImage = page.locator('.case-study-content__image-wrapper').nth(1);
+    // Use the img element directly - its position reflects the wrapper's position
+    const firstImage = page.locator('.case-study-card').first().locator('img').first();
+    const secondImage = page.locator('.case-study-card').nth(1).locator('img').first();
     
     const firstTitleBox = await firstTitle.boundingBox();
     const secondTitleBox = await secondTitle.boundingBox();
@@ -63,7 +64,9 @@ test.describe('Case Study Cards', () => {
   test('mobile: content body uses auto height', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 667 });
     
-    const contentBody = page.locator('.case-study-content__body').first();
+    // The content body is the div containing title and summary with h-auto md:h-[180px]
+    const firstCard = page.locator('.case-study-card').first();
+    const contentBody = firstCard.locator('div.flex.flex-col.gap-4').first();
     const height = await contentBody.evaluate((el) => {
       return window.getComputedStyle(el).height;
     });
