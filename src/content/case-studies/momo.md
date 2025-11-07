@@ -10,7 +10,7 @@ categories:
 statistic: 'More than 300 organisations now use Mind of my Own products.'
 heroImage: ./images/mind-of-my-own-phone.png
 heroImageAlt: 'A graphic of the Mind Of My Own One app on a mobile phone.'
-date: '26/06/2019'
+date: '2019-06-26'
 ---
 
 In 2013, the organisation's founders had a good idea which got them a grant from the Nominet Trust (now Social Tech Trust). The grant enabled Neontribe to design and build a prototype for what became Mind Of My Own's first product, the One app. This app was aimed at supporting young people to make their voices heard.
