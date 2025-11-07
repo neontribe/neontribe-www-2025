@@ -4,7 +4,7 @@ description: 'Doing user research on signposting services for the New Philanthro
 customer: 'New Philanthropy Capital'
 categories:
   - 'Discovery'
-heroImage: ./images/npc-phone.png
+heroImage: ./images/npc.png
 heroImageAlt: 'A graphic of the New Philanthropy Capital Signposting+ document'
 ---
 
