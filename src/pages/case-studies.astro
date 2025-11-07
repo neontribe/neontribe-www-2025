@@ -8,10 +8,30 @@ import { getCollection } from 'astro:content';
 import cardImage from '../assets/CardImage.svg';
 
 const caseStudies = await getCollection('case-studies');
-// Create array with case studies + 2 placeholder cards
-const allCards = [...caseStudies];
-// Add 2 placeholder entries
-while (allCards.length < caseStudies.length + 2) {
+
+// Sort case studies by date descending (newest first)
+const sortedCaseStudies = [...caseStudies].sort((a, b) => {
+  const dateA = a.data.date || '';
+  const dateB = b.data.date || '';
+  
+
+  if (dateA && dateB) {
+    return dateB.localeCompare(dateA);
+  }
+  
+  // If only A has a date, it comes first
+  if (dateA && !dateB) return -1;
+  
+  // If only B has a date, it comes first
+  if (!dateA && dateB) return 1;
+  
+  // If neither has a date, maintain original order
+  return 0;
+});
+
+// Array with case studies + 2 placeholder cards
+const allCards = [...sortedCaseStudies];
+while (allCards.length < sortedCaseStudies.length + 2) {
   allCards.push(null);
 }
 ---

@@ -10,6 +10,7 @@ categories:
 statistic: 'Helped 15-17 year olds understand and use generative AI.'
 heroImage: ./images/ncs-realchatai-phone.png
 heroImageAlt: 'RealChatAI on a smartphone'
+date: '2025-06-10'
 ---
 
 The project was initiated by the [National Citizen Service](https://wearencs.com) (NCS) and the [Centre for the Acceleration of Social Technology](https://www.wearecast.org.uk) (CAST), who commissioned Neontribe to explore how to support young people (aged 15-17) in becoming thoughtful makers and critical users of generative AI. The focus was on developing a tool to be used outside the standard school curriculum. Collaborating closely with youth organisations and young people was fundamental to the project's co-creation approach, which followed the Design Council's "Double Diamond" model.
