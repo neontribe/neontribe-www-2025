@@ -8,7 +8,7 @@ categories:
   - Beta
   - Live
 statistic: 'A Net Promoter score of 41% - Great'
-heroImage: ./images/parenting-smart-phone.png
+heroImage: ./images/parenting smart.png
 heroImageAlt: 'Parenting Smart on a smartphone'
 
 ---
