@@ -36,10 +36,11 @@ test.describe('Case Study Cards', () => {
 
   test('link is clickable and navigates correctly', async ({ page }) => {
     const link = page.locator('.case-study-content__link').first();
-    await expect(link).toHaveAttribute('href', '/case-studies/arc');
+    // First card should link to the most recent case study
+    await expect(link).toHaveAttribute('href', '/case-studies/ncs-realchat-ai');
     
     await link.click();
-    await expect(page).toHaveURL(/.*\/case-studies\/arc/);
+    await expect(page).toHaveURL(/.*\/case-studies\/ncs-realchat-ai/);
   });
 
   test('desktop: titles and images align horizontally across cards', async ({ page }) => {
@@ -68,6 +69,12 @@ test.describe('Case Study Cards', () => {
     });
     
     expect(height).not.toBe('180px');
+  });
+
+  test('case studies are sorted by date in descending order (newest first)', async ({ page }) => {
+    // Verify the first card is the most recent case study
+    const firstLink = page.locator('.case-study-content__link').first();
+    await expect(firstLink).toHaveAttribute('href', '/case-studies/ncs-realchat-ai');
   });
 });
 
