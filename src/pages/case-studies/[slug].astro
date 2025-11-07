@@ -5,7 +5,6 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/layout/Header.astro';
 import Footer from '../../components/layout/Footer.astro';
 import GetInTouch from '../../components/sections/GetInTouch.astro';
-import Tag from '../../components/ui/Tag.astro';
 import smallLensIcon from '../../content/case-studies/images/Small-lens.svg';
 
 export async function getStaticPaths() {
@@ -37,6 +36,9 @@ const {
   heroImageAlt,
   tags = [],
 } = entry.data;
+
+// Special exception for infosecurity case study
+const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : customer;
 ---
 
 <Layout title={title} description={description}>
@@ -54,14 +56,14 @@ const {
                 {title}
               </h1>
               
-              {customer && (
-                <p class="text-[var(--color-accent-turquoise)] mb-4 md:mb-6" style="font-family: 'Keep Calm', sans-serif; font-weight: 400; font-size: 22px;">
-                  {customer}
+              {displayCustomer && (
+                <p class="mb-4 md:mb-6" style="font-family: 'Keep Calm', sans-serif; font-weight: 400; font-size: 22px; color: #87FAE7;">
+                  {displayCustomer}
                 </p>
               )}
               
               {categories.length > 0 && (
-                <p class="text-text-light opacity-80 mb-8 md:mb-12" style="font-family: 'Mulish', sans-serif; font-weight: 400; font-size: 22px;">
+                <p class="mb-8 md:mb-12" style="font-family: 'Mulish', sans-serif; font-weight: 400; font-size: 22px; color: #FFFFFF;">
                   Categories: {categories.join(', ')}
                 </p>
               )}

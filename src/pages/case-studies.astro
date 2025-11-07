@@ -23,16 +23,16 @@ while (allCards.length < caseStudies.length + 2) {
     icon="case-studies" 
   />
   <main id="content">
-    <section class="section section-light py-10 lg:py-12">
+    <section class="section section-intro py-10 lg:py-12">
       <div class="container">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
           {allCards.map((entry, index) => {
             if (entry) {
               const slug = entry.id.replace(/\.md$/, '');
-              const firstCategory = entry.data.categories?.[0] || '';
+              const customer = slug === 'infosecurity' ? 'Infosec at Neontribe' : (entry.data.customer || '');
               return (
                 <CaseStudyCard
-                  category={firstCategory}
+                  customer={customer}
                   title={entry.data.title}
                   summary={entry.data.description}
                   imageSrc={cardImage}
@@ -44,7 +44,7 @@ while (allCards.length < caseStudies.length + 2) {
               // Placeholder card
               return (
                 <CaseStudyCard
-                  category="Category"
+                  customer="Client Name"
                   title="Case Study Title"
                   summary="A brief description of the project problem and the process we took to solve it."
                   imageSrc={cardImage}
