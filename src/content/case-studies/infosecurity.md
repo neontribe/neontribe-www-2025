@@ -6,7 +6,7 @@ categories:
   - 'Information Security'
   - 'Data Protection'
   - 'Charity Sector'
-heroImage: ./images/infosec-case-study-image.png
+heroImage: ./images/infosec.png
 heroImageAlt: 'A graphic of a mobile phone displaying the Digital Candle, Alexandra Rose Charity, Mind Of My Own and Norfolk Community Arts logos'
 ---
 
