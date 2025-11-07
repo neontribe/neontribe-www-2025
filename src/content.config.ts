@@ -11,6 +11,7 @@ export const caseStudiesCollection = defineCollection({
     heroImage: image().optional(),
     heroImageAlt: z.string().optional(),
     tags: z.array(z.string()).default([]),
+    date: z.string().optional(),
   }),
 });
 

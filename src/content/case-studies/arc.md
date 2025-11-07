@@ -10,6 +10,7 @@ categories:
 statistic: 'In June 2024 vouchers distributed reached three million.'
 heroImage: ./images/arc.png
 heroImageAlt: 'Alexandra Rose Charity case study'
+date: '2019-06-26'
 ---
 
 The [Alexandra Rose Charity (ARC)](https://www.alexandrarose.org.uk/) is on a mission to address health inequalities and food poverty in the UK. It tackles food inequality directly by giving families access to fresh fruit and vegetables in their communities at their local market or greengrocer. Its [Rose Vouchers for Fruit and Veg Project](https://www.alexandrarose.org.uk/rose-vouchers/) allows families to redeem vouchers to provide them with access to healthy and affordable food.
