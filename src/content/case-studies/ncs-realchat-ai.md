@@ -8,7 +8,7 @@ categories:
   - 'Beta'
   - 'Live'
 statistic: 'Helped 15-17 year olds understand and use generative AI.'
-heroImage: ./images/ncs-realchatai-phone.png
+heroImage: ./images/real chat ai.png
 heroImageAlt: 'RealChatAI on a smartphone'
 ---
 
