@@ -1,6 +1,6 @@
 ---
-import cardImage from '../../assets/CardImage.svg';
-import howWeWorkIcon from '../../assets/How-we-work.svg';
+import searchIcon from '../../assets/Search.svg';
+import circleIcon from '../../assets/Circle.svg';
 import questionIcon from '../../assets/Question.svg';
 import twoHalLogo from '../../assets/Two-hal-logo.svg';
 
@@ -13,15 +13,15 @@ export interface Props {
 const { title, subtitle, icon = 'case-studies' } = Astro.props;
 
 const iconMap = {
-  'case-studies': cardImage,
-  'how-we-work': howWeWorkIcon, 
+  'case-studies': searchIcon,
+  'how-we-work': circleIcon, 
   'advice-service': questionIcon,
   'talk-to-us': questionIcon
 };
 
 const iconDesktopMap = {
-  'case-studies': cardImage,
-  'how-we-work': howWeWorkIcon, 
+  'case-studies': searchIcon,
+  'how-we-work': circleIcon, 
   'advice-service': questionIcon,
   'talk-to-us': twoHalLogo
 };
