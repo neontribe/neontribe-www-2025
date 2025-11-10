@@ -1,0 +1,100 @@
+---
+export interface Props {
+  href?: string;
+  variant?: "primary" | "secondary" | "teal" | "link";
+  size?: "sm" | "md" | "lg" | "get-in-touch";
+  external?: boolean;
+  ariaLabel?: string;
+  class?: string;
+}
+
+const {
+  href,
+  variant = "primary",
+  size = "md",
+  external = false,
+  ariaLabel,
+  class: className,
+} = Astro.props;
+
+
+const VARIANT: Record<
+  NonNullable<Props["variant"]>,
+  { bg: string; color: string; hover: string; iconColor: string; textDecoration?: string }
+> = {
+  primary:   { bg: "#4B00E7", color: "#FFFFFF", hover: "filter: brightness(1.1);",  iconColor: "#48E9CE" },
+  secondary: { bg: "#D1D5DB", color: "#111827", hover: "filter: brightness(0.95);", iconColor: "#4B00E7" },
+  teal:      { bg: "#48E9CE", color: "#111827", hover: "filter: brightness(0.95);", iconColor: "#4B00E7" },
+  link:      { bg: "transparent", color: "#4B00E7", hover: "opacity: 0.8;", iconColor: "#4B00E7", textDecoration: "none" },
+};
+
+const { bg, color, hover, iconColor, textDecoration } = VARIANT[variant];
+
+const SIZE: Record<NonNullable<Props["size"]>, string> = {
+  sm: "padding: 8px 16px; height: 40px;",
+  md: "padding: 12px 24px; height: 48px;",
+  lg: "padding: 16px 32px; height: 56px;",
+  "get-in-touch": "padding: 12px 24px; height: 48px;",
+};
+
+const baseStyle = `
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 1px;
+  font-family: "Keep Calm", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 100%;
+  text-decoration: ${textDecoration || 'none'};
+  transition: filter 0.15s ease, transform 0.05s ease, opacity 0.15s ease;
+  background-color: ${bg};
+  color: ${color};
+  ${SIZE[size]}
+`;
+
+const focusStyle = variant === 'link' ? '' : `
+  outline: 2px solid #4B00E7;
+  outline-offset: 2px;
+`;
+---
+
+{href ? (
+  <a
+    href={href}
+    target={external ? "_blank" : undefined}
+    rel={external ? "noopener noreferrer" : undefined}
+    aria-label={ariaLabel}
+    class={className}
+    style={baseStyle}
+    
+    onmouseover={`this.style.cssText='${baseStyle}${hover}'`}
+    onmouseout={`this.style.cssText='${baseStyle}'`}
+    onfocus={`this.style.cssText='${baseStyle}${hover}${focusStyle}'`}
+    onblur={`this.style.cssText='${baseStyle}'`}
+    onmousedown={`this.style.transform='translateY(1px)'`}
+    onmouseup={`this.style.transform='none'`}
+  >
+    <span><slot /></span>
+    <span style={`color: ${iconColor}; font-size: 16px; line-height: 1;`} aria-hidden="true">→</span>
+  </a>
+) : (
+  <button
+    type="button"
+    aria-label={ariaLabel}
+    class={className}
+    style={`${baseStyle}; border: none; cursor: pointer;`}
+    
+    onmouseover={`this.style.cssText='${baseStyle}${hover}; border: none; cursor: pointer;'`}
+    onmouseout={`this.style.cssText='${baseStyle}; border: none; cursor: pointer;'`}
+    onfocus={`this.style.cssText='${baseStyle}${hover}${focusStyle}; border: none; cursor: pointer;'`}
+    onblur={`this.style.cssText='${baseStyle}; border: none; cursor: pointer;'`}
+    onmousedown={`this.style.transform='translateY(1px)'`}
+    onmouseup={`this.style.transform='none'`}
+  >
+    <span><slot /></span>
+    <span style={`color: ${iconColor}; font-size: 16px; line-height: 1;`} aria-hidden="true">→</span>
+  </button>
+)}
+
+
