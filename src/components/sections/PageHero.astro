@@ -1,4 +1,9 @@
 ---
+import searchIcon from '../../assets/Search.svg';
+import circleIcon from '../../assets/Circle.svg';
+import questionIcon from '../../assets/Question.svg';
+import twoHalLogo from '../../assets/Two-hal-logo.svg';
+
 export interface Props {
   title: string;
   subtitle: string;
@@ -8,17 +13,17 @@ export interface Props {
 const { title, subtitle, icon = 'case-studies' } = Astro.props;
 
 const iconMap = {
-  'case-studies': '/src/assets/Search.svg',
-  'how-we-work': '/src/assets/Circle.svg', 
-  'advice-service': '/src/assets/Question.svg',
-  'talk-to-us': '/src/assets/Question.svg'
+  'case-studies': searchIcon,
+  'how-we-work': circleIcon, 
+  'advice-service': questionIcon,
+  'talk-to-us': questionIcon
 };
 
 const iconDesktopMap = {
-  'case-studies': '/src/assets/Search.svg',
-  'how-we-work': '/src/assets/Circle.svg', 
-  'advice-service': '/src/assets/Question.svg',
-  'talk-to-us': '/src/assets/Two-hal-logo.svg'
+  'case-studies': searchIcon,
+  'how-we-work': circleIcon, 
+  'advice-service': questionIcon,
+  'talk-to-us': twoHalLogo
 };
 ---
 
@@ -26,16 +31,16 @@ const iconDesktopMap = {
   <div class="container">
     <div class="flex flex-col md:flex-row items-center justify-center md:items-center gap-6 lg:gap-8 pt-8 pb-12 md:py-12 lg:py-16 text-center md:text-left">
       <!-- Icon sized -->
-      <div class="w-24 h-24 flex items-center justify-center flex-shrink-0" aria-hidden="true">
+      <div class="w-24 h-24 md:w-32 md:h-32 flex items-center justify-center flex-shrink-0" aria-hidden="true">
         <!-- Mobile icon -->
         <img 
-          src={iconMap[icon]} 
+          src={iconMap[icon].src} 
           alt="" 
           class="md:hidden w-full h-full object-contain" 
         />
         <!-- Desktop icon -->
         <img 
-          src={iconDesktopMap[icon]} 
+          src={iconDesktopMap[icon].src} 
           alt="" 
           class="hidden md:block w-full h-full object-contain" 
         />
