@@ -5,6 +5,7 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/layout/Header.astro';
 import Footer from '../../components/layout/Footer.astro';
 import GetInTouch from '../../components/sections/GetInTouch.astro';
+import QuoteCard from '../../components/Testimonials/QuoteCard.astro';
 import smallLensIcon from '../../content/case-studies/images/Small-lens.svg';
 
 export async function getStaticPaths() {
@@ -160,10 +161,12 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
           <!-- Right Column: Placeholder Containers -->
           <div class="md:col-span-5 lg:col-span-4 order-2 pt-8">
             <div class="flex flex-col gap-6">
-              <!-- Purple Container Placeholder -->
-              <div class="quote-placeholder bg-[var(--color-accent-amethyst)] p-6 md:p-8 min-h-[200px]">
-                <!-- Placeholder for future quote/testimonial content -->
-              </div>
+              <!-- Quote Card -->
+              <QuoteCard
+                quote="A quote from a customer explaining the project, the impact of the work and why they loved working with us"
+                customerName="Customer name"
+                customerOrganisation="Customer organisation"
+              />
               
               <!-- Black Container -->
               <div class="statistics-placeholder bg-[var(--color-bg-dark)] p-6 flex items-start gap-4 border border-white w-full">
