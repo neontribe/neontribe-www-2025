@@ -169,7 +169,7 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
               />
               
               <!-- Black Container -->
-              <div class="statistics-placeholder bg-[var(--color-bg-dark)] p-6 flex items-start gap-4 border border-white w-full">
+              <div class="statistics-block">
                 <!-- Search Icon SVG -->
                 <img 
                   src={smallLensIcon.src} 
@@ -179,11 +179,11 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
                   class="flex-shrink-0"
                 />
                 {statistic ? (
-                  <p class="flex-1" style="font-family: 'Keep Calm', sans-serif; font-weight: 400; font-size: 24px; margin: 0; color: #ffffff;">
+                  <p class="statistics-text">
                     {statistic}
                   </p>
                 ) : (
-                  <p class="flex-1" style="font-family: 'Keep Calm', sans-serif; font-weight: 400; font-size: 24px; margin: 0; color: #ffffff;">
+                  <p class="statistics-text">
                     <!-- Placeholder for statistic -->
                   </p>
                 )}
