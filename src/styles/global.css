@@ -210,69 +210,27 @@ header.section-dark + section.section-dark {
   gap: var(--space-6);
 }
 
-/* Quote blocks in Result section - Purple background */
-.case-study-content .result-section blockquote,
-.case-study-content blockquote.quote-block {
-  background-color: var(--color-accent-amethyst);
-  color: var(--color-text-light);
-  border-left: none;
-  padding: var(--space-8);
-  margin: 0;
-  border-radius: 0.5rem;
-  font-style: normal;
-  font-size: var(--text-base);
-  line-height: var(--leading-relaxed);
-}
-
-.case-study-content .result-section blockquote p,
-.case-study-content blockquote.quote-block p {
-  margin-bottom: var(--space-4);
-  color: var(--color-text-light);
-}
-
-.case-study-content .result-section blockquote p:first-child {
-  margin-top: 0;
-}
-
-.case-study-content .result-section blockquote p:nth-last-child(2) {
-  margin-top: var(--space-4);
-  margin-bottom: var(--space-2);
-  font-weight: var(--font-bold);
-  font-size: var(--text-base);
-}
-
-.case-study-content .result-section blockquote p:last-child {
-  margin-bottom: 0;
-  font-size: var(--text-sm);
-  opacity: 0.9;
-}
-
-.case-study-content .result-section blockquote strong,
-.case-study-content blockquote.quote-block strong {
-  color: var(--color-text-light);
-  font-weight: var(--font-bold);
-}
 
 /* Statistics block - Dark background */
-.case-study-content .statistics-block {
+.statistics-block {
   background-color: var(--color-bg-dark);
   color: var(--color-text-light);
   padding: var(--space-6);
   margin: 0;
-  border-radius: 0.5rem;
+  border: 1px solid white;
   display: flex;
   align-items: flex-start;
   gap: var(--space-4);
-  font-size: var(--text-base);
-  line-height: var(--leading-relaxed);
 }
 
-.case-study-content .statistics-block::before {
-  content: "💬";
-  font-size: var(--text-xl);
-  flex-shrink: 0;
-  line-height: 1;
-  filter: hue-rotate(120deg) saturate(2);
+.statistics-block .statistics-text {
+  font-family: 'Keep Calm', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.5;
+  margin: 0;
+  color: #ffffff;
+  flex: 1;
 }
 
 .markdown-content strong {
@@ -299,6 +257,96 @@ header.section-dark + section.section-dark {
   outline: 2px solid var(--color-accent-amethyst);
   outline-offset: 2px;
   border-radius: 2px;
+}
+
+/* =========================
+   QUOTE CARD COMPONENT
+========================= */
+.quote-card {
+  background-color: var(--color-accent-amethyst);
+  padding: 1.75rem;
+  color: var(--color-text-light);
+}
+
+@media (min-width: 768px) {
+  .quote-card {
+    padding: 2.25rem;
+  }
+}
+
+.quote-card .quote-text {
+  color: var(--quote-color);
+  font-family: var(--quote-font-family);
+  font-size: var(--quote-font-size);
+  font-weight: var(--quote-font-weight);
+  line-height: 1.4;
+  margin-bottom: var(--space-6);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.quote-card .quote-footer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.quote-card .quote-avatar,
+.quote-card .quote-avatar-placeholder {
+  width: 3rem;
+  height: 3rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+
+@media (min-width: 768px) {
+  .quote-card .quote-avatar,
+  .quote-card .quote-avatar-placeholder {
+    width: 4rem;
+    height: 4rem;
+  }
+}
+
+.quote-card .quote-avatar {
+  overflow: hidden;
+}
+
+.quote-card .quote-avatar .avatar-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.quote-card .quote-avatar-placeholder {
+  background-color: var(--color-neutral-grey);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quote-card .quote-citation {
+  display: flex;
+  flex-direction: column;
+  font-style: normal;
+}
+
+.quote-card .customer-name {
+  color: var(--color-text-light);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--font-regular);
+  line-height: 1.5;
+  margin-bottom: var(--space-1);
+}
+
+.quote-card .customer-organisation {
+  color: var(--color-text-light);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--font-regular);
+  line-height: 1.5;
+  opacity: 0.9;
 }
 
 @media (prefers-reduced-motion: reduce) {
