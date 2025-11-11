@@ -1,0 +1,48 @@
+---
+export interface Props {
+  quote: string;
+  customerName: string;
+  customerOrganisation: string;
+  avatar?: string | { src: string; alt?: string };
+  class?: string;
+}
+
+const {
+  quote,
+  customerName,
+  customerOrganisation,
+  avatar,
+  class: className = '',
+} = Astro.props;
+---
+
+<blockquote class={`quote-card ${className}`}>
+  <p class="quote-text">
+    {quote}
+  </p>
+  
+  <footer class="quote-footer">
+    {avatar ? (
+      <div class="quote-avatar">
+        <img 
+          src={typeof avatar === 'string' ? avatar : avatar.src} 
+          alt={typeof avatar === 'string' ? `${customerName} from ${customerOrganisation}` : (avatar.alt || `${customerName} from ${customerOrganisation}`)}
+          class="avatar-image"
+          loading="lazy"
+        />
+      </div>
+    ) : (
+      <div class="quote-avatar-placeholder" aria-hidden="true">
+      </div>
+    )}
+    
+    <cite class="quote-citation">
+      <span class="customer-name">
+        {customerName}
+      </span>
+      <span class="customer-organisation">
+        {customerOrganisation}
+      </span>
+    </cite>
+  </footer>
+</blockquote>

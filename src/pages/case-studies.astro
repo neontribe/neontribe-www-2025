@@ -17,12 +17,14 @@ const caseStudies = await getCollection('case-studies');
 
 // Sort case studies by date descending (newest first)
 const sortedCaseStudies = [...caseStudies].sort((a, b) => {
-  const dateA = a.data.date || '';
-  const dateB = b.data.date || '';
+  const dateA = a.data.date;
+  const dateB = b.data.date;
   
-
+  // If both have dates, parse and compare
   if (dateA && dateB) {
-    return dateB.localeCompare(dateA);
+    const parsedDateA = new Date(dateA).getTime();
+    const parsedDateB = new Date(dateB).getTime();
+    return parsedDateB - parsedDateA; // Descending order (newest first)
   }
   
   // If only A has a date, it comes first
