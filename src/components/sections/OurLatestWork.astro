@@ -1,16 +1,57 @@
 ---
 import Button from '../Button/Button.astro';
+import { getCollection } from 'astro:content';
+import cardImage from '../../assets/CardImage.svg';
+import arcCardImage from '../../content/case-studies/images/arc-card.png';
+import infosecCardImage from '../../content/case-studies/images/infosec-card.png';
+import momoCardImage from '../../content/case-studies/images/momo-card.png';
+import npcCardImage from '../../content/case-studies/images/npc-card.png';
+import parentingSmartCardImage from '../../content/case-studies/images/parenting-smart-card.png';
+import realChatAiCardImage from '../../content/case-studies/images/real-chat-ai-card.png';
 
-// Placeholder data 
-const title =
-  'Helping young people to understand and use generative AI in positive ways.';
-const description =
-  'A brief description of the project problem and the process we took to solve it. We should emphasise what the impact of the project was.';
-const slug = null; // Will be set to latest case study slug
-const heroImage = null; // Placeholder 
-const heroImageAlt = 'Case study image';
+// Fetch case studies from content collection
+const caseStudies = await getCollection('case-studies');
 
-// Button href - set to null for now, will link to latest case study later
+// Sort by date in descending order (newest first)
+const sortedCaseStudies = [...caseStudies].sort((a, b) => {
+  const dateA = a.data.date || '';
+  const dateB = b.data.date || '';
+  
+  if (dateA && dateB) {
+    return dateB.localeCompare(dateA);
+  }
+  
+  // If only A has a date, it comes first
+  if (dateA && !dateB) return -1;
+  
+  // If only B has a date, it comes first
+  if (!dateA && dateB) return 1;
+  
+  // If neither has a date, maintain original order
+  return 0;
+});
+
+// Get the most recent case study
+const latestCaseStudy = sortedCaseStudies[0];
+
+// Extract data from latest case study
+const title = latestCaseStudy?.data.title || 'No case studies available';
+const description = latestCaseStudy?.data.description || '';
+const slug = latestCaseStudy ? latestCaseStudy.id.replace(/\.md$/, '') : null;
+
+
+const cardImageMap = {
+  'arc': arcCardImage,
+  'infosecurity': infosecCardImage,
+  'momo': momoCardImage,
+  'npc': npcCardImage,
+  'place2be': parentingSmartCardImage,
+  'ncs-realchat-ai': realChatAiCardImage,
+};
+const cardImageSrc = slug ? (cardImageMap[slug] || cardImage) : cardImage;
+const imageAlt = latestCaseStudy?.data.heroImageAlt || latestCaseStudy?.data.title || 'Case study image';
+
+// Link to latest case study
 const buttonHref = slug ? `/case-studies/${slug}` : null;
 ---
 
@@ -27,8 +68,8 @@ const buttonHref = slug ? `/case-studies/${slug}` : null;
   
   <div class="w-full md:max-w-[1336px] md:mx-auto relative">
     <div class="bg-white flex flex-col w-full md:max-w-[1336px] min-h-[509px]">
-      <div class="grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-6 md:gap-10 p-8 md:p-10 items-start md:items-stretch flex-1 h-full">
-        <div class="flex flex-col order-2 md:order-1">
+      <div class="grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-0 items-start md:items-stretch flex-1 h-full">
+        <div class="flex flex-col order-2 md:order-1 p-8 md:p-10">
           <h2 class="font-heading text-2xl font-bold text-[#090909] mb-4">
             {title}
           </h2>
@@ -54,12 +95,14 @@ const buttonHref = slug ? `/case-studies/${slug}` : null;
         </div>
 
         <div class="w-full md:self-stretch order-1 md:order-2">
-          {heroImage ? (
-            <img
-              src={heroImage.src}
-              alt={heroImageAlt}
-              class="w-full h-full min-h-[260px] max-h-[400px] object-cover block"
-            />
+          {cardImageSrc ? (
+            <div class="relative w-full h-full overflow-hidden">
+              <img
+                src={typeof cardImageSrc === 'string' ? cardImageSrc : cardImageSrc.src}
+                alt={imageAlt}
+                class="w-full h-full object-cover block"
+              />
+            </div>
           ) : (
             <div class="w-full min-h-[260px] md:min-h-[300px] h-full bg-bg-light flex items-center justify-center">
               <span class="text-neutral-grey font-body text-base">
