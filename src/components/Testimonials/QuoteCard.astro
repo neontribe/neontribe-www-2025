@@ -3,7 +3,6 @@ export interface Props {
   quote: string;
   customerName: string;
   customerOrganisation: string;
-  avatar?: string | { src: string; alt?: string };
   class?: string;
 }
 
@@ -11,41 +10,18 @@ const {
   quote,
   customerName,
   customerOrganisation,
-  avatar,
   class: className = '',
 } = Astro.props;
 ---
 
-<blockquote class={`quote-card bg-brand-amethyst text-text-light ${className}`}>
+<blockquote class={`quote-card ${className}`}>
   <p class="quote-text">
     {quote}
   </p>
   
   <footer class="quote-footer">
-    {avatar && (
-      <div class="quote-avatar">
-        {typeof avatar === 'string' ? (
-          <img 
-            src={avatar} 
-            alt={`${customerName} from ${customerOrganisation}`}
-            class="avatar-image"
-            loading="lazy"
-          />
-        ) : (
-          <img 
-            src={avatar.src} 
-            alt={avatar.alt || `${customerName} from ${customerOrganisation}`}
-            class="avatar-image"
-            loading="lazy"
-          />
-        )}
-      </div>
-    )}
-    
-    {!avatar && (
-      <div class="quote-avatar-placeholder" aria-hidden="true">
-      </div>
-    )}
+    <div class="quote-avatar-placeholder" aria-hidden="true">
+    </div>
     
     <cite class="quote-citation">
       <span class="customer-name">
@@ -57,76 +33,3 @@ const {
     </cite>
   </footer>
 </blockquote>
-
-<style>
-  .quote-card {
-    background-color: var(--color-accent-amethyst);
-    padding: 1.75rem;
-  }
-  
-  @media (min-width: 768px) {
-    .quote-card {
-      padding: 2.25rem;
-    }
-  }
-  
-  .quote-text {
-    color: var(--color-text-light);
-    font-family: var(--font-body);
-    font-size: 1.125rem; /* 18px - Mulish regular */
-    font-weight: 400;
-    line-height: 1.4;
-    margin-bottom: 1.5rem;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-  }
-  
-  .quote-footer {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  
-  .quote-avatar,
-  .quote-avatar-placeholder {
-    width: 3rem;
-    height: 3rem;
-    flex-shrink: 0;
-    border-radius: 50%;
-  }
-  
-  .quote-avatar-placeholder {
-    background-color: var(--color-neutral-grey);
-  }
-  
-  .avatar-image {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  
-  .quote-citation {
-    display: flex;
-    flex-direction: column;
-    font-style: normal;
-  }
-  
-  .customer-name {
-    color: var(--color-text-light);
-    font-family: var(--font-body);
-    font-size: 1.125rem; /* 18px - Mulish regular */
-    font-weight: 400;
-    line-height: 1.5;
-    margin-bottom: 0.25rem;
-  }
-  
-  .customer-organisation {
-    color: var(--color-text-light);
-    font-family: var(--font-body);
-    font-size: 1.125rem; /* 18px - Mulish regular */
-    font-weight: 400;
-    line-height: 1.5;
-    opacity: 0.9;
-  }
-</style>
