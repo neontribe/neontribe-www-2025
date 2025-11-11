@@ -3,6 +3,7 @@ export interface Props {
   quote: string;
   customerName: string;
   customerOrganisation: string;
+  avatar?: string | { src: string; alt?: string };
   class?: string;
 }
 
@@ -10,6 +11,7 @@ const {
   quote,
   customerName,
   customerOrganisation,
+  avatar,
   class: className = '',
 } = Astro.props;
 ---
@@ -20,8 +22,19 @@ const {
   </p>
   
   <footer class="quote-footer">
-    <div class="quote-avatar-placeholder" aria-hidden="true">
-    </div>
+    {avatar ? (
+      <div class="quote-avatar">
+        <img 
+          src={typeof avatar === 'string' ? avatar : avatar.src} 
+          alt={typeof avatar === 'string' ? `${customerName} from ${customerOrganisation}` : (avatar.alt || `${customerName} from ${customerOrganisation}`)}
+          class="avatar-image"
+          loading="lazy"
+        />
+      </div>
+    ) : (
+      <div class="quote-avatar-placeholder" aria-hidden="true">
+      </div>
+    )}
     
     <cite class="quote-citation">
       <span class="customer-name">
