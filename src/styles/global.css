@@ -210,48 +210,6 @@ header.section-dark + section.section-dark {
   gap: var(--space-6);
 }
 
-/* Quote blocks in Result section - Purple background */
-.case-study-content .result-section blockquote,
-.case-study-content blockquote.quote-block {
-  background-color: var(--color-accent-amethyst);
-  color: var(--color-text-light);
-  border-left: none;
-  padding: var(--space-8);
-  margin: 0;
-  border-radius: 0.5rem;
-  font-style: normal;
-  font-size: var(--text-base);
-  line-height: var(--leading-relaxed);
-}
-
-.case-study-content .result-section blockquote p,
-.case-study-content blockquote.quote-block p {
-  margin-bottom: var(--space-4);
-  color: var(--color-text-light);
-}
-
-.case-study-content .result-section blockquote p:first-child {
-  margin-top: 0;
-}
-
-.case-study-content .result-section blockquote p:nth-last-child(2) {
-  margin-top: var(--space-4);
-  margin-bottom: var(--space-2);
-  font-weight: var(--font-bold);
-  font-size: var(--text-base);
-}
-
-.case-study-content .result-section blockquote p:last-child {
-  margin-bottom: 0;
-  font-size: var(--text-sm);
-  opacity: 0.9;
-}
-
-.case-study-content .result-section blockquote strong,
-.case-study-content blockquote.quote-block strong {
-  color: var(--color-text-light);
-  font-weight: var(--font-bold);
-}
 
 /* Statistics block - Dark background */
 .case-study-content .statistics-block {
