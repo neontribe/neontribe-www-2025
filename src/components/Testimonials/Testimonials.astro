@@ -1,7 +1,7 @@
 ---
 import Card from '../Card/Card.astro';
 import Button from '../Button/Button.astro';
-import InteractiveTestimonial from './InteractiveTestimonial.jsx';
+import QuoteCard from './QuoteCard.astro';
 ---
 
 <section class="section section-light py-16">
@@ -9,19 +9,11 @@ import InteractiveTestimonial from './InteractiveTestimonial.jsx';
     <h2 class="text-4xl font-bold text-gray-800 mb-12 text-center">Who we've been working with</h2>
     
     <div class="grid md:grid-cols-3 gap-6 mb-8">
-      <Card variant="testimonial">
-        <p class="mb-4 text-white">"A quote from a customer explaining the project, the impact of the work and why they loved working with us"</p>
-        <div class="flex items-center space-x-2">
-          <div class="w-6 h-6 bg-gray-300 rounded-full"></div>
-          <div>
-            <p class="font-bold text-white">Customer name</p>
-            <p class="text-sm text-white opacity-80">Customer organisation</p>
-          </div>
-        </div>
-      </Card>
-      
-      <!-- Interactive testimonial with island architecture -->
-      <InteractiveTestimonial client:load />
+      <QuoteCard
+        quote="A quote from a customer explaining the project, the impact of the work and why they loved working with us"
+        customerName="Customer name"
+        customerOrganisation="Customer organisation"
+      />
       
       <Card variant="testimonial">
         <p class="mb-4 text-white">"A third customer testimonial"</p>
@@ -36,7 +28,7 @@ import InteractiveTestimonial from './InteractiveTestimonial.jsx';
     </div>
     
     <div class="text-center">
-      <Button href="/projects" variant="teal">
+      <Button href="/projects" variant="teal" class="w-full md:w-auto">
         See more case studies
       </Button>
     </div>
