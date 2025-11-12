@@ -5,6 +5,7 @@ import GetInTouch from '../components/sections/GetInTouch.astro';
 import Footer from '../components/layout/Footer.astro';
 import CaseStudyCard from '../components/Card/CaseStudyCard.astro';
 import { getCollection } from 'astro:content';
+import { sortCaseStudiesByDateDesc } from '../utils/dateSorting';
 import cardImage from '../assets/CardImage.svg';
 import arcCardImage from '../content/case-studies/images/arc-card.png';
 import infosecCardImage from '../content/case-studies/images/infosec-card.png';
@@ -16,24 +17,7 @@ import realChatAiCardImage from '../content/case-studies/images/real-chat-ai-car
 const caseStudies = await getCollection('case-studies');
 
 // Sort case studies by date descending (newest first)
-const sortedCaseStudies = [...caseStudies].sort((a, b) => {
-  const dateA = a.data.date || '';
-  const dateB = b.data.date || '';
-  
-
-  if (dateA && dateB) {
-    return dateB.localeCompare(dateA);
-  }
-  
-  // If only A has a date, it comes first
-  if (dateA && !dateB) return -1;
-  
-  // If only B has a date, it comes first
-  if (!dateA && dateB) return 1;
-  
-  // If neither has a date, maintain original order
-  return 0;
-});
+const sortedCaseStudies = sortCaseStudiesByDateDesc(caseStudies);
 
 // Array with case studies + 2 placeholder cards
 const allCards = [...sortedCaseStudies];
