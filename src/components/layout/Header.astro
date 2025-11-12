@@ -7,11 +7,13 @@ const currentPath = Astro.url.pathname;
 <header id="site-header" class="section section-dark w-full">
   <a href="#content" class="skip-link">Skip to main content</a>
 
-  <div class="w-full md:max-w-[1336px] md:mx-auto px-8 md:px-10 flex items-center justify-between h-16 py-3">
+  <div class="w-full flex justify-center">
+    <div class="w-full md:max-w-[1420px] md:mx-auto flex items-center justify-between h-12 md:h-12 py-0">
+      <div class="px-8 md:px-10 flex items-center justify-between w-full">
     <!-- Logo -->
     <div class="flex-shrink-0">
-      <a href="/" aria-label="Go to homepage">
-        <img src={fullLogo.src} alt="Neontribe" class="h-6 w-auto" />
+      <a href="/" aria-label="Go to homepage" class="block">
+        <img src={fullLogo.src} alt="Neontribe" class="h-6 w-auto block" />
       </a>
     </div>
 
@@ -49,6 +51,8 @@ const currentPath = Astro.url.pathname;
       <span class="hamburger-line"></span>
       <span class="hamburger-line"></span>
     </button>
+      </div>
+    </div>
   </div>
 
   <!-- Mobile Menu Overlay -->
