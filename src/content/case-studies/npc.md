@@ -46,6 +46,4 @@ For the next round, we focussed on specifics of the experience for each of our p
 
 In the final workshop, we identified the data that young people found most useful when being signposted. We then distilled their experience of the project into recommendations for improvements, both for our practice and for the project partners' services.
 
-> Penny Nkrumah, NPC's lead on the work says, **"Harry and the Neontribe team made a meaningful impact on the project's quality. They were pivotal in sharpening our plan and delivering the research activities. Their work delivered the user-centred insights that are so useful to the signposting services that help young people get the best outcomes they can."**
-
 > [Tris Lumley](https://www.linkedin.com/in/ACoAAAANELIBngq2e32Y0YF07xu0zPj-JabNJlg), Director of Innovation & Development at NPC,  said, **"Harry and the [Neontribe](https://www.linkedin.com/company/neontribe-ltd/) team made a meaningful impact on the project's quality. They were pivotal in sharpening our plan and delivering the research activities. Their work delivered the user-centred insights that are so useful to the signposting services that help young people get the best outcomes they can."**
