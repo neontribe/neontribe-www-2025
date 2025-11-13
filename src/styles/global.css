@@ -302,7 +302,7 @@ header.section-dark + section.section-dark {
 .quote-card .quote-text {
   color: var(--quote-color);
   font-family: 'Mulish', sans-serif;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 400;
   line-height: 1.4;
   margin-bottom: var(--space-6);
