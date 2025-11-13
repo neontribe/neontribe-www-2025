@@ -7,6 +7,9 @@ categories:
 heroImage: ./images/npc.png
 heroImageAlt: 'A graphic of the New Philanthropy Capital Signposting+ document'
 date: '2024-09-03'
+quote: "Harry and the Neontribe team made a meaningful impact on the project's quality. They were pivotal in sharpening our plan and delivering the research activities. Their work delivered the user-centred insights that are so useful to the signposting services that help young people get the best outcomes they can."
+quoteAuthor: 'Penny Nkrumah'
+quoteOrganisation: 'New Philanthropy Capital'
 ---
 
 Neontribe has been involved with [NPC's "Signposting+"](https://www.thinknpc.org/examples-of-our-work/initiatives-were-working-on/signpost/) project since it began. Its core objective "to improve the quality of life for young people and communities, and the value that technology and data can bring to this" is dear to our hearts. We've been working on projects to benefit young people since we started up as an agency, and we're proud of the impact we've helped deliver.
@@ -42,7 +45,5 @@ In the second round, we moved on to considering the breadth of services offered 
 For the next round, we focussed on specifics of the experience for each of our partner organisations' sites, using the same personas from the previous round, but going deeper into particular features. Notably, 2 of our partners had iterated their services since the second sprint and we wanted to investigate the impact of their changes. 
 
 In the final workshop, we identified the data that young people found most useful when being signposted. We then distilled their experience of the project into recommendations for improvements, both for our practice and for the project partners' services.
-
-> Penny Nkrumah, NPC's lead on the work says, **"Harry and the Neontribe team made a meaningful impact on the project's quality. They were pivotal in sharpening our plan and delivering the research activities. Their work delivered the user-centred insights that are so useful to the signposting services that help young people get the best outcomes they can."**
 
 > [Tris Lumley](https://www.linkedin.com/in/ACoAAAANELIBngq2e32Y0YF07xu0zPj-JabNJlg), Director of Innovation & Development at NPC,  said, **"Harry and the [Neontribe](https://www.linkedin.com/company/neontribe-ltd/) team made a meaningful impact on the project's quality. They were pivotal in sharpening our plan and delivering the research activities. Their work delivered the user-centred insights that are so useful to the signposting services that help young people get the best outcomes they can."**

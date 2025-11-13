@@ -11,6 +11,9 @@ statistic: 'In June 2024 vouchers distributed reached three million.'
 heroImage: ./images/arc.png
 heroImageAlt: 'Alexandra Rose Charity case study'
 date: '2019-06-26'
+quote: "The simplified process of scanning the Rose Vouchers using the mobile app means that children's centres can register new families much faster. They're also able to download and access the data which helps with the on-going management of the project and support they provide for families. For market traders using the app, payments are generated much faster which means there are no delays for the finance team. This means that we can maintain a higher retention rate for children's centres and traders as the sign-up process is much easier. Joining up the process for everyone involved means we can support more families on the Rose Vouchers for Fruit and Veg Project than ever before and meet the increasing need for access to fresh fruit and vegetables. For ARC, the data generated is fantastic, enabling us to manage growth and to monitor spend and churn rates, as well as being a crucial part of our reporting to funders."
+quoteAuthor: 'Faith Holland'
+quoteOrganisation: 'Head of Operations at ARC'
 ---
 
 The [Alexandra Rose Charity (ARC)](https://www.alexandrarose.org.uk/) is on a mission to address health inequalities and food poverty in the UK. It tackles food inequality directly by giving families access to fresh fruit and vegetables in their communities at their local market or greengrocer. Its [Rose Vouchers for Fruit and Veg Project](https://www.alexandrarose.org.uk/rose-vouchers/) allows families to redeem vouchers to provide them with access to healthy and affordable food.
@@ -48,8 +51,6 @@ The data analysis extends to more detailed reporting than the previous approach,
 The increased access to data has allowed ARC to understand each voucher's journey and apply interventions when needed to help families who may be struggling. It also gives the charity an opportunity to monitor for potential fraudulent transactions. With the whole process now digitised, they can provide greater transparency around how each voucher is being used, which is especially important to prospective funders.
 
 Other benefits for ARC include the ability to record how many families are currently receiving help from Government initiatives such as [Healthy Start](https://www.healthystart.nhs.uk/), which offers formula milk, fruit, and vegetables to children under 4. This means they can store this information and, if needed, submit it to local authorities. This is significant as it provides trackable statistics and an overview of vulnerable people who may require more ongoing support. Including data on the number of people currently benefiting from the initiative. 
-
-> Faith concludes: "**The simplified process of scanning the Rose Vouchers using the mobile app means that children's centres can register new families much faster. They're also able to download and access the data which helps with the on-going management of the project and support they provide for families. For market traders using the app, payments are generated much faster which means there are no delays for the finance team. This means that we can maintain a higher retention rate for children's centres and traders as the sign-up process is much easier. Joining up the process for everyone involved means we can support more families on the Rose Vouchers for Fruit and Veg Project than ever before and meet the increasing need for access to fresh fruit and vegetables. For ARC, the data generated is fantastic, enabling us to manage growth and to monitor spend and churn rates, as well as being a crucial part of our reporting to funders.**"
 
 Since 2014 the number of:
 

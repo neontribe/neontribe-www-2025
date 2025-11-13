@@ -11,6 +11,9 @@ statistic: 'A Net Promoter score of 41% - Great'
 heroImage: ./images/parenting smart.png
 heroImageAlt: 'Parenting Smart on a smartphone'
 date: '2020-12-31'
+quote: "I have loved working with you and the team on Parenting Smart. And always hugely appreciated your ability to make digital technology concepts sound so accessible!"
+quoteAuthor: 'Cecilia Corbetta'
+quoteOrganisation: 'Place2Be'
 ---
 
 Place2Be has 25 years of experience providing mental health services in schools. They know that the issues children present are strongly affected by how parents cope. While offering one-to-one counselling and listening services for parents, there was an overwhelming demand for more parenting support. To address this demand in a time of reduced resources, Place2Be wanted to explore a digital component for their parenting work. The goal was to create an accessible, affordable, universally available, online offer to complement face-to-face interventions and improve family functioning and child mental health in more families.
@@ -36,8 +39,6 @@ Breaking down text into bite-size pieces was appreciated. Categorisation of topi
 Parents liked being able to ask specific questions, but were reluctant to admit when they didn't know something. Content perceived as contrary to their parenting or suggesting they were doing things wrong acted as a shaming trigger. Content suggesting actions they felt incapable of doing also caused frustration.
 
 This in depth research informed the subsequent Beta, and Delivery phases, which involved designing, building and refining the digital solution. The resulting product, Parenting Smart, is an online resource designed to present parenting advice in an easily digestible format to help parents when they have a moment to spare.
-
-> "I have loved working with you and the team on Parenting Smart [Harry Harrold](https://www.linkedin.com/in/harry-harrold-359336). And always hugely appreciated your ability to make digital technology concepts sound so accessible!" - _Cecilia Corbetta, Head of Parenting, Place2Be_
 
 ## Result
 

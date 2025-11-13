@@ -50,13 +50,19 @@
 }
 
 .section-light {
-  background-color: #f2f2f2;
+  background-color: #ffffff;
   color: var(--color-text-dark);
 }
 
 .section-intro {
   background-color: #f2f2f2;
   color: var(--color-text-dark);
+}
+
+
+main.section-intro,
+.section.section-intro {
+  background-color: #f2f2f2 !important;
 }
 
 /* Grid utilities */
@@ -211,6 +217,25 @@ header.section-dark + section.section-dark {
 }
 
 
+/* Case study sidebar */
+@media (max-width: 767px) {
+  .case-study-sidebar .quote-card,
+  .case-study-sidebar .statistics-block {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .case-study-sidebar .quote-card,
+  .case-study-sidebar .statistics-block {
+    width: calc(100% + 3rem);
+    margin-left: 0;
+    margin-right: -3rem;
+  }
+}
+
 /* Statistics block - Dark background */
 .statistics-block {
   background-color: var(--color-bg-dark);
@@ -276,9 +301,9 @@ header.section-dark + section.section-dark {
 
 .quote-card .quote-text {
   color: var(--quote-color);
-  font-family: var(--quote-font-family);
-  font-size: var(--quote-font-size);
-  font-weight: var(--quote-font-weight);
+  font-family: 'Mulish', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 400;
   line-height: 1.4;
   margin-bottom: var(--space-6);
   word-wrap: break-word;

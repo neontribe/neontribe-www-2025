@@ -11,6 +11,9 @@ statistic: 'More than 300 organisations now use Mind of my Own products.'
 heroImage: ./images/momo.png
 heroImageAlt: 'A graphic of the Mind Of My Own One app on a mobile phone.'
 date: '2019-06-26'
+quote: "Neontribe's expertise and professionalism was core to our first decade's work. The technology they built, and skills they helped us develop, mean we have a solid foundation for continued success at our core mission: getting young people's voices heard."
+quoteAuthor: 'Yvonne Anderson'
+quoteOrganisation: 'Mind of My Own'
 ---
 
 In 2013, the organisation's founders had a good idea which got them a grant from the Nominet Trust (now Social Tech Trust). The grant enabled Neontribe to design and build a prototype for what became Mind Of My Own's first product, the One app. This app was aimed at supporting young people to make their voices heard.
@@ -43,8 +46,6 @@ Our work for Mind Of My Own involved collaborating with a specialist member of t
 Throughout our relationship with them, working in partnership was essential. We enabled Mind Of My Own to concentrate on their core operations, knowing they could rely on us to deliver the software that helps make sure that the voices of young people are heard.
 
 We also helped them hone skills in product management, user research, user experience design, and information security. Now they have their own developers, but their vision remains the same. Better care and support happens when children are listened to, they get better care and support which ultimately improves their lives and prospects for the future.
-
-> Yvonne Anderson, a director of Mind of Own, says: "**Neontribe's expertise and professionalism was core to our first decade's work. The technology they built, and skills they helped us develop, mean we have a solid foundation for continued success at our core mission: getting young people's voices heard**"
 
 ## Result
 
