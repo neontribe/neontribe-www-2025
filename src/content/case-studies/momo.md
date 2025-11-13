@@ -47,8 +47,6 @@ Throughout our relationship with them, working in partnership was essential. We 
 
 We also helped them hone skills in product management, user research, user experience design, and information security. Now they have their own developers, but their vision remains the same. Better care and support happens when children are listened to, they get better care and support which ultimately improves their lives and prospects for the future.
 
-> Yvonne Anderson, a director of Mind of Own, says: "**Neontribe's expertise and professionalism was core to our first decade's work. The technology they built, and skills they helped us develop, mean we have a solid foundation for continued success at our core mission: getting young people's voices heard**"
-
 ## Result
 
 Mind Of My Own is now a sustainable business with a team of 25, and a vision that has social good at its heart. We were there from the start in 2013, and helped them transition to an internal development team in 2024. Mind Of My Own's products help young people speak for themselves, to those responsible for their experiences, at times that suit them. Hundreds of customers across Europe, New Zealand, and Australia embed the voice of many tens of thousands of young people into the heart of their work using these products.
