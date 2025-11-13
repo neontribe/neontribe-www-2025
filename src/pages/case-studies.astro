@@ -34,8 +34,8 @@ while (allCards.length < sortedCaseStudies.length + 2) {
   />
   <main id="content">
     <section class="section section-intro py-10 lg:py-12">
-      <div class="container">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+      <div class="w-full md:max-w-[1336px] md:mx-auto px-8 md:px-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 items-stretch">
           {allCards.map((entry, index) => {
             if (entry) {
               const slug = entry.id.replace(/\.md$/, '');
