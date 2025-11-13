@@ -42,8 +42,6 @@ It's now live at [https://www.realchatai.org](https://www.realchatai.org)
 
 Ongoing work includes developing a lesson plan for youth workers to use alongside the tool, and seeking further funding for hosting, maintenance, and improvements.
 
->"The co-creation model with young people at the driving seat was so important to me, the tech needs to be understood and shaped by those who will be using it." - _Jo Hutchinson, NCS_
-
 ## Result
 
 The project resulted in the delivery of [RealChatAI](https://www.realchatai.org). It provides young people with a way to interact with generative AI while surrounding its responses with content that puts its use in context and highlights potential issues such as bias or inaccuracy. It was shaped by extensive feedback from young people, addressing their desire to learn something new and gain fresh perspectives on AI issues. The tool is now being used by partner youth organisations, with plans for ongoing support and development.
