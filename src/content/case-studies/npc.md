@@ -7,6 +7,9 @@ categories:
 heroImage: ./images/npc.png
 heroImageAlt: 'A graphic of the New Philanthropy Capital Signposting+ document'
 date: '2024-09-03'
+quote: "Harry and the Neontribe team made a meaningful impact on the project's quality. They were pivotal in sharpening our plan and delivering the research activities. Their work delivered the user-centred insights that are so useful to the signposting services that help young people get the best outcomes they can."
+quoteAuthor: 'Penny Nkrumah'
+quoteOrganisation: 'New Philanthropy Capital'
 ---
 
 Neontribe has been involved with [NPC's "Signposting+"](https://www.thinknpc.org/examples-of-our-work/initiatives-were-working-on/signpost/) project since it began. Its core objective "to improve the quality of life for young people and communities, and the value that technology and data can bring to this" is dear to our hearts. We've been working on projects to benefit young people since we started up as an agency, and we're proud of the impact we've helped deliver.
