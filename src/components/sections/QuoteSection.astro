@@ -9,7 +9,7 @@ const caseStudies = await getCollection('case-studies');
 const MAX_QUOTE_LENGTH = 300;
 
 const caseStudiesWithQuotes = caseStudies
-  .filter(study => {
+  .filter((study) => {
     const hasQuote = study.data.quote && study.data.quoteAuthor && study.data.quoteOrganisation;
     if (!hasQuote) return false;
     // Only include shorter quotes for homepage
