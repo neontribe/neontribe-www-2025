@@ -40,8 +40,6 @@ Parents liked being able to ask specific questions, but were reluctant to admit 
 
 This in depth research informed the subsequent Beta, and Delivery phases, which involved designing, building and refining the digital solution. The resulting product, Parenting Smart, is an online resource designed to present parenting advice in an easily digestible format to help parents when they have a moment to spare.
 
-> "I have loved working with you and the team on Parenting Smart [Harry Harrold](https://www.linkedin.com/in/harry-harrold-359336). And always hugely appreciated your ability to make digital technology concepts sound so accessible!" - _Cecilia Corbetta, Head of Parenting, Place2Be_
-
 ## Result
 
 The project led to the development of Parenting Smart. It's an online space where parents can learn more about parenting in a quiet moment outside the school gate or elsewhere. This digital programme is based on Place2Be's Personalised Individual Parent Training (PIPT) intervention, and was created using funding from the Nominet Trust.
