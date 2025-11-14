@@ -11,6 +11,9 @@ statistic: 'Helped 15-17 year olds understand and use generative AI.'
 heroImage: ./images/real chat ai.png
 heroImageAlt: 'RealChatAI on a smartphone'
 date: '2025-06-10'
+quote: "The co-creation model with young people at the driving seat was so important to me, the tech needs to be understood and shaped by those who will be using it."
+quoteAuthor: 'Jo Hutchinson'
+quoteOrganisation: 'NCS'
 ---
 
 The project was initiated by the [National Citizen Service](https://wearencs.com) (NCS) and the [Centre for the Acceleration of Social Technology](https://www.wearecast.org.uk) (CAST), who commissioned Neontribe to explore how to support young people (aged 15-17) in becoming thoughtful makers and critical users of generative AI. The focus was on developing a tool to be used outside the standard school curriculum. Collaborating closely with youth organisations and young people was fundamental to the project's co-creation approach, which followed the Design Council's "Double Diamond" model.
@@ -38,8 +41,6 @@ Based on this feedback, we focused on developing ThinkAI. Technical development 
 It's now live at [https://www.realchatai.org](https://www.realchatai.org)
 
 Ongoing work includes developing a lesson plan for youth workers to use alongside the tool, and seeking further funding for hosting, maintenance, and improvements.
-
->"The co-creation model with young people at the driving seat was so important to me, the tech needs to be understood and shaped by those who will be using it." - _Jo Hutchinson, NCS_
 
 ## Result
 
