@@ -2,6 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import HeaderHeroContainer from '../components/sections/HeaderHeroContainer.astro';
 import Footer from '../components/layout/Footer.astro';
+import Form from '../components/Form/Form.astro';
+import FormField from '../components/Form/FormField.astro';
+import Button from '../components/Button/Button.astro';
 ---
 
 <Layout title="Talk to us" description="Get in touch with Neontribe for digital expertise and advice">
@@ -14,7 +17,40 @@ import Footer from '../components/layout/Footer.astro';
     <!-- White background section -->
     <section class="section section-light py-16 md:py-20">
       <div class="container">
-        <!-- Empty section -->
+        <div class="form-container">
+          <Form 
+            title="Let us know how we can help"
+            action="/talk-to-us"
+            method="post"
+          >
+            <div class="form-row">
+              <FormField 
+                type="text" 
+                name="name" 
+                label="Name" 
+                required 
+                class="form-field-half"
+              />
+              <FormField 
+                type="email" 
+                name="email" 
+                label="Email address" 
+                required 
+                class="form-field-half"
+              />
+            </div>
+            <FormField 
+              type="textarea" 
+              name="enquiry" 
+              label="Your enquiry" 
+              required 
+              rows={6}
+            />
+            <div class="form-submit">
+              <Button type="submit" variant="teal">Submit</Button>
+            </div>
+          </Form>
+        </div>
       </div>
     </section>
   </main>
