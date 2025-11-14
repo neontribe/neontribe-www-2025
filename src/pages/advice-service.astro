@@ -2,6 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import HeaderHeroContainer from '../components/sections/HeaderHeroContainer.astro';
 import Footer from '../components/layout/Footer.astro';
+import Form from '../components/Form/Form.astro';
+import FormField from '../components/Form/FormField.astro';
+import Button from '../components/Button/Button.astro';
 ---
 
 <Layout title="Advice Service">
@@ -11,9 +14,55 @@ import Footer from '../components/layout/Footer.astro';
     icon="advice-service" 
   />
   <main id="content">
-    <section class="section section-light py-16">
-      <div class="container">
-        <p class="text-base text-text-dark">Service placeholder.</p>
+    <section class="section section-intro py-16 md:py-20">
+      <div class="w-full md:max-w-[1336px] md:mx-auto px-8 md:px-10">
+        <div class="form-container">
+          <Form 
+            title="Not sure where to start?"
+            description="Complete our advice service form so we can get things started."
+            action="/advice-service"
+            method="post"
+          >
+            <div class="form-row">
+              <FormField 
+                type="text" 
+                name="name" 
+                label="Name" 
+                required 
+                class="form-field-half"
+              />
+              <FormField 
+                type="email" 
+                name="email" 
+                label="Email address" 
+                required 
+                class="form-field-half"
+              />
+            </div>
+            <FormField 
+              type="text" 
+              name="reachMethod" 
+              label="How is it best for us to reach you?" 
+              required 
+            />
+            <FormField 
+              type="text" 
+              name="organisation" 
+              label="What organisation(s) do you work for?" 
+              required 
+            />
+            <FormField 
+              type="textarea" 
+              name="problem" 
+              label="Can you describe the problems you are" 
+              required 
+              rows={6}
+            />
+            <div class="form-submit">
+              <Button type="submit" variant="teal">Submit</Button>
+            </div>
+          </Form>
+        </div>
       </div>
     </section>
   </main>

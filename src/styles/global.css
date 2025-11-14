@@ -380,3 +380,120 @@ header.section-dark + section.section-dark {
     transition: none !important;
   }
 }
+
+/* =========================
+   FORM COMPONENTS
+========================= */
+.form {
+  width: 100%;
+  max-width: 100%;
+}
+
+.form-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--color-text-dark);
+  margin-bottom: 1rem;
+  line-height: var(--leading-tight);
+}
+
+.form-description {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-text-dark);
+  margin-bottom: 2rem;
+  line-height: var(--leading-relaxed);
+}
+
+.form-fields {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--font-regular);
+  color: var(--color-text-dark);
+  line-height: 1.5;
+  display: block;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.5;
+  color: var(--color-text-dark);
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0;
+  transition: border-color 0.2s ease, outline 0.2s ease;
+  box-sizing: border-box;
+  appearance: none;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: 2px solid var(--color-accent-amethyst);
+  outline-offset: 2px;
+  border-color: var(--color-accent-amethyst);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: #9ca3af;
+  opacity: 1;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+  font-family: inherit;
+}
+
+.form-container {
+  max-width: 100%;
+  width: 100%;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.form-submit {
+  margin-top: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .form-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-description {
+    margin-bottom: 2.5rem;
+  }
+
+  .form-row {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+
+  .form-field-half {
+    flex: 1;
+    margin-bottom: 1.5rem;
+  }
+}

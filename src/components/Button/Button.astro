@@ -6,6 +6,7 @@ export interface Props {
   external?: boolean;
   ariaLabel?: string;
   class?: string;
+  type?: "button" | "submit" | "reset";
 }
 
 const {
@@ -15,6 +16,7 @@ const {
   external = false,
   ariaLabel,
   class: className,
+  type = "button",
 } = Astro.props;
 
 
@@ -80,7 +82,7 @@ const focusStyle = variant === 'link' ? '' : `
   </a>
 ) : (
   <button
-    type="button"
+    type={type}
     aria-label={ariaLabel}
     class={className}
     style={`${baseStyle}; border: none; cursor: pointer;`}
