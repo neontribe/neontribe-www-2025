@@ -1,0 +1,56 @@
+---
+export interface Props {
+  type?: 'text' | 'email' | 'textarea';
+  name: string;
+  label: string;
+  required?: boolean;
+  placeholder?: string;
+  value?: string;
+  rows?: number;
+  class?: string;
+  id?: string;
+}
+
+const {
+  type = 'text',
+  name,
+  label,
+  required = false,
+  placeholder,
+  value,
+  rows = 4,
+  class: className = '',
+  id,
+} = Astro.props;
+
+const fieldId = id || `field-${name}`;
+const isTextarea = type === 'textarea';
+---
+
+<div class={`form-field ${className}`}>
+  <label for={fieldId} class="form-label">
+    {label}
+  </label>
+  {isTextarea ? (
+    <textarea
+      id={fieldId}
+      name={name}
+      rows={rows}
+      required={required}
+      placeholder={placeholder}
+      class="form-input form-textarea"
+      value={value}
+    ></textarea>
+  ) : (
+    <input
+      id={fieldId}
+      type={type}
+      name={name}
+      required={required}
+      placeholder={placeholder}
+      class="form-input"
+      value={value}
+    />
+  )}
+</div>
+

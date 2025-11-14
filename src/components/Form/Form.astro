@@ -1,0 +1,35 @@
+---
+export interface Props {
+  action?: string;
+  method?: 'get' | 'post';
+  title?: string;
+  description?: string;
+  class?: string;
+}
+
+const {
+  action = '/',
+  method = 'post',
+  title,
+  description,
+  class: className = '',
+} = Astro.props;
+---
+
+<form 
+  action={action} 
+  method={method}
+  class={`form ${className}`}
+  novalidate
+>
+  {title && (
+    <h2 class="form-title">{title}</h2>
+  )}
+  {description && (
+    <p class="form-description">{description}</p>
+  )}
+  <div class="form-fields">
+    <slot />
+  </div>
+</form>
+
