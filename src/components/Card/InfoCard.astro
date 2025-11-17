@@ -3,11 +3,13 @@ export interface Props {
   title: string;
   body?: string;
   description?: string;
+  titleSize?: 'large' | 'small';
   class?: string;
 }
 
-const { title, body, description, class: className = '' } = Astro.props;
+const { title, body, description, titleSize = 'large', class: className = '' } = Astro.props;
 const content = body || description || '';
+const titleClass = titleSize === 'small' ? 'text-[22px] font-bold' : 'text-2xl font-bold';
 ---
 
 <div class={`flex flex-col h-full bg-[var(--color-bg-light)] relative ${className}`}>
@@ -16,12 +18,12 @@ const content = body || description || '';
   
   <div class="ml-1 p-6 md:p-8">
     {title && (
-      <h3 class="font-heading text-xl md:text-2xl font-bold text-darker mb-4 leading-tight">
+      <h3 class={`font-heading ${titleClass} text-darker mb-4 leading-tight`}>
         {title}
       </h3>
     )}
     {content && (
-      <div class="font-body text-base leading-relaxed text-dark">
+      <div class="font-body text-base text-dark" style="line-height: 1.5;">
         <p class="m-0">{content}</p>
       </div>
     )}
