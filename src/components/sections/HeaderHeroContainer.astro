@@ -12,7 +12,7 @@ const { title, subtitle, icon = 'case-studies' } = Astro.props;
 ---
 
 <!-- Container that matches Figma: 1512px width, 576px height -->
-<div class="header-hero-container bg-bg-dark w-full flex flex-col overflow-hidden">
+<div class="header-hero-container bg-bg-dark w-full flex flex-col overflow-visible md:overflow-hidden relative">
   <Header />
   <PageHero title={title} subtitle={subtitle} icon={icon} />
 </div>
@@ -30,6 +30,26 @@ const { title, subtitle, icon = 'case-studies' } = Astro.props;
   @media (min-width: 768px) {
     .header-hero-container :global(.section-dark) {
       padding: 0px 0px 120px 0px;
+    }
+  }
+  
+  /* Remove any line/border between header and hero on mobile */
+  @media (max-width: 767px) {
+    .header-hero-container {
+      background-color: var(--color-bg-dark) !important;
+      gap: 0 !important;
+    }
+    .header-hero-container :global(header.section-dark) {
+      border-bottom: none !important;
+      margin-bottom: 0 !important;
+      padding-bottom: 0 !important;
+      background-color: var(--color-bg-dark) !important;
+    }
+    .header-hero-container :global(section.section-dark) {
+      border-top: none !important;
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+      background-color: var(--color-bg-dark) !important;
     }
   }
 </style>
