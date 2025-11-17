@@ -5,6 +5,7 @@ import GetInTouch from '../components/sections/GetInTouch.astro';
 import Footer from '../components/layout/Footer.astro';
 import HowWeCanHelp from '../components/sections/HowWeCanHelp.astro';
 import InfoCard from '../components/Card/InfoCard.astro';
+import Box from '../components/sections/Box.astro';
 ---
 
 <Layout title="How we work">
@@ -16,30 +17,27 @@ import InfoCard from '../components/Card/InfoCard.astro';
   <main id="content">
 
     <!-- Our principles section -->
-    <section class="section section-light py-16 md:py-20">
-      <div class="w-full md:max-w-[1336px] md:mx-auto px-8 md:px-10">
-        <h2 class="font-heading text-4xl md:text-5xl font-bold text-[#090909] mb-8 md:mb-12">
-          Our principles
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-          <InfoCard
-            title="We work in the open"
-            body="We share our thinking through blog posts and at events like UKCharityCamp, and we're always happy to talk about what we've learned."
-          />
-          <InfoCard
-            title="We are honest"
-            body="We'll be frank with you about issues we spot, and about the technology solutions we think will work best for you."
-          />
-          <InfoCard
-            title="We are expert"
-            body="We've been working in the charity sector for over a decade, and we can draw on the expertise of the wider dxw family when we need to."
-          />
-          <InfoCard
-            title="We'll be your trusted partner"
-            body="We earn your trust by being open, honest and expert. And once we've earned it, we work hard to keep it."
-          />
-        </div>
+    <section class="w-screen bg-bg-light left-1/2 -translate-x-1/2 relative">
+      <Box sectionHeading="Our principles" cardBackground="grey">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        <InfoCard
+          title="We work in the open"
+          body="Our openness is shown by our in-depth blog posts, and our convening UKCharityCamp; a place for the whole sector to share what works."
+        />
+        <InfoCard
+          title="We are honest"
+          body="We'll be frank about the issues you're facing, and how technology might help. If it's better not to build a new service; we'll say so."
+        />
+        <InfoCard
+          title="We are expert"
+          body="As well as Neontribe's experience of working for impact in the charity sector, we can call on the wider dxw family for deep expertise when we need it."
+        />
+        <InfoCard
+          title="We'll be your trusted partner"
+          body="Trust is earned, and by open, honest, expertise, we've built long relationships with the charities we help."
+        />
       </div>
+      </Box>
     </section>
     
     <HowWeCanHelp 
