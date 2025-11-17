@@ -5,6 +5,7 @@ import Footer from '../components/layout/Footer.astro';
 import Form from '../components/Form/Form.astro';
 import FormField from '../components/Form/FormField.astro';
 import Button from '../components/Button/Button.astro';
+import InfoCard from '../components/Card/InfoCard.astro';
 ---
 
 <Layout title="Advice Service">
@@ -14,6 +15,29 @@ import Button from '../components/Button/Button.astro';
     icon="advice-service" 
   />
   <main id="content">
+    <!-- We'd like to know section -->
+    <section class="section section-intro py-16 md:py-20">
+      <div class="w-full md:max-w-[1336px] md:mx-auto px-8 md:px-10">
+        <h2 class="font-heading text-4xl md:text-5xl font-bold text-[#090909] mb-8 md:mb-12">
+          We'd like to know
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-16 md:mb-20">
+          <InfoCard
+            title="Who you are"
+          />
+          <InfoCard
+            title="What organisations you work for"
+          />
+          <InfoCard
+            title="How we can reach you"
+          />
+          <InfoCard
+            title="What's the problem"
+          />
+        </div>
+      </div>
+    </section>
+    
     <section class="section section-intro py-16 md:py-20">
       <div class="w-full md:max-w-[1336px] md:mx-auto px-8 md:px-10">
         <div class="form-container">
