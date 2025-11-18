@@ -8,12 +8,12 @@ const currentPath = Astro.url.pathname;
   <a href="#content" class="skip-link">Skip to main content</a>
 
   <div class="w-full flex justify-center">
-    <div class="w-full md:max-w-[1420px] md:mx-auto flex items-center justify-between h-16 md:h-12 py-0">
+    <div class="w-full md:max-w-[1420px] md:mx-auto flex items-center justify-between py-0 header-container">
       <div class="px-4 md:px-10 flex items-center justify-between w-full">
     <!-- Logo -->
     <div class="flex-shrink-0">
       <a href="/" aria-label="Go to homepage" class="block">
-        <img src={fullLogo.src} alt="Neontribe" class="h-6 w-auto block" />
+        <img src={fullLogo.src} alt="Neontribe" class="h-6 md:h-8 w-auto block" />
       </a>
     </div>
 
@@ -87,13 +87,6 @@ const currentPath = Astro.url.pathname;
     padding:8px; border-radius:4px; z-index:1000; transition:top .3s;
   }
   .skip-link:focus{ top:6px; }
-
-  .nav-link{
-    color:var(--color-text-light); text-decoration:none; font-size:1.125rem; font-weight:400;
-    transition:color .2s ease; padding-block:.25rem;
-  }
-  .nav-link:hover{ color:var(--color-accent-turquoise); }
-  .nav-link.active{ color:var(--color-accent-turquoise); font-weight:600; }
 
   .mobile-toggle{ z-index:1101; }
   .mobile-toggle:focus{ outline:2px solid var(--color-accent-turquoise); outline-offset:2px; }
