@@ -48,13 +48,44 @@ const iconDesktopMap = {
       
       <!-- Content -->
       <div class="flex-1 max-w-4xl">
-        <h1 class="text-3xl font-bold text-white mb-2 leading-tight">
+        <h1 class="page-hero-title font-bold text-white mb-2">
           {title}
         </h1>
-        <p class="text-xl text-text-light leading-relaxed max-w-3xl font-normal mx-auto md:mx-0">
+        <p class="hero-subtitle text-text-light leading-relaxed max-w-3xl font-normal mx-auto md:mx-0" 
+           style="font-family: 'Mulish', sans-serif; font-weight: 400;">
           {subtitle}
         </p>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  .page-hero-title {
+    font-size: 40px; /* Mobile: 40px */
+    line-height: 1.0; /* 100% line-height */
+    letter-spacing: 0; /* Normal letter-spacing */
+  }
+  
+  @media (min-width: 768px) {
+    .page-hero-title {
+      font-size: 74px; /* Desktop: 74px */
+      line-height: 1.0; /* 100% line-height */
+      letter-spacing: 0; /* Normal letter-spacing */
+    }
+  }
+  
+  .hero-subtitle {
+    font-size: 18px; /* Mobile: 18px */
+    line-height: 1.4; /* Appropriate line-height for body text */
+    letter-spacing: 0; /* Normal letter-spacing */
+  }
+  
+  @media (min-width: 768px) {
+    .hero-subtitle {
+      font-size: 20px; /* Desktop: 20px */
+      line-height: 1.4; 
+      letter-spacing: 0; /* Normal letter-spacing */
+    }
+  }
+</style>
