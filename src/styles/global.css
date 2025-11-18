@@ -75,12 +75,12 @@ main.section-intro,
 }
 
 /* =========================
-   BASE STYLES
+   BASE TYPOGRAPHY
 ========================= */
 html {
   font-family: var(--font-body);
-  font-size: 16px;
-  line-height: var(--leading-relaxed);
+  font-size: var(--base-font-size);
+  line-height: var(--leading-normal);
   height: 100%;
 }
 
@@ -124,14 +124,15 @@ header.section-dark + section.section-dark {
 .nav-link {
   color: var(--color-text-light);
   text-decoration: none;
-  font-size: 1.25rem; /* 20px - mobile */
-  font-weight: 700; /* bold */
+  font-size: var(--text-lg); /* 20px - mobile */
+  font-weight: var(--font-bold);
+  line-height: var(--leading-normal);
   transition: color 0.2s ease, text-decoration 0.2s ease;
   padding-block: 0.25rem;
 }
 @media (min-width: 768px) {
   .nav-link {
-    font-size: 1.5rem; /* 24px - desktop */
+    font-size: var(--text-xl); /* 24px - desktop */
   }
 }
 .nav-link.active {
@@ -149,6 +150,8 @@ header.section-dark + section.section-dark {
 
 /* =========================
    TYPOGRAPHY / MARKDOWN
+
+   Follows WCAG 2.2 accessibility standards (SC 1.4.12) for line-height and spacing.
 ========================= */
 .markdown-content {
   line-height: var(--leading-relaxed);
@@ -158,36 +161,36 @@ header.section-dark + section.section-dark {
 }
 
 .markdown-content h2 {
-  font-size: var(--text-2xl);
-  font-weight: var(--font-bold);
-  margin-top: var(--space-10);
-  margin-bottom: var(--space-6);
+  font-size: var(--heading-h2-font-size);
+  font-weight: var(--heading-h2-font-weight);
+  line-height: var(--heading-h2-line-height);
+  font-family: var(--heading-h2-font-family);
+  margin-top: var(--typography-spacing-xl);
+  margin-bottom: var(--typography-spacing-md);
   color: var(--color-text-darker);
-  line-height: var(--leading-tight);
-  font-family: var(--font-heading);
 }
 
 .markdown-content h3 {
-  font-size: var(--text-xl);
-  font-weight: var(--font-bold);
-  margin-top: var(--space-8);
-  margin-bottom: var(--space-4);
+  font-size: var(--heading-h3-font-size);
+  font-weight: var(--heading-h3-font-weight);
+  line-height: var(--heading-h3-line-height);
+  font-family: var(--heading-h3-font-family);
+  margin-top: var(--typography-spacing-lg);
+  margin-bottom: var(--typography-spacing-sm);
   color: var(--color-text-dark);
-  line-height: var(--leading-normal);
-  font-family: var(--font-heading);
 }
 
 .markdown-content p {
-  font-size: var(--text-base);
-  margin-bottom: var(--space-6);
-  line-height: var(--leading-relaxed);
+  font-size: var(--text-base); /* 18px (1.125rem) */
+  margin-bottom: var(--space-10); /* 40px (2.5rem) */
+  line-height: var(--leading-relaxed); /* 1.75  */
   font-family: var(--font-body);
 }
 
 .markdown-content ul,
 .markdown-content ol {
-  margin-top: var(--space-6);
-  margin-bottom: var(--space-6);
+  margin-top: var(--typography-spacing-md);
+  margin-bottom: var(--typography-spacing-md);
   padding-left: var(--space-8);
   list-style-position: outside;
 }
@@ -206,8 +209,8 @@ header.section-dark + section.section-dark {
 }
 
 .markdown-content li {
-  margin-top: var(--space-2);
-  margin-bottom: var(--space-2);
+  margin-top: var(--typography-spacing-xs);
+  margin-bottom: var(--typography-spacing-xs);
   line-height: var(--leading-normal);
 }
 
@@ -290,10 +293,10 @@ header.section-dark + section.section-dark {
 }
 
 .statistics-block .statistics-text {
-  font-family: 'Keep Calm', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 1.5;
+  font-family: var(--font-button);
+  font-weight: var(--font-medium);
+  font-size: var(--text-xl);
+  line-height: var(--leading-normal);
   margin: 0;
   color: #ffffff;
   flex: 1;
@@ -342,10 +345,10 @@ header.section-dark + section.section-dark {
 
 .quote-card .quote-text {
   color: var(--quote-color);
-  font-family: 'Mulish', sans-serif;
-  font-size: 1.125rem;
-  font-weight: 400;
-  line-height: 1.4;
+  font-family: var(--quote-font-family);
+  font-size: var(--quote-font-size);
+  font-weight: var(--quote-font-weight);
+  line-height: var(--quote-line-height);
   margin-bottom: var(--space-6);
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -398,11 +401,11 @@ header.section-dark + section.section-dark {
 }
 
 .quote-card .customer-name {
-  color: var(--color-text-light);
-  font-family: var(--font-body);
-  font-size: var(--text-base);
-  font-weight: var(--font-regular);
-  line-height: 1.5;
+  color: var(--customer-name-color);
+  font-family: var(--customer-name-font-family);
+  font-size: var(--customer-name-font-size);
+  font-weight: var(--customer-name-font-weight);
+  line-height: var(--customer-name-line-height);
   margin-bottom: var(--space-1);
 }
 
@@ -411,7 +414,7 @@ header.section-dark + section.section-dark {
   font-family: var(--font-body);
   font-size: var(--text-base);
   font-weight: var(--font-regular);
-  line-height: 1.5;
+  line-height: var(--leading-normal);
   opacity: 0.9;
 }
 
@@ -431,12 +434,12 @@ header.section-dark + section.section-dark {
 }
 
 .form-title {
-  font-family: var(--font-heading);
-  font-size: var(--text-2xl);
-  font-weight: var(--font-bold);
+  font-family: var(--heading-h2-font-family);
+  font-size: var(--heading-h2-font-size);
+  font-weight: var(--heading-h2-font-weight);
+  line-height: var(--heading-h2-line-height);
   color: var(--color-text-dark);
-  margin-bottom: 1rem;
-  line-height: var(--leading-tight);
+  margin-bottom: var(--typography-spacing-sm);
 }
 
 .form-description {
@@ -464,7 +467,7 @@ header.section-dark + section.section-dark {
   font-size: var(--text-base);
   font-weight: var(--font-regular);
   color: var(--color-text-dark);
-  line-height: 1.5;
+  line-height: var(--leading-normal);
   display: block;
 }
 
@@ -474,7 +477,7 @@ header.section-dark + section.section-dark {
   padding: 0.75rem 1rem;
   font-family: var(--font-body);
   font-size: var(--text-base);
-  line-height: 1.5;
+  line-height: var(--leading-normal);
   color: var(--color-text-dark);
   background-color: #ffffff;
   border: 1px solid #e5e7eb;
@@ -520,8 +523,8 @@ header.section-dark + section.section-dark {
 
 @media (min-width: 768px) {
   .form-title {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
+    font-size: var(--heading-h1-font-size);
+    margin-bottom: var(--typography-spacing-md);
   }
 
   .form-description {
