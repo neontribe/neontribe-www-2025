@@ -5,7 +5,7 @@ import smile from '../../assets/Smile.svg';
 <section class="section section-dark pt-8 pb-48 md:pt-20 lg:pt-24 lg:pb-80">
   <div class="w-full md:max-w-[1336px] md:mx-auto px-8 md:px-10">
     <div class="text-left md:text-center">
-      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-text-light leading-tight mb-6 hero-title-aligned">
+      <h1 class="hero-title font-bold text-text-light mb-6 hero-title-aligned">
         Digital services committed <br/> to tech for
         <span class="relative inline-block">g<span class="text-[#48E9CE]">oo</span>d<img src={smile.src} alt="" class="absolute left-0 w-[140px] h-[183px] hero-smile" /></span>
       </h1>
@@ -14,6 +14,20 @@ import smile from '../../assets/Smile.svg';
 </section>
 
 <style>
+  .hero-title {
+    font-size: 40px; /* Mobile: 40px */
+    line-height: 1.0; /* 100% line-height */
+    letter-spacing: 0; /* Normal letter-spacing */
+  }
+  
+  @media (min-width: 768px) {
+    .hero-title {
+      font-size: 74px; /* Desktop: 74px */
+      line-height: 1.0; /* 100% line-height */
+      letter-spacing: 0; /* Normal letter-spacing */
+    }
+  }
+  
   .hero-smile {
     bottom: -120px;
   }
