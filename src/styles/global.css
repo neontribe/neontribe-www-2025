@@ -110,13 +110,13 @@ header.section-dark + section.section-dark {
    HEADER STYLES
 ========================= */
 .header-container {
-  padding-top: 4rem; 
-  padding-bottom: 1.5rem; 
+  padding-top: 2rem; /* 32px - mobile */
+  padding-bottom: 1rem; /* 16px - mobile */
 }
 @media (min-width: 768px) {
   .header-container {
-    padding-top: 3rem; 
-    padding-bottom: 2rem; 
+    padding-top: 3rem; /* 48px - desktop */
+    padding-bottom: 2rem; /* 32px - desktop */
   }
 }
 
