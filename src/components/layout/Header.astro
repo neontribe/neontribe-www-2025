@@ -8,12 +8,12 @@ const currentPath = Astro.url.pathname;
   <a href="#content" class="skip-link">Skip to main content</a>
 
   <div class="w-full flex justify-center">
-    <div class="w-full md:max-w-[1420px] md:mx-auto flex items-center justify-between h-16 md:h-12 py-0">
+    <div class="w-full md:max-w-[1420px] md:mx-auto flex items-center justify-between py-0 header-container">
       <div class="px-4 md:px-10 flex items-center justify-between w-full">
     <!-- Logo -->
     <div class="flex-shrink-0">
       <a href="/" aria-label="Go to homepage" class="block">
-        <img src={fullLogo.src} alt="Neontribe" class="h-6 w-auto block" />
+        <img src={fullLogo.src} alt="Neontribe" class="h-6 md:h-8 w-auto block" />
       </a>
     </div>
 
@@ -88,17 +88,11 @@ const currentPath = Astro.url.pathname;
   }
   .skip-link:focus{ top:6px; }
 
-  .nav-link{
-    color:var(--color-text-light); text-decoration:none; font-size:1.125rem; font-weight:400;
-    transition:color .2s ease; padding-block:.25rem;
-  }
-  .nav-link:hover{ color:var(--color-accent-turquoise); }
-  .nav-link.active{ color:var(--color-accent-turquoise); font-weight:600; }
-
   .mobile-toggle{ z-index:1101; }
   .mobile-toggle:focus{ outline:2px solid var(--color-accent-turquoise); outline-offset:2px; }
   .mobile-toggle:hover{ background:rgba(255,255,255,.1); }
-  .hamburger-line{ width:18px; height:2px; background:var(--color-text-light); transition:transform .3s, opacity .3s; }
+  .hamburger-line{ width:18px; height:2px; background:var(--color-text-light); transition:transform .3s, opacity .3s, background .2s ease; }
+  .mobile-toggle:hover .hamburger-line{ background:#48E9CE; }
   .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(1){ transform:rotate(45deg) translate(4px,4px); }
   .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(2){ opacity:0; }
   .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(3){ transform:rotate(-45deg) translate(4px,-4px); }
@@ -124,13 +118,37 @@ const currentPath = Astro.url.pathname;
   }
 
   .mobile-link{
-    color:var(--color-text-light); text-decoration:none; font-size:1.5rem; font-weight:500;
-    padding:12px 24px; min-height:44px; display:flex; align-items:center; transition:color .2s ease;
+    color:var(--color-text-light); 
+    text-decoration:none; 
+    font-size:1.5rem; 
+    font-weight:500;
+    padding:12px 24px; 
+    min-height:44px; 
+    display:flex; 
+    align-items:center; 
+    transition:color .2s ease, text-decoration .2s ease, text-decoration-color .2s ease, text-decoration-thickness .2s ease;
     white-space:nowrap;
   }
-  .mobile-link:hover{ color:#d1d5db; }
-  .mobile-link:focus{ outline:2px solid var(--color-accent-amethyst); outline-offset:2px; border-radius:2px; }
-  .mobile-link.active{ color:var(--color-accent-turquoise); }
+  .mobile-link.active{ 
+    color:var(--color-accent-turquoise); 
+    text-decoration:none;
+  }
+  .mobile-link:hover,
+  .mobile-link.active:hover{ 
+    color:#48E9CE !important; 
+    text-decoration:underline !important;
+    text-decoration-color:#48E9CE !important;
+    text-decoration-thickness:2px !important;
+    text-underline-offset:0.25rem !important;
+  }
+  .mobile-link:focus{ 
+    outline:2px solid var(--color-accent-turquoise); 
+    outline-offset:2px; 
+    border-radius:2px; 
+  }
+  .mobile-link:active{ 
+    outline:none; 
+  }
 
   .mobile-cta{ margin-top:1rem; }
 

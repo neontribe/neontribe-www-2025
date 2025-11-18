@@ -107,6 +107,47 @@ header.section-dark + section.section-dark {
 }
 
 /* =========================
+   HEADER STYLES
+========================= */
+.header-container {
+  padding-top: 2rem; /* 32px - mobile */
+  padding-bottom: 1rem; /* 16px - mobile */
+}
+@media (min-width: 768px) {
+  .header-container {
+    padding-top: 3rem; /* 48px - desktop */
+    padding-bottom: 2rem; /* 32px - desktop */
+  }
+}
+
+/* Navigation link styles */
+.nav-link {
+  color: var(--color-text-light);
+  text-decoration: none;
+  font-size: 1.25rem; /* 20px - mobile */
+  font-weight: 700; /* bold */
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+  padding-block: 0.25rem;
+}
+@media (min-width: 768px) {
+  .nav-link {
+    font-size: 1.5rem; /* 24px - desktop */
+  }
+}
+.nav-link.active {
+  color: var(--color-accent-turquoise);
+  font-weight: 700;
+}
+.nav-link:hover,
+.nav-link.active:hover {
+  color: #48E9CE !important;
+  text-decoration: underline !important;
+  text-decoration-color: #48E9CE !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 0.25rem !important;
+}
+
+/* =========================
    TYPOGRAPHY / MARKDOWN
 ========================= */
 .markdown-content {
