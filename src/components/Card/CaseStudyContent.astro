@@ -83,8 +83,7 @@ const {
   }
 
   .case-study-content__text-section {
-    height: 180px; 
-    overflow: hidden; /* Prevent content from exceeding fixed height */
+    /* No fixed height on mobile - let content flow naturally */
   }
 
   @media (min-width: 768px) {
@@ -99,7 +98,8 @@ const {
     }
 
     .case-study-content__text-section {
-      height: 180px; 
+      height: 180px; /* Fixed height on desktop to align images */
+      overflow: hidden; /* Prevent content from exceeding fixed height */
     }
   }
 
@@ -111,6 +111,11 @@ const {
     .case-study-content__summary {
       font-size: var(--text-sm);
       margin-bottom: var(--space-2);
+    }
+
+    .case-study-content__text-section {
+      /* No height constraint on mobile - allow full text to display */
+      overflow: visible;
     }
   }
 </style>
