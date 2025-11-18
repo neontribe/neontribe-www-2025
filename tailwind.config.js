@@ -26,14 +26,16 @@ export default {
         'sans': ['Mulish', 'sans-serif'], // default
       },
       fontSize: {
-        'xs': ['0.75rem', '1.0'],
-        'sm': ['0.875rem', '1.0'],
-        'base': ['1.125rem', '1.0'], 
-        'lg': ['1.25rem', '1.0'],
-        'xl': ['1.5rem', '1.0'], 
-        '2xl': ['1.75rem', '1.0'], 
-        'heading': ['2.625rem', '1.2'], 
-        'link': ['1.25rem', '1.0'], 
+        'xs': ['0.75rem', '1.5'],      /* 12px - Small labels, captions */
+        'sm': ['0.875rem', '1.5'],     /* 14px - Secondary text */
+        'base': ['1.125rem', '1.5'],   /* 18px - Body text (WCAG compliant) */
+        'lg': ['1.25rem', '1.5'],      /* 20px - Links, buttons */
+        'xl': ['1.5rem', '1.5'],       /* 24px - Subheadings */
+        '2xl': ['1.75rem', '1.2'],     /* 28px - Small headings (h3, h4) */
+        '3xl': ['2rem', '1.2'],        /* 32px - Medium headings (h2) */
+        '4xl': ['2.5rem', '1.2'],      /* 40px - Large headings (h1) */
+        '5xl': ['3rem', '1.2'],        /* 48px - Hero headings (mobile) */
+        '6xl': ['3.75rem', '1.2'],     /* 60px - Hero headings (desktop) */
       },
       maxWidth: {
         'container': '1200px',      // Max content width from Figma
