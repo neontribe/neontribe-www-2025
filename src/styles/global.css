@@ -134,16 +134,17 @@ header.section-dark + section.section-dark {
     font-size: 1.5rem; /* 24px - desktop */
   }
 }
-.nav-link:hover {
-  color: #48E9CE;
-  text-decoration: underline;
-  text-decoration-color: #48E9CE;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 0.25rem;
-}
 .nav-link.active {
   color: var(--color-accent-turquoise);
   font-weight: 700;
+}
+.nav-link:hover,
+.nav-link.active:hover {
+  color: #48E9CE !important;
+  text-decoration: underline !important;
+  text-decoration-color: #48E9CE !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 0.25rem !important;
 }
 
 /* =========================
