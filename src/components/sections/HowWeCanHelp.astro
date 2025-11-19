@@ -22,18 +22,18 @@ import howWeWorkDiagram from '../../assets/How-we-work.svg';
   style="min-height: 578px;"
 >
   <div class="w-full md:max-w-[1336px] md:mx-auto">
-    <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center p-8 md:p-10" style="min-height: 578px;">
+    <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-start p-8 md:p-10" style="min-height: 578px;">
       <!-- Image: first on mobile, second (right) on desktop -->
-      <div class="relative flex items-center justify-center order-1 md:order-2" style="min-height: 400px;">
+      <div class="relative flex items-start justify-center order-1 md:order-2 md:pt-3 lg:pt-4" style="min-height: auto; md:min-height: 400px;">
         <img 
           src={howWeWorkDiagram.src} 
           alt="Design process: Discover, Define, Develop, Deliver"
-          class="w-full max-w-[400px] md:max-w-[450px] h-auto"
+          class="w-full max-w-[450px] md:max-w-[480px] h-auto"
         />
       </div>
 
       <!-- Text: second on mobile, first (left) on desktop -->
-      <div style="width: 100%; max-width: 572px; min-height: 353px;" class="flex flex-col justify-center order-2 md:order-1">
+      <div style="width: 100%; max-width: 572px; min-height: 353px;" class="flex flex-col justify-start order-2 md:order-1">
         <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">
           {title}
         </h2>
