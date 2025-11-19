@@ -39,7 +39,7 @@ const {
 
   {linkHref && linkText && (
     <a href={linkHref} class="case-study-content__link" aria-label={`${linkText} - ${title}`}>
-      {linkText} →
+      {linkText} <span style="font-size: var(--text-xl);">→</span>
     </a>
   )}
 </div>
