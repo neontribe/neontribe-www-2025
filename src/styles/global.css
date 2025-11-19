@@ -233,6 +233,20 @@ header.section-dark + section.section-dark {
   padding-bottom: var(--space-16);
 }
 
+/* Ensure images don't overflow on mobile in case study content */
+@media (max-width: 767px) {
+  .case-study-content {
+    overflow-x: hidden;
+  }
+  
+  .case-study-content img,
+  .case-study-content video,
+  .case-study-content iframe,
+  .case-study-content table {
+    max-width: 100%;
+  }
+}
+
 /* Result Section with Sidebar Layout */
 .case-study-content .result-section {
   display: grid;
@@ -317,6 +331,22 @@ header.section-dark + section.section-dark {
 .markdown-content a:hover {
   color: var(--color-accent-turquoise);
   text-decoration: none;
+}
+
+/* Images in markdown content - Mobile responsive */
+.markdown-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: var(--space-6) 0;
+}
+
+@media (max-width: 767px) {
+  .markdown-content img {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
 /* =========================
