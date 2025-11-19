@@ -25,7 +25,7 @@
   --font-button: 'Keep Calm', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   
   /* Base Font Size */
-  --base-font-size: 16px;
+  --base-font-size: 1rem;
   
   /* Font Sizes - Typography Scale */
   --text-xs: 0.75rem;      /* 12px - Small labels, captions */

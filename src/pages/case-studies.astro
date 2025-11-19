@@ -36,70 +36,6 @@ while (allCards.length < sortedCaseStudies.length + 2) {
     <section class="section section-intro py-10 lg:py-12">
       <div class="w-full md:max-w-[1336px] md:mx-auto px-8 md:px-10">
         <div class="case-studies-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 items-stretch">
-<script is:inline>
-  // Align images by setting equal text section heights on desktop
-  (function() {
-    function alignCardImages() {
-      const textSections = document.querySelectorAll('.case-study-content__text-section');
-      if (textSections.length === 0) return;
-      
-      // Reset heights first
-      textSections.forEach(function(section) {
-        if (section instanceof HTMLElement) {
-          section.style.height = 'auto';
-        }
-      });
-      
-      // Find max height
-      let maxHeight = 0;
-      textSections.forEach(function(section) {
-        if (section instanceof HTMLElement) {
-          const height = section.offsetHeight;
-          if (height > maxHeight) {
-            maxHeight = height;
-          }
-        }
-      });
-      
-      // Apply max height to all sections
-      if (maxHeight > 0) {
-        textSections.forEach(function(section) {
-          if (section instanceof HTMLElement) {
-            section.style.height = maxHeight + 'px';
-          }
-        });
-      }
-    }
-    
-    // Run on load
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', function() {
-        if (window.innerWidth >= 768) {
-          alignCardImages();
-        }
-      });
-    } else {
-      if (window.innerWidth >= 768) {
-        alignCardImages();
-      }
-    }
-    
-    // Run on resize
-    window.addEventListener('resize', function() {
-      if (window.innerWidth >= 768) {
-        alignCardImages();
-      } else {
-        // Reset on mobile
-        const textSections = document.querySelectorAll('.case-study-content__text-section');
-        textSections.forEach(function(section) {
-          if (section instanceof HTMLElement) {
-            section.style.height = 'auto';
-          }
-        });
-      }
-    });
-  })();
-</script>
           {allCards.map((entry, index) => {
             if (entry) {
               const slug = entry.id.replace(/\.md$/, '');
@@ -147,5 +83,23 @@ while (allCards.length < sortedCaseStudies.length + 2) {
     <Footer />
   </div>
 </Layout>
+
+<style>
+  /* Align card images by ensuring text sections have consistent height - replaces JavaScript */
+  @media (min-width: 768px) {
+    /* Grid already stretches items, ensure cards fill height */
+    .case-studies-grid .case-study-card {
+      height: 100%;
+    }
+    
+    /* Make text sections use flexbox for consistent alignment */
+    /* Since cards are same height from grid, text sections will align naturally */
+    .case-study-content__text-section {
+      display: flex;
+      flex-direction: column;
+      /* Cards in same row will have same height, so text sections align */
+    }
+  }
+</style>
 
 
