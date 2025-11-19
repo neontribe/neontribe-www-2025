@@ -20,25 +20,25 @@ const {
 } = Astro.props;
 ---
 
-<div class={`flex flex-col h-full ${className}`}>
-  <div class="flex flex-col gap-4 h-auto md:h-[180px]">
-    <h3 class="case-study-content__title -mt-2 text-left">{title}</h3>
+<div class={`case-study-content__wrapper ${className}`}>
+  <div class="case-study-content__text-section">
+    <h3 class="case-study-content__title text-left">{title}</h3>
     {summary && <p class="case-study-content__summary text-left">{summary}</p>}
   </div>
 
   {imageSrc && (
-    <div class="relative w-full aspect-[4/3] overflow-hidden mb-4">
+    <div class="case-study-content__image-wrapper">
       <img 
         src={typeof imageSrc === 'string' ? imageSrc : imageSrc.src} 
         alt={altText} 
         loading="lazy" 
-        class="w-full h-full object-contain block" 
+        class="case-study-content__image" 
       />
     </div>
   )}
 
   {linkHref && linkText && (
-    <a href={linkHref} class="mt-auto inline-block no-underline transition-opacity duration-200 hover:opacity-80 focus-visible:outline-2 focus-visible:outline-[var(--color-accent-amethyst)] focus-visible:outline-offset-2 focus-visible:rounded-sm case-study-content__link text-left" aria-label={`${linkText} - ${title}`}>
+    <a href={linkHref} class="case-study-content__link" aria-label={`${linkText} - ${title}`}>
       {linkText} →
     </a>
   )}
@@ -52,6 +52,9 @@ const {
     font-weight: var(--font-bold);
     color: var(--color-text-darker);
     text-align: left;
+    margin: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   .case-study-content__summary {
@@ -61,6 +64,9 @@ const {
     line-height: var(--leading-relaxed);
     color: var(--color-text-dark);
     text-align: left;
+    margin: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   .case-study-content__link {
@@ -72,11 +78,70 @@ const {
     display: inline-block;
   }
 
+  .case-study-content__wrapper {
+    padding-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .case-study-content__text-section {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .case-study-content__image-wrapper {
+    flex: 0 0 auto;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+
+  .case-study-content__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .case-study-content__link {
+    margin-top: auto;
+    flex: 0 0 auto;
+  }
+
   @media (min-width: 768px) {
     .case-study-content__title,
     .case-study-content__summary,
     .case-study-content__link {
       text-align: left;
+    }
+
+    .case-study-content__wrapper {
+      padding-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .case-study-content__text-section {
+      flex: 0 0 auto;
+      margin-bottom: 1rem;
+      /* Height will be set by JavaScript to align images */
+    }
+
+    .case-study-content__image-wrapper {
+      flex: 0 0 auto;
+      margin-bottom: 1rem;
+    }
+
+    .case-study-content__link {
+      margin-top: auto;
+      flex: 0 0 auto;
     }
   }
 
@@ -86,8 +151,18 @@ const {
     }
 
     .case-study-content__summary {
-      font-size: var(--text-sm);
+      font-size: var(--text-base); /* 18px */
       margin-bottom: var(--space-2);
+      display: block; /* Remove line-clamp on mobile */
+      -webkit-line-clamp: unset;
+      -webkit-box-orient: unset;
+      overflow: visible; /* Show full text on mobile */
+    }
+
+    .case-study-content__text-section {
+      /* No height constraint on mobile - allow full text to display */
+      height: auto;
+      overflow: visible;
     }
   }
 </style>

@@ -104,15 +104,9 @@ const buttonHref = slug ? `/case-studies/${slug}` : null;
 <style>
   .latest-work-button-wrapper a,
   .latest-work-button-wrapper button {
-    font-weight: 400 !important;
-    font-size: 20px !important;
-    font-family: var(--font-button) !important;
-  }
-  
-  @media (min-width: 768px) {
-    .latest-work-button-wrapper a,
-    .latest-work-button-wrapper button {
-      font-size: 20px !important;
-    }
+    font-weight: var(--button-font-weight) !important;
+    font-size: var(--button-font-size) !important;
+    font-family: var(--button-font-family) !important;
+    line-height: var(--button-line-height) !important;
   }
 </style>
