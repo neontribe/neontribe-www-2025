@@ -78,7 +78,7 @@ const focusStyle = variant === 'link' ? '' : `
     onmouseup={`this.style.transform='none'`}
   >
     <span><slot /></span>
-    <span class="button-arrow" style={`color: ${iconColor}; font-size: var(--text-base); line-height: 1;`} aria-hidden="true">→</span>
+    <span class="button-arrow" style={`color: ${iconColor}; font-size: var(--text-xl); line-height: 1;`} aria-hidden="true">→</span>
   </a>
 ) : (
   <button
@@ -95,7 +95,7 @@ const focusStyle = variant === 'link' ? '' : `
     onmouseup={`this.style.transform='none'`}
   >
     <span><slot /></span>
-    <span class="button-arrow" style={`color: ${iconColor}; font-size: var(--text-base); line-height: 1;`} aria-hidden="true">→</span>
+    <span class="button-arrow" style={`color: ${iconColor}; font-size: var(--text-xl); line-height: 1;`} aria-hidden="true">→</span>
   </button>
 )}
 
