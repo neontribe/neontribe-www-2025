@@ -30,6 +30,7 @@ const isTextarea = type === 'textarea';
 <div class={`form-field ${className}`}>
   <label for={fieldId} class="form-label">
     {label}
+    {required && <span class="form-required" aria-label="required">*</span>}
   </label>
   {isTextarea ? (
     <textarea
@@ -40,6 +41,8 @@ const isTextarea = type === 'textarea';
       placeholder={placeholder}
       class="form-input form-textarea"
       value={value}
+      aria-required={required}
+      aria-invalid="false"
     ></textarea>
   ) : (
     <input
@@ -50,6 +53,8 @@ const isTextarea = type === 'textarea';
       placeholder={placeholder}
       class="form-input"
       value={value}
+      aria-required={required}
+      aria-invalid="false"
     />
   )}
 </div>
