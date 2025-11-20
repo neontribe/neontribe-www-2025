@@ -5,6 +5,9 @@ export interface Props {
   title?: string;
   description?: string;
   class?: string;
+  formId?: string;
+  successMessage?: string;
+  errorMessage?: string;
 }
 
 const {
@@ -13,14 +16,21 @@ const {
   title,
   description,
   class: className = '',
+  formId,
+  successMessage = 'Thank you! Your message has been sent successfully.',
+  errorMessage = 'Sorry, there was an error submitting your form. Please try again.',
 } = Astro.props;
+
+const uniqueFormId = formId || `form-${Math.random().toString(36).substr(2, 9)}`;
 ---
 
 <form 
+  id={uniqueFormId}
   action={action} 
   method={method}
   class={`form ${className}`}
   novalidate
+  data-formbold-form
 >
   {title && (
     <h2 class="form-title">{title}</h2>
@@ -28,8 +38,192 @@ const {
   {description && (
     <p class="form-description">{description}</p>
   )}
+  
+  <!-- Success message (hidden by default) -->
+  <div 
+    class="form-message form-message-success" 
+    role="alert" 
+    aria-live="polite"
+    hidden
+  >
+    <p>{successMessage}</p>
+  </div>
+  
+  <!-- Error message (hidden by default) -->
+  <div 
+    class="form-message form-message-error" 
+    role="alert" 
+    aria-live="assertive"
+    hidden
+  >
+    <p>{errorMessage}</p>
+  </div>
+  
   <div class="form-fields">
     <slot />
   </div>
 </form>
+
+<script define:vars={{ formId: uniqueFormId }}>
+  (function() {
+    const form = document.getElementById(formId);
+    if (!form) return;
+    
+    const successMessage = form.querySelector('.form-message-success');
+    const errorMessage = form.querySelector('.form-message-error');
+    const submitButton = form.querySelector('button[type="submit"]');
+    const originalButtonText = submitButton?.textContent || 'Submit';
+    
+    // Helper function to get field label text for error messages
+    // Removes asterisk (*) and trims whitespace
+    function getFieldLabel(input) {
+      const id = input.id;
+      if (!id) return 'This field';
+      const label = form.querySelector(`label[for="${id}"]`);
+      if (label) {
+        return label.textContent.replace(/\*/g, '').trim();
+      }
+      return 'This field';
+    }
+
+    // Helper function to show inline error
+    function showFieldError(input, message) {
+      const errorId = `${input.id}-error`;
+      const errorElement = form.querySelector(`#${errorId}`);
+      if (errorElement) {
+        errorElement.textContent = message;
+        errorElement.hidden = false;
+      }
+      input.setAttribute('aria-invalid', 'true');
+      input.classList.add('form-input-invalid');
+    }
+
+    // Helper function to clear field error
+    function clearFieldError(input) {
+      const errorId = `${input.id}-error`;
+      const errorElement = form.querySelector(`#${errorId}`);
+      if (errorElement) {
+        errorElement.textContent = '';
+        errorElement.hidden = true;
+      }
+      input.setAttribute('aria-invalid', 'false');
+      input.classList.remove('form-input-invalid');
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      // Hide previous messages
+      if (successMessage) successMessage.hidden = true;
+      if (errorMessage) errorMessage.hidden = true;
+      
+      // Clear all field errors
+      const allFields = form.querySelectorAll('input, textarea');
+      allFields.forEach((field) => {
+        clearFieldError(field);
+      });
+      
+      // Validate form before submission
+      const formData = new FormData(form);
+      const requiredFields = form.querySelectorAll('[required]');
+      let isValid = true;
+      let firstInvalidField = null;
+      
+      // Check required fields
+      requiredFields.forEach((field) => {
+        const input = /** @type {HTMLInputElement | HTMLTextAreaElement} */ (field);
+        const value = input.value.trim();
+        const fieldLabel = getFieldLabel(input);
+        
+        // Check if required field is empty
+        if (!value) {
+          isValid = false;
+          showFieldError(input, `Please enter your ${fieldLabel.toLowerCase()}`);
+          if (!firstInvalidField) {
+            firstInvalidField = input;
+          }
+          return;
+        }
+        
+        // Validate email format
+        if (input.type === 'email' && value) {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(value)) {
+            isValid = false;
+            showFieldError(input, 'Please enter a valid email address');
+            if (!firstInvalidField) {
+              firstInvalidField = input;
+            }
+            return;
+          }
+        }
+      });
+      
+      // If validation fails, focus first invalid field
+      if (!isValid) {
+        if (firstInvalidField) {
+          firstInvalidField.focus();
+          firstInvalidField.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        return;
+      }
+      
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = 'Submitting...';
+      }
+      
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: formData,
+          headers: {
+            'Accept': 'application/json',
+          },
+        });
+        
+        if (response.ok) {
+          if (successMessage) {
+            successMessage.hidden = false;
+            form.reset();
+            successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+        } else {
+          // Server-side error (FormBold)
+          // TODO: When FormBold is integrated, check if response includes field-specific errors
+          // If so, parse and show inline errors similar to client-side validation
+          const responseData = await response.json().catch(() => ({}));
+          
+          // If FormBold returns field-specific errors, can parse them here
+          
+          if (errorMessage) {
+            errorMessage.hidden = false;
+            errorMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+        }
+      } catch (error) {
+        // Network errors
+        if (errorMessage) {
+          errorMessage.hidden = false;
+          errorMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = originalButtonText;
+        }
+      }
+    });
+
+    // Clear field errors when user starts typing
+    const allInputs = form.querySelectorAll('input, textarea');
+    allInputs.forEach((input) => {
+      input.addEventListener('input', () => {
+        if (input.getAttribute('aria-invalid') === 'true') {
+          clearFieldError(input);
+        }
+      });
+    });
+  })();
+</script>
 

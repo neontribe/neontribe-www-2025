@@ -5,6 +5,10 @@ import Footer from '../components/layout/Footer.astro';
 import Form from '../components/Form/Form.astro';
 import FormField from '../components/Form/FormField.astro';
 import Button from '../components/Button/Button.astro';
+
+const submitted = Astro.url.searchParams.get("submitted") === "true";
+const testMode = Astro.url.searchParams.get("test");
+const formAction = testMode === 'error' ? '/api/mock-endpoint?test=error' : '/api/mock-endpoint';
 ---
 
 <Layout title="Talk to us" description="Get in touch with Neontribe for digital expertise and advice">
@@ -17,10 +21,15 @@ import Button from '../components/Button/Button.astro';
     <!-- Light grey background section -->
     <section class="section section-intro py-16 md:py-20">
       <div class="w-full md:max-w-[1336px] md:mx-auto px-8 md:px-10">
+        {submitted && (
+          <div class="success-banner" role="alert" aria-live="polite">
+            <p>Thanks — your message has been sent.</p>
+          </div>
+        )}
         <div class="form-container">
           <Form 
             title="Let us know how we can help"
-            action="/talk-to-us"
+            action={formAction}
             method="post"
           >
             <div class="form-row">
@@ -41,7 +50,7 @@ import Button from '../components/Button/Button.astro';
             </div>
             <FormField 
               type="textarea" 
-              name="enquiry" 
+              name="message" 
               label="Your enquiry" 
               required 
               rows={6}
