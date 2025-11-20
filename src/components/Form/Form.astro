@@ -5,6 +5,9 @@ export interface Props {
   title?: string;
   description?: string;
   class?: string;
+  formId?: string;
+  successMessage?: string;
+  errorMessage?: string;
 }
 
 const {
@@ -13,14 +16,21 @@ const {
   title,
   description,
   class: className = '',
+  formId,
+  successMessage = 'Thank you! Your message has been sent successfully.',
+  errorMessage = 'Sorry, there was an error submitting your form. Please try again.',
 } = Astro.props;
+
+const uniqueFormId = formId || `form-${Math.random().toString(36).substr(2, 9)}`;
 ---
 
 <form 
+  id={uniqueFormId}
   action={action} 
   method={method}
   class={`form ${className}`}
   novalidate
+  data-formbold-form
 >
   {title && (
     <h2 class="form-title">{title}</h2>
@@ -28,8 +38,89 @@ const {
   {description && (
     <p class="form-description">{description}</p>
   )}
+  
+  <!-- Success message (hidden by default) -->
+  <div 
+    class="form-message form-message-success" 
+    role="alert" 
+    aria-live="polite"
+    hidden
+  >
+    <p>{successMessage}</p>
+  </div>
+  
+  <!-- Error message (hidden by default) -->
+  <div 
+    class="form-message form-message-error" 
+    role="alert" 
+    aria-live="assertive"
+    hidden
+  >
+    <p>{errorMessage}</p>
+  </div>
+  
   <div class="form-fields">
     <slot />
   </div>
 </form>
+
+<script define:vars={{ formId: uniqueFormId }}>
+  (function() {
+    const form = document.getElementById(formId);
+    if (!form) return;
+    
+    const successMessage = form.querySelector('.form-message-success');
+    const errorMessage = form.querySelector('.form-message-error');
+    const submitButton = form.querySelector('button[type="submit"]');
+    const originalButtonText = submitButton?.textContent || 'Submit';
+    
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      // Hide previous messages
+      if (successMessage) successMessage.hidden = true;
+      if (errorMessage) errorMessage.hidden = true;
+      
+      // Disable submit button and show loading state
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = 'Submitting...';
+      }
+      
+      try {
+        const formData = new FormData(form);
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: formData,
+          headers: {
+            'Accept': 'application/json',
+          },
+        });
+        
+        if (response.ok) {
+          if (successMessage) {
+            successMessage.hidden = false;
+            form.reset();
+            successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+        } else {
+          if (errorMessage) {
+            errorMessage.hidden = false;
+            errorMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+        }
+      } catch (error) {
+        if (errorMessage) {
+          errorMessage.hidden = false;
+          errorMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = originalButtonText;
+        }
+      }
+    });
+  })();
+</script>
 
