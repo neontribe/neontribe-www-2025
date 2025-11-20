@@ -7,6 +7,10 @@ import FormField from '../components/Form/FormField.astro';
 import Button from '../components/Button/Button.astro';
 import InfoCard from '../components/Card/InfoCard.astro';
 import Box from '../components/sections/Box.astro';
+
+const submitted = Astro.url.searchParams.get("submitted") === "true";
+const testMode = Astro.url.searchParams.get("test"); 
+const formAction = testMode === 'error' ? '/api/mock-endpoint?test=error' : '/api/mock-endpoint';
 ---
 
 <Layout title="Advice Service">
@@ -42,11 +46,16 @@ import Box from '../components/sections/Box.astro';
     
     <section class="section section-intro py-16 md:py-20">
       <div class="w-full md:max-w-[1336px] md:mx-auto px-8 md:px-10">
+        {submitted && (
+          <div class="success-banner" role="alert" aria-live="polite">
+            <p>Thanks — your message has been sent.</p>
+          </div>
+        )}
         <div class="form-container">
           <Form 
             title="Not sure where to start?"
             description="Complete our advice service form so we can get things started."
-            action="/advice-service"
+            action={formAction}
             method="post"
           >
             <div class="form-row">
@@ -67,7 +76,7 @@ import Box from '../components/sections/Box.astro';
             </div>
             <FormField 
               type="text" 
-              name="reachMethod" 
+              name="contact_preference" 
               label="How is it best for us to reach you?" 
               required 
             />
@@ -80,7 +89,7 @@ import Box from '../components/sections/Box.astro';
             <FormField 
               type="textarea" 
               name="problem" 
-              label="Can you describe the problems you are" 
+              label="Describe the problem" 
               required 
               rows={6}
             />
