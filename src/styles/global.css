@@ -501,6 +501,11 @@ header.section-dark + section.section-dark {
   display: block;
 }
 
+.form-required {
+  color: #ef4444;
+  margin-left: 0.25rem;
+}
+
 .form-input,
 .form-textarea {
   width: 100%;
@@ -549,6 +554,42 @@ header.section-dark + section.section-dark {
 
 .form-submit {
   margin-top: 0.5rem;
+}
+
+.form-message {
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+}
+
+.form-message p {
+  margin: 0;
+}
+
+.form-message-success {
+  background-color: #d1fae5;
+  color: #065f46;
+  border: 1px solid #10b981;
+}
+
+.form-message-error {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #ef4444;
+}
+
+.form input:invalid:not(:focus):not(:placeholder-shown),
+.form textarea:invalid:not(:focus):not(:placeholder-shown) {
+  border-color: #ef4444;
+}
+
+.form input:invalid:not(:focus):not(:placeholder-shown):focus,
+.form textarea:invalid:not(:focus):not(:placeholder-shown):focus {
+  outline-color: #ef4444;
+  border-color: #ef4444;
 }
 
 @media (min-width: 768px) {
