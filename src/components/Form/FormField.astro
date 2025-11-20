@@ -24,6 +24,7 @@ const {
 } = Astro.props;
 
 const fieldId = id || `field-${name}`;
+const errorId = `${fieldId}-error`;
 const isTextarea = type === 'textarea';
 ---
 
@@ -43,6 +44,7 @@ const isTextarea = type === 'textarea';
       value={value}
       aria-required={required}
       aria-invalid="false"
+      aria-describedby={errorId}
     ></textarea>
   ) : (
     <input
@@ -55,7 +57,15 @@ const isTextarea = type === 'textarea';
       value={value}
       aria-required={required}
       aria-invalid="false"
+      aria-describedby={errorId}
     />
   )}
+  <div 
+    id={errorId}
+    class="form-field-error" 
+    role="alert" 
+    aria-live="polite"
+    hidden
+  ></div>
 </div>
 
