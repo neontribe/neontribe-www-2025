@@ -6,6 +6,7 @@ import Footer from '../components/layout/Footer.astro';
 import HowWeCanHelp from '../components/sections/HowWeCanHelp.astro';
 import InfoCard from '../components/Card/InfoCard.astro';
 import Box from '../components/sections/Box.astro';
+import WhoYoullBeWorkingWith from '../components/sections/WhoYoullBeWorkingWith.astro';
 ---
 
 <Layout title="How we work">
@@ -48,9 +49,16 @@ import Box from '../components/sections/Box.astro';
         "If you'd like to read about that in more depth; we've got a series of blog posts about a project for NCS/CAST where the question was \"How might we support young people to become thoughtful makers and critical users of this technology?\""
       ]}
     />
-    <!-- White background section -->
-    <section class="section section-light py-16 md:py-20">
-    </section>
+    
+    <!-- Who you'll be working with section -->
+    <WhoYoullBeWorkingWith
+      title="Who you'll be working with"
+      bodyText={[
+        "Some information on the team and the history of neontribe, and our dxw relationship and experience an go here."
+      ]}
+      buttonLabel="Talk to us"
+      buttonHref="/talk-to-us"
+    />
   </main>
   <div class="bg-bg-dark w-full">
     <GetInTouch />
