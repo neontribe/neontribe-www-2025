@@ -119,6 +119,7 @@ main.section-intro,
 
 .commitment-heading-mobile {
   display: block;
+  margin-bottom: var(--space-12);
 }
 
 .commitment-heading-desktop {
@@ -180,6 +181,12 @@ main.section-intro,
 .commitment-image-wrapper {
   width: 100%;
   position: relative;
+}
+
+@media (min-width: 768px) {
+  .commitment-image-wrapper {
+    padding-top: var(--space-8);
+  }
 }
 
 .commitment-decorative-image {
