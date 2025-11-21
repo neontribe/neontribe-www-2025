@@ -91,19 +91,22 @@ main.section-intro,
   }
 }
 
-.commitment-content {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-8);
+.commitment-container {
+  width: 100%;
+  max-width: 1336px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: calc(var(--space-1) + var(--space-8));
+  padding-right: var(--space-8);
 }
 
 @media (min-width: 768px) {
-  .commitment-content {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--gutter);
-    align-items: start;
+  .commitment-container {
+    padding-left: calc(var(--space-1) + var(--space-10));
+    padding-right: var(--space-10);
   }
 }
+
 
 .commitment-heading {
   font-family: var(--font-heading);
@@ -158,12 +161,26 @@ main.section-intro,
 
 .commitment-image-wrapper {
   width: 100%;
-  order: -1;
+  position: relative;
+}
+
+.commitment-decorative-image {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  z-index: 1;
+  width: auto;
+  height: auto;
+  max-width: 60px;
+  max-height: 60px;
 }
 
 @media (min-width: 768px) {
-  .commitment-image-wrapper {
-    order: 0;
+  .commitment-decorative-image {
+    top: -30px;
+    left: -30px;
+    max-width: 80px;
+    max-height: 80px;
   }
 }
 
@@ -172,6 +189,7 @@ main.section-intro,
   height: auto;
   display: block;
   object-fit: cover;
+  position: relative;
 }
 
 /* =========================
@@ -272,6 +290,56 @@ main.section-intro,
   height: auto;
   display: block;
   object-fit: cover;
+}
+
+/* =========================
+   TWO COLUMN LAYOUT
+========================= */
+.two-column-layout {
+  width: 100%;
+}
+
+.two-column-layout__container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+@media (min-width: 768px) {
+  .two-column-layout__container {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gutter);
+  }
+}
+
+.two-column-layout__content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.two-column-layout__media {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.two-column-layout__media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Ensure image column aligns with last grid column */
+@media (min-width: 1024px) {
+  .commitment-section .two-column-layout__container {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .commitment-section .two-column-layout__media {
+    margin-right: 0;
+  }
 }
 
 /* =========================
