@@ -175,6 +175,106 @@ main.section-intro,
 }
 
 /* =========================
+   WHO YOU'LL BE WORKING WITH SECTION
+========================= */
+.who-youll-be-working-with-section {
+  width: 100%;
+  background-color: var(--color-bg-light);
+  padding-top: var(--space-12);
+  padding-bottom: var(--space-12);
+}
+
+@media (min-width: 768px) {
+  .who-youll-be-working-with-section {
+    padding-top: var(--space-16);
+    padding-bottom: var(--space-16);
+  }
+}
+
+.who-youll-be-working-with-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+@media (min-width: 768px) {
+  .who-youll-be-working-with-content {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gutter);
+    align-items: start;
+  }
+}
+
+.who-youll-be-working-with-heading {
+  font-family: var(--font-heading);
+  font-size: var(--heading-h2-font-size);
+  font-weight: var(--heading-h2-font-weight);
+  line-height: var(--heading-h2-line-height);
+  color: var(--color-text-darker);
+  margin-bottom: var(--typography-spacing-md);
+}
+
+@media (min-width: 768px) {
+  .who-youll-be-working-with-heading {
+    font-size: var(--heading-h1-font-size);
+    margin-bottom: var(--typography-spacing-lg);
+  }
+}
+
+.who-youll-be-working-with-body {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--typography-spacing-md);
+}
+
+@media (min-width: 768px) {
+  .who-youll-be-working-with-body {
+    margin-bottom: var(--typography-spacing-lg);
+  }
+}
+
+.who-youll-be-working-with-paragraph {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--font-regular);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-dark);
+  margin-bottom: var(--typography-spacing-lg);
+}
+
+.who-youll-be-working-with-paragraph:last-of-type {
+  margin-bottom: 0;
+}
+
+.who-youll-be-working-with-button-wrapper {
+  margin-top: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .who-youll-be-working-with-button-wrapper {
+    margin-top: var(--space-6);
+  }
+}
+
+.who-youll-be-working-with-image-wrapper {
+  width: 100%;
+  order: -1;
+}
+
+@media (min-width: 768px) {
+  .who-youll-be-working-with-image-wrapper {
+    order: 0;
+  }
+}
+
+.who-youll-be-working-with-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* =========================
    BASE TYPOGRAPHY
 ========================= */
 html {
