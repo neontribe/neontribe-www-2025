@@ -1,13 +1,13 @@
 ---
 import Button from '../Button/Button.astro';
+import TwoColumnLayout from './TwoColumnLayout.astro';
 
 export interface Props {
   title: string;
   bodyText: string[];
   buttonLabel: string;
   buttonHref: string;
-  imageSrc?: string;
-  imageAlt?: string;
+  rightContent?: any;
 }
 
 const {
@@ -15,15 +15,14 @@ const {
   bodyText,
   buttonLabel,
   buttonHref,
-  imageSrc,
-  imageAlt = '',
+  rightContent,
 } = Astro.props;
 ---
 
 <section class="who-youll-be-working-with-section">
   <div class="container">
-    <div class="who-youll-be-working-with-content">
-      <div class="flex flex-col">
+    <TwoColumnLayout columnOrder="text-left" align="top">
+      <div slot="leftContent" class="flex flex-col">
         <h2 class="who-youll-be-working-with-heading">{title}</h2>
         
         <div class="who-youll-be-working-with-body">
@@ -39,16 +38,12 @@ const {
         </div>
       </div>
       
-      {imageSrc && (
-        <div class="who-youll-be-working-with-image-wrapper">
-          <img 
-            src={imageSrc} 
-            alt={imageAlt}
-            class="who-youll-be-working-with-image"
-          />
+      {rightContent && (
+        <div slot="rightContent" class="who-youll-be-working-with-right-content">
+          <slot name="rightContent" />
         </div>
       )}
-    </div>
+    </TwoColumnLayout>
   </div>
 </section>
 
