@@ -1,0 +1,49 @@
+---
+import Button from '../Button/Button.astro';
+import TwoColumnLayout from './TwoColumnLayout.astro';
+
+export interface Props {
+  title: string;
+  bodyText: string[];
+  buttonLabel: string;
+  buttonHref: string;
+  rightContent?: any;
+}
+
+const {
+  title,
+  bodyText,
+  buttonLabel,
+  buttonHref,
+  rightContent,
+} = Astro.props;
+---
+
+<section class="who-youll-be-working-with-section">
+  <div class="container">
+    <TwoColumnLayout columnOrder="text-left" align="top">
+      <div slot="leftContent" class="flex flex-col">
+        <h2 class="who-youll-be-working-with-heading">{title}</h2>
+        
+        <div class="who-youll-be-working-with-body">
+          {bodyText.map((paragraph) => (
+            <p class="who-youll-be-working-with-paragraph">{paragraph}</p>
+          ))}
+        </div>
+        
+        <div class="who-youll-be-working-with-button-wrapper">
+          <Button href={buttonHref} variant="primary" class="w-full md:w-auto">
+            {buttonLabel}
+          </Button>
+        </div>
+      </div>
+      
+      {rightContent && (
+        <div slot="rightContent" class="who-youll-be-working-with-right-content">
+          <slot name="rightContent" />
+        </div>
+      )}
+    </TwoColumnLayout>
+  </div>
+</section>
+

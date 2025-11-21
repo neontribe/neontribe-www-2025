@@ -7,6 +7,9 @@ import FormField from '../components/Form/FormField.astro';
 import Button from '../components/Button/Button.astro';
 import InfoCard from '../components/Card/InfoCard.astro';
 import Box from '../components/sections/Box.astro';
+import CommitmentSection from '../components/sections/CommitmentSection.astro';
+import harryInWorkshopImage from '../assets/HarryInWorkshop.svg';
+import postitImage from '../assets/Postit.svg';
 
 const submitted = Astro.url.searchParams.get("submitted") === "true";
 const testMode = Astro.url.searchParams.get("test"); 
@@ -43,6 +46,22 @@ const formAction = testMode === 'error' ? '/api/mock-endpoint?test=error' : '/ap
       </div>
       </Box>
     </section>
+    
+    <!-- Our commitment to you section -->
+    <CommitmentSection
+      title="Our commitment to you"
+      bodyText={[
+        "If we think we can help, we will. If you're nearby, we'll drop over with a stack of post-it notes and make a start on mapping things out.",
+        "If not, we'll offer a video call. Otherwise, we know a load of folk to point you at.",
+        "In no case will that hour cost you anything."
+      ]}
+      buttonLabel="Talk to us"
+      buttonHref="/talk-to-us"
+      imageSrc={harryInWorkshopImage.src}
+      imageAlt="Harry speaking at a workshop"
+      decorativeImageSrc={postitImage.src}
+      decorativeImageAlt=""
+    />
     
     <section class="section section-intro py-16 md:py-20">
       <div class="w-full md:max-w-[1336px] md:mx-auto px-8 md:px-10">

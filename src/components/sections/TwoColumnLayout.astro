@@ -1,0 +1,29 @@
+---
+export interface Props {
+  columnOrder?: 'text-left' | 'text-right';
+  align?: 'top' | 'center';
+  class?: string;
+}
+
+const {
+  columnOrder = 'text-left',
+  align = 'top',
+  class: className = '',
+} = Astro.props;
+
+const textOrder = columnOrder === 'text-left' ? 'order-1 md:order-1' : 'order-1 md:order-2';
+const mediaOrder = columnOrder === 'text-left' ? 'order-2 md:order-2' : 'order-2 md:order-1';
+const alignClass = align === 'center' ? 'items-center' : 'items-start';
+---
+
+<div class={`two-column-layout ${className}`}>
+  <div class={`two-column-layout__container ${alignClass}`}>
+    <div class={`two-column-layout__content ${textOrder}`}>
+      <slot name="leftContent" />
+    </div>
+    <div class={`two-column-layout__media ${mediaOrder}`}>
+      <slot name="rightContent" />
+    </div>
+  </div>
+</div>
+
