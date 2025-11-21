@@ -274,22 +274,106 @@ main.section-intro,
   }
 }
 
-.who-youll-be-working-with-image-wrapper {
+.who-youll-be-working-with-right-content {
   width: 100%;
-  order: -1;
+}
+
+/* =========================
+   HOW WE CAN HELP SECTION
+========================= */
+.how-we-can-help-section {
+  min-height: 578px;
+}
+
+.how-we-can-help-container {
+  width: 100%;
+  max-width: 1336px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-8);
+  padding-right: var(--container-padding-mobile);
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-8);
 }
 
 @media (min-width: 768px) {
-  .who-youll-be-working-with-image-wrapper {
-    order: 0;
+  .how-we-can-help-container {
+    padding-left: var(--space-10);
+    padding-right: var(--container-padding-desktop);
+    padding-top: var(--space-10);
+    padding-bottom: var(--space-10);
   }
 }
 
-.who-youll-be-working-with-image {
+.how-we-can-help-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
   width: 100%;
+  max-width: 572px;
+  min-height: 353px;
+}
+
+.how-we-can-help-heading {
+  font-size: var(--text-4xl);
+  font-weight: var(--font-bold);
+  margin-bottom: var(--space-6);
+  color: var(--color-text-light);
+}
+
+@media (min-width: 768px) {
+  .how-we-can-help-heading {
+    font-size: var(--text-5xl);
+  }
+}
+
+.how-we-can-help-paragraph {
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-light);
+  margin-bottom: var(--space-6);
+}
+
+.how-we-can-help-paragraph:last-of-type {
+  margin-bottom: var(--space-8);
+}
+
+@media (min-width: 768px) {
+  .how-we-can-help-paragraph {
+    font-size: var(--text-lg);
+  }
+}
+
+.how-we-can-help-button-wrapper {
+  margin-top: var(--space-2);
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .how-we-can-help-button-wrapper {
+    justify-content: flex-start;
+  }
+}
+
+.how-we-can-help-image-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.how-we-can-help-image {
+  width: 100%;
+  max-width: 420px;
   height: auto;
   display: block;
-  object-fit: cover;
+}
+
+@media (min-width: 768px) {
+  .how-we-can-help-image {
+    max-width: 450px;
+  }
 }
 
 /* =========================
