@@ -117,10 +117,26 @@ main.section-intro,
   margin-bottom: var(--typography-spacing-md);
 }
 
+.commitment-heading-mobile {
+  display: block;
+}
+
+.commitment-heading-desktop {
+  display: none;
+}
+
 @media (min-width: 768px) {
   .commitment-heading {
     font-size: var(--heading-h1-font-size);
     margin-bottom: var(--typography-spacing-lg);
+  }
+  
+  .commitment-heading-mobile {
+    display: none;
+  }
+  
+  .commitment-heading-desktop {
+    display: block;
   }
 }
 
@@ -151,11 +167,13 @@ main.section-intro,
 
 .commitment-button-wrapper {
   margin-top: var(--space-4);
+  width: 100%;
 }
 
 @media (min-width: 768px) {
   .commitment-button-wrapper {
     margin-top: var(--space-6);
+    width: auto;
   }
 }
 
@@ -266,11 +284,13 @@ main.section-intro,
 
 .who-youll-be-working-with-button-wrapper {
   margin-top: var(--space-4);
+  width: 100%;
 }
 
 @media (min-width: 768px) {
   .who-youll-be-working-with-button-wrapper {
     margin-top: var(--space-6);
+    width: auto;
   }
 }
 
@@ -366,11 +386,13 @@ main.section-intro,
   margin-top: var(--space-2);
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 @media (min-width: 768px) {
   .how-we-can-help-button-wrapper {
     justify-content: flex-start;
+    width: auto;
   }
 }
 
@@ -450,6 +472,26 @@ main.section-intro,
   height: auto;
   display: block;
   object-fit: cover;
+}
+
+/* Mobile: invert order - image first, then text */
+.commitment-layout .two-column-layout__content {
+  order: 2;
+}
+
+.commitment-layout .two-column-layout__media {
+  order: 1;
+}
+
+/* Desktop: restore normal order - text left, image right */
+@media (min-width: 768px) {
+  .commitment-layout .two-column-layout__content {
+    order: 1;
+  }
+  
+  .commitment-layout .two-column-layout__media {
+    order: 2;
+  }
 }
 
 /* Ensure image column aligns with last grid column */

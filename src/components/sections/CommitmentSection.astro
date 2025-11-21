@@ -31,9 +31,10 @@ const {
 
 <section class="commitment-section">
   <div class="commitment-container">
-    <TwoColumnLayout columnOrder={columnOrder} align={align}>
+    <h2 class="commitment-heading commitment-heading-mobile">{title}</h2>
+    <TwoColumnLayout columnOrder={columnOrder} align={align} class="commitment-layout">
       <div slot="leftContent" class="flex flex-col">
-        <h2 class="commitment-heading">{title}</h2>
+        <h2 class="commitment-heading commitment-heading-desktop">{title}</h2>
         
         <div class="commitment-body">
           {bodyText.map((paragraph) => (
@@ -42,7 +43,7 @@ const {
         </div>
         
         <div class="commitment-button-wrapper">
-          <Button href={buttonHref} variant="primary">
+          <Button href={buttonHref} variant="primary" class="w-full md:w-auto">
             {buttonLabel}
           </Button>
         </div>
