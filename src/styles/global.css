@@ -361,18 +361,28 @@ main.section-intro,
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 100%;
+  padding-top: var(--space-8);
+  padding-left: var(--space-42);
+}
+
+@media (min-width: 768px) {
+  .how-we-can-help-image-wrapper {
+    padding-top: var(--space-12);
+    padding-left: var(--space-6);
+  }
 }
 
 .how-we-can-help-image {
   width: 100%;
-  max-width: 420px;
+  max-width: 320px;
   height: auto;
   display: block;
 }
 
 @media (min-width: 768px) {
   .how-we-can-help-image {
-    max-width: 450px;
+    max-width: 360px;
   }
 }
 
