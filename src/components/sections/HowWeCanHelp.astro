@@ -8,6 +8,7 @@ export interface Props {
   paragraphs: string[];
   buttonText?: string;
   buttonHref?: string;
+  imageSize?: 'default' | 'large';
 }
 
 const {
@@ -15,6 +16,7 @@ const {
   paragraphs,
   buttonText = "Sound good? Let's chat",
   buttonHref = "/talk-to-us",
+  imageSize = 'default',
 } = Astro.props;
 ---
 
@@ -37,7 +39,7 @@ const {
         </div>
       </div>
       
-      <div slot="rightContent" class="how-we-can-help-image-wrapper">
+      <div slot="rightContent" class={`how-we-can-help-image-wrapper ${imageSize === 'large' ? 'how-we-can-help-image-large' : ''}`}>
         <img 
           src={howWeWorkDiagram.src} 
           alt="Design process: Discover, Define, Develop, Deliver"
