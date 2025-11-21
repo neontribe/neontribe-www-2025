@@ -55,14 +55,14 @@
 }
 
 .section-intro {
-  background-color: #f2f2f2;
+  background-color: var(--color-bg-light);
   color: var(--color-text-dark);
 }
 
 
 main.section-intro,
 .section.section-intro {
-  background-color: #f2f2f2 !important;
+  background-color: var(--color-bg-light) !important;
 }
 
 /* Grid utilities */
@@ -72,6 +72,106 @@ main.section-intro,
 
 .grid-responsive {
   @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8;
+}
+
+/* =========================
+   COMMITMENT SECTION
+========================= */
+.commitment-section {
+  width: 100%;
+  background-color: var(--color-bg-light);
+  padding-top: var(--space-16);
+  padding-bottom: var(--space-16);
+}
+
+@media (min-width: 768px) {
+  .commitment-section {
+    padding-top: var(--space-20);
+    padding-bottom: var(--space-20);
+  }
+}
+
+.commitment-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+@media (min-width: 768px) {
+  .commitment-content {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gutter);
+    align-items: start;
+  }
+}
+
+.commitment-heading {
+  font-family: var(--font-heading);
+  font-size: var(--heading-h2-font-size);
+  font-weight: var(--heading-h2-font-weight);
+  line-height: var(--heading-h2-line-height);
+  color: var(--color-text-darker);
+  margin-bottom: var(--typography-spacing-md);
+}
+
+@media (min-width: 768px) {
+  .commitment-heading {
+    font-size: var(--heading-h1-font-size);
+    margin-bottom: var(--typography-spacing-lg);
+  }
+}
+
+.commitment-body {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--typography-spacing-lg);
+}
+
+@media (min-width: 768px) {
+  .commitment-body {
+    margin-bottom: var(--typography-spacing-xl);
+  }
+}
+
+.commitment-paragraph {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--font-regular);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-dark);
+  margin-bottom: var(--typography-spacing-lg);
+}
+
+.commitment-paragraph:last-of-type {
+  margin-bottom: 0;
+}
+
+.commitment-button-wrapper {
+  margin-top: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .commitment-button-wrapper {
+    margin-top: var(--space-6);
+  }
+}
+
+.commitment-image-wrapper {
+  width: 100%;
+  order: -1;
+}
+
+@media (min-width: 768px) {
+  .commitment-image-wrapper {
+    order: 0;
+  }
+}
+
+.commitment-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
 }
 
 /* =========================
