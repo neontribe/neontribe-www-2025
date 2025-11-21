@@ -1,5 +1,6 @@
 ---
 import Button from '../Button/Button.astro';
+import TwoColumnLayout from './TwoColumnLayout.astro';
 
 export interface Props {
   title: string;
@@ -8,6 +9,10 @@ export interface Props {
   buttonHref: string;
   imageSrc?: string;
   imageAlt?: string;
+  decorativeImageSrc?: string;
+  decorativeImageAlt?: string;
+  columnOrder?: 'text-left' | 'text-right';
+  align?: 'top' | 'center';
 }
 
 const {
@@ -17,13 +22,17 @@ const {
   buttonHref,
   imageSrc,
   imageAlt = '',
+  decorativeImageSrc,
+  decorativeImageAlt = '',
+  columnOrder = 'text-left',
+  align = 'top',
 } = Astro.props;
 ---
 
 <section class="commitment-section">
-  <div class="container">
-    <div class="commitment-content">
-      <div class="flex flex-col">
+  <div class="commitment-container">
+    <TwoColumnLayout columnOrder={columnOrder} align={align}>
+      <div slot="leftContent" class="flex flex-col">
         <h2 class="commitment-heading">{title}</h2>
         
         <div class="commitment-body">
@@ -40,7 +49,14 @@ const {
       </div>
       
       {imageSrc && (
-        <div class="commitment-image-wrapper">
+        <div slot="rightContent" class="commitment-image-wrapper">
+          {decorativeImageSrc && (
+            <img 
+              src={decorativeImageSrc} 
+              alt={decorativeImageAlt}
+              class="commitment-decorative-image"
+            />
+          )}
           <img 
             src={imageSrc} 
             alt={imageAlt}
@@ -48,7 +64,7 @@ const {
           />
         </div>
       )}
-    </div>
+    </TwoColumnLayout>
   </div>
 </section>
 
