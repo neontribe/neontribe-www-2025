@@ -31,6 +31,7 @@ const uniqueFormId = formId || `form-${Math.random().toString(36).substr(2, 9)}`
   class={`form ${className}`}
   novalidate
   data-formbold-form
+  data-form-id={uniqueFormId}
 >
   {title && (
     <h2 class="form-title">{title}</h2>
@@ -64,13 +65,21 @@ const uniqueFormId = formId || `form-${Math.random().toString(36).substr(2, 9)}`
   </div>
 </form>
 
-<script define:vars={{ formId: uniqueFormId }}>
+<script>
   (function() {
-    const form = document.getElementById(formId);
+    // Use data attribute to find form to avoid issues with formId variable injection
+    // Find the form that contains the submit button when clicked
+    const forms = document.querySelectorAll('form[data-formbold-form]');
+    if (forms.length === 0) return;
     
-    const successMessage = form.querySelector('.form-message-success');
-    const errorMessage = form.querySelector('.form-message-error');
-    const submitButton = form.querySelector('button[type="submit"]');
+    // For now, just use the first form found
+    // In practice, each form will have its own script instance
+    const formElement = forms[0];
+    const form = /** @type {HTMLFormElement} */ (formElement);
+    
+    const successMessage = /** @type {HTMLElement | null} */ (form.querySelector('.form-message-success'));
+    const errorMessage = /** @type {HTMLElement | null} */ (form.querySelector('.form-message-error'));
+    const submitButton = /** @type {HTMLButtonElement | null} */ (form.querySelector('button[type="submit"]'));
     const originalButtonText = submitButton?.textContent || 'Submit';
     
     // Helper function to get field label text for error messages
@@ -88,7 +97,7 @@ const uniqueFormId = formId || `form-${Math.random().toString(36).substr(2, 9)}`
     // Helper function to show inline error
     function showFieldError(input, message) {
       const errorId = `${input.id}-error`;
-      const errorElement = form.querySelector(`#${errorId}`);
+      const errorElement = /** @type {HTMLElement | null} */ (form.querySelector(`#${errorId}`));
       if (errorElement) {
         errorElement.textContent = message;
         errorElement.hidden = false;
@@ -100,7 +109,7 @@ const uniqueFormId = formId || `form-${Math.random().toString(36).substr(2, 9)}`
     // Helper function to clear field error
     function clearFieldError(input) {
       const errorId = `${input.id}-error`;
-      const errorElement = form.querySelector(`#${errorId}`);
+      const errorElement = /** @type {HTMLElement | null} */ (form.querySelector(`#${errorId}`));
       if (errorElement) {
         errorElement.textContent = '';
         errorElement.hidden = true;
