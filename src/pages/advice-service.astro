@@ -12,6 +12,7 @@ import harryInWorkshopImage from '../assets/HarryInWorkshop.svg';
 import postitImage from '../assets/Postit.svg';
 
 const formAction = import.meta.env.FORMBOLD_ADVICE_SERVICE_ENDPOINT || '';
+const sectionHeading = "We'd like to know <span class=\"text-[#48E9CE]\">↓</span>";
 ---
 
 <Layout title="Advice Service">
@@ -23,7 +24,7 @@ const formAction = import.meta.env.FORMBOLD_ADVICE_SERVICE_ENDPOINT || '';
   <main id="content">
     <!-- We'd like to know section -->
     <section class="w-screen bg-bg-light left-1/2 -translate-x-1/2 relative">
-      <Box sectionHeading={`We'd like to know <span class="text-[#48E9CE]">↓</span>`} cardBackground="grey">
+      <Box sectionHeading={sectionHeading} cardBackground="grey">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
         <InfoCard
           title="Who you are"
@@ -115,5 +116,3 @@ const formAction = import.meta.env.FORMBOLD_ADVICE_SERVICE_ENDPOINT || '';
   </main>
   <Footer />
 </Layout>
-
-
