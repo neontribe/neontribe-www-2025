@@ -75,8 +75,8 @@ const focusStyle = variant === 'link' ? '' : `
     onmouseout={`this.style.cssText='${baseStyle}'`}
     onfocus={`this.style.cssText='${baseStyle}${hover}${focusStyle}'`}
     onblur={`this.style.cssText='${baseStyle}'`}
-    onmousedown={`this.style.transform='translateY(1px)'`}
-    onmouseup={`this.style.transform='none'`}
+    onmousedown="this.style.transform='translateY(1px)'"
+    onmouseup="this.style.transform='none'"
   >
     <span><slot /></span>
     <span class="button-arrow" style={`color: ${iconColor}; font-size: var(--text-xl); line-height: 1;`} aria-hidden="true">→</span>
@@ -92,8 +92,8 @@ const focusStyle = variant === 'link' ? '' : `
     onmouseout={`this.style.cssText='${baseStyle}; border: none; cursor: pointer;'`}
     onfocus={`this.style.cssText='${baseStyle}${hover}${focusStyle}; border: none; cursor: pointer;'`}
     onblur={`this.style.cssText='${baseStyle}; border: none; cursor: pointer;'`}
-    onmousedown={`this.style.transform='translateY(1px)'`}
-    onmouseup={`this.style.transform='none'`}
+    onmousedown="this.style.transform='translateY(1px)'"
+    onmouseup="this.style.transform='none'"
   >
     <span><slot /></span>
     <span class="button-arrow" style={`color: ${iconColor}; font-size: var(--text-xl); line-height: 1;`} aria-hidden="true">→</span>
