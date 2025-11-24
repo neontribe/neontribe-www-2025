@@ -64,10 +64,9 @@ const uniqueFormId = formId || `form-${Math.random().toString(36).substr(2, 9)}`
   </div>
 </form>
 
-<script define:vars={{ formId: uniqueFormId }} is:inline>
+<script define:vars={{ formId: uniqueFormId }}>
   (function() {
     const form = document.getElementById(formId);
-    if (!form) return;
     
     const successMessage = form.querySelector('.form-message-success');
     const errorMessage = form.querySelector('.form-message-error');
