@@ -13,6 +13,11 @@ import postitImage from '../assets/Postit.svg';
 
 const formAction = import.meta.env.FORMBOLD_ADVICE_SERVICE_ENDPOINT || '';
 const sectionHeading = "We'd like to know <span class=\"text-[#48E9CE]\">&#8595;</span>";
+
+
+if (import.meta.env.DEV) {
+  console.log('FORMBOLD_ADVICE_SERVICE_ENDPOINT:', formAction || 'NOT SET');
+}
 ---
 
 <Layout title="Advice Service">
