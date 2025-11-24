@@ -84,6 +84,9 @@ const uniqueFormId = formId || `form-${Math.random().toString(36).substr(2, 9)}`
     
     // Helper function to get field label text for error messages
     // Removes asterisk (*) and trims whitespace
+    /**
+     * @param {HTMLInputElement | HTMLTextAreaElement} input
+     */
     function getFieldLabel(input) {
       const id = input.id;
       if (!id) return 'This field';
@@ -95,6 +98,10 @@ const uniqueFormId = formId || `form-${Math.random().toString(36).substr(2, 9)}`
     }
 
     // Helper function to show inline error
+    /**
+     * @param {HTMLInputElement | HTMLTextAreaElement} input
+     * @param {string} message
+     */
     function showFieldError(input, message) {
       const errorId = `${input.id}-error`;
       const errorElement = /** @type {HTMLElement | null} */ (form.querySelector(`#${errorId}`));
@@ -107,6 +114,9 @@ const uniqueFormId = formId || `form-${Math.random().toString(36).substr(2, 9)}`
     }
 
     // Helper function to clear field error
+    /**
+     * @param {HTMLInputElement | HTMLTextAreaElement} input
+     */
     function clearFieldError(input) {
       const errorId = `${input.id}-error`;
       const errorElement = /** @type {HTMLElement | null} */ (form.querySelector(`#${errorId}`));
@@ -122,18 +132,18 @@ const uniqueFormId = formId || `form-${Math.random().toString(36).substr(2, 9)}`
       e.preventDefault();
       
       // Hide previous messages
-      if (successMessage) successMessage.hidden = true;
-      if (errorMessage) errorMessage.hidden = true;
+      if (successMessage) /** @type {HTMLElement} */ (successMessage).hidden = true;
+      if (errorMessage) /** @type {HTMLElement} */ (errorMessage).hidden = true;
       
       // Clear all field errors
-      const allFields = form.querySelectorAll('input, textarea');
+      const allFields = /** @type {NodeListOf<HTMLInputElement | HTMLTextAreaElement>} */ (form.querySelectorAll('input, textarea'));
       allFields.forEach((field) => {
         clearFieldError(field);
       });
       
       // Validate form before submission
-      const formData = new FormData(form);
-      const requiredFields = form.querySelectorAll('[required]');
+      const formData = new FormData(/** @type {HTMLFormElement} */ (form));
+      const requiredFields = /** @type {NodeListOf<HTMLInputElement | HTMLTextAreaElement>} */ (form.querySelectorAll('[required]'));
       let isValid = true;
       let firstInvalidField = null;
       
@@ -154,7 +164,7 @@ const uniqueFormId = formId || `form-${Math.random().toString(36).substr(2, 9)}`
         }
         
         // Validate email format
-        if (input.type === 'email' && value) {
+        if ('type' in input && input.type === 'email' && value) {
           const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
           if (!emailRegex.test(value)) {
             isValid = false;
@@ -177,21 +187,23 @@ const uniqueFormId = formId || `form-${Math.random().toString(36).substr(2, 9)}`
       }
       
       if (submitButton) {
-        submitButton.disabled = true;
+        /** @type {HTMLButtonElement} */ (submitButton).disabled = true;
         submitButton.textContent = 'Submitting...';
       }
       
       try {
-        const response = await fetch(form.action, {
-          method: form.method,
+        const formAction = /** @type {HTMLFormElement} */ (form).action;
+        const formMethod = /** @type {HTMLFormElement} */ (form).method;
+        const response = await fetch(formAction, {
+          method: formMethod,
           body: formData,
         });
         
         // FormBold returns 200 status on successful submission
         if (response.ok) {
           if (successMessage) {
-            successMessage.hidden = false;
-            form.reset();
+            /** @type {HTMLElement} */ (successMessage).hidden = false;
+            /** @type {HTMLFormElement} */ (form).reset();
             successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
           }
         } else {
@@ -203,25 +215,25 @@ const uniqueFormId = formId || `form-${Math.random().toString(36).substr(2, 9)}`
           }
           
           if (errorMessage) {
-            errorMessage.hidden = false;
+            /** @type {HTMLElement} */ (errorMessage).hidden = false;
             errorMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
           }
         }
       } catch (error) {
         if (errorMessage) {
-          errorMessage.hidden = false;
+          /** @type {HTMLElement} */ (errorMessage).hidden = false;
           errorMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
       } finally {
         if (submitButton) {
-          submitButton.disabled = false;
+          /** @type {HTMLButtonElement} */ (submitButton).disabled = false;
           submitButton.textContent = originalButtonText;
         }
       }
     });
 
     // Clear field errors when user starts typing
-    const allInputs = form.querySelectorAll('input, textarea');
+    const allInputs = /** @type {NodeListOf<HTMLInputElement | HTMLTextAreaElement>} */ (form.querySelectorAll('input, textarea'));
     allInputs.forEach((input) => {
       input.addEventListener('input', () => {
         if (input.getAttribute('aria-invalid') === 'true') {
