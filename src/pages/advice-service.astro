@@ -11,9 +11,7 @@ import CommitmentSection from '../components/sections/CommitmentSection.astro';
 import harryInWorkshopImage from '../assets/HarryInWorkshop.svg';
 import postitImage from '../assets/Postit.svg';
 
-const submitted = Astro.url.searchParams.get("submitted") === "true";
-const testMode = Astro.url.searchParams.get("test"); 
-const formAction = testMode === 'error' ? '/api/mock-endpoint?test=error' : '/api/mock-endpoint';
+const formAction = import.meta.env.FORMBOLD_ADVICE_SERVICE_ENDPOINT || '';
 ---
 
 <Layout title="Advice Service">
@@ -65,11 +63,6 @@ const formAction = testMode === 'error' ? '/api/mock-endpoint?test=error' : '/ap
     
     <section class="section section-intro py-16 md:py-20">
       <div class="w-full md:max-w-[1336px] md:mx-auto px-8 md:px-10">
-        {submitted && (
-          <div class="success-banner" role="alert" aria-live="polite">
-            <p>Thanks — your message has been sent.</p>
-          </div>
-        )}
         <div class="form-container">
           <Form 
             title="Not sure where to start?"
