@@ -38,36 +38,9 @@ const SIZE: Record<NonNullable<Props["size"]>, string> = {
   "get-in-touch": "padding: 12px 24px; height: 48px;",
 };
 
-const baseStyle = `
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  border-radius: 1px;
-  font-family: var(--button-font-family);
-  font-weight: var(--button-font-weight);
-  font-size: var(--button-font-size);
-  line-height: var(--button-line-height);
-  text-decoration: ${textDecoration || 'none'};
-  transition: filter 0.15s ease, transform 0.05s ease, opacity 0.15s ease;
-  background-color: ${bg};
-  color: ${color};
-  white-space: nowrap;
-  ${SIZE[size]}
-`;
+const baseStyle = `display: inline-flex; align-items: center; gap: 10px; border-radius: 1px; font-family: var(--button-font-family); font-weight: var(--button-font-weight); font-size: var(--button-font-size); line-height: var(--button-line-height); text-decoration: ${textDecoration || 'none'}; transition: filter 0.15s ease, transform 0.05s ease, opacity 0.15s ease; background-color: ${bg}; color: ${color}; white-space: nowrap; ${SIZE[size]}`;
 
-const focusStyle = variant === 'link' ? '' : `
-  outline: 2px solid #4B00E7;
-  outline-offset: 2px;
-`;
-
-function normalizeCSS(str: string): string {
-  if (!str) return '';
-  return str.replace(/\s+/g, ' ').trim();
-}
-
-const baseStyleNormalized = normalizeCSS(baseStyle);
-const hoverNormalized = normalizeCSS(hover);
-const focusStyleNormalized = normalizeCSS(focusStyle);
+const focusStyle = variant === 'link' ? '' : `outline: 2px solid #4B00E7; outline-offset: 2px;`;
 ---
 
 {href ? (
@@ -78,10 +51,10 @@ const focusStyleNormalized = normalizeCSS(focusStyle);
     aria-label={ariaLabel}
     class={className}
     style={baseStyle}
-    onmouseover={`this.style.cssText="${baseStyleNormalized}${hoverNormalized}"`}
-    onmouseout={`this.style.cssText="${baseStyleNormalized}"`}
-    onfocus={`this.style.cssText="${baseStyleNormalized}${hoverNormalized}${focusStyleNormalized}"`}
-    onblur={`this.style.cssText="${baseStyleNormalized}"`}
+    onmouseover={`this.style.cssText="${baseStyle}${hover}"`}
+    onmouseout={`this.style.cssText="${baseStyle}"`}
+    onfocus={`this.style.cssText="${baseStyle}${hover}${focusStyle}"`}
+    onblur={`this.style.cssText="${baseStyle}"`}
     onmousedown="this.style.transform='translateY(1px)'"
     onmouseup="this.style.transform='none'"
   >
@@ -94,10 +67,10 @@ const focusStyleNormalized = normalizeCSS(focusStyle);
     aria-label={ariaLabel}
     class={className}
     style={`${baseStyle}; border: none; cursor: pointer;`}
-    onmouseover={`this.style.cssText="${baseStyleNormalized}${hoverNormalized}; border: none; cursor: pointer;"`}
-    onmouseout={`this.style.cssText="${baseStyleNormalized}; border: none; cursor: pointer;"`}
-    onfocus={`this.style.cssText="${baseStyleNormalized}${hoverNormalized}${focusStyleNormalized}; border: none; cursor: pointer;"`}
-    onblur={`this.style.cssText="${baseStyleNormalized}; border: none; cursor: pointer;"`}
+    onmouseover={`this.style.cssText="${baseStyle}${hover}; border: none; cursor: pointer;"`}
+    onmouseout={`this.style.cssText="${baseStyle}; border: none; cursor: pointer;"`}
+    onfocus={`this.style.cssText="${baseStyle}${hover}${focusStyle}; border: none; cursor: pointer;"`}
+    onblur={`this.style.cssText="${baseStyle}; border: none; cursor: pointer;"`}
     onmousedown="this.style.transform='translateY(1px)'"
     onmouseup="this.style.transform='none'"
   >
