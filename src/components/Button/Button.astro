@@ -19,7 +19,6 @@ const {
   type = "button",
 } = Astro.props;
 
-
 const VARIANT: Record<
   NonNullable<Props["variant"]>,
   { bg: string; color: string; hover: string; iconColor: string; textDecoration?: string }
@@ -61,15 +60,14 @@ const focusStyle = variant === 'link' ? '' : `
   outline-offset: 2px;
 `;
 
-
 function normalizeCSS(str: string): string {
   if (!str) return '';
   return str.replace(/\s+/g, ' ').trim();
 }
 
-const baseStyleEscaped = normalizeCSS(baseStyle);
-const hoverEscaped = normalizeCSS(hover);
-const focusStyleEscaped = normalizeCSS(focusStyle);
+const baseStyleNormalized = normalizeCSS(baseStyle);
+const hoverNormalized = normalizeCSS(hover);
+const focusStyleNormalized = normalizeCSS(focusStyle);
 ---
 
 {href ? (
@@ -80,10 +78,10 @@ const focusStyleEscaped = normalizeCSS(focusStyle);
     aria-label={ariaLabel}
     class={className}
     style={baseStyle}
-    onmouseover={`this.style.cssText="${baseStyleEscaped}${hoverEscaped}"`}
-    onmouseout={`this.style.cssText="${baseStyleEscaped}"`}
-    onfocus={`this.style.cssText="${baseStyleEscaped}${hoverEscaped}${focusStyleEscaped}"`}
-    onblur={`this.style.cssText="${baseStyleEscaped}"`}
+    onmouseover={`this.style.cssText="${baseStyleNormalized}${hoverNormalized}"`}
+    onmouseout={`this.style.cssText="${baseStyleNormalized}"`}
+    onfocus={`this.style.cssText="${baseStyleNormalized}${hoverNormalized}${focusStyleNormalized}"`}
+    onblur={`this.style.cssText="${baseStyleNormalized}"`}
     onmousedown="this.style.transform='translateY(1px)'"
     onmouseup="this.style.transform='none'"
   >
@@ -96,10 +94,10 @@ const focusStyleEscaped = normalizeCSS(focusStyle);
     aria-label={ariaLabel}
     class={className}
     style={`${baseStyle}; border: none; cursor: pointer;`}
-    onmouseover={`this.style.cssText="${baseStyleEscaped}${hoverEscaped}; border: none; cursor: pointer;"`}
-    onmouseout={`this.style.cssText="${baseStyleEscaped}; border: none; cursor: pointer;"`}
-    onfocus={`this.style.cssText="${baseStyleEscaped}${hoverEscaped}${focusStyleEscaped}; border: none; cursor: pointer;"`}
-    onblur={`this.style.cssText="${baseStyleEscaped}; border: none; cursor: pointer;"`}
+    onmouseover={`this.style.cssText="${baseStyleNormalized}${hoverNormalized}; border: none; cursor: pointer;"`}
+    onmouseout={`this.style.cssText="${baseStyleNormalized}; border: none; cursor: pointer;"`}
+    onfocus={`this.style.cssText="${baseStyleNormalized}${hoverNormalized}${focusStyleNormalized}; border: none; cursor: pointer;"`}
+    onblur={`this.style.cssText="${baseStyleNormalized}; border: none; cursor: pointer;"`}
     onmousedown="this.style.transform='translateY(1px)'"
     onmouseup="this.style.transform='none'"
   >
@@ -119,4 +117,3 @@ const focusStyleEscaped = normalizeCSS(focusStyle);
     }
   }
 </style>
-
