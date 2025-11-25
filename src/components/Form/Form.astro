@@ -66,6 +66,213 @@ const uniqueFormId = formId || `form-${Math.random().toString(36).substring(2, 1
 </form>
 
 <script is:inline>
-(function(){function initForm(form){if(!form||form.tagName!=='FORM')return;var successMessage=form.querySelector('.form-message-success');var errorMessage=form.querySelector('.form-message-error');var submitButton=form.querySelector('button[type="submit"]');var originalButtonText=submitButton?(submitButton.textContent||'Submit'):'Submit';function getFieldLabel(input){var id=input.id;if(!id)return 'This field';var label=form.querySelector('label[for="'+id+'"]');if(label&&label.textContent){var text=label.textContent.replace(/\*/g,'');return text.trim();}return 'This field';}function showFieldError(input,message){var errorId=input.id+'-error';var errorElement=form.querySelector('#'+errorId);if(errorElement){errorElement.textContent=message;errorElement.hidden=false;}input.setAttribute('aria-invalid','true');input.classList.add('form-input-invalid');}function clearFieldError(input){var errorId=input.id+'-error';var errorElement=form.querySelector('#'+errorId);if(errorElement){errorElement.textContent='';errorElement.hidden=true;}input.setAttribute('aria-invalid','false');input.classList.remove('form-input-invalid');}form.addEventListener('submit',function(e){e.preventDefault();if(!form.action||form.action==='/'||form.action.trim()===''){if(errorMessage){errorMessage.textContent='Form endpoint is not configured. Please contact the administrator.';errorMessage.hidden=false;errorMessage.scrollIntoView({behavior:'smooth',block:'nearest'});}return;}if(successMessage)successMessage.hidden=true;if(errorMessage)errorMessage.hidden=true;var allFields=form.querySelectorAll('input, textarea');for(var i=0;i<allFields.length;i++){clearFieldError(allFields[i]);}var formData=new FormData(form);var requiredFields=form.querySelectorAll('[required]');var isValid=true;var firstInvalidField=null;for(var j=0;j<requiredFields.length;j++){var input=requiredFields[j];var value=input.value?input.value.trim():'';var fieldLabel=getFieldLabel(input);if(!value){isValid=false;showFieldError(input,'Please enter your '+fieldLabel.toLowerCase());if(!firstInvalidField){firstInvalidField=input;}continue;}if(input.type==='email'&&value){var emailRegex=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;if(!emailRegex.test(value)){isValid=false;showFieldError(input,'Please enter a valid email address');if(!firstInvalidField){firstInvalidField=input;}continue;}}}if(!isValid){if(firstInvalidField){firstInvalidField.focus();firstInvalidField.scrollIntoView({behavior:'smooth',block:'nearest'});}return;}if(submitButton){submitButton.disabled=true;submitButton.textContent='Submitting...';}fetch(form.action,{method:form.method,body:formData}).then(function(response){if(response.ok){if(successMessage){successMessage.hidden=false;form.reset();successMessage.scrollIntoView({behavior:'smooth',block:'nearest'});}}else{if(errorMessage){errorMessage.hidden=false;errorMessage.scrollIntoView({behavior:'smooth',block:'nearest'});}}}).catch(function(error){if(errorMessage){errorMessage.hidden=false;errorMessage.scrollIntoView({behavior:'smooth',block:'nearest'});}}).finally(function(){if(submitButton){submitButton.disabled=false;submitButton.textContent=originalButtonText;}});});var allInputs=form.querySelectorAll('input, textarea');for(var k=0;k<allInputs.length;k++){var input=allInputs[k];input.addEventListener('input',function(){if(this.getAttribute('aria-invalid')==='true'){clearFieldError(this);}});}}function initAllForms(){var forms=document.querySelectorAll('form[data-formbold-form]');for(var i=0;i<forms.length;i++){initForm(forms[i]);}}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',initAllForms);}else{initAllForms();}})();
+(function() {
+  function initForm(form) {
+    if (!form || form.tagName !== 'FORM') {
+      return;
+    }
+
+    // Get references to important elements in the form
+    var successMessage = form.querySelector('.form-message-success');
+    var errorMessage = form.querySelector('.form-message-error');
+    var submitButton = form.querySelector('button[type="submit"]');
+    
+   
+    var originalButtonText = submitButton 
+      ? (submitButton.textContent || 'Submit') 
+      : 'Submit';
+
+  
+    function getFieldLabel(input) {
+      var fieldId = input.id;
+      if (!fieldId) {
+        return 'This field';
+      }
+      
+      // Try to find the label element that's associated with this input
+      var label = form.querySelector('label[for="' + fieldId + '"]');
+      
+      if (label && label.textContent) {
+        var labelText = label.textContent.replace(/\*/g, '');
+        return labelText.trim();
+      }
+      
+      return 'This field';
+    }
+
+    // Show an error message for a specific field
+    function showFieldError(input, message) {
+      var errorId = input.id + '-error';
+      var errorElement = form.querySelector('#' + errorId);
+      
+      if (errorElement) {
+        errorElement.textContent = message;
+        errorElement.hidden = false;
+      }
+      
+      // Mark the input as invalid for screen readers
+      input.setAttribute('aria-invalid', 'true');
+      input.classList.add('form-input-invalid');
+    }
+
+    // Clear the error message for a field (when user starts typing)
+    function clearFieldError(input) {
+      var errorId = input.id + '-error';
+      var errorElement = form.querySelector('#' + errorId);
+      
+      if (errorElement) {
+        errorElement.textContent = '';
+        errorElement.hidden = true;
+      }
+      
+      // Remove the invalid state
+      input.setAttribute('aria-invalid', 'false');
+      input.classList.remove('form-input-invalid');
+    }
+
+    // Handle form submission
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Check if the form has a valid action URL
+      if (!form.action || form.action === '/' || form.action.trim() === '') {
+        if (errorMessage) {
+          errorMessage.textContent = 'Form endpoint is not configured. Please contact the administrator.';
+          errorMessage.hidden = false;
+          errorMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        return;
+      }
+
+      // Hide any previous messages
+      if (successMessage) {
+        successMessage.hidden = true;
+      }
+      if (errorMessage) {
+        errorMessage.hidden = true;
+      }
+
+      // Clear all previous field errors
+      var allFields = form.querySelectorAll('input, textarea');
+      for (var i = 0; i < allFields.length; i++) {
+        clearFieldError(allFields[i]);
+      }
+
+      // Get all the form data
+      var formData = new FormData(form);
+
+      // Validate all required fields
+      var requiredFields = form.querySelectorAll('[required]');
+      var isValid = true;
+      var firstInvalidField = null;
+
+      for (var j = 0; j < requiredFields.length; j++) {
+        var input = requiredFields[j];
+        var value = input.value ? input.value.trim() : '';
+        var fieldLabel = getFieldLabel(input);
+
+        // Check if required field is empty
+        if (!value) {
+          isValid = false;
+          showFieldError(input, 'Please enter your ' + fieldLabel.toLowerCase());
+          
+          // Remember the first invalid field so we can focus on it
+          if (!firstInvalidField) {
+            firstInvalidField = input;
+          }
+          continue;
+        }
+
+        // If it's an email field, validate the email format
+        if (input.type === 'email' && value) {
+          var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(value)) {
+            isValid = false;
+            showFieldError(input, 'Please enter a valid email address');
+            
+            if (!firstInvalidField) {
+              firstInvalidField = input;
+            }
+            continue;
+          }
+        }
+      }
+
+      // If validation failed, focus on the first invalid field and stop
+      if (!isValid) {
+        if (firstInvalidField) {
+          firstInvalidField.focus();
+          firstInvalidField.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        return;
+      }
+
+      // Disable the submit button and show loading state
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = 'Submitting...';
+      }
+
+      // Send the form data to the server
+      fetch(form.action, {
+        method: form.method,
+        body: formData
+      })
+      .then(function(response) {
+        if (response.ok) {
+          if (successMessage) {
+            successMessage.hidden = false;
+            form.reset();
+            successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+        } else {
+          if (errorMessage) {
+            errorMessage.hidden = false;
+            errorMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+        }
+      })
+      .catch(function(error) {
+        if (errorMessage) {
+          errorMessage.hidden = false;
+          errorMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      })
+      .finally(function() {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = originalButtonText;
+        }
+      });
+    });
+
+    // Clear field errors when user starts typing in a field that has an error
+    var allInputs = form.querySelectorAll('input, textarea');
+    for (var k = 0; k < allInputs.length; k++) {
+      var input = allInputs[k];
+      input.addEventListener('input', function() {
+        if (this.getAttribute('aria-invalid') === 'true') {
+          clearFieldError(this);
+        }
+      });
+    }
+  }
+
+  // Initialize all forms on the page that have the data-formbold-form attribute
+  function initAllForms() {
+    var forms = document.querySelectorAll('form[data-formbold-form]');
+    
+    for (var i = 0; i < forms.length; i++) {
+      initForm(forms[i]);
+    }
+  }
+
+  // Wait for the page to load before initializing forms
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAllForms);
+  } else {
+    initAllForms();
+  }
+})();
 </script>
 
