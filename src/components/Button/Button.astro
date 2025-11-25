@@ -60,6 +60,21 @@ const focusStyle = variant === 'link' ? '' : `
   outline: 2px solid #4B00E7;
   outline-offset: 2px;
 `;
+
+
+function escapeForJS(str: string): string {
+  if (!str) return '';
+  const normalized = str.replace(/\s+/g, ' ').trim();
+  return normalized
+    .replace(/\\/g, '\\\\')  // Escape backslashes
+    .replace(/"/g, '\\"')     // Escape double quotes
+    .replace(/\n/g, '\\n')    // Escape newlines
+    .replace(/\r/g, '\\r');   // Escape carriage returns
+}
+
+const baseStyleEscaped = escapeForJS(baseStyle);
+const hoverEscaped = escapeForJS(hover);
+const focusStyleEscaped = escapeForJS(focusStyle);
 ---
 
 {href ? (
@@ -70,10 +85,10 @@ const focusStyle = variant === 'link' ? '' : `
     aria-label={ariaLabel}
     class={className}
     style={baseStyle}
-    onmouseover={`this.style.cssText='${baseStyle}${hover}'`}
-    onmouseout={`this.style.cssText='${baseStyle}'`}
-    onfocus={`this.style.cssText='${baseStyle}${hover}${focusStyle}'`}
-    onblur={`this.style.cssText='${baseStyle}'`}
+    onmouseover={`this.style.cssText="${baseStyleEscaped}${hoverEscaped}"`}
+    onmouseout={`this.style.cssText="${baseStyleEscaped}"`}
+    onfocus={`this.style.cssText="${baseStyleEscaped}${hoverEscaped}${focusStyleEscaped}"`}
+    onblur={`this.style.cssText="${baseStyleEscaped}"`}
     onmousedown="this.style.transform='translateY(1px)'"
     onmouseup="this.style.transform='none'"
   >
@@ -86,10 +101,10 @@ const focusStyle = variant === 'link' ? '' : `
     aria-label={ariaLabel}
     class={className}
     style={`${baseStyle}; border: none; cursor: pointer;`}
-    onmouseover={`this.style.cssText='${baseStyle}${hover}; border: none; cursor: pointer;'`}
-    onmouseout={`this.style.cssText='${baseStyle}; border: none; cursor: pointer;'`}
-    onfocus={`this.style.cssText='${baseStyle}${hover}${focusStyle}; border: none; cursor: pointer;'`}
-    onblur={`this.style.cssText='${baseStyle}; border: none; cursor: pointer;'`}
+    onmouseover={`this.style.cssText="${baseStyleEscaped}${hoverEscaped}; border: none; cursor: pointer;"`}
+    onmouseout={`this.style.cssText="${baseStyleEscaped}; border: none; cursor: pointer;"`}
+    onfocus={`this.style.cssText="${baseStyleEscaped}${hoverEscaped}${focusStyleEscaped}; border: none; cursor: pointer;"`}
+    onblur={`this.style.cssText="${baseStyleEscaped}; border: none; cursor: pointer;"`}
     onmousedown="this.style.transform='translateY(1px)'"
     onmouseup="this.style.transform='none'"
   >
