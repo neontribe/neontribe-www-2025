@@ -6,7 +6,10 @@ dist/
 .astro/
 
 # Environment files
-.env*
+.env
+.env.local
+.env.production
+.env.*.local
 
 # OS / Editor
 .DS_Store

@@ -19,47 +19,17 @@ const {
   type = "button",
 } = Astro.props;
 
-
 const VARIANT: Record<
   NonNullable<Props["variant"]>,
-  { bg: string; color: string; hover: string; iconColor: string; textDecoration?: string }
+  { bg: string; color: string; iconColor: string; textDecoration?: string }
 > = {
-  primary:   { bg: "#4B00E7", color: "#FFFFFF", hover: "filter: brightness(1.1);",  iconColor: "#48E9CE" },
-  secondary: { bg: "#D1D5DB", color: "#111827", hover: "filter: brightness(0.95);", iconColor: "#4B00E7" },
-  teal:      { bg: "#48E9CE", color: "#111827", hover: "filter: brightness(0.95);", iconColor: "#4B00E7" },
-  link:      { bg: "transparent", color: "#4B00E7", hover: "opacity: 0.8;", iconColor: "#4B00E7", textDecoration: "none" },
+  primary:   { bg: "#4B00E7", color: "#FFFFFF", iconColor: "#48E9CE" },
+  secondary: { bg: "#D1D5DB", color: "#111827", iconColor: "#4B00E7" },
+  teal:      { bg: "#48E9CE", color: "#111827", iconColor: "#4B00E7" },
+  link:      { bg: "transparent", color: "#4B00E7", iconColor: "#4B00E7", textDecoration: "none" },
 };
 
-const { bg, color, hover, iconColor, textDecoration } = VARIANT[variant];
-
-const SIZE: Record<NonNullable<Props["size"]>, string> = {
-  sm: "padding: 8px 16px; height: 40px;",
-  md: "padding: 12px 24px; height: 48px;",
-  lg: "padding: 16px 32px; height: 56px;",
-  "get-in-touch": "padding: 12px 24px; height: 48px;",
-};
-
-const baseStyle = `
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  border-radius: 1px;
-  font-family: var(--button-font-family);
-  font-weight: var(--button-font-weight);
-  font-size: var(--button-font-size);
-  line-height: var(--button-line-height);
-  text-decoration: ${textDecoration || 'none'};
-  transition: filter 0.15s ease, transform 0.05s ease, opacity 0.15s ease;
-  background-color: ${bg};
-  color: ${color};
-  white-space: nowrap;
-  ${SIZE[size]}
-`;
-
-const focusStyle = variant === 'link' ? '' : `
-  outline: 2px solid #4B00E7;
-  outline-offset: 2px;
-`;
+const { bg, color, iconColor, textDecoration } = VARIANT[variant];
 ---
 
 {href ? (
@@ -68,40 +38,87 @@ const focusStyle = variant === 'link' ? '' : `
     target={external ? "_blank" : undefined}
     rel={external ? "noopener noreferrer" : undefined}
     aria-label={ariaLabel}
-    class={className}
-    style={baseStyle}
-    
-    onmouseover={`this.style.cssText='${baseStyle}${hover}'`}
-    onmouseout={`this.style.cssText='${baseStyle}'`}
-    onfocus={`this.style.cssText='${baseStyle}${hover}${focusStyle}'`}
-    onblur={`this.style.cssText='${baseStyle}'`}
-    onmousedown={`this.style.transform='translateY(1px)'`}
-    onmouseup={`this.style.transform='none'`}
+    class={`button button--${variant} button--${size} ${className || ''}`}
+    style={`--button-bg: ${bg}; --button-color: ${color}; --button-icon-color: ${iconColor}; ${textDecoration ? `--button-text-decoration: ${textDecoration};` : ''}`}
   >
     <span><slot /></span>
-    <span class="button-arrow" style={`color: ${iconColor}; font-size: var(--text-xl); line-height: 1;`} aria-hidden="true">→</span>
+    <span class="button-arrow" aria-hidden="true">→</span>
   </a>
 ) : (
   <button
     type={type}
     aria-label={ariaLabel}
-    class={className}
-    style={`${baseStyle}; border: none; cursor: pointer;`}
-    
-    onmouseover={`this.style.cssText='${baseStyle}${hover}; border: none; cursor: pointer;'`}
-    onmouseout={`this.style.cssText='${baseStyle}; border: none; cursor: pointer;'`}
-    onfocus={`this.style.cssText='${baseStyle}${hover}${focusStyle}; border: none; cursor: pointer;'`}
-    onblur={`this.style.cssText='${baseStyle}; border: none; cursor: pointer;'`}
-    onmousedown={`this.style.transform='translateY(1px)'`}
-    onmouseup={`this.style.transform='none'`}
+    class={`button button--${variant} button--${size} ${className || ''}`}
+    style={`--button-bg: ${bg}; --button-color: ${color}; --button-icon-color: ${iconColor}; ${textDecoration ? `--button-text-decoration: ${textDecoration};` : ''}`}
   >
     <span><slot /></span>
-    <span class="button-arrow" style={`color: ${iconColor}; font-size: var(--text-xl); line-height: 1;`} aria-hidden="true">→</span>
+    <span class="button-arrow" aria-hidden="true">→</span>
   </button>
 )}
 
 <style>
+  .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 1px;
+    font-family: var(--button-font-family);
+    font-weight: var(--button-font-weight);
+    font-size: var(--button-font-size);
+    line-height: var(--button-line-height);
+    text-decoration: var(--button-text-decoration, none);
+    transition: filter 0.15s ease, transform 0.05s ease, opacity 0.15s ease;
+    background-color: var(--button-bg);
+    color: var(--button-color);
+    white-space: nowrap;
+    border: none;
+    cursor: pointer;
+  }
+
+  .button--sm {
+    padding: 8px 16px;
+    height: 40px;
+  }
+
+  .button--md,
+  .button--get-in-touch {
+    padding: 12px 24px;
+    height: 48px;
+  }
+
+  .button--lg {
+    padding: 16px 32px;
+    height: 56px;
+  }
+
+  .button--primary:hover,
+  .button--secondary:hover,
+  .button--teal:hover {
+    filter: brightness(1.1);
+  }
+
+  .button--link:hover {
+    opacity: 0.8;
+  }
+
+  .button--primary:active,
+  .button--secondary:active,
+  .button--teal:active,
+  .button--link:active {
+    transform: translateY(1px);
+  }
+
+  .button--primary:focus-visible,
+  .button--secondary:focus-visible,
+  .button--teal:focus-visible {
+    outline: 2px solid #4B00E7;
+    outline-offset: 2px;
+  }
+
   .button-arrow {
+    color: var(--button-icon-color);
+    font-size: var(--text-xl);
+    line-height: 1;
     margin-left: auto;
   }
   
@@ -111,4 +128,3 @@ const focusStyle = variant === 'link' ? '' : `
     }
   }
 </style>
-

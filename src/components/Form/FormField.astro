@@ -33,6 +33,7 @@ const isTextarea = type === 'textarea';
     {label}
     {required && <span class="form-required" aria-label="required">*</span>}
   </label>
+  
   {isTextarea ? (
     <textarea
       id={fieldId}
@@ -60,6 +61,7 @@ const isTextarea = type === 'textarea';
       aria-describedby={errorId}
     />
   )}
+  
   <div 
     id={errorId}
     class="form-field-error" 
