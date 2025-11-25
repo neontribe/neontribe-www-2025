@@ -73,27 +73,25 @@ const uniqueFormId = formId || `form-${Math.random().toString(36).substring(2, 1
     }
 
     // Get references to important elements in the form
-    var successMessage = form.querySelector('.form-message-success');
-    var errorMessage = form.querySelector('.form-message-error');
-    var submitButton = form.querySelector('button[type="submit"]');
+    const successMessage = form.querySelector('.form-message-success');
+    const errorMessage = form.querySelector('.form-message-error');
+    const submitButton = form.querySelector('button[type="submit"]');
     
-   
-    var originalButtonText = submitButton 
+    const originalButtonText = submitButton 
       ? (submitButton.textContent || 'Submit') 
       : 'Submit';
 
-  
     function getFieldLabel(input) {
-      var fieldId = input.id;
+      const fieldId = input.id;
       if (!fieldId) {
         return 'This field';
       }
       
       // Try to find the label element that's associated with this input
-      var label = form.querySelector('label[for="' + fieldId + '"]');
+      const label = form.querySelector(`label[for="${fieldId}"]`);
       
       if (label && label.textContent) {
-        var labelText = label.textContent.replace(/\*/g, '');
+        const labelText = label.textContent.replace(/\*/g, '');
         return labelText.trim();
       }
       
@@ -102,8 +100,8 @@ const uniqueFormId = formId || `form-${Math.random().toString(36).substring(2, 1
 
     // Show an error message for a specific field
     function showFieldError(input, message) {
-      var errorId = input.id + '-error';
-      var errorElement = form.querySelector('#' + errorId);
+      const errorId = `${input.id}-error`;
+      const errorElement = form.querySelector(`#${errorId}`);
       
       if (errorElement) {
         errorElement.textContent = message;
@@ -117,8 +115,8 @@ const uniqueFormId = formId || `form-${Math.random().toString(36).substring(2, 1
 
     // Clear the error message for a field (when user starts typing)
     function clearFieldError(input) {
-      var errorId = input.id + '-error';
-      var errorElement = form.querySelector('#' + errorId);
+      const errorId = `${input.id}-error`;
+      const errorElement = form.querySelector(`#${errorId}`);
       
       if (errorElement) {
         errorElement.textContent = '';
@@ -153,28 +151,28 @@ const uniqueFormId = formId || `form-${Math.random().toString(36).substring(2, 1
       }
 
       // Clear all previous field errors
-      var allFields = form.querySelectorAll('input, textarea');
-      for (var i = 0; i < allFields.length; i++) {
+      const allFields = form.querySelectorAll('input, textarea');
+      for (let i = 0; i < allFields.length; i++) {
         clearFieldError(allFields[i]);
       }
 
       // Get all the form data
-      var formData = new FormData(form);
+      const formData = new FormData(form);
 
       // Validate all required fields
-      var requiredFields = form.querySelectorAll('[required]');
-      var isValid = true;
-      var firstInvalidField = null;
+      const requiredFields = form.querySelectorAll('[required]');
+      let isValid = true;
+      let firstInvalidField = null;
 
-      for (var j = 0; j < requiredFields.length; j++) {
-        var input = requiredFields[j];
-        var value = input.value ? input.value.trim() : '';
-        var fieldLabel = getFieldLabel(input);
+      for (let j = 0; j < requiredFields.length; j++) {
+        const input = requiredFields[j];
+        const value = input.value ? input.value.trim() : '';
+        const fieldLabel = getFieldLabel(input);
 
         // Check if required field is empty
         if (!value) {
           isValid = false;
-          showFieldError(input, 'Please enter your ' + fieldLabel.toLowerCase());
+          showFieldError(input, `Please enter your ${fieldLabel.toLowerCase()}`);
           
           // Remember the first invalid field so we can focus on it
           if (!firstInvalidField) {
@@ -185,7 +183,7 @@ const uniqueFormId = formId || `form-${Math.random().toString(36).substring(2, 1
 
         // If it's an email field, validate the email format
         if (input.type === 'email' && value) {
-          var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
           if (!emailRegex.test(value)) {
             isValid = false;
             showFieldError(input, 'Please enter a valid email address');
@@ -232,7 +230,7 @@ const uniqueFormId = formId || `form-${Math.random().toString(36).substring(2, 1
           }
         }
       })
-      .catch(function(error) {
+      .catch(function() {
         if (errorMessage) {
           errorMessage.hidden = false;
           errorMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -247,22 +245,23 @@ const uniqueFormId = formId || `form-${Math.random().toString(36).substring(2, 1
     });
 
     // Clear field errors when user starts typing in a field that has an error
-    var allInputs = form.querySelectorAll('input, textarea');
-    for (var k = 0; k < allInputs.length; k++) {
-      var input = allInputs[k];
+    const allInputs = form.querySelectorAll('input, textarea');
+    for (let k = 0; k < allInputs.length; k++) {
+      const input = allInputs[k];
       input.addEventListener('input', function() {
-        if (this.getAttribute('aria-invalid') === 'true') {
+        const hasError = this.getAttribute('aria-invalid') === 'true';
+        if (hasError) {
           clearFieldError(this);
         }
       });
     }
   }
 
-  // Initialize all forms on the page that have the data-formbold-form attribute
+ 
   function initAllForms() {
-    var forms = document.querySelectorAll('form[data-formbold-form]');
+    const forms = document.querySelectorAll('form[data-formbold-form]');
     
-    for (var i = 0; i < forms.length; i++) {
+    for (let i = 0; i < forms.length; i++) {
       initForm(forms[i]);
     }
   }

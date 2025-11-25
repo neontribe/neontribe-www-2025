@@ -11,16 +11,9 @@ import CommitmentSection from '../components/sections/CommitmentSection.astro';
 import harryInWorkshopImage from '../assets/HarryInWorkshop.svg';
 import postitImage from '../assets/Postit.svg';
 
-// Fall back to FORMBOLD_ENDPOINT if FORMBOLD_ADVICE_SERVICE_ENDPOINT is not set
-const formAction = import.meta.env.FORMBOLD_ADVICE_SERVICE_ENDPOINT || import.meta.env.FORMBOLD_ENDPOINT || '';
+const formAction = import.meta.env.FORMBOLD_ADVICE_SERVICE_ENDPOINT || '';
 const sectionHeading = "We'd like to know <span class=\"text-[#48E9CE]\">&#8595;</span>";
 
-
-if (import.meta.env.DEV) {
-  console.log('FORMBOLD_ADVICE_SERVICE_ENDPOINT:', import.meta.env.FORMBOLD_ADVICE_SERVICE_ENDPOINT || 'NOT SET');
-  console.log('FORMBOLD_ENDPOINT (fallback):', import.meta.env.FORMBOLD_ENDPOINT || 'NOT SET');
-  console.log('Using form action:', formAction || 'NOT SET');
-}
 ---
 
 <Layout title="Advice Service">
