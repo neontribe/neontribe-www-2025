@@ -70,7 +70,6 @@ const focusStyle = variant === 'link' ? '' : `
     aria-label={ariaLabel}
     class={className}
     style={baseStyle}
-    
     onmouseover={`this.style.cssText='${baseStyle}${hover}'`}
     onmouseout={`this.style.cssText='${baseStyle}'`}
     onfocus={`this.style.cssText='${baseStyle}${hover}${focusStyle}'`}
@@ -87,7 +86,6 @@ const focusStyle = variant === 'link' ? '' : `
     aria-label={ariaLabel}
     class={className}
     style={`${baseStyle}; border: none; cursor: pointer;`}
-    
     onmouseover={`this.style.cssText='${baseStyle}${hover}; border: none; cursor: pointer;'`}
     onmouseout={`this.style.cssText='${baseStyle}; border: none; cursor: pointer;'`}
     onfocus={`this.style.cssText='${baseStyle}${hover}${focusStyle}; border: none; cursor: pointer;'`}
