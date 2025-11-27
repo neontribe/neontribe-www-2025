@@ -326,6 +326,12 @@ main.section-intro,
 
 .who-youll-be-working-with-right-content {
   width: 100%;
+  overflow: visible;
+  position: relative;
+}
+
+.who-youll-be-working-with-section .container {
+  overflow: visible;
 }
 
 /* =========================
