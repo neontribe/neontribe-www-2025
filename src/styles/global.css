@@ -225,6 +225,7 @@ main.section-intro,
   background-color: var(--color-bg-light);
   padding-top: var(--space-12);
   padding-bottom: var(--space-12);
+  overflow: visible;
 }
 
 @media (min-width: 768px) {
