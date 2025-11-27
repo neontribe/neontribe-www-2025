@@ -7,6 +7,36 @@ import HowWeCanHelp from '../components/sections/HowWeCanHelp.astro';
 import InfoCard from '../components/Card/InfoCard.astro';
 import Box from '../components/sections/Box.astro';
 import WhoYoullBeWorkingWith from '../components/sections/WhoYoullBeWorkingWith.astro';
+import PeopleExpanderGrid from '../components/cards/PeopleExpanderGrid.astro';
+
+// Sample team member data
+const teamMembers = [
+  {
+    name: "Harry",
+    role: "Head of Neontribe",
+    bio: "This is a description about Harry. This is a description about Harry. This is a description about Harry. This is a description about Harry. This is a description about Harry. This is a description about Harry. This is a description about Harry. This is a description about Harry."
+  },
+  {
+    name: "Toby",
+    role: "Role",
+    bio: "This is a description about Toby. This is a description about Toby. This is a description about Toby. This is a description about Toby."
+  },
+  {
+    name: "Neil",
+    role: "Role",
+    bio: "This is a description about Neil. This is a description about Neil. This is a description about Neil. This is a description about Neil."
+  },
+  {
+    name: "Rachel",
+    role: "Role",
+    bio: "This is a description about Rachel. This is a description about Rachel. This is a description about Rachel. This is a description about Rachel."
+  },
+  {
+    name: "Charlie",
+    role: "Role",
+    bio: "This is a description about Charlie. This is a description about Charlie. This is a description about Charlie. This is a description about Charlie."
+  }
+];
 ---
 
 <Layout title="How we work">
@@ -59,7 +89,9 @@ import WhoYoullBeWorkingWith from '../components/sections/WhoYoullBeWorkingWith.
       ]}
       buttonLabel="Talk to us"
       buttonHref="/talk-to-us"
-    />
+    >
+      <PeopleExpanderGrid slot="rightContent" people={teamMembers} />
+    </WhoYoullBeWorkingWith>
   </main>
   <div class="bg-bg-dark w-full">
     <GetInTouch />
