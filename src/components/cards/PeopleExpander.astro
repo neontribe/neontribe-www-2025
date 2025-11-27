@@ -1,0 +1,428 @@
+---
+export interface Props {
+  name: string;
+  role: string;
+  bio: string;
+  image?: string | { src: string; alt?: string };
+  class?: string;
+}
+
+const {
+  name,
+  role,
+  bio,
+  image,
+  class: className = '',
+} = Astro.props;
+
+const imageSrc = typeof image === 'string' ? image : image?.src;
+const imageAlt = typeof image === 'string' ? `${name}, ${role}` : (image?.alt || `${name}, ${role}`);
+const uniqueId = `people-expander-${name.toLowerCase().replace(/\s+/g, '-')}`;
+---
+
+<div class={`people-expander ${className}`} data-person-id={uniqueId}>
+  <!-- Closed card - remains in the grid -->
+  <button 
+    class="people-expander__button"
+    aria-expanded="false"
+    aria-controls={`${uniqueId}-expanded`}
+    id={`${uniqueId}-button`}
+    data-target={uniqueId}
+  >
+    <div class="people-expander__header">
+      {imageSrc ? (
+        <div class="people-expander__avatar">
+          <img 
+            src={imageSrc} 
+            alt={imageAlt}
+            class="people-expander__avatar-image"
+            loading="lazy"
+          />
+        </div>
+      ) : (
+        <div class="people-expander__avatar-placeholder" aria-hidden="true">
+        </div>
+      )}
+      <span class="people-expander__name">{name}</span>
+      <span class="people-expander__toggle-icon" aria-hidden="true">+</span>
+    </div>
+  </button>
+  
+  <!-- Expanded card - appears above all other cards -->
+  <div 
+    class="people-expander__expanded-card"
+    id={`${uniqueId}-expanded`}
+    role="dialog"
+    aria-labelledby={`${uniqueId}-expanded-name`}
+    aria-hidden="true"
+    data-person-id={uniqueId}
+  >
+    <div class="people-expander__expanded-header">
+      {imageSrc ? (
+        <div class="people-expander__expanded-avatar">
+          <img 
+            src={imageSrc} 
+            alt={imageAlt}
+            class="people-expander__expanded-avatar-image"
+            loading="lazy"
+          />
+        </div>
+      ) : (
+        <div class="people-expander__expanded-avatar-placeholder" aria-hidden="true">
+        </div>
+      )}
+      <div class="people-expander__expanded-info">
+        <h3 class="people-expander__expanded-name" id={`${uniqueId}-expanded-name`}>{name}</h3>
+        <p class="people-expander__expanded-role">{role}</p>
+      </div>
+      <button 
+        class="people-expander__close-button"
+        aria-label="Close"
+        data-close={uniqueId}
+      >
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="people-expander__bio">
+      <p>{bio}</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .people-expander {
+    width: 100%;
+    position: relative;
+  }
+
+  /* Closed card - button */
+  .people-expander__button {
+    width: 100%;
+    background-color: #ffffff;
+    border: 1px solid var(--color-neutral-light-grey);
+    border-radius: 0.5rem;
+    padding: var(--space-4);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    transition: background-color 0.2s ease;
+    font-family: inherit;
+    text-align: left;
+  }
+
+  .people-expander__button:hover {
+    background-color: var(--color-bg-light);
+  }
+
+  .people-expander__button:focus-visible {
+    outline: 2px solid var(--color-accent-amethyst);
+    outline-offset: -2px;
+  }
+
+  /* Expanded card - appears above all other cards */
+  .people-expander__expanded-card {
+    display: none;
+    position: absolute;
+    z-index: 100;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    border: 1px solid var(--color-neutral-light-grey);
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    padding: var(--space-6);
+  }
+
+  .people-expander__expanded-card[aria-hidden="false"] {
+    display: block;
+  }
+
+ 
+  @media (min-width: 640px) {
+    .people-expander__expanded-card {
+      width: calc(200% + var(--space-6));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .people-expander__expanded-card {
+      width: calc(300% + var(--space-6) * 2);
+    }
+  }
+
+  .people-expander__header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    width: 100%;
+    flex: 1;
+  }
+
+  .people-expander__avatar,
+  .people-expander__avatar-placeholder {
+    width: 3rem;
+    height: 3rem;
+    flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .people-expander__avatar-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .people-expander__avatar-placeholder {
+    background-color: var(--color-neutral-grey);
+  }
+
+  .people-expander__name {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    font-weight: var(--font-medium);
+    color: var(--color-text-dark);
+    flex: 1;
+  }
+
+  .people-expander__toggle-icon {
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    color: var(--color-accent-amethyst);
+    line-height: 1;
+    transition: transform 0.2s ease;
+  }
+
+  .people-expander__button[aria-expanded="true"] .people-expander__toggle-icon {
+    transform: rotate(45deg);
+  }
+
+
+  .people-expander__close-button {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    width: 2rem;
+    height: 2rem;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-2xl);
+    color: var(--color-text-dark);
+    line-height: 1;
+    padding: 0;
+    border-radius: 0.25rem;
+    transition: background-color 0.2s ease;
+  }
+
+  .people-expander__close-button:hover {
+    background-color: var(--color-bg-light);
+  }
+
+  .people-expander__close-button:focus-visible {
+    outline: 2px solid var(--color-accent-amethyst);
+    outline-offset: 2px;
+  }
+
+  .people-expander__expanded-header {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+    position: relative;
+    padding-right: var(--space-8);
+  }
+
+  .people-expander__expanded-avatar,
+  .people-expander__expanded-avatar-placeholder {
+    width: 5rem;
+    height: 5rem;
+    flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .people-expander__expanded-avatar-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .people-expander__expanded-avatar-placeholder {
+    background-color: var(--color-neutral-grey);
+  }
+
+  .people-expander__expanded-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .people-expander__expanded-name {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    color: var(--color-text-darker);
+    margin: 0;
+    line-height: var(--leading-tight);
+  }
+
+  .people-expander__expanded-role {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    font-weight: var(--font-regular);
+    color: var(--color-accent-amethyst);
+    margin: 0;
+    line-height: var(--leading-normal);
+  }
+
+  .people-expander__bio {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    font-weight: var(--font-regular);
+    color: var(--color-text-dark);
+    line-height: var(--leading-relaxed);
+  }
+
+  .people-expander__bio p {
+    margin: 0;
+  }
+
+  /* Animation for expand/collapse */
+  @media (prefers-reduced-motion: no-preference) {
+    .people-expander__expanded-card {
+      animation: slideDown 0.2s ease-out;
+    }
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script is:inline>
+  // Handles opening/closing of expanded cards
+  document.addEventListener('DOMContentLoaded', () => {
+    const grid = document.querySelector('.people-expander-grid');
+    if (!grid) return;
+    
+    const buttons = document.querySelectorAll('.people-expander__button');
+    const expandedCards = document.querySelectorAll('.people-expander__expanded-card');
+    const closeButtons = document.querySelectorAll('.people-expander__close-button');
+    
+    const openCard = (personId) => {
+      // Close all other cards
+      expandedCards.forEach((card) => {
+        if (card.dataset.personId !== personId) {
+          card.setAttribute('aria-hidden', 'true');
+          const button = document.querySelector(`[data-target="${card.dataset.personId}"]`);
+          if (button) {
+            button.setAttribute('aria-expanded', 'false');
+          }
+        }
+      });
+      
+      // Open the selected card
+      const card = document.querySelector(`#${personId}-expanded`);
+      const button = document.querySelector(`#${personId}-button`);
+      
+      if (card && button) {
+        card.setAttribute('aria-hidden', 'false');
+        button.setAttribute('aria-expanded', 'true');
+        
+        // Position the expanded card at the centre of the grid
+        requestAnimationFrame(() => {
+          const gridRect = grid.getBoundingClientRect();
+          const cardRect = card.getBoundingClientRect();
+          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          
+          // Calculate the vertical centre position within the grid
+          const gridHeight = grid.offsetHeight;
+          const cardHeight = card.offsetHeight;
+          const centerTop = (gridHeight - cardHeight) / 2;
+          
+          card.style.top = `${centerTop}px`;
+          card.style.left = '50%';
+          card.style.transform = 'translateX(-50%)';
+        });
+      }
+    };
+    
+    const closeCard = (personId) => {
+      const card = document.querySelector(`#${personId}-expanded`);
+      const button = document.querySelector(`#${personId}-button`);
+      
+      if (card && button) {
+        card.setAttribute('aria-hidden', 'true');
+        button.setAttribute('aria-expanded', 'false');
+        card.style.top = '';
+        card.style.left = '';
+        card.style.transform = '';
+      }
+    };
+    
+    // Handle clicks on buttons
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const personId = button.dataset.target;
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+        
+        if (isExpanded) {
+          closeCard(personId);
+        } else {
+          openCard(personId);
+        }
+      });
+    });
+    
+    // Handle clicks on close buttons
+    closeButtons.forEach((closeButton) => {
+      closeButton.addEventListener('click', () => {
+        const personId = closeButton.dataset.close;
+        closeCard(personId);
+      });
+    });
+    
+    // Close with ESC key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        expandedCards.forEach((card) => {
+          if (card.getAttribute('aria-hidden') === 'false') {
+            closeCard(card.dataset.personId);
+          }
+        });
+      }
+    });
+    
+    // Recalculate positions on resize
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        expandedCards.forEach((card) => {
+          if (card.getAttribute('aria-hidden') === 'false') {
+            const gridHeight = grid.offsetHeight;
+            const cardHeight = card.offsetHeight;
+            const centerTop = (gridHeight - cardHeight) / 2;
+            card.style.top = `${centerTop}px`;
+          }
+        });
+      }, 100);
+    });
+  });
+</script>
+
