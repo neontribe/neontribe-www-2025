@@ -301,6 +301,29 @@ main.section-intro,
   }
 }
 
+/* Mobile button - shown on mobile, hidden on desktop */
+.who-youll-be-working-with-button-mobile {
+  display: block;
+  margin-top: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .who-youll-be-working-with-button-mobile {
+    display: none;
+  }
+}
+
+/* Desktop button - hidden on mobile, shown on desktop */
+.who-youll-be-working-with-button-desktop {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .who-youll-be-working-with-button-desktop {
+    display: block;
+  }
+}
+
 .who-youll-be-working-with-right-content {
   width: 100%;
 }
