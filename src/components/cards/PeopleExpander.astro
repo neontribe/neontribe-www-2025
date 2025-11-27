@@ -126,28 +126,55 @@ const uniqueId = `people-expander-${name.toLowerCase().replace(/\s+/g, '-')}`;
     position: absolute;
     z-index: 100;
     left: 0;
+    top: 0;
     width: 100%;
     background-color: #ffffff;
     border: 1px solid var(--color-neutral-light-grey);
     border-radius: 0.5rem;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     padding: var(--space-6);
+    box-sizing: border-box;
   }
 
   .people-expander__expanded-card[aria-hidden="false"] {
     display: block;
   }
-
- 
-  @media (min-width: 640px) {
+  
+  /* Mobile portrait - full width, no transform */
+  @media (max-width: 639px) {
     .people-expander__expanded-card {
-      width: calc(200% + var(--space-6));
+      width: 100%;
+      max-width: 100%;
+      left: 0 !important;
+      transform: none !important;
     }
   }
 
+  /* Mobile landscape - constrain to viewport */
+  @media (min-width: 640px) and (max-width: 1023px) and (max-height: 600px) {
+    .people-expander__expanded-card {
+      width: 100%;
+      max-width: 100%;
+      left: 0 !important;
+      transform: none !important;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+  }
+
+  /* Tablet - spans 2 columns */
+  @media (min-width: 640px) and (min-height: 601px) {
+    .people-expander__expanded-card {
+      width: calc(200% + var(--space-6));
+      max-width: calc(100vw - var(--space-8) * 2);
+    }
+  }
+
+  /* Desktop - spans 3 columns */
   @media (min-width: 1024px) {
     .people-expander__expanded-card {
       width: calc(300% + var(--space-6) * 2);
+      max-width: calc(100vw - var(--space-8) * 2);
     }
   }
 
@@ -198,7 +225,6 @@ const uniqueId = `people-expander-${name.toLowerCase().replace(/\s+/g, '-')}`;
   .people-expander__button[aria-expanded="true"] .people-expander__toggle-icon {
     transform: rotate(45deg);
   }
-
 
   .people-expander__close-button {
     position: absolute;
@@ -297,25 +323,22 @@ const uniqueId = `people-expander-${name.toLowerCase().replace(/\s+/g, '-')}`;
 
   /* Animation for expand/collapse */
   @media (prefers-reduced-motion: no-preference) {
-    .people-expander__expanded-card {
-      animation: slideDown 0.2s ease-out;
+    .people-expander__expanded-card[aria-hidden="false"] {
+      animation: fadeIn 0.2s ease-out;
     }
   }
 
-  @keyframes slideDown {
+  @keyframes fadeIn {
     from {
       opacity: 0;
-      transform: translateY(-10px);
     }
     to {
       opacity: 1;
-      transform: translateY(0);
     }
   }
 </style>
 
 <script is:inline>
-  // Handles opening/closing of expanded cards
   document.addEventListener('DOMContentLoaded', () => {
     const grid = document.querySelector('.people-expander-grid');
     if (!grid) return;
@@ -344,21 +367,49 @@ const uniqueId = `people-expander-${name.toLowerCase().replace(/\s+/g, '-')}`;
         card.setAttribute('aria-hidden', 'false');
         button.setAttribute('aria-expanded', 'true');
         
-        // Position the expanded card at the centre of the grid
+        // Position the expanded card
         requestAnimationFrame(() => {
-          const gridRect = grid.getBoundingClientRect();
-          const cardRect = card.getBoundingClientRect();
-          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-          
-          // Calculate the vertical centre position within the grid
-          const gridHeight = grid.offsetHeight;
-          const cardHeight = card.offsetHeight;
-          const centerTop = (gridHeight - cardHeight) / 2;
-          
-          card.style.top = `${centerTop}px`;
-          card.style.left = '50%';
-          card.style.transform = 'translateX(-50%)';
+          positionCard(card);
         });
+      }
+    };
+    
+    const positionCard = (card) => {
+      const gridHeight = grid.offsetHeight;
+      const cardHeight = card.offsetHeight;
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+      
+      // Check if we're in mobile landscape mode
+      const isMobileLandscape = viewportWidth >= 640 && viewportWidth < 1024 && viewportHeight <= 600;
+      
+      // Check if we're in mobile portrait mode
+      const isMobilePortrait = viewportWidth < 640;
+      
+      if (isMobilePortrait || isMobileLandscape) {
+        // Mobile: simple positioning, no transforms
+        const centerTop = Math.max(0, (gridHeight - cardHeight) / 2);
+        card.style.top = `${centerTop}px`;
+        card.style.left = '0';
+        card.style.transform = 'none';
+      } else {
+        // Desktop/tablet: center with transform
+        const centerTop = Math.max(0, (gridHeight - cardHeight) / 2);
+        const cardWidth = card.offsetWidth;
+        const padding = 16;
+        
+        let leftPosition = '50%';
+        let transform = 'translateX(-50%)';
+        
+        // If card would overflow viewport, align to left edge
+        if (cardWidth > viewportWidth - (padding * 2)) {
+          leftPosition = `${padding}px`;
+          transform = 'none';
+        }
+        
+        card.style.top = `${centerTop}px`;
+        card.style.left = leftPosition;
+        card.style.transform = transform;
       }
     };
     
@@ -397,7 +448,7 @@ const uniqueId = `people-expander-${name.toLowerCase().replace(/\s+/g, '-')}`;
       });
     });
     
-    // Close with ESC key
+    // Close on Escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         expandedCards.forEach((card) => {
@@ -415,14 +466,10 @@ const uniqueId = `people-expander-${name.toLowerCase().replace(/\s+/g, '-')}`;
       resizeTimeout = setTimeout(() => {
         expandedCards.forEach((card) => {
           if (card.getAttribute('aria-hidden') === 'false') {
-            const gridHeight = grid.offsetHeight;
-            const cardHeight = card.offsetHeight;
-            const centerTop = (gridHeight - cardHeight) / 2;
-            card.style.top = `${centerTop}px`;
+            positionCard(card);
           }
         });
       }, 100);
     });
   });
 </script>
-
