@@ -1,0 +1,55 @@
+---
+import PeopleExpander from './PeopleExpander.astro';
+
+export interface Person {
+  name: string;
+  role: string;
+  bio: string;
+  image?: string | { src: string; alt?: string };
+}
+
+export interface Props {
+  people: Person[];
+  class?: string;
+}
+
+const {
+  people,
+  class: className = '',
+} = Astro.props;
+---
+
+<div class={`people-expander-grid ${className}`}>
+  {people.map((person) => (
+    <PeopleExpander
+      name={person.name}
+      role={person.role}
+      bio={person.bio}
+      image={person.image}
+    />
+  ))}
+</div>
+
+<style>
+  .people-expander-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    width: 100%;
+    position: relative;
+  }
+
+  @media (min-width: 640px) {
+    .people-expander-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-6);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .people-expander-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>
+
