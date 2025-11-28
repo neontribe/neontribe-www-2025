@@ -287,6 +287,30 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
     }
   }
   
+  /* Specific fix for iPhone SE landscape (667px)*/
+  @media (min-width: 667px) and (max-width: 667px) {
+    .case-study-title {
+      word-wrap: break-word !important;
+      overflow-wrap: anywhere !important; /* More aggressive wrapping for short words */
+      word-break: break-word !important;
+      hyphens: auto;
+      max-width: 100%;
+      /* Force break after "generative" if needed */
+      white-space: normal !important;
+    }
+    
+    /* Additional spacing for iPhone SE */
+    section.section-dark [class*="sm:col-span-8"] {
+      padding-right: 3rem !important;
+      max-width: calc(100% - 3rem) !important;
+    }
+    
+    section.section-light [class*="sm:col-span-8"] {
+      padding-right: 3rem !important;
+      max-width: calc(100% - 3rem) !important;
+    }
+  }
+  
   /* Fix overlap for Samsung Galaxy S8+ landscape (740px) */
   @media (min-width: 740px) and (max-width: 740px) {
     section.section-dark [class*="sm:col-span-8"],
