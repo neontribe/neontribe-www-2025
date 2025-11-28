@@ -587,20 +587,64 @@ header.section-dark + section.section-dark {
     padding-bottom: 2rem; /* 32px - desktop */
   }
 }
+/* Ensure header doesn't overflow on iPad */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .header-container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
 
 /* Navigation link styles */
 .nav-link {
   color: var(--color-text-light);
   text-decoration: none;
-  font-size: var(--text-lg); /* 20px - mobile */
+  font-size: var(--text-lg); /* 20px - normal mobile size */
   font-weight: var(--font-bold);
   line-height: var(--leading-normal);
   transition: color 0.2s ease, text-decoration 0.2s ease;
   padding-block: 0.25rem;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
-@media (min-width: 768px) {
+
+/* Compact styles for landscape mobile (640px-767px) - iPhone SE landscape */
+@media (min-width: 640px) and (max-width: 767px) {
   .nav-link {
-    font-size: var(--text-xl); /* 24px - desktop */
+    font-size: 11px;
+    line-height: 1.15;
+    padding-block: 0.05rem;
+    padding-inline: 0.15rem;
+    letter-spacing: -0.3px;
+  }
+}
+
+/* Medium compact styles for landscape mobile (768px-1023px) - iPhone 14 Pro Max landscape */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .nav-link {
+    font-size: 13px;
+    line-height: 1.2;
+    padding-block: 0.1rem;
+    padding-inline: 0.25rem;
+    letter-spacing: -0.2px;
+  }
+}
+
+/* Compact size for iPad landscape (1024px-1279px) */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .nav-link {
+    font-size: 12px;
+    line-height: 1.2;
+    padding-block: 0.1rem;
+    padding-inline: 0.2rem;
+    letter-spacing: -0.2px;
+  }
+}
+
+/* Desktop size (1280px+) */
+@media (min-width: 1280px) {
+  .nav-link {
+    font-size: var(--text-xl); /* 24px */
   }
 }
 .nav-link.active {
@@ -616,10 +660,57 @@ header.section-dark + section.section-dark {
   text-underline-offset: 0.25rem !important;
 }
 
-/* =========================
-   TYPOGRAPHY / MARKDOWN
+/* Header button wrapper - compact styles for landscape mobile */
+/* Base mobile portrait uses normal button size */
 
-   Follows WCAG 2.2 accessibility standards (SC 1.4.12) for line-height and spacing.
+/* Compact button for landscape mobile (640px-767px) - iPhone SE landscape */
+@media (min-width: 640px) and (max-width: 767px) {
+  .header-button-wrapper :global(.button) {
+    padding: 2px 6px !important;
+    font-size: 8px !important;
+    height: 24px !important;
+    line-height: 1.1 !important;
+    min-width: auto !important;
+    letter-spacing: -0.3px !important;
+  }
+}
+
+/* Medium compact button for landscape mobile (768px-1023px) - iPhone 14 Pro Max landscape */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .header-button-wrapper :global(.button) {
+    padding: 3px 10px !important;
+    font-size: 9px !important;
+    height: 28px !important;
+    line-height: 1.2 !important;
+    min-width: auto !important;
+    letter-spacing: -0.2px !important;
+  }
+}
+
+/* Compact button for iPad landscape (1024px-1279px) */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .header-button-wrapper :global(.button) {
+    padding: 3px 10px !important;
+    font-size: 10px !important;
+    height: 28px !important;
+    line-height: 1.2 !important;
+    min-width: auto !important;
+    letter-spacing: -0.2px !important;
+  }
+}
+
+/* Normal button size for desktop (1280px+) */
+@media (min-width: 1280px) {
+  .header-button-wrapper :global(.button) {
+    padding: 8px 16px !important;
+    font-size: var(--button-font-size) !important;
+    height: 40px !important;
+    letter-spacing: normal !important;
+  }
+}
+
+/* =========================
+   TYPOGRAPHY
 ========================= */
 .markdown-content {
   line-height: var(--leading-relaxed);
