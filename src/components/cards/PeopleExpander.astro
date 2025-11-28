@@ -123,57 +123,48 @@ const uniqueId = `people-expander-${name.toLowerCase().replace(/\s+/g, '-')}`;
   /* Expanded card - appears above all other cards */
   .people-expander__expanded-card {
     display: none;
-    position: absolute;
-    z-index: 100;
-    left: 0;
-    top: 0;
-    width: 100%;
+    position: fixed;
+    z-index: 1000;
     background-color: #ffffff;
     border: 1px solid var(--color-neutral-light-grey);
     border-radius: 0.5rem;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     padding: var(--space-6);
     box-sizing: border-box;
+    max-height: 90vh;
+    overflow-y: auto;
   }
 
   .people-expander__expanded-card[aria-hidden="false"] {
     display: block;
   }
   
-  /* Mobile portrait - full width, no transform */
+  /* Mobile portrait - full width */
   @media (max-width: 639px) {
     .people-expander__expanded-card {
-      width: 100%;
-      max-width: 100%;
-      left: 0 !important;
-      transform: none !important;
+      width: calc(100vw - var(--space-8) * 2);
+      max-width: calc(100vw - var(--space-8) * 2);
     }
   }
 
   /* Mobile landscape - constrain to viewport */
   @media (min-width: 640px) and (max-width: 1023px) and (max-height: 600px) {
     .people-expander__expanded-card {
-      width: 100%;
-      max-width: 100%;
-      left: 0 !important;
-      transform: none !important;
-      max-height: 90vh;
-      overflow-y: auto;
-    }
-  }
-
-  /* Tablet - spans 2 columns */
-  @media (min-width: 640px) and (min-height: 601px) {
-    .people-expander__expanded-card {
-      width: calc(200% + var(--space-6));
+      width: calc(100vw - var(--space-8) * 2);
       max-width: calc(100vw - var(--space-8) * 2);
     }
   }
 
-  /* Desktop - spans 3 columns */
+  /* Tablet - width will be calculated in JS */
+  @media (min-width: 640px) and (min-height: 601px) {
+    .people-expander__expanded-card {
+      max-width: calc(100vw - var(--space-8) * 2);
+    }
+  }
+
+  /* Desktop - width will be calculated in JS */
   @media (min-width: 1024px) {
     .people-expander__expanded-card {
-      width: calc(300% + var(--space-6) * 2);
       max-width: calc(100vw - var(--space-8) * 2);
     }
   }
@@ -375,42 +366,95 @@ const uniqueId = `people-expander-${name.toLowerCase().replace(/\s+/g, '-')}`;
     };
     
     const positionCard = (card) => {
-      const gridHeight = grid.offsetHeight;
-      const cardHeight = card.offsetHeight;
+      const button = document.querySelector(`#${card.dataset.personId}-button`);
+      if (!button || !grid) return;
+      
       const viewportWidth = window.innerWidth;
       const viewportHeight = window.innerHeight;
+      const padding = 16; 
+      const gap = viewportWidth >= 640 ? 24 : 16; 
       
-      // Check if we're in mobile landscape mode
+      // Get button position relative to viewport
+      const buttonRect = button.getBoundingClientRect();
+      
+      // Calculate card width based on grid columns
+      let cardWidth;
       const isMobileLandscape = viewportWidth >= 640 && viewportWidth < 1024 && viewportHeight <= 600;
-      
-      // Check if we're in mobile portrait mode
       const isMobilePortrait = viewportWidth < 640;
       
       if (isMobilePortrait || isMobileLandscape) {
-        // Mobile: simple positioning, no transforms
-        const centerTop = Math.max(0, (gridHeight - cardHeight) / 2);
-        card.style.top = `${centerTop}px`;
-        card.style.left = '0';
-        card.style.transform = 'none';
+        cardWidth = viewportWidth - (padding * 2);
       } else {
-        // Desktop/tablet: center with transform
-        const centerTop = Math.max(0, (gridHeight - cardHeight) / 2);
-        const cardWidth = card.offsetWidth;
-        const padding = 16;
+        const gridRect = grid.getBoundingClientRect();
+        const gridComputedStyle = window.getComputedStyle(grid);
+        const gridGap = parseInt(gridComputedStyle.gap) || gap;
         
-        let leftPosition = '50%';
-        let transform = 'translateX(-50%)';
-        
-        // If card would overflow viewport, align to left edge
-        if (cardWidth > viewportWidth - (padding * 2)) {
-          leftPosition = `${padding}px`;
-          transform = 'none';
+        let columns;
+        if (viewportWidth >= 1024) {
+          columns = 3; // Desktop
+        } else {
+          columns = 2; // Tablet
         }
         
-        card.style.top = `${centerTop}px`;
-        card.style.left = leftPosition;
-        card.style.transform = transform;
+        const columnWidth = (gridRect.width - (gridGap * (columns - 1))) / columns;
+        cardWidth = (columnWidth * columns) + (gridGap * (columns - 1));
+        
+        // Ensure it doesn't exceed viewport
+        cardWidth = Math.min(cardWidth, viewportWidth - (padding * 2));
       }
+      
+      // Set card width
+      card.style.width = `${cardWidth}px`;
+      const cardHeight = card.offsetHeight;
+      
+      let top, left, transform;
+      
+      if (isMobilePortrait || isMobileLandscape) {
+        // Mobile: center vertically, full width with padding
+        top = Math.max(padding, (viewportHeight - cardHeight) / 2);
+        top = Math.min(top, viewportHeight - cardHeight - padding);
+        left = padding;
+        transform = 'none';
+      } else {
+        // Desktop/tablet: position relative to button, but keep within viewport
+        let preferredLeft = buttonRect.left + (buttonRect.width / 2) - (cardWidth / 2);
+        
+        // Ensure card doesn't overflow left edge
+        if (preferredLeft < padding) {
+          preferredLeft = padding;
+        }
+        
+        // Ensure card doesn't overflow right edge
+        if (preferredLeft + cardWidth > viewportWidth - padding) {
+          preferredLeft = viewportWidth - cardWidth - padding;
+        }
+        
+        // Position vertically
+        let preferredTop = buttonRect.top;
+        
+        // If card would overflow bottom, position above button
+        if (preferredTop + cardHeight > viewportHeight - padding) {
+          preferredTop = buttonRect.bottom - cardHeight;
+        }
+        
+        // Ensure card doesn't overflow top
+        if (preferredTop < padding) {
+          preferredTop = padding;
+        }
+        
+        // If still too tall, center vertically
+        if (preferredTop + cardHeight > viewportHeight - padding) {
+          preferredTop = Math.max(padding, (viewportHeight - cardHeight) / 2);
+        }
+        
+        top = preferredTop;
+        left = preferredLeft;
+        transform = 'none';
+      }
+      
+      card.style.top = `${top}px`;
+      card.style.left = `${left}px`;
+      card.style.transform = transform;
     };
     
     const closeCard = (personId) => {
@@ -422,6 +466,7 @@ const uniqueId = `people-expander-${name.toLowerCase().replace(/\s+/g, '-')}`;
         button.setAttribute('aria-expanded', 'false');
         card.style.top = '';
         card.style.left = '';
+        card.style.width = '';
         card.style.transform = '';
       }
     };
@@ -471,5 +516,18 @@ const uniqueId = `people-expander-${name.toLowerCase().replace(/\s+/g, '-')}`;
         });
       }, 100);
     });
+    
+    // Reposition on scroll
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        expandedCards.forEach((card) => {
+          if (card.getAttribute('aria-hidden') === 'false') {
+            positionCard(card);
+          }
+        });
+      }, 50);
+    }, { passive: true });
   });
 </script>
