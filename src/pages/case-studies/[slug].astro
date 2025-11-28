@@ -244,58 +244,62 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
     z-index: 30 !important;
   }
   
-  /* Position image for small tablets (640px+) */
+  /* Fix for all mobile and tablet landscape (640px-1023px) when not in stack mode */
+  @media (min-width: 640px) and (max-width: 1023px) {
+    /* Force text wrapping to prevent going under image */
+    .case-study-title {
+      word-wrap: break-word !important;
+      overflow-wrap: break-word !important;
+      word-break: break-word !important; /* Allow breaking even short words like "AI" */
+      hyphens: auto;
+      max-width: 100%;
+    }
+    
+    /* Reduce bottom padding on dark section since image is between sections */
+    section.section-dark {
+      padding-bottom: 20rem !important; /* Reduced to minimize black space */
+    }
+    
+    /* Reduce negative margin on light section to bring sections closer */
+    section.section-light {
+      margin-top: -12rem !important; /* Reduced negative margin to minimize gap */
+    }
+    
+    /* Ensure text columns have proper spacing */
+    section.section-dark [class*="sm:col-span-8"],
+    section.section-dark [class*="md:col-span-8"] {
+      padding-right: 2.5rem !important; /* Extra space to prevent overlap */
+      max-width: calc(100% - 2.5rem) !important;
+    }
+    
+    section.section-light [class*="sm:col-span-8"],
+    section.section-light [class*="md:col-span-8"] {
+      padding-right: 2.5rem !important;
+      max-width: calc(100% - 2.5rem) !important;
+    }
+    
+    /* Ensure customer and categories text also wrap */
+    section.section-dark p {
+      word-wrap: break-word !important;
+      overflow-wrap: break-word !important;
+      word-break: break-word !important;
+      max-width: 100% !important;
+    }
+  }
+  
+  /* Position image for mobile landscape (640px-767px) */
   @media (min-width: 640px) and (max-width: 767px) {
     .hero-image-overlay {
       top: 10rem !important; /* Position image to overlap sections */
       z-index: 30 !important;
     }
-    
-    /* Add bottom padding to dark section to accommodate image */
-    section.section-dark {
-      padding-bottom: 28rem !important;
-    }
-    
-    /* Ensure text columns have proper spacing */
-    section.section-dark [class*="sm:col-span-8"] {
-      padding-right: 1.5rem;
-    }
-    
-    section.section-light [class*="sm:col-span-8"] {
-      padding-right: 1.5rem;
-    }
   }
   
-  /* Fix layout issues on tablet - ensure image appears above text */
+  /* Position image for tablet (768px-1023px) */
   @media (min-width: 768px) and (max-width: 1023px) {
-    /* Adjust image positioning for tablet */
     .hero-image-overlay {
       top: 12rem !important; /* Position image to overlap sections */
-      z-index: 30 !important; /* Ensure image is above text */
-    }
-    
-    /* Add bottom padding to dark section to accommodate image */
-    section.section-dark {
-      padding-bottom: 30rem !important; /* More space for image on tablet */
-    }
-    
-    /* Ensure text columns have proper spacing on tablet */
-    section.section-dark [class*="sm:col-span-8"],
-    section.section-dark [class*="md:col-span-8"] {
-      padding-right: 1.5rem;
-    }
-    
-    /* Add padding to intro text section on tablet */
-    section.section-light [class*="sm:col-span-8"],
-    section.section-light [class*="md:col-span-8"] {
-      padding-right: 1.5rem;
-    }
-    
-    /* Prevent title overflow on tablet */
-    .case-study-title {
-      max-width: 100%;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
+      z-index: 30 !important;
     }
   }
   
