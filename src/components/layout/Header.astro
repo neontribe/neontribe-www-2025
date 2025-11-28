@@ -100,31 +100,59 @@ const currentPath = Astro.url.pathname;
   .mobile-toggle{ z-index:1101; }
   .mobile-toggle:focus{ outline:2px solid var(--color-accent-turquoise); outline-offset:2px; }
   .mobile-toggle:hover{ background:rgba(255,255,255,.1); }
-  .hamburger-line{ width:18px; height:2px; background:var(--color-text-light); transition:transform .3s, opacity .3s, background .2s ease; }
+  .hamburger-line{ 
+    width:18px; 
+    height:2px; 
+    background:var(--color-text-light); 
+    transition:transform .3s, opacity .3s, background .2s ease;
+  }
   .mobile-toggle:hover .hamburger-line{ background:#48E9CE; }
+  .mobile-toggle[aria-expanded="true"] .hamburger-line{ background:var(--color-accent-turquoise); }
   
   /* More space between logo and hamburger on mobile portrait */
   @media (max-width: 639px) {
     .mobile-toggle { right: 0.5rem !important; }
   }
   
-  /* Base close state transform - for mobile (< 640px) */
-  .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(1){ transform:rotate(45deg) translate(4px,4px); }
-  .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(2){ opacity:0; }
-  .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(3){ transform:rotate(-45deg) translate(4px,-4px); }
+  /* Base close state transform - for mobile (< 640px) - regular X */
+  .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(1){ 
+    transform: rotate(45deg);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -9px;
+    margin-top: -1px;
+  }
+  .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(2){ 
+    opacity: 0;
+  }
+  .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(3){ 
+    transform: rotate(-45deg);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -9px;
+    margin-top: -1px;
+  }
   
   /* Larger hamburger menu on mobile landscape (640px-1023px) */
   @media (min-width: 640px) and (max-width: 1023px) {
     .hamburger-line{ width:19px; height:2.5px; }
-    .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(1){ transform:rotate(45deg) translate(4.5px,4.5px); }
-    .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(3){ transform:rotate(-45deg) translate(4.5px,-4.5px); }
+    .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(1),
+    .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(3) {
+      margin-left: -9.5px;
+      margin-top: -1.25px;
+    }
   }
   
   /* Larger hamburger menu on tablet (1024px-1279px) */
   @media (min-width: 1024px) and (max-width: 1279px) {
     .hamburger-line{ width:22px; height:3px; }
-    .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(1){ transform:rotate(45deg) translate(5.5px,5.5px); }
-    .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(3){ transform:rotate(-45deg) translate(5.5px,-5.5px); }
+    .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(1),
+    .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(3) {
+      margin-left: -11px;
+      margin-top: -1.5px;
+    }
   }
 
   .mobile-menu{
