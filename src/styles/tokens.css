@@ -74,6 +74,10 @@
   --card-padding-sides: 1.875rem; /* 30px - Case study card side padding */
   --card-padding-bottom: 1.375rem; /* 22px - Case study card bottom padding */
   
+  /* Case Study Card Content Spacing - Fixed spacing for image alignment */
+  --card-content-title-to-text: var(--space-4);  /* 16px - Padding between title and text */
+  --card-content-text-to-image: var(--space-6);  /* 24px - Padding between text and image */
+  
   /* Typography Spacing */
   --typography-spacing-xs: var(--space-2);   /* 8px - Tight spacing (inline elements) */
   --typography-spacing-sm: var(--space-4);    /* 16px - Small spacing (related elements) */
@@ -147,4 +151,8 @@
   --heading-h4-line-height: var(--leading-normal);
   --heading-h4-font-weight: var(--font-bold);
   --heading-h4-font-family: var(--font-heading);
+  
+  /* Case Study Card Content Spacing Tokens */
+  --case-study-title-to-text-spacing: var(--card-content-title-to-text);
+  --case-study-text-to-image-spacing: var(--card-content-text-to-image);
 }
