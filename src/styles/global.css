@@ -550,9 +550,6 @@ html {
   font-size: var(--base-font-size);
   line-height: var(--leading-normal);
   height: 100%;
-}
-
-html {
   background-color: var(--color-bg-dark);
   overflow-x: hidden; /* Prevent horizontal scroll that could show white background */
 }
@@ -578,8 +575,9 @@ header.section-dark {
   overflow-x: hidden;
 }
 
-/* Ensure header wrapper also has dark background */
-header.section-dark > div {
+/* Ensure all header wrappers have dark background */
+header.section-dark > div,
+header.section-dark > div > div {
   background-color: var(--color-bg-dark);
 }
 

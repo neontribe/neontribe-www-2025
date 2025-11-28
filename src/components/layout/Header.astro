@@ -9,8 +9,8 @@ const currentPath = Astro.url.pathname;
   <a href="#content" class="skip-link">Skip to main content</a>
 
   <div class="w-full flex justify-center bg-bg-dark">
-    <div class="w-full md:max-w-[1420px] md:mx-auto flex items-center justify-between py-0 header-container overflow-hidden">
-      <div class="px-4 sm:px-6 md:px-3 lg:px-4 xl:px-10 flex items-center justify-between w-full min-w-0 overflow-hidden">
+    <div class="w-full md:max-w-[1420px] md:mx-auto flex items-center justify-between py-0 header-container overflow-hidden bg-bg-dark">
+      <div class="px-4 sm:px-6 md:px-3 lg:px-4 xl:px-10 pr-24 sm:pr-20 md:pr-16 lg:pr-20 flex items-center justify-between w-full min-w-0 overflow-hidden bg-bg-dark">
     <!-- Logo -->
     <div class="flex-shrink-0">
       <a href="/" aria-label="Go to homepage" class="block">
@@ -51,7 +51,7 @@ const currentPath = Astro.url.pathname;
 
     <!-- Mobile Menu Button - visible on mobile, tablet portrait and landscape (up to 1279px) -->
     <button
-      class="mobile-toggle xl:hidden flex flex-col justify-center items-center gap-[3px] w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-transparent border-0 cursor-pointer p-1 sm:p-2 lg:p-2.5 rounded mr-2 sm:mr-4 lg:mr-6"
+      class="mobile-toggle xl:hidden flex flex-col justify-center items-center gap-[3px] w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-transparent border-0 cursor-pointer p-1 sm:p-2 lg:p-2.5 rounded absolute right-4 sm:right-6 md:right-4 lg:right-6"
       aria-expanded="false"
       aria-controls="mobile-menu"
       aria-label="Toggle navigation menu"
@@ -102,6 +102,11 @@ const currentPath = Astro.url.pathname;
   .mobile-toggle:hover{ background:rgba(255,255,255,.1); }
   .hamburger-line{ width:18px; height:2px; background:var(--color-text-light); transition:transform .3s, opacity .3s, background .2s ease; }
   .mobile-toggle:hover .hamburger-line{ background:#48E9CE; }
+  
+  /* More space between logo and hamburger on mobile portrait */
+  @media (max-width: 639px) {
+    .mobile-toggle { right: 0.5rem !important; }
+  }
   
   /* Larger hamburger menu on mobile landscape (640px-1023px) */
   @media (min-width: 640px) and (max-width: 1023px) {
