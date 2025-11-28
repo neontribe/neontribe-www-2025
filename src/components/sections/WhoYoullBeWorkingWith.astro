@@ -7,7 +7,6 @@ export interface Props {
   bodyText: string[];
   buttonLabel: string;
   buttonHref: string;
-  rightContent?: any;
 }
 
 const {
@@ -15,7 +14,6 @@ const {
   bodyText,
   buttonLabel,
   buttonHref,
-  rightContent,
 } = Astro.props;
 ---
 
@@ -31,18 +29,21 @@ const {
           ))}
         </div>
         
-        <div class="who-youll-be-working-with-button-wrapper">
+        <div class="who-youll-be-working-with-button-wrapper who-youll-be-working-with-button-desktop">
           <Button href={buttonHref} variant="primary" class="w-full md:w-auto">
             {buttonLabel}
           </Button>
         </div>
       </div>
       
-      {rightContent && (
-        <div slot="rightContent" class="who-youll-be-working-with-right-content">
-          <slot name="rightContent" />
+      <div slot="rightContent" class="who-youll-be-working-with-right-content">
+        <slot name="rightContent" />
+        <div class="who-youll-be-working-with-button-wrapper who-youll-be-working-with-button-mobile">
+          <Button href={buttonHref} variant="primary" class="w-full">
+            {buttonLabel}
+          </Button>
         </div>
-      )}
+      </div>
     </TwoColumnLayout>
   </div>
 </section>
