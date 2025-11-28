@@ -108,26 +108,23 @@ const currentPath = Astro.url.pathname;
     .mobile-toggle { right: 0.5rem !important; }
   }
   
-  /* Larger hamburger menu on mobile landscape (640px-1023px) */
-  @media (min-width: 640px) and (max-width: 1023px) {
-    .hamburger-line{ width:24px; height:3px; }
-  }
+  /* Base close state transform - for mobile (< 640px) */
   .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(1){ transform:rotate(45deg) translate(4px,4px); }
   .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(2){ opacity:0; }
   .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(3){ transform:rotate(-45deg) translate(4px,-4px); }
   
   /* Larger hamburger menu on mobile landscape (640px-1023px) */
   @media (min-width: 640px) and (max-width: 1023px) {
-    .hamburger-line{ width:24px; height:3px; }
-    .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(1){ transform:rotate(45deg) translate(6px,6px); }
-    .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(3){ transform:rotate(-45deg) translate(6px,-6px); }
+    .hamburger-line{ width:20px; height:2.5px; }
+    .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(1){ transform:rotate(45deg) translate(5px,5px); }
+    .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(3){ transform:rotate(-45deg) translate(5px,-5px); }
   }
   
   /* Larger hamburger menu on tablet (1024px-1279px) */
   @media (min-width: 1024px) and (max-width: 1279px) {
-    .hamburger-line{ width:28px; height:3.5px; }
-    .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(1){ transform:rotate(45deg) translate(7px,7px); }
-    .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(3){ transform:rotate(-45deg) translate(7px,-7px); }
+    .hamburger-line{ width:22px; height:3px; }
+    .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(1){ transform:rotate(45deg) translate(5.5px,5.5px); }
+    .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(3){ transform:rotate(-45deg) translate(5.5px,-5.5px); }
   }
 
   .mobile-menu{
