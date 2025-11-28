@@ -10,18 +10,20 @@ const currentPath = Astro.url.pathname;
 
   <div class="w-full flex justify-center">
     <div class="w-full md:max-w-[1420px] md:mx-auto flex items-center justify-between py-0 header-container overflow-hidden">
-      <div class="px-4 sm:px-1.5 md:px-3 lg:px-4 xl:px-10 flex items-center justify-between w-full min-w-0 overflow-hidden">
+      <div class="px-4 sm:px-6 md:px-3 lg:px-4 xl:px-10 flex items-center justify-between w-full min-w-0 overflow-hidden">
     <!-- Logo -->
     <div class="flex-shrink-0">
       <a href="/" aria-label="Go to homepage" class="block">
         <img src={fullLogo.src} alt="Neontribe" class="block sm:hidden h-6 w-auto" />
-        <img src={neontribeLogo.src} alt="Neontribe" class="hidden sm:block xl:hidden h-3 sm:h-3 md:h-3 lg:h-3.5 w-auto" />
+        <!-- Larger logo on mobile landscape (640px-1023px) -->
+        <img src={fullLogo.src} alt="Neontribe" class="hidden sm:block lg:hidden h-8 w-auto" />
+        <!-- Full logo on desktop (1280px+) -->
         <img src={fullLogo.src} alt="Neontribe" class="hidden xl:block h-8 w-auto" />
       </a>
     </div>
 
-    <!-- Desktop Navigation -->
-    <nav class="hidden sm:flex sm:flex-row sm:flex-nowrap items-center gap-1 max-md:gap-0.5 md:gap-1 lg:gap-2 xl:gap-6 flex-shrink sm:ml-1 max-md:ml-0.5 md:ml-1 lg:ml-2 xl:ml-6 min-w-0 overflow-hidden" aria-label="Main navigation">
+    <!-- Desktop Navigation - visible only from tablet landscape (1024px+) -->
+    <nav class="hidden lg:flex lg:flex-row lg:flex-nowrap items-center gap-2 lg:max-xl:gap-2 xl:gap-6 flex-shrink lg:ml-2 xl:ml-6 min-w-0" aria-label="Main navigation">
       <a
         href="/case-studies"
         class={`nav-link ${currentPath === '/case-studies' ? 'active' : ''}`}
@@ -41,14 +43,14 @@ const currentPath = Astro.url.pathname;
       >Advice Service</a>
     </nav>
 
-    <!-- Button wrapper - hidden on mobile portrait, visible on landscape mobile and desktop -->
-    <div class="hidden sm:flex flex-shrink-0 ml-0.5 sm:ml-1 md:ml-0 header-button-wrapper">
+    <!-- Button wrapper - visible only from tablet landscape (1024px+) -->
+    <div class="hidden lg:flex flex-shrink-0 lg:ml-2 xl:ml-6 header-button-wrapper">
       <Button href="/talk-to-us" variant="teal" size="sm" class="whitespace-nowrap">Talk to us</Button>
     </div>
 
-    <!-- Mobile Menu Button - visible only on mobile portrait -->
+    <!-- Mobile Menu Button - visible on mobile portrait and landscape (up to 1023px) -->
     <button
-      class="mobile-toggle sm:hidden flex flex-col justify-center items-center gap-[3px] w-8 h-8 bg-transparent border-0 cursor-pointer p-1 rounded"
+      class="mobile-toggle lg:hidden flex flex-col justify-center items-center gap-[3px] w-8 h-8 sm:w-10 sm:h-10 bg-transparent border-0 cursor-pointer p-1 sm:p-2 rounded mr-2 sm:mr-4"
       aria-expanded="false"
       aria-controls="mobile-menu"
       aria-label="Toggle navigation menu"
@@ -99,9 +101,21 @@ const currentPath = Astro.url.pathname;
   .mobile-toggle:hover{ background:rgba(255,255,255,.1); }
   .hamburger-line{ width:18px; height:2px; background:var(--color-text-light); transition:transform .3s, opacity .3s, background .2s ease; }
   .mobile-toggle:hover .hamburger-line{ background:#48E9CE; }
+  
+  /* Larger hamburger menu on mobile landscape (640px-1023px) */
+  @media (min-width: 640px) and (max-width: 1023px) {
+    .hamburger-line{ width:24px; height:3px; }
+  }
   .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(1){ transform:rotate(45deg) translate(4px,4px); }
   .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(2){ opacity:0; }
   .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(3){ transform:rotate(-45deg) translate(4px,-4px); }
+  
+  /* Larger hamburger menu on mobile landscape (640px-1023px) */
+  @media (min-width: 640px) and (max-width: 1023px) {
+    .hamburger-line{ width:24px; height:3px; }
+    .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(1){ transform:rotate(45deg) translate(6px,6px); }
+    .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(3){ transform:rotate(-45deg) translate(6px,-6px); }
+  }
 
   .mobile-menu{
     position:fixed; inset:0; background:rgba(0,0,0,.95); z-index:1000;
@@ -200,7 +214,7 @@ const currentPath = Astro.url.pathname;
 
     document.addEventListener('keydown', (e) => { if(e.key==='Escape' && isOpen) closeMenu(); });
     menu.addEventListener('click', (e) => { if(e.target === menu) closeMenu(); });
-    window.addEventListener('resize', () => { if(window.innerWidth >= 640 && isOpen) closeMenu(); });
+    window.addEventListener('resize', () => { if(window.innerWidth >= 1024 && isOpen) closeMenu(); });
   }
 
   if (document.readyState === 'loading') {
