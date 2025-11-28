@@ -287,6 +287,36 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
     }
   }
   
+  /* Fix overlap for Samsung Galaxy S8+ landscape (740px) */
+  @media (min-width: 740px) and (max-width: 740px) {
+    section.section-dark [class*="sm:col-span-8"],
+    section.section-dark [class*="md:col-span-8"] {
+      padding-right: 3.5rem !important; /* Extra space for this specific device */
+      max-width: calc(100% - 3.5rem) !important;
+    }
+    
+    section.section-light [class*="sm:col-span-8"],
+    section.section-light [class*="md:col-span-8"] {
+      padding-right: 3.5rem !important;
+      max-width: calc(100% - 3.5rem) !important;
+    }
+  }
+  
+  /* Fix overlap for Surface Duo (720px) */
+  @media (min-width: 720px) and (max-width: 720px) {
+    section.section-dark [class*="sm:col-span-8"],
+    section.section-dark [class*="md:col-span-8"] {
+      padding-right: 3.5rem !important; /* Extra space for this specific device */
+      max-width: calc(100% - 3.5rem) !important;
+    }
+    
+    section.section-light [class*="sm:col-span-8"],
+    section.section-light [class*="md:col-span-8"] {
+      padding-right: 3.5rem !important;
+      max-width: calc(100% - 3.5rem) !important;
+    }
+  }
+  
   /* Position image for mobile landscape (640px-767px) */
   @media (min-width: 640px) and (max-width: 767px) {
     .hero-image-overlay {
