@@ -1,6 +1,7 @@
 ---
 import Button from '../Button/Button.astro';
-import fullLogo from '../../assets/Full-logo.svg'; 
+import fullLogo from '../../assets/Full-logo.svg';
+import neontribeLogo from '../../assets/neontribe-logo.svg';
 const currentPath = Astro.url.pathname;
 ---
 
@@ -9,35 +10,43 @@ const currentPath = Astro.url.pathname;
 
   <div class="w-full flex justify-center">
     <div class="w-full md:max-w-[1420px] md:mx-auto flex items-center justify-between py-0 header-container">
-      <div class="px-4 md:px-10 flex items-center justify-between w-full">
+      <div class="px-4 md:px-6 lg:px-10 flex items-center justify-between w-full min-w-0">
     <!-- Logo -->
     <div class="flex-shrink-0">
       <a href="/" aria-label="Go to homepage" class="block">
-        <img src={fullLogo.src} alt="Neontribe" class="h-6 md:h-8 w-auto block" />
+        <!-- Full logo on mobile portrait - RESTORED to original -->
+        <img src={fullLogo.src} alt="Neontribe" class="block sm:hidden h-6 w-auto" />
+        <!-- Use simpler logo ONLY on landscape mobile (640px-1023px) to save space -->
+        <img src={neontribeLogo.src} alt="Neontribe" class="hidden sm:block lg:hidden h-3 w-auto" />
+        <!-- Full logo on tablet landscape and desktop -->
+        <img src={fullLogo.src} alt="Neontribe" class="hidden lg:block h-8 w-auto" />
       </a>
     </div>
 
     <!-- Desktop Navigation -->
-    <nav class="hidden sm:flex items-center gap-6" aria-label="Main navigation">
+    <!-- Normal spacing on mobile portrait (nav hidden anyway), compact ONLY on landscape mobile -->
+    <nav class="hidden sm:flex sm:flex-row sm:flex-nowrap items-center gap-4 max-md:gap-1 md:gap-4 lg:gap-6 flex-shrink-0 sm:ml-4 max-md:ml-1 md:ml-4 lg:ml-6 min-w-0" aria-label="Main navigation">
       <a
         href="/case-studies"
-        class={`nav-link ${currentPath === '/case-studies' ? 'active' : ''}`}
+        class={`nav-link whitespace-nowrap flex-shrink-0 ${currentPath === '/case-studies' ? 'active' : ''}`}
         aria-current={currentPath === '/case-studies' ? 'page' : undefined}
       >Case Studies</a>
 
       <a
         href="/how-we-work"
-        class={`nav-link ${currentPath === '/how-we-work' ? 'active' : ''}`}
+        class={`nav-link whitespace-nowrap flex-shrink-0 ${currentPath === '/how-we-work' ? 'active' : ''}`}
         aria-current={currentPath === '/how-we-work' ? 'page' : undefined}
       >How We Work</a>
 
       <a
         href="/advice-service"
-        class={`nav-link ${currentPath === '/advice-service' ? 'active' : ''}`}
+        class={`nav-link whitespace-nowrap flex-shrink-0 ${currentPath === '/advice-service' ? 'active' : ''}`}
         aria-current={currentPath === '/advice-service' ? 'page' : undefined}
       >Advice Service</a>
 
-      <Button href="/talk-to-us" variant="teal" size="sm">Talk to us</Button>
+      <div class="flex-shrink-0 ml-0.5 sm:ml-1 md:ml-0 header-button-wrapper">
+        <Button href="/talk-to-us" variant="teal" size="sm" class="whitespace-nowrap">Talk to us</Button>
+      </div>
     </nav>
 
     <!-- Mobile Menu Button -->
@@ -155,6 +164,41 @@ const currentPath = Astro.url.pathname;
   @media (max-width:480px){
     .mobile-content{ padding:1.5rem 1rem; }
     .mobile-link{ font-size: var(--text-lg); padding:12px 20px; }
+  }
+
+  /* Button sizing - ONLY target landscape mobile, leave mobile portrait alone */
+  /* Mobile portrait (< 640px): Uses default button size (nav hidden anyway) */
+  
+  /* Target 640px-767px range (667px iPhone SE landscape) - Compact */
+  @media (min-width: 640px) and (max-width: 767px) {
+    .header-button-wrapper :global(.button) {
+      padding: 2px 6px !important;
+      font-size: 8px !important;
+      height: 24px !important;
+      line-height: 1.1 !important;
+      min-width: auto !important;
+      letter-spacing: -0.3px !important;
+    }
+  }
+
+  /* Target 768px-1023px range (932px iPhone 14 Pro Max landscape) - Slightly larger */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .header-button-wrapper :global(.button) {
+      padding: 3px 10px !important;
+      font-size: 9px !important;
+      height: 28px !important;
+      line-height: 1.2 !important;
+    }
+  }
+
+  /* Tablet landscape and desktop (1024px+) - Normal size */
+  @media (min-width: 1024px) {
+    .header-button-wrapper :global(.button) {
+      padding: 8px 16px !important;
+      font-size: var(--button-font-size) !important;
+      height: 40px !important;
+      letter-spacing: normal !important;
+    }
   }
 </style>
 
