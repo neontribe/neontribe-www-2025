@@ -552,6 +552,11 @@ html {
   height: 100%;
 }
 
+html {
+  background-color: var(--color-bg-dark);
+  overflow-x: hidden; /* Prevent horizontal scroll that could show white background */
+}
+
 body {
   color: var(--color-text-dark);
   background-color: var(--color-bg-dark);
@@ -569,6 +574,13 @@ header.section-dark {
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
+  background-color: var(--color-bg-dark);
+  overflow-x: hidden;
+}
+
+/* Ensure header wrapper also has dark background */
+header.section-dark > div {
+  background-color: var(--color-bg-dark);
 }
 
 /* Ensure main content grows to push footer down */
