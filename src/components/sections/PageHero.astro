@@ -62,12 +62,20 @@ const iconDesktopMap = {
 
 <style>
   .page-hero-title {
-    font-size: 40px; /* Mobile: 40px */
+    font-size: 32px; /* Mobile: 32px - reduced from 40px */
     line-height: 1.0; /* 100% line-height */
     letter-spacing: 0; /* Normal letter-spacing */
   }
   
   @media (min-width: 768px) {
+    .page-hero-title {
+      font-size: 50px; /* Tablet: 50px - intermediate size */
+      line-height: 1.0; /* 100% line-height */
+      letter-spacing: 0; /* Normal letter-spacing */
+    }
+  }
+  
+  @media (min-width: 1024px) {
     .page-hero-title {
       font-size: 74px; /* Desktop: 74px */
       line-height: 1.0; /* 100% line-height */
