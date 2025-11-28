@@ -51,13 +51,13 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
   <!-- Hero Section with Dark Background and Overlapping White Intro -->
   <div class="relative" style="overflow: visible;">
     <!-- Dark Hero Section -->
-    <section class="section section-dark pt-8 md:pt-32 md:pb-48 lg:pt-40 lg:pb-86 relative" aria-label="Case study hero">
+    <section class="section section-dark pt-8 sm:pt-20 md:pt-32 sm:pb-40 md:pb-48 lg:pt-40 lg:pb-86 relative" aria-label="Case study hero">
       <div class="container">
-        <div class="mx-auto relative max-w-[1200px] md:min-h-[320px] md:h-[320px]">
-          <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start">
+        <div class="mx-auto relative max-w-[1200px] sm:min-h-[280px] md:min-h-[320px] sm:h-[280px] md:h-[320px]">
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-6 md:gap-8 items-start">
             <!-- Left Column: Title, Customer, Categories -->
-            <div class="md:col-span-8 lg:col-span-7 relative z-10">
-              <h1 class="text-text-light mb-4 md:mb-6 leading-tight" style="font-family: var(--font-button); font-weight: var(--font-regular); font-size: var(--text-5xl);">
+            <div class="sm:col-span-8 lg:col-span-7 relative z-10">
+              <h1 class="text-text-light mb-4 md:mb-6 leading-tight case-study-title" style="font-family: var(--font-button); font-weight: var(--font-regular);">
                 {title}
               </h1>
               
@@ -86,9 +86,9 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
       </div>
     </section>
 
-    <!-- Mobile Hero Image (in document flow, between dark and white sections) -->
+    <!-- Mobile Hero Image (in document flow, only for very small screens) -->
     {heroImage && (
-      <div class="md:hidden flex justify-center -mt-16 mb-8" style="padding: 0 1.5rem;">
+      <div class="sm:hidden flex justify-center -mt-16 mb-8" style="padding: 0 1.5rem;">
         <div class="mobile-image-container" style="max-width: 333px; width: 100%; aspect-ratio: 333 / 484;">
           <img
             src={heroImage.src}
@@ -102,12 +102,12 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
     )}
 
     <!-- White Introduction Section (overlapping) -->
-    <section class="section section-light -mt-16 md:-mt-24 lg:-mt-32 relative z-10 pt-8 md:pt-12 md:pb-12" style="overflow: visible;">
+    <section class="section section-light -mt-16 sm:-mt-20 md:-mt-24 lg:-mt-32 relative z-10 pt-8 md:pt-12 md:pb-12" style="overflow: visible;">
       <div class="container">
         <div class="mx-auto relative" style="max-width: 1200px;">
-          <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-6 md:gap-8">
             <!-- Left Column: Intro Text -->
-            <div class="md:col-span-8 lg:col-span-7 relative z-10 md:mt-0">
+            <div class="sm:col-span-8 lg:col-span-7 relative z-10 sm:mt-0">
               {description && (
                 <p class="text-text-dark leading-relaxed" style="font-family: var(--font-body); font-weight: var(--font-bold); font-size: var(--text-xl);">
                   {description}
@@ -115,23 +115,23 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
               )}
             </div>
             <!-- Right Column: Spacer for image overlap -->
-            <div class="md:col-span-4 lg:col-span-5"></div>
+            <div class="sm:col-span-4 lg:col-span-5"></div>
           </div>
         </div>
       </div>
     </section>
     
-    <!-- Desktop/Tablet Hero Image Container -->
+    <!-- Tablet/Desktop Hero Image Container (visible from 640px+) -->
     {heroImage && (
       <div
         class="
-          hidden md:block
+          hidden sm:block
           pointer-events-none
-          absolute md:top-48 lg:top-52
+          absolute sm:top-40 md:top-48 lg:top-52
           w-full
-          z-20
+          hero-image-overlay
         "
-        style="max-width: 1200px; left: 50%; transform: translateX(-50%); padding: 0 1.5rem;"
+        style="max-width: 1200px; left: 50%; transform: translateX(-50%); padding: 0 1.5rem; z-index: 30;"
         aria-hidden="true"
       >
         <div class="flex justify-end">
@@ -141,7 +141,7 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
               alt={heroImageAlt || `${title} - case study hero image`}
               class="
                 block h-auto pointer-events-auto w-full
-                md:drop-shadow-xl
+                drop-shadow-xl
               "
               loading="eager"
             />
@@ -213,3 +213,173 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
     <Footer />
   </div>
 </Layout>
+
+<style>
+  /* Responsive case study title sizing */
+  .case-study-title {
+    font-size: 28px; /* Mobile: 28px - reduced from 48px */
+    line-height: 1.2;
+  }
+  
+  @media (min-width: 640px) {
+    .case-study-title {
+      font-size: 36px; /* Small tablet: 36px */
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .case-study-title {
+      font-size: 40px; /* Tablet: 40px */
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .case-study-title {
+      font-size: 48px; /* Desktop: 48px (var(--text-5xl)) */
+    }
+  }
+  
+  /* Hero image overlay - ensure it appears above text */
+  .hero-image-overlay {
+    z-index: 30 !important;
+  }
+  
+  /* Fix for all mobile and tablet landscape (640px-1023px) when not in stack mode */
+  @media (min-width: 640px) and (max-width: 1023px) {
+    /* Force text wrapping to prevent going under image */
+    .case-study-title {
+      word-wrap: break-word !important;
+      overflow-wrap: break-word !important;
+      word-break: break-word !important; /* Allow breaking even short words like "AI" */
+      hyphens: auto;
+      max-width: 100%;
+    }
+    
+    /* Reduce bottom padding on dark section since image is between sections */
+    section.section-dark {
+      padding-bottom: 20rem !important; /* Reduced to minimize black space */
+    }
+    
+    /* Reduce negative margin on light section to bring sections closer */
+    section.section-light {
+      margin-top: -12rem !important; /* Reduced negative margin to minimize gap */
+    }
+    
+    /* Ensure text columns have proper spacing */
+    section.section-dark [class*="sm:col-span-8"],
+    section.section-dark [class*="md:col-span-8"] {
+      padding-right: 2.5rem !important; /* Extra space to prevent overlap */
+      max-width: calc(100% - 2.5rem) !important;
+    }
+    
+    section.section-light [class*="sm:col-span-8"],
+    section.section-light [class*="md:col-span-8"] {
+      padding-right: 2.5rem !important;
+      max-width: calc(100% - 2.5rem) !important;
+    }
+    
+    /* Ensure customer and categories text also wrap */
+    section.section-dark p {
+      word-wrap: break-word !important;
+      overflow-wrap: break-word !important;
+      word-break: break-word !important;
+      max-width: 100% !important;
+    }
+  }
+  
+  /* Specific fix for iPhone SE landscape (667px)*/
+  @media (min-width: 667px) and (max-width: 667px) {
+    .case-study-title {
+      word-wrap: break-word !important;
+      overflow-wrap: anywhere !important; /* More aggressive wrapping for short words */
+      word-break: break-word !important;
+      hyphens: auto;
+      max-width: 100%;
+      /* Force break after "generative" if needed */
+      white-space: normal !important;
+    }
+    
+    /* Additional spacing for iPhone SE */
+    section.section-dark [class*="sm:col-span-8"] {
+      padding-right: 3rem !important;
+      max-width: calc(100% - 3rem) !important;
+    }
+    
+    section.section-light [class*="sm:col-span-8"] {
+      padding-right: 3rem !important;
+      max-width: calc(100% - 3rem) !important;
+    }
+  }
+  
+  /* Fix overlap for Samsung Galaxy S8+ landscape (740px) */
+  @media (min-width: 740px) and (max-width: 740px) {
+    section.section-dark [class*="sm:col-span-8"],
+    section.section-dark [class*="md:col-span-8"] {
+      padding-right: 3.5rem !important; /* Extra space for this specific device */
+      max-width: calc(100% - 3.5rem) !important;
+    }
+    
+    section.section-light [class*="sm:col-span-8"],
+    section.section-light [class*="md:col-span-8"] {
+      padding-right: 3.5rem !important;
+      max-width: calc(100% - 3.5rem) !important;
+    }
+  }
+  
+  /* Fix overlap for Surface Duo (720px) */
+  @media (min-width: 720px) and (max-width: 720px) {
+    section.section-dark [class*="sm:col-span-8"],
+    section.section-dark [class*="md:col-span-8"] {
+      padding-right: 3.5rem !important; /* Extra space for this specific device */
+      max-width: calc(100% - 3.5rem) !important;
+    }
+    
+    section.section-light [class*="sm:col-span-8"],
+    section.section-light [class*="md:col-span-8"] {
+      padding-right: 3.5rem !important;
+      max-width: calc(100% - 3.5rem) !important;
+    }
+  }
+  
+  /* Position image for mobile landscape (640px-767px) */
+  @media (min-width: 640px) and (max-width: 767px) {
+    .hero-image-overlay {
+      top: 10rem !important; /* Position image to overlap sections */
+      z-index: 30 !important;
+    }
+  }
+  
+  /* Position image for tablet (768px-1023px) */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .hero-image-overlay {
+      top: 12rem !important; /* Position image to overlap sections */
+      z-index: 30 !important;
+    }
+  }
+  
+  /* Desktop and larger screens - keep original positioning (handled by Tailwind classes) */
+  @media (min-width: 1024px) {
+    .hero-image-overlay {
+      /* Original positioning maintained via Tailwind classes md:top-48 lg:top-52 */
+      z-index: 30 !important;
+    }
+  }
+  
+  /* Ensure text sections have lower z-index so image appears above */
+  section.section-dark .relative.z-10 {
+    z-index: 10;
+    position: relative;
+  }
+  
+  section.section-light .relative.z-10 {
+    z-index: 10;
+    position: relative;
+  }
+  
+  /* On desktop, ensure image is above text */
+  @media (min-width: 1024px) {
+    .hero-image-overlay {
+      z-index: 30 !important;
+    }
+  }
+</style>

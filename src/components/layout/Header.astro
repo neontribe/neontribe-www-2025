@@ -1,24 +1,30 @@
 ---
 import Button from '../Button/Button.astro';
-import fullLogo from '../../assets/Full-logo.svg'; 
+import fullLogo from '../../assets/Full-logo.svg';
+import neontribeLogo from '../../assets/neontribe-logo.svg';
 const currentPath = Astro.url.pathname;
 ---
 
 <header id="site-header" class="section section-dark w-full">
   <a href="#content" class="skip-link">Skip to main content</a>
 
-  <div class="w-full flex justify-center">
-    <div class="w-full md:max-w-[1420px] md:mx-auto flex items-center justify-between py-0 header-container">
-      <div class="px-4 md:px-10 flex items-center justify-between w-full">
+  <div class="w-full flex justify-center bg-bg-dark">
+    <div class="w-full md:max-w-[1420px] md:mx-auto flex items-center justify-between py-0 header-container overflow-hidden bg-bg-dark">
+      <div class="px-4 sm:px-6 md:px-3 lg:px-4 xl:px-10 pr-24 sm:pr-20 md:pr-16 lg:pr-20 flex items-center justify-between w-full min-w-0 overflow-hidden bg-bg-dark">
     <!-- Logo -->
     <div class="flex-shrink-0">
       <a href="/" aria-label="Go to homepage" class="block">
-        <img src={fullLogo.src} alt="Neontribe" class="h-6 md:h-8 w-auto block" />
+        <!-- Logo on mobile portrait (< 640px) -->
+        <img src={fullLogo.src} alt="Neontribe" class="block sm:hidden h-6 w-auto" />
+        <!-- Logo on mobile landscape and tablet (640px-1279px) -->
+        <img src={fullLogo.src} alt="Neontribe" class="hidden sm:block xl:hidden h-8 w-auto" />
+        <!-- Logo on desktop (1280px+) -->
+        <img src={fullLogo.src} alt="Neontribe" class="hidden xl:block h-8 w-auto" />
       </a>
     </div>
 
-    <!-- Desktop Navigation -->
-    <nav class="hidden sm:flex items-center gap-6" aria-label="Main navigation">
+    <!-- Desktop Navigation - visible only from desktop (1280px+) -->
+    <nav class="hidden xl:flex xl:flex-row xl:flex-nowrap items-center gap-6 flex-shrink xl:ml-6 min-w-0" aria-label="Main navigation">
       <a
         href="/case-studies"
         class={`nav-link ${currentPath === '/case-studies' ? 'active' : ''}`}
@@ -36,13 +42,16 @@ const currentPath = Astro.url.pathname;
         class={`nav-link ${currentPath === '/advice-service' ? 'active' : ''}`}
         aria-current={currentPath === '/advice-service' ? 'page' : undefined}
       >Advice Service</a>
-
-      <Button href="/talk-to-us" variant="teal" size="sm">Talk to us</Button>
     </nav>
 
-    <!-- Mobile Menu Button -->
+    <!-- Button wrapper - visible only from desktop (1280px+) -->
+    <div class="hidden xl:flex flex-shrink-0 xl:ml-6 header-button-wrapper">
+      <Button href="/talk-to-us" variant="teal" size="sm" class="whitespace-nowrap">Talk to us</Button>
+    </div>
+
+    <!-- Mobile Menu Button - visible on mobile, tablet portrait and landscape (up to 1279px) -->
     <button
-      class="mobile-toggle sm:hidden flex flex-col justify-center items-center gap-[3px] w-8 h-8 bg-transparent border-0 cursor-pointer p-1 rounded"
+      class="mobile-toggle xl:hidden flex flex-col justify-center items-center gap-[3px] w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-transparent border-0 cursor-pointer p-1 sm:p-2 lg:p-2.5 rounded absolute right-4 sm:right-6 md:right-4 lg:right-6"
       aria-expanded="false"
       aria-controls="mobile-menu"
       aria-label="Toggle navigation menu"
@@ -91,11 +100,60 @@ const currentPath = Astro.url.pathname;
   .mobile-toggle{ z-index:1101; }
   .mobile-toggle:focus{ outline:2px solid var(--color-accent-turquoise); outline-offset:2px; }
   .mobile-toggle:hover{ background:rgba(255,255,255,.1); }
-  .hamburger-line{ width:18px; height:2px; background:var(--color-text-light); transition:transform .3s, opacity .3s, background .2s ease; }
+  .hamburger-line{ 
+    width:18px; 
+    height:2px; 
+    background:var(--color-text-light); 
+    transition:transform .3s, opacity .3s, background .2s ease;
+  }
   .mobile-toggle:hover .hamburger-line{ background:#48E9CE; }
-  .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(1){ transform:rotate(45deg) translate(4px,4px); }
-  .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(2){ opacity:0; }
-  .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(3){ transform:rotate(-45deg) translate(4px,-4px); }
+  .mobile-toggle[aria-expanded="true"] .hamburger-line{ background:var(--color-accent-turquoise); }
+  
+  /* More space between logo and hamburger on mobile portrait */
+  @media (max-width: 639px) {
+    .mobile-toggle { right: 0.5rem !important; }
+  }
+  
+  /* Base close state transform - for mobile (< 640px) - regular X */
+  .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(1){ 
+    transform: rotate(45deg);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -9px;
+    margin-top: -1px;
+  }
+  .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(2){ 
+    opacity: 0;
+  }
+  .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(3){ 
+    transform: rotate(-45deg);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -9px;
+    margin-top: -1px;
+  }
+  
+  /* Larger hamburger menu on mobile landscape (640px-1023px) */
+  @media (min-width: 640px) and (max-width: 1023px) {
+    .hamburger-line{ width:19px; height:2.5px; }
+    .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(1),
+    .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(3) {
+      margin-left: -9.5px;
+      margin-top: -1.25px;
+    }
+  }
+  
+  /* Larger hamburger menu on tablet (1024px-1279px) */
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    .hamburger-line{ width:22px; height:3px; }
+    .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(1),
+    .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(3) {
+      margin-left: -11px;
+      margin-top: -1.5px;
+    }
+  }
 
   .mobile-menu{
     position:fixed; inset:0; background:rgba(0,0,0,.95); z-index:1000;
@@ -194,7 +252,7 @@ const currentPath = Astro.url.pathname;
 
     document.addEventListener('keydown', (e) => { if(e.key==='Escape' && isOpen) closeMenu(); });
     menu.addEventListener('click', (e) => { if(e.target === menu) closeMenu(); });
-    window.addEventListener('resize', () => { if(window.innerWidth >= 640 && isOpen) closeMenu(); });
+    window.addEventListener('resize', () => { if(window.innerWidth >= 1280 && isOpen) closeMenu(); });
   }
 
   if (document.readyState === 'loading') {

@@ -550,6 +550,8 @@ html {
   font-size: var(--base-font-size);
   line-height: var(--leading-normal);
   height: 100%;
+  background-color: var(--color-bg-dark);
+  overflow-x: hidden; /* Prevent horizontal scroll that could show white background */
 }
 
 body {
@@ -558,6 +560,25 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
+  overflow-x: hidden; /* Prevent horizontal scroll that could show white background */
+}
+
+/* Ensure header extends edge-to-edge on all devices */
+header.section-dark {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background-color: var(--color-bg-dark);
+  overflow-x: hidden;
+}
+
+/* Ensure all header wrappers have dark background */
+header.section-dark > div,
+header.section-dark > div > div {
+  background-color: var(--color-bg-dark);
 }
 
 /* Ensure main content grows to push footer down */
@@ -588,19 +609,45 @@ header.section-dark + section.section-dark {
   }
 }
 
-/* Navigation link styles */
+/* Navigation link styles - visible from 1024px+ */
 .nav-link {
   color: var(--color-text-light);
   text-decoration: none;
-  font-size: var(--text-lg); /* 20px - mobile */
+  font-size: var(--text-lg); /* 20px - base size for tablet */
   font-weight: var(--font-bold);
   line-height: var(--leading-normal);
   transition: color 0.2s ease, text-decoration 0.2s ease;
   padding-block: 0.25rem;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
-@media (min-width: 768px) {
+
+/* Compact size for iPad landscape (1024px-1279px) */
+@media (min-width: 1024px) and (max-width: 1279px) {
   .nav-link {
-    font-size: var(--text-xl); /* 24px - desktop */
+    font-size: 12px;
+    line-height: 1.3;
+    padding-block: 0.12rem;
+    padding-inline: 0.3rem;
+    letter-spacing: -0.15px;
+  }
+}
+
+/* Extra compact for narrow tablets like Surface Duo (1024px-1114px) */
+@media (min-width: 1024px) and (max-width: 1114px) {
+  .nav-link {
+    font-size: 11px;
+    line-height: 1.25;
+    padding-block: 0.1rem;
+    padding-inline: 0.25rem;
+    letter-spacing: -0.2px;
+  }
+}
+
+/* Desktop size (1280px+) */
+@media (min-width: 1280px) {
+  .nav-link {
+    font-size: var(--text-xl); /* 24px */
   }
 }
 .nav-link.active {
@@ -616,10 +663,45 @@ header.section-dark + section.section-dark {
   text-underline-offset: 0.25rem !important;
 }
 
-/* =========================
-   TYPOGRAPHY / MARKDOWN
+/* Header button wrapper - visible from 1024px+ */
+/* Compact button for iPad landscape (1024px-1279px) */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .header-button-wrapper :global(.button) {
+    padding: 5px 10px !important;
+    font-size: 10px !important;
+    height: 32px !important;
+    line-height: 1.35 !important;
+    min-width: auto !important;
+    letter-spacing: -0.05px !important;
+  }
+  .header-button-wrapper :global(.button span) {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
 
-   Follows WCAG 2.2 accessibility standards (SC 1.4.12) for line-height and spacing.
+/* Extra compact button for narrow tablets (1024px-1114px) */
+@media (min-width: 1024px) and (max-width: 1114px) {
+  .header-button-wrapper :global(.button) {
+    padding: 4px 8px !important;
+    font-size: 9px !important;
+    height: 30px !important;
+    line-height: 1.3 !important;
+  }
+}
+
+/* Normal button size for desktop (1280px+) */
+@media (min-width: 1280px) {
+  .header-button-wrapper :global(.button) {
+    padding: 8px 16px !important;
+    font-size: var(--button-font-size) !important;
+    height: 40px !important;
+    letter-spacing: normal !important;
+  }
+}
+
+/* =========================
+   TYPOGRAPHY
 ========================= */
 .markdown-content {
   line-height: var(--leading-relaxed);
