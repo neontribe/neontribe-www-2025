@@ -7,7 +7,7 @@ categories:
   - 'Discovery'
 heroImage: ./images/npc.png
 heroImageAlt: 'A graphic of the New Philanthropy Capital Signposting+ document'
-date: '2024-09-03'
+date: '2023-01-01'
 quote: "Harry and the Neontribe team made a meaningful impact on the project's quality. They were pivotal in sharpening our plan and delivering the research activities. Their work delivered the user-centred insights that are so useful to the signposting services that help young people get the best outcomes they can."
 quoteAuthor: 'Penny Nkrumah'
 quoteOrganisation: 'New Philanthropy Capital'
