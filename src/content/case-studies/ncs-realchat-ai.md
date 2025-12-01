@@ -10,7 +10,7 @@ categories:
 statistic: 'Helped 15-17 year olds understand and use generative AI.'
 heroImage: ./images/real chat ai.png
 heroImageAlt: 'RealChatAI on a smartphone'
-date: '2025-06-10'
+date: '2025-01-01'
 quote: "The co-creation model with young people at the driving seat was so important to me, the tech needs to be understood and shaped by those who will be using it."
 quoteAuthor: 'Jo Hutchinson'
 quoteOrganisation: 'NCS'
