@@ -1,7 +1,8 @@
 ---
 title: 'Defining a way to help young people think critically when using generative AI'
-description: 'Helping 15-17 year olds understand, examine and use generative AI in positive ways through enrichment activities.'
+description: 'Helping young people understand and use generative AI in positive ways.'
 customer: 'NCS and CAST'
+projectName: 'Realchat AI'
 categories:
   - 'Discovery'
   - 'Alpha'
@@ -14,6 +15,13 @@ date: '2025-01-01'
 quote: "The co-creation model with young people at the driving seat was so important to me, the tech needs to be understood and shaped by those who will be using it."
 quoteAuthor: 'Jo Hutchinson'
 quoteOrganisation: 'NCS'
+challenges: 'The National Citizen Service and Centre for the Acceleration of Social Technology asked us "How might we support young people to become thoughtful makers and critical users of AI?" We worked with 15 – 17 year olds from youth organisations Beats Bus, The Politics Project and Warrington Youth Zone to help provide an answer. Young people are the ones who will be living with this technology and this is about empowering them with the ability to embrace the opportunity AI offers safely and thoughtfully.'
+howWeHelped:
+  - 'Co-created a digital tool with young people'
+  - 'Developed a website that wrapped AI output with critical context'
+  - 'Showed an AIs critique of its own responses'
+  - 'Built in robust safeguards for privacy and safety'
+  - 'Focused on clear, accessible language.'
 ---
 
 The project was initiated by the [National Citizen Service](https://wearencs.com) (NCS) and the [Centre for the Acceleration of Social Technology](https://www.wearecast.org.uk) (CAST), who commissioned Neontribe to explore how to support young people (aged 15-17) in becoming thoughtful makers and critical users of generative AI. The focus was on developing a tool to be used outside the standard school curriculum. Collaborating closely with youth organisations and young people was fundamental to the project's co-creation approach, which followed the Design Council's "Double Diamond" model.

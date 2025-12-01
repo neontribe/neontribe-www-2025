@@ -1,7 +1,8 @@
 ---
 title: "Infosecurity that's grounded in practical experience"
-description: 'Human-centered support with information security governance, policy documentation and process implementation'
+description: 'Human-centered information security support helping small teams achieve and maintain high standards of governance and compliance.'
 customer: 'Alexandra Rose Charity, Mind Of My Own, Norfolk Community Arts'
+projectName: 'Infosecurity'
 categories:
   - 'Information Security'
   - 'Data Protection'

@@ -6,6 +6,7 @@ export const caseStudiesCollection = defineCollection({
     title: z.string(),
     description: z.string(),
     customer: z.string().optional(),
+    projectName: z.string().optional(),
     categories: z.array(z.string()).default([]),
     statistic: z.string().optional(),
     heroImage: image().optional(),
@@ -16,6 +17,8 @@ export const caseStudiesCollection = defineCollection({
     quoteAuthor: z.string().optional(),
     quoteOrganisation: z.string().optional(),
     quoteAvatar: image().optional(),
+    challenges: z.string().optional(),
+    howWeHelped: z.array(z.string()).optional(),
   }),
 });
 

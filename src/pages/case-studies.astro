@@ -40,6 +40,7 @@ while (allCards.length < sortedCaseStudies.length + 2) {
             if (entry) {
               const slug = entry.id.replace(/\.md$/, '');
               const customer = slug === 'infosecurity' ? 'Infosec at Neontribe' : (entry.data.customer || '');
+              const projectName = entry.data.projectName || '';
               // Map slugs to optimized card images
               const cardImageMap = {
                 'arc': arcCardImage,
@@ -52,8 +53,8 @@ while (allCards.length < sortedCaseStudies.length + 2) {
               const imageSrc = cardImageMap[slug] || cardImage;
               return (
                 <CaseStudyCard
-                  customer={customer}
-                  title={entry.data.title}
+                  customer={projectName}
+                  title={customer}
                   summary={entry.data.description}
                   imageSrc={imageSrc}
                   altText={entry.data.heroImageAlt || entry.data.title}

@@ -1,7 +1,8 @@
 ---
 title: 'Helping Mind Of My Own ensure the voices of children and young people are heard'
-description: "We developed the technology that delivers Mind Of My Own's vision and helped them create user-centred products that fit into children's and young people's lives"
+description: 'Developing technology to help children and young people make their voices heard through user-centred digital products.'
 customer: 'Mind of My Own'
+projectName: 'Mind Of My Own'
 categories:
   - 'Discovery'
   - 'Alpha'
