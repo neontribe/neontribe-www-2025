@@ -1,0 +1,185 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeaderHeroContainer from '../components/sections/HeaderHeroContainer.astro';
+import Footer from '../components/layout/Footer.astro';
+import GetInTouch from '../components/sections/GetInTouch.astro';
+---
+
+<Layout title="Privacy Policy" description="Neontribe Privacy Policy and Cookies">
+  <HeaderHeroContainer 
+    title="Neontribe Privacy Policy" 
+    subtitle=""
+    icon="how-we-work" 
+  />
+
+  <!-- Main Content Section with Light Grey Background -->
+  <main id="content" class="section section-intro pt-6 pb-12 md:py-16">
+    <div class="container">
+      <div class="mx-auto privacy-policy-wrapper">
+        <div class="privacy-policy-content">
+              <h2 class="privacy-policy-heading">Neontribe Privacy Policy and Cookies</h2>
+              
+              <p class="privacy-policy-text">
+                This policy relates to www.neontribe.co.uk and related sub-domains of neontribe.co.uk ("the Site") which is owned by Neontribe ltd and related activity. Neontribe ltd trading as Neontribe. Registered as a limited company in England & Wales.
+              </p>
+              
+              <p class="privacy-policy-text">
+                <strong>Business registration:</strong> 06165574
+              </p>
+              
+              <p class="privacy-policy-text">
+                <strong>Registered office:</strong> Studio 1.05c Level 1 Department Leeds Dock, The Boulevard, Leeds, England, LS10 1PZ
+              </p>
+              
+              <h3 class="privacy-policy-section-heading">What information is collected?</h3>
+              
+              <p class="privacy-policy-text">
+                We collect the following information from people who use this website: Email addresses of people who communicate with us via email. Information volunteered by people in the course of using of the website. Analytics and tracking data about people's site usage.
+              </p>
+              
+              <h3 class="privacy-policy-section-heading">How is the information used?</h3>
+              
+              <p class="privacy-policy-text">
+                Neontribe uses the information you provide to: Improve the usability of the Site. Help design future projects. Offer employment and/or other events.
+              </p>
+              
+              <p class="privacy-policy-text">
+                If you chose to give us contact details we will only contact you in relation to these four things. You can also tell us if you no longer wish to receive information from Neontribe by replying to any email from us with the subject line Unsubscribe, or sending a message to <a href="mailto:privacy@neontribe.co.uk" class="privacy-policy-link">privacy@neontribe.co.uk</a> requesting to unsubscribe. Information that is identifiable as relating to you (i.e. it has not been edited to make it anonymous) is not shared with or sold to other organizations for commercial purposes, other than under the following circumstances: If it is necessary to share information in order to investigate, prevent, or take action regarding illegal activities, suspected fraud, situations involving potential threats to the physical safety of any person, violations of Terms of Service, or as otherwise required by law. If we transfer information about you if Neontribe is acquired by or merged with another organisation, other than an organisation established by us and controlled by us.
+              </p>
+              
+              <h3 class="privacy-policy-section-heading">Where is the information stored?</h3>
+              
+              <p class="privacy-policy-text">
+                On our computers. On Google computers within Neontribe's Google Apps for Business account. For more information see Google's privacy policy. <a href="https://policies.google.com/privacy?hl=en" target="_blank" rel="noopener noreferrer" class="privacy-policy-link">https://policies.google.com/privacy?hl=en</a>
+              </p>
+              
+              <h3 class="privacy-policy-section-heading">Your rights</h3>
+              
+              <p class="privacy-policy-text">
+                We guarantee to meet your rights in compliance with GDPR. Find out about those rights from the ICO GDPR individual rights guide. To exercise any of your rights, please contact us at <a href="mailto:privacy@neontribe.co.uk" class="privacy-policy-link">privacy@neontribe.co.uk</a>
+              </p>
+              
+              <h3 class="privacy-policy-section-heading">Use of cookies</h3>
+              
+              <p class="privacy-policy-text">
+                Cookies are pieces of information that a website transfers to your hard drive. Most web browsers automatically accept cookies, but if you prefer, you can change your browser to prevent that and will still be able to use the site. Neontribe uses cookies to: Monitor the number of visitors to our website. Monitor how users use our website, i.e. which pages they have accessed. To help improve our website. For more data on Cookies visit <a href="https://www.aboutcookies.org/" target="_blank" rel="noopener noreferrer" class="privacy-policy-link">https://www.aboutcookies.org/</a>. In addition to detailing extensive information on cookies this site also provides explanations on how to disable cookies on your computer.
+              </p>
+              
+              <h3 class="privacy-policy-section-heading">Your acceptance of these terms</h3>
+              
+              <p class="privacy-policy-text">
+                By using this site, you consent to the collection and use of this information by Neontribe and to our privacy policy. Please send any questions, concerns or comments you have about these policies to <a href="mailto:privacy@neontribe.co.uk" class="privacy-policy-link">privacy@neontribe.co.uk</a>.
+              </p>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <div class="bg-bg-dark w-full">
+    <GetInTouch />
+    <Footer />
+  </div>
+</Layout>
+
+<style>
+  /* Reduce padding on hero section */
+  .header-hero-container :global(.section-dark) {
+    padding: 0px 0px 60px 0px !important;
+  }
+  
+  @media (min-width: 768px) {
+    .header-hero-container :global(.section-dark) {
+      padding: 0px 0px 80px 0px !important;
+    }
+  }
+  
+  .header-hero-container :global(.section-dark) :global(.pt-8) {
+    padding-top: 1rem !important;
+  }
+  
+  .header-hero-container :global(.section-dark) :global(.pb-12) {
+    padding-bottom: 2rem !important;
+  }
+  
+  @media (min-width: 768px) {
+    .header-hero-container :global(.section-dark) :global(.md\:py-12) {
+      padding-top: 2rem !important;
+      padding-bottom: 2rem !important;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .header-hero-container :global(.section-dark) :global(.lg\:py-16) {
+      padding-top: 2.5rem !important;
+      padding-bottom: 2.5rem !important;
+    }
+  }
+
+  /* Center title vertically with icon */
+  .header-hero-container :global(.section-dark) :global(.flex) {
+    align-items: center !important;
+  }
+  
+  .header-hero-container :global(.section-dark) :global(.md\:items-start) {
+    align-items: center !important;
+  }
+
+  /* Privacy Policy Content Styling */
+  .privacy-policy-wrapper {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .privacy-policy-content {
+    font-family: var(--font-body);
+    color: var(--color-text-dark);
+    text-align: left;
+  }
+
+  .privacy-policy-heading {
+    font-family: var(--font-heading);
+    font-size: var(--text-3xl);
+    font-weight: var(--font-bold);
+    color: var(--color-accent-amethyst);
+    margin-bottom: var(--space-6);
+    line-height: var(--leading-tight);
+  }
+
+  .privacy-policy-section-heading {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    color: var(--color-accent-amethyst);
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-4);
+    line-height: var(--leading-tight);
+  }
+
+  .privacy-policy-text {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    font-weight: var(--font-regular);
+    line-height: var(--leading-relaxed);
+    color: var(--color-text-dark);
+    margin-bottom: var(--space-4);
+  }
+
+  .privacy-policy-link {
+    color: var(--color-accent-amethyst);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: opacity 0.2s ease;
+  }
+
+  .privacy-policy-link:hover {
+    opacity: 0.8;
+  }
+
+  .privacy-policy-link:focus {
+    outline: 2px solid var(--color-accent-amethyst);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+</style>
+

@@ -1,5 +1,7 @@
 ---
 import neontribeLogo from '../../assets/neontribe-logo.svg';
+import linkedinIcon from '../../assets/linkedin-svgrepo-com.svg';
+import blueskyIcon from '../../assets/Bluesky_Logo.svg';
 ---
 
 <footer class="section section-dark pt-4 pb-8">
@@ -13,8 +15,15 @@ import neontribeLogo from '../../assets/neontribe-logo.svg';
     </div>
 
     <!-- Footer Links -->
-    <nav class="flex flex-col sm:flex-row gap-4 sm:gap-6 text-base text-left w-full sm:w-auto" aria-label="Footer navigation">
-      <a href="/social-links" class="footer-link">social links?</a>
+    <nav class="flex flex-col sm:flex-row gap-4 sm:gap-6 text-base text-left w-full sm:w-auto items-center" aria-label="Footer navigation">
+      <div class="flex gap-4 items-center">
+        <a href="https://uk.linkedin.com/company/neontribe-ltd" target="_blank" rel="noopener noreferrer" aria-label="Visit Neontribe on LinkedIn" class="social-icon-link">
+          <img src={linkedinIcon.src} alt="LinkedIn" class="social-icon" />
+        </a>
+        <a href="https://bsky.app/profile/neontribe.bsky.social" target="_blank" rel="noopener noreferrer" aria-label="Visit Neontribe on Bluesky" class="social-icon-link">
+          <img src={blueskyIcon.src} alt="Bluesky" class="social-icon" />
+        </a>
+      </div>
       <a href="/privacy-policy" class="footer-link">privacy policy</a>
     </nav>
   </div>
@@ -25,6 +34,28 @@ import neontribeLogo from '../../assets/neontribe-logo.svg';
     color: var(--color-text-light);
     text-decoration: underline;
     text-underline-offset: 3px;
+  }
+
+  .social-icon-link {
+    display: inline-flex;
+    align-items: center;
+    transition: opacity 0.2s ease;
+  }
+
+  .social-icon-link:hover {
+    opacity: 0.7;
+  }
+
+  .social-icon-link:focus {
+    outline: 2px solid var(--color-text-light);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  .social-icon {
+    width: 24px;
+    height: 24px;
+    display: block;
   }
 </style>
 
