@@ -10,7 +10,7 @@ categories:
 statistic: 'A Net Promoter score of 41% - Great'
 heroImage: ./images/parenting smart.png
 heroImageAlt: 'Parenting Smart on a smartphone'
-date: '2020-12-31'
+date: '2021-01-01'
 quote: "I have loved working with you and the team on Parenting Smart. And always hugely appreciated your ability to make digital technology concepts sound so accessible!"
 quoteAuthor: 'Cecilia Corbetta'
 quoteOrganisation: 'Place2Be'
