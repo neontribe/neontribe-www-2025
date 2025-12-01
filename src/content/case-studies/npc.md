@@ -1,7 +1,8 @@
 ---
 title: 'Helping young people find the services they need'
-description: 'Doing user research on signposting services for the New Philanthropy Capital (NPC)'
+description: 'User research to improve signposting services that help young people find the support they need.'
 customer: 'New Philanthropy Capital'
+projectName: 'Signposting+'
 categories:
   - 'Discovery'
 heroImage: ./images/npc.png

@@ -6,6 +6,7 @@ export const caseStudiesCollection = defineCollection({
     title: z.string(),
     description: z.string(),
     customer: z.string().optional(),
+    projectName: z.string().optional(),
     categories: z.array(z.string()).default([]),
     statistic: z.string().optional(),
     heroImage: image().optional(),

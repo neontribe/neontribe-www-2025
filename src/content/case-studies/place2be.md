@@ -2,6 +2,7 @@
 title: 'Evidence-based development of Parenting Smart, a repository for digital parenting advice'
 description: "Research, prototype, and build an online service that supports parents nationwide by expanding the reach of Place2Be's knowledge and expertise."
 customer: 'Place2Be'
+projectName: 'Parenting Smart'
 categories:
   - Discovery
   - Alpha

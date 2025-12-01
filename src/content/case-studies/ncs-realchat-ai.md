@@ -1,7 +1,8 @@
 ---
 title: 'Defining a way to help young people think critically when using generative AI'
-description: 'Helping 15-17 year olds understand, examine and use generative AI in positive ways through enrichment activities.'
+description: 'Helping young people understand and use generative AI in positive ways.'
 customer: 'NCS and CAST'
+projectName: 'Realchat AI'
 categories:
   - 'Discovery'
   - 'Alpha'
