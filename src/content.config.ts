@@ -17,6 +17,8 @@ export const caseStudiesCollection = defineCollection({
     quoteAuthor: z.string().optional(),
     quoteOrganisation: z.string().optional(),
     quoteAvatar: image().optional(),
+    challenges: z.string().optional(),
+    howWeHelped: z.array(z.string()).optional(),
   }),
 });
 

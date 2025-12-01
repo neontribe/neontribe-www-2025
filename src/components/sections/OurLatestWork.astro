@@ -20,9 +20,12 @@ const sortedCaseStudies = sortCaseStudiesByDateDesc(caseStudies);
 const latestCaseStudy = sortedCaseStudies[0];
 
 // Extract data from latest case study
-const title = latestCaseStudy?.data.title || 'No case studies available';
-const description = latestCaseStudy?.data.description || '';
 const slug = latestCaseStudy ? latestCaseStudy.id.replace(/\.md$/, '') : null;
+const customer = slug === 'infosecurity' ? 'Infosec at Neontribe' : (latestCaseStudy?.data.customer || 'No case studies available');
+const projectName = latestCaseStudy?.data.projectName || '';
+const description = latestCaseStudy?.data.description || '';
+const challenges = latestCaseStudy?.data.challenges || '';
+const howWeHelped = latestCaseStudy?.data.howWeHelped || [];
 
 
 const cardImageMap = {
@@ -55,16 +58,42 @@ const buttonHref = slug ? `/case-studies/${slug}` : null;
     <div class="bg-white flex flex-col w-full md:max-w-[1336px] min-h-[509px]">
       <div class="grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-0 items-start md:items-stretch flex-1 h-full">
         <div class="flex flex-col order-2 md:order-1 p-8 md:p-10">
-          <h2 class="font-heading text-2xl font-bold text-[#090909] mb-4">
-            {title}
+          <h2 class="font-heading text-2xl font-bold text-[#090909] mb-2">
+            {customer}
           </h2>
-          <p class="font-body text-base font-normal text-[#090909] mb-4">
+          {projectName && (
+            <h3 class="font-heading text-xl font-bold text-brand-amethyst mb-4">
+              {projectName}
+            </h3>
+          )}
+          <p class="font-body text-base font-normal text-[#090909] mb-6">
             {description}
           </p>
-          <p class="font-body text-base font-normal text-[#090909] mb-4">
-            {description}
-          </p>
-          <div class="mt-16 latest-work-button-wrapper flex justify-center md:justify-start">
+          
+          {challenges && (
+            <div class="mb-6">
+              <h4 class="font-heading text-lg font-bold text-[#090909] mb-3">Challenges</h4>
+              <p class="font-body text-base font-normal text-[#090909] leading-relaxed">
+                {challenges}
+              </p>
+            </div>
+          )}
+          
+          {howWeHelped.length > 0 && (
+            <div class="mb-6">
+              <h4 class="font-heading text-lg font-bold text-[#090909] mb-3">How we helped</h4>
+              <ul class="list-none space-y-2">
+                {howWeHelped.map((item) => (
+                  <li class="font-body text-base font-normal text-[#090909] leading-relaxed flex items-start">
+                    <span class="mr-2">•</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          
+          <div class="mt-8 latest-work-button-wrapper flex justify-center md:justify-start">
             <div class="w-full md:w-auto">
               {buttonHref ? (
                 <Button href={buttonHref} variant="primary" size="md" class="w-full md:w-auto">
