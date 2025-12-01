@@ -203,6 +203,9 @@ const uniqueId = `people-expander-${name.toLowerCase().replace(/\s+/g, '-')}`;
     font-weight: var(--font-medium);
     color: var(--color-text-dark);
     flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .people-expander__toggle-icon {

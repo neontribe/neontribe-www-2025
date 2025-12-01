@@ -333,6 +333,39 @@ main.section-intro,
 
 .who-youll-be-working-with-section .container {
   overflow: visible;
+  max-width: 1336px !important;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding-mobile);
+  padding-right: var(--container-padding-mobile);
+}
+
+@media (min-width: 768px) {
+  .who-youll-be-working-with-section .container {
+    padding-left: var(--container-padding-desktop);
+    padding-right: var(--container-padding-desktop);
+  }
+}
+
+.who-youll-be-working-with-section .two-column-layout__container {
+  gap: var(--space-8);
+}
+
+@media (min-width: 768px) {
+  .who-youll-be-working-with-section .two-column-layout__container {
+    grid-template-columns: 2fr 3fr;
+    gap: var(--gutter);
+    align-items: start;
+  }
+  
+  .who-youll-be-working-with-section .two-column-layout__content,
+  .who-youll-be-working-with-section .two-column-layout__media {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
 }
 
 /* =========================
