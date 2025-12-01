@@ -331,6 +331,29 @@ main.section-intro,
   position: relative;
 }
 
+/* Reduce Charlie's image inside the container */
+.people-expander[data-person-id="people-expander-charlie-strange"] .people-expander__avatar,
+.people-expander[data-person-id="people-expander-charlie-strange"] .people-expander__avatar-placeholder {
+  width: 3rem !important;
+  height: 3rem !important;
+}
+
+.people-expander[data-person-id="people-expander-charlie-strange"] .people-expander__expanded-avatar,
+.people-expander[data-person-id="people-expander-charlie-strange"] .people-expander__expanded-avatar-placeholder {
+  width: 5rem !important;
+  height: 5rem !important;
+}
+
+.people-expander[data-person-id="people-expander-charlie-strange"] .people-expander__avatar-image {
+  transform: scale(0.9);
+  transform-origin: center center;
+}
+
+.people-expander[data-person-id="people-expander-charlie-strange"] .people-expander__expanded-avatar-image {
+  transform: scale(0.9);
+  transform-origin: center center;
+}
+
 .who-youll-be-working-with-section .container {
   overflow: visible;
   max-width: 1336px !important;
