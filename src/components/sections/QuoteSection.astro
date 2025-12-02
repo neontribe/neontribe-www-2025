@@ -4,15 +4,12 @@ import Button from '../Button/Button.astro';
 import { getCollection } from 'astro:content';
 
 const caseStudies = await getCollection('case-studies');
-
-// Filter case studies that have quotes, prioritise shorter quotes (under 300 characters)
 const MAX_QUOTE_LENGTH = 300;
 
 const caseStudiesWithQuotes = caseStudies
   .filter((study) => {
     const hasQuote = study.data.quote && study.data.quoteAuthor && study.data.quoteOrganisation;
     if (!hasQuote) return false;
-    // Only include shorter quotes for homepage
     return study.data.quote.length <= MAX_QUOTE_LENGTH;
   })
   .slice(0, 3);
@@ -26,7 +23,7 @@ const caseStudiesWithQuotes = caseStudies
       </h2>
       
       {caseStudiesWithQuotes.length > 0 ? (
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-6 md:mb-12">
+        <div class="grid grid-cols-1 xl:grid-cols-3 gap-6 xl:gap-8 mb-6 xl:mb-12">
           {caseStudiesWithQuotes.map((study) => (
             <QuoteCard
               quote={study.data.quote}
