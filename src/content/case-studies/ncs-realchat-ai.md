@@ -15,6 +15,7 @@ date: '2025-01-01'
 quote: "The co-creation model with young people at the driving seat was so important to me, the tech needs to be understood and shaped by those who will be using it."
 quoteAuthor: 'Jo Hutchinson'
 quoteOrganisation: 'NCS'
+quoteAvatar: ./images/ncs_official_rgb.jpg
 challenges: 'The National Citizen Service and Centre for the Acceleration of Social Technology asked us "How might we support young people to become thoughtful makers and critical users of AI?" We worked with 15 – 17 year olds from youth organisations Beats Bus, The Politics Project and Warrington Youth Zone to help provide an answer. Young people are the ones who will be living with this technology and this is about empowering them with the ability to embrace the opportunity AI offers safely and thoughtfully.'
 howWeHelped:
   - 'Co-created a digital tool with young people'

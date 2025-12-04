@@ -15,6 +15,7 @@ date: '2021-01-01'
 quote: "I have loved working with you and the team on Parenting Smart. And always hugely appreciated your ability to make digital technology concepts sound so accessible!"
 quoteAuthor: 'Cecilia Corbetta'
 quoteOrganisation: 'Place2Be'
+quoteAvatar: ./images/place2beLogo.png
 ---
 
 Place2Be has 25 years of experience providing mental health services in schools. They know that the issues children present are strongly affected by how parents cope. While offering one-to-one counselling and listening services for parents, there was an overwhelming demand for more parenting support. To address this demand in a time of reduced resources, Place2Be wanted to explore a digital component for their parenting work. The goal was to create an accessible, affordable, universally available, online offer to complement face-to-face interventions and improve family functioning and child mental health in more families.

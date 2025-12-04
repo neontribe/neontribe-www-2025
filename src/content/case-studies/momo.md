@@ -15,6 +15,7 @@ date: '2013-01-01'
 quote: "Neontribe's expertise and professionalism was core to our first decade's work. The technology they built, and skills they helped us develop, mean we have a solid foundation for continued success at our core mission: getting young people's voices heard."
 quoteAuthor: 'Yvonne Anderson'
 quoteOrganisation: 'Mind of My Own'
+quoteAvatar: ./images/minfOfMyOwnLogo.svg
 ---
 
 In 2013, the organisation's founders had a good idea which got them a grant from the Nominet Trust (now Social Tech Trust). The grant enabled Neontribe to design and build a prototype for what became Mind Of My Own's first product, the One app. This app was aimed at supporting young people to make their voices heard.

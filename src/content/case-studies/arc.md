@@ -15,6 +15,7 @@ date: '2014-01-01'
 quote: "The simplified process of scanning the Rose Vouchers using the mobile app means that children's centres can register new families much faster. They're also able to download and access the data which helps with the on-going management of the project and support they provide for families. For market traders using the app, payments are generated much faster which means there are no delays for the finance team. This means that we can maintain a higher retention rate for children's centres and traders as the sign-up process is much easier. Joining up the process for everyone involved means we can support more families on the Rose Vouchers for Fruit and Veg Project than ever before and meet the increasing need for access to fresh fruit and vegetables. For ARC, the data generated is fantastic, enabling us to manage growth and to monitor spend and churn rates, as well as being a crucial part of our reporting to funders."
 quoteAuthor: 'Faith Holland'
 quoteOrganisation: 'Head of Operations at ARC'
+quoteAvatar: ./images/cropped-ARC-Site-Icon.png.webp
 ---
 
 The [Alexandra Rose Charity (ARC)](https://www.alexandrarose.org.uk/) is on a mission to address health inequalities and food poverty in the UK. It tackles food inequality directly by giving families access to fresh fruit and vegetables in their communities at their local market or greengrocer. Its [Rose Vouchers for Fruit and Veg Project](https://www.alexandrarose.org.uk/rose-vouchers/) allows families to redeem vouchers to provide them with access to healthy and affordable food.
