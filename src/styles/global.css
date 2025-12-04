@@ -888,6 +888,19 @@ header.section-dark + section.section-dark {
     width: 100%;
     margin-left: 0;
     margin-right: 0;
+    padding-left: var(--space-6);
+    padding-right: var(--space-6);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+  .case-study-sidebar .quote-card,
+  .case-study-sidebar .statistics-block {
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: var(--space-6);
+    padding-right: var(--space-6);
   }
 }
 
