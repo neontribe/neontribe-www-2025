@@ -164,45 +164,43 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
           </div>
           
           <!-- Right Column: Placeholder Containers -->
-          <div class="md:col-span-5 lg:col-span-4 order-2 pt-8">
-            <div class="flex flex-col gap-6 case-study-sidebar">
-              <!-- Quote Card -->
-              {quote && quoteAuthor && quoteOrganisation ? (
-                <div>
-                  <h3 class="quote-section-heading" style="font-family: var(--font-button); font-weight: var(--font-regular); font-size: var(--text-lg); margin-bottom: var(--typography-spacing-sm);">
-                    {quoteOrganisation} say:
-                  </h3>
-                  <QuoteCard
-                    quote={quote}
-                    customerName={quoteAuthor}
-                    customerOrganisation={quoteOrganisation}
-                    avatar={quoteAvatar ? { src: quoteAvatar.src, alt: `${quoteAuthor} from ${quoteOrganisation}` } : undefined}
-                  />
-                </div>
-              ) : null}
-              
-              <!-- Black Container -->
-              <div class="statistics-block">
-                <!-- Search Icon SVG -->
-                <img 
-                  src={smallLensIcon.src} 
-                  alt="Statistics icon" 
-                  width="50.24" 
-                  height="49.93" 
-                  class="flex-shrink-0"
-                />
+          {(quote && quoteAuthor && quoteOrganisation) || statistic ? (
+            <div class="md:col-span-5 lg:col-span-4 order-2 pt-8">
+              <div class="flex flex-col gap-6 case-study-sidebar">
+                <!-- Quote Card -->
+                {quote && quoteAuthor && quoteOrganisation ? (
+                  <div>
+                    <h3 class="quote-section-heading" style="font-family: var(--font-button); font-weight: var(--font-regular); font-size: var(--text-lg); margin-bottom: var(--typography-spacing-sm);">
+                      {quoteOrganisation} say:
+                    </h3>
+                    <QuoteCard
+                      quote={quote}
+                      customerName={quoteAuthor}
+                      customerOrganisation={quoteOrganisation}
+                      avatar={quoteAvatar ? { src: quoteAvatar.src, alt: `${quoteAuthor} from ${quoteOrganisation}` } : undefined}
+                    />
+                  </div>
+                ) : null}
+                
+                <!-- Black Container -->
                 {statistic ? (
-                  <p class="statistics-text">
-                    {statistic}
-                  </p>
-                ) : (
-                  <p class="statistics-text">
-                    <!-- Placeholder for statistic -->
-                  </p>
-                )}
+                  <div class="statistics-block">
+                    <!-- Search Icon SVG -->
+                    <img 
+                      src={smallLensIcon.src} 
+                      alt="Statistics icon" 
+                      width="50.24" 
+                      height="49.93" 
+                      class="flex-shrink-0"
+                    />
+                    <p class="statistics-text">
+                      {statistic}
+                    </p>
+                  </div>
+                ) : null}
               </div>
             </div>
-          </div>
+          ) : null}
         </div>
       </div>
     </div>
