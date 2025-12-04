@@ -5,17 +5,24 @@ import blueskyIcon from '../../assets/Bluesky_Logo.svg';
 ---
 
 <footer class="section section-dark pt-4 pb-8">
-  <div class="w-full md:max-w-[1336px] md:mx-auto px-8 md:px-10 flex flex-col sm:flex-row justify-between sm:items-end items-start gap-8">
+  <div class="w-full md:max-w-[1336px] md:mx-auto px-8 md:px-10 flex flex-col lg:flex-row justify-between lg:items-end items-start gap-8">
     
     <!-- Brand -->
-    <div class="flex justify-start w-full sm:w-auto">
+    <div class="flex justify-center lg:justify-start w-full lg:w-auto">
       <a href="/" aria-label="Go to homepage">
         <img src={neontribeLogo.src} alt="Neontribe logo" class="h-8 w-auto" />
       </a>
     </div>
 
+    <!-- Address -->
+    <div class="flex justify-center lg:justify-center w-full lg:w-auto">
+      <address class="footer-address not-italic text-center lg:text-center">
+        Neontribe Ltd.<br class="block lg:hidden" /> 21 Colegate. Norwich. NR3 1BN
+      </address>
+    </div>
+
     <!-- Footer Links -->
-    <nav class="flex flex-col sm:flex-row gap-4 sm:gap-6 text-base text-left w-full sm:w-auto items-center" aria-label="Footer navigation">
+    <nav class="flex flex-col lg:flex-row gap-4 lg:gap-6 text-base text-left w-full lg:w-auto items-center" aria-label="Footer navigation">
       <div class="flex gap-4 items-center">
         <a href="https://uk.linkedin.com/company/neontribe-ltd" target="_blank" rel="noopener noreferrer" aria-label="Visit Neontribe on LinkedIn" class="social-icon-link">
           <img src={linkedinIcon.src} alt="LinkedIn" class="social-icon" />
@@ -34,6 +41,12 @@ import blueskyIcon from '../../assets/Bluesky_Logo.svg';
     color: var(--color-text-light);
     text-decoration: underline;
     text-underline-offset: 3px;
+  }
+
+  .footer-address {
+    color: var(--color-text-light);
+    font-size: var(--text-base);
+    font-family: var(--font-body);
   }
 
   .social-icon-link {
