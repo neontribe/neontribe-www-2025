@@ -36,7 +36,8 @@ const cardImageMap = {
   'place2be': parentingSmartCardImage,
   'ncs-realchat-ai': realChatAiCardImage,
 };
-const cardImageSrc = slug ? (cardImageMap[slug] || cardImage) : cardImage;
+// Use cardImage from content if available 
+const cardImageSrc = slug ? (latestCaseStudy?.data.cardImage || cardImageMap[slug] || cardImage) : cardImage;
 const imageAlt = latestCaseStudy?.data.heroImageAlt || latestCaseStudy?.data.title || 'Case study image';
 
 // Link to latest case study
