@@ -18,12 +18,7 @@ const caseStudies = await getCollection('case-studies');
 
 // Sort case studies by date descending (newest first)
 const sortedCaseStudies = sortCaseStudiesByDateDesc(caseStudies);
-
-// Array with case studies + 2 placeholder cards
 const allCards = [...sortedCaseStudies];
-while (allCards.length < sortedCaseStudies.length + 2) {
-  allCards.push(null);
-}
 ---
 
 <Layout title="Case studies">
@@ -37,43 +32,30 @@ while (allCards.length < sortedCaseStudies.length + 2) {
       <div class="w-full md:max-w-[1336px] md:mx-auto px-8 md:px-10">
         <div class="case-studies-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 items-stretch">
           {allCards.map((entry, index) => {
-            if (entry) {
-              const slug = entry.id.replace(/\.md$/, '');
-              const customer = slug === 'infosecurity' ? 'Infosec at Neontribe' : (entry.data.customer || '');
-              const projectName = entry.data.projectName || '';
-              // Map slugs to optimized card images
-              const cardImageMap = {
-                'arc': arcCardImage,
-                'infosecurity': infosecCardImage,
-                'momo': momoCardImage,
-                'npc': npcCardImage,
-                'place2be': parentingSmartCardImage,
-                'ncs-realchat-ai': realChatAiCardImage,
-              };
-              const imageSrc = cardImageMap[slug] || cardImage;
-              return (
-                <CaseStudyCard
-                  customer={projectName}
-                  title={customer}
-                  summary={entry.data.description}
-                  imageSrc={imageSrc}
-                  altText={entry.data.heroImageAlt || entry.data.title}
-                  linkHref={`/case-studies/${slug}`}
-                />
-              );
-            } else {
-              // Placeholder card
-              return (
-                <CaseStudyCard
-                  customer="Client Name"
-                  title="Case Study Title"
-                  summary="A brief description of the project problem and the process we took to solve it."
-                  imageSrc={cardImage}
-                  altText="Case study placeholder"
-                  linkHref="/case-studies/arc"
-                />
-              );
-            }
+            const slug = entry.id.replace(/\.md$/, '');
+            const customer = slug === 'infosecurity' ? 'Infosec at Neontribe' : (entry.data.customer || '');
+            const projectName = entry.data.projectName || '';
+            // Map slugs to optimized card images (for existing case studies without cardImage)
+            const cardImageMap = {
+              'arc': arcCardImage,
+              'infosecurity': infosecCardImage,
+              'momo': momoCardImage,
+              'npc': npcCardImage,
+              'place2be': parentingSmartCardImage,
+              'ncs-realchat-ai': realChatAiCardImage,
+            };
+            // Use cardImage from content if available, otherwise fall back to map or default
+            const imageSrc = entry.data.cardImage || cardImageMap[slug] || cardImage;
+            return (
+              <CaseStudyCard
+                customer={projectName}
+                title={customer}
+                summary={entry.data.description}
+                imageSrc={imageSrc}
+                altText={entry.data.heroImageAlt || entry.data.title}
+                linkHref={`/case-studies/${slug}`}
+              />
+            );
           })}
         </div>
       </div>
@@ -88,17 +70,13 @@ while (allCards.length < sortedCaseStudies.length + 2) {
 <style>
   /* Align card images by ensuring text sections have consistent height - replaces JavaScript */
   @media (min-width: 768px) {
-    /* Grid already stretches items, ensure cards fill height */
     .case-studies-grid .case-study-card {
       height: 100%;
     }
     
-    /* Make text sections use flexbox for consistent alignment */
-    /* Since cards are same height from grid, text sections will align naturally */
     .case-study-content__text-section {
       display: flex;
       flex-direction: column;
-      /* Cards in same row will have same height, so text sections align */
     }
   }
 </style>

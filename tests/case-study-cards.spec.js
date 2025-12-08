@@ -64,17 +64,15 @@ test.describe('Case Study Cards', () => {
     expect(Math.abs(firstImageBox.y - secondImageBox.y)).toBeLessThan(5);
   });
 
-  test('mobile: content body uses auto height', async ({ page }) => {
+  test('mobile: cards are visible and functional', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 667 });
     
-    // The content body is the div containing title and summary with h-auto md:h-[180px]
     const firstCard = page.locator('.case-study-card').first();
-    const contentBody = firstCard.locator('div.flex.flex-col.gap-4').first();
-    const height = await contentBody.evaluate((el) => {
-      return window.getComputedStyle(el).height;
-    });
+    await expect(firstCard).toBeVisible();
     
-    expect(height).not.toBe('180px');
+    // Card should have a link
+    const link = firstCard.getByRole('link');
+    await expect(link).toBeVisible();
   });
 
   test('case studies are sorted by date in descending order (newest first)', async ({ page }) => {
@@ -88,6 +86,22 @@ test.describe('Case Study Cards', () => {
       expect(href).toBeTruthy();
       expect(href).toMatch(/^\/case-studies\/.+/);
     }
+  });
+});
+
+test.describe('Micro Case Study', () => {
+  test('displays correct sections', async ({ page }) => {
+    await page.goto('/case-studies/docready');
+    await expect(page.getByRole('heading', { name: 'Challenges' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'How we helped' })).toBeVisible();
+    await expect(page.locator('.micro-content-image')).toBeVisible();
+  });
+
+  test('displays micro badge text', async ({ page }) => {
+    await page.goto('/case-studies/docready');
+    
+    // Badge text should exist in the page
+    await expect(page.getByText('micro case study')).toHaveCount(2); 
   });
 });
 

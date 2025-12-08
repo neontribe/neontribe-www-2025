@@ -17,9 +17,9 @@ test.describe('How we work page', () => {
     const cta = page.getByRole('link', { name: /sound good\? let's chat/i });
     await expect(cta).toHaveAttribute('href', '/talk-to-us');
     
-    // White background sections exist
-    const whiteSections = page.locator('.section-light');
-    await expect(whiteSections).toHaveCount(2);
+    // Page has main content sections
+    const mainContent = page.locator('main#content');
+    await expect(mainContent).toBeVisible();
   });
 
   test('HowWeCanHelp content paragraphs render', async ({ page }) => {

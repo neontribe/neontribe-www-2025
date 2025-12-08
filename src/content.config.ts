@@ -11,6 +11,7 @@ export const caseStudiesCollection = defineCollection({
     statistic: z.string().optional(),
     heroImage: image().optional(),
     heroImageAlt: z.string().optional(),
+    cardImage: image().optional(),
     tags: z.array(z.string()).default([]),
     date: z.string().optional(),
     quote: z.string().optional(),
@@ -19,6 +20,7 @@ export const caseStudiesCollection = defineCollection({
     quoteAvatar: image().optional(),
     challenges: z.string().optional(),
     howWeHelped: z.array(z.string()).optional(),
+    isMicro: z.boolean().default(false),
   }),
 });
 

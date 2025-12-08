@@ -6,8 +6,8 @@ test('Footer displays all elements', async ({ page }) => {
   
   await expect(footer).toBeVisible();
   await expect(footer.getByRole('link', { name: /Go to homepage/i })).toBeVisible();
-  await expect(footer.getByRole('link', { name: /Neontribe Ltd/i })).toBeVisible();
-  await expect(footer.getByRole('link', { name: /^blog$/i })).toHaveAttribute('href', '/blog');
+  await expect(footer.locator('address')).toContainText('Neontribe Ltd');
+  await expect(footer.getByRole('link', { name: /^blog$/i })).toHaveAttribute('href', 'https://www.dxw.com/author/cap-harry-harold/');
   await expect(footer.getByRole('link', { name: /privacy policy/i })).toBeVisible();
 });
 

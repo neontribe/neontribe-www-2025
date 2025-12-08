@@ -7,6 +7,7 @@ import Footer from '../../components/layout/Footer.astro';
 import GetInTouch from '../../components/sections/GetInTouch.astro';
 import QuoteCard from '../../components/Testimonials/QuoteCard.astro';
 import smallLensIcon from '../../content/case-studies/images/Small-lens.svg';
+import microCaseStudyBadge from '../../content/case-studies/images/micro-case-study.svg';
 
 export async function getStaticPaths() {
   const caseStudies = await getCollection('case-studies');
@@ -35,11 +36,15 @@ const {
   statistic,
   heroImage,
   heroImageAlt,
+  cardImage,
   tags = [],
   quote,
   quoteAuthor,
   quoteOrganisation,
   quoteAvatar,
+  challenges,
+  howWeHelped,
+  isMicro = false,
 } = entry.data;
 
 // Special exception for infosecurity case study
@@ -51,45 +56,78 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
   <!-- Hero Section with Dark Background and Overlapping White Intro -->
   <div class="relative" style="overflow: visible;">
     <!-- Dark Hero Section -->
-    <section class="section section-dark pt-8 sm:pt-20 md:pt-32 sm:pb-40 md:pb-48 lg:pt-40 lg:pb-86 relative" aria-label="Case study hero">
+    <section class={`section section-dark pt-8 sm:pt-20 md:pt-24 lg:pt-32 relative ${isMicro ? 'pb-8 sm:pb-12 md:pb-16 lg:pb-20' : 'sm:pb-40 md:pb-48 lg:pb-86'}`} aria-label="Case study hero">
       <div class="container">
-        <div class="mx-auto relative max-w-[1200px] sm:min-h-[280px] md:min-h-[320px] sm:h-[280px] md:h-[320px]">
-          <div class="grid grid-cols-1 sm:grid-cols-12 gap-6 md:gap-8 items-start">
+        <div class={`mx-auto relative max-w-[1200px] ${isMicro ? '' : 'sm:min-h-[280px] md:min-h-[320px] sm:h-[280px] md:h-[320px]'}`}>
+          {isMicro && (
+            <div class="sm:hidden flex justify-center mb-6">
+              <div class="micro-badge-hero-container" style="width: 150px;">
+                <img
+                  src={microCaseStudyBadge.src}
+                  alt=""
+                  style="width: 100%; height: auto;"
+                />
+                <div class="micro-badge-text">
+                  <span>micro</span>
+                  <span>case</span>
+                  <span>study</span>
+                </div>
+              </div>
+            </div>
+          )}
+          
+          <div class={`grid grid-cols-1 sm:grid-cols-12 gap-6 md:gap-8 ${isMicro ? 'items-center' : 'items-start'}`}>
             <!-- Left Column: Title, Customer, Categories -->
-            <div class="sm:col-span-8 lg:col-span-7 relative z-10">
-              <h1 class="text-text-light mb-4 md:mb-6 leading-tight case-study-title" style="font-family: var(--font-button); font-weight: var(--font-regular);">
+            <div class="sm:col-span-7 lg:col-span-7 relative z-10">
+              <h1 class="text-text-light mb-4 md:mb-5 leading-tight case-study-title" style="font-family: var(--font-button); font-weight: var(--font-regular);">
                 {title}
               </h1>
               
               {displayCustomer ? (
-                <p class="mb-4 md:mb-6 leading-normal" style="font-family: var(--font-button); font-weight: var(--font-regular); font-size: var(--text-xl); color: #87FAE7;">
+                <p class="mb-3 md:mb-4 leading-normal" style="font-family: var(--font-button); font-weight: var(--font-regular); font-size: var(--text-xl); color: #87FAE7;">
                   {displayCustomer}
                 </p>
               ) : (
-                <div class="mb-4 md:mb-6" style="height: 0;"></div>
+                <div class="mb-3 md:mb-4" style="height: 0;"></div>
               )}
               
               {categories.length > 0 ? (
-                <p class="mb-8 md:mb-12 leading-normal" style="font-family: var(--font-body); font-weight: var(--font-regular); font-size: var(--text-xl); color: #FFFFFF;">
+                <p class={`leading-normal ${isMicro ? 'mb-0' : 'mb-8 md:mb-12'}`} style="font-family: var(--font-body); font-weight: var(--font-regular); font-size: var(--text-xl); color: #FFFFFF;">
                   Categories: {categories.join(', ')}
                 </p>
               ) : (
-                <div class="mb-8 md:mb-12" style="height: 0;"></div>
+                <div class={`${isMicro ? '' : 'mb-8 md:mb-12'}`} style="height: 0;"></div>
               )}
             </div>
             
-            <!-- Right Column: Spacer for absolute positioned image -->
-            <div class="md:col-span-4 lg:col-span-5"></div>
+            <!-- Right Column: Micro case study badge OR spacer for hero image -->
+            <div class="sm:col-span-5 lg:col-span-5 hidden sm:flex justify-end items-center">
+              {isMicro && (
+                <div class="micro-badge-hero-container">
+                  <img
+                    src={microCaseStudyBadge.src}
+                    alt=""
+                    class="micro-badge-hero"
+                  />
+                  <div class="micro-badge-text">
+                    <span>micro</span>
+                    <span>case</span>
+                    <span>study</span>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
           
         </div>
       </div>
     </section>
 
-    <!-- Mobile Hero Image (in document flow, only for very small screens) -->
-    {heroImage && (
+
+    <!-- Mobile Hero Image (in document flow, only for very small screens) - NOT shown for micro case studies -->
+    {heroImage && !isMicro && (
       <div class="sm:hidden flex justify-center -mt-16 mb-8" style="padding: 0 1.5rem;">
-        <div class="mobile-image-container" style="max-width: 333px; width: 100%; aspect-ratio: 333 / 484;">
+        <div class="mobile-image-container relative" style="max-width: 333px; width: 100%; aspect-ratio: 333 / 484;">
           <img
             src={heroImage.src}
             alt={heroImageAlt || `${title} - case study hero image`}
@@ -101,28 +139,30 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
       </div>
     )}
 
-    <!-- White Introduction Section (overlapping) -->
-    <section class="section section-light -mt-16 sm:-mt-20 md:-mt-24 lg:-mt-32 relative z-10 pt-8 md:pt-12 md:pb-12" style="overflow: visible;">
-      <div class="container">
-        <div class="mx-auto relative" style="max-width: 1200px;">
-          <div class="grid grid-cols-1 sm:grid-cols-12 gap-6 md:gap-8">
-            <!-- Left Column: Intro Text -->
-            <div class="sm:col-span-8 lg:col-span-7 relative z-10 sm:mt-0">
-              {description && (
-                <p class="text-text-dark leading-relaxed" style="font-family: var(--font-body); font-weight: var(--font-bold); font-size: var(--text-xl);">
-                  {description}
-                </p>
-              )}
+    <!-- White Introduction Section (overlapping) - NOT shown for micro case studies -->
+    {!isMicro && (
+      <section class="section section-light -mt-16 sm:-mt-20 md:-mt-24 lg:-mt-32 relative z-10 pt-8 md:pt-12 md:pb-12" style="overflow: visible;">
+        <div class="container">
+          <div class="mx-auto relative" style="max-width: 1200px;">
+            <div class="grid grid-cols-1 sm:grid-cols-12 gap-6 md:gap-8">
+              <!-- Left Column: Intro Text -->
+              <div class="sm:col-span-8 lg:col-span-7 relative z-10 sm:mt-0">
+                {description && (
+                  <p class="text-text-dark leading-relaxed" style="font-family: var(--font-body); font-weight: var(--font-bold); font-size: var(--text-xl);">
+                    {description}
+                  </p>
+                )}
+              </div>
+              <!-- Right Column: Spacer for image overlap -->
+              <div class="sm:col-span-4 lg:col-span-5"></div>
             </div>
-            <!-- Right Column: Spacer for image overlap -->
-            <div class="sm:col-span-4 lg:col-span-5"></div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    )}
     
-    <!-- Tablet/Desktop Hero Image Container (visible from 640px+) -->
-    {heroImage && (
+    <!-- Tablet/Desktop Hero Image Container (visible from 640px+) - NOT shown for micro case studies -->
+    {heroImage && !isMicro && (
       <div
         class="
           hidden sm:block
@@ -135,7 +175,7 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
         aria-hidden="true"
       >
         <div class="flex justify-end">
-          <div class="mobile-image-container" style="width: 333px; height: 484px;">
+          <div class="mobile-image-container relative" style="width: 333px; height: 484px;">
             <img
               src={heroImage.src}
               alt={heroImageAlt || `${title} - case study hero image`}
@@ -155,53 +195,102 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
   <main id="content" class="section section-intro pt-6 pb-12 md:py-16">
     <div class="container">
       <div class="mx-auto" style="max-width: 1200px;">
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
-          <!-- Left Column: Main Text Content -->
-          <div class="md:col-span-7 lg:col-span-8 order-1">
-            <div class="case-study-content markdown-content">
-              <Content />
+        {isMicro ? (
+          <!-- Micro Case Study Layout -->
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
+            <!-- Card Image - order-1 on mobile (first), stays right on desktop -->
+            <div class="md:col-span-5 lg:col-span-5 order-1 md:order-2">
+              {cardImage && (
+                <div class="micro-content-image-wrapper">
+                  <img
+                    src={cardImage.src}
+                    alt={heroImageAlt || `${title} - case study image`}
+                    class="micro-content-image"
+                    loading="eager"
+                  />
+                </div>
+              )}
+            </div>
+            
+            <!-- Challenges and How we helped Section -->
+            <div class="md:col-span-7 lg:col-span-7 order-2 md:order-1">
+              {challenges && (
+                <div class="mb-8">
+                  <h2 class="micro-section-heading" style="font-family: var(--font-button); font-weight: var(--font-bold); font-size: var(--text-2xl); margin-bottom: var(--typography-spacing-md);">
+                    Challenges
+                  </h2>
+                  <p class="text-text-dark leading-relaxed" style="font-family: var(--font-body); font-size: var(--text-base);">
+                    {challenges}
+                  </p>
+                </div>
+              )}
+              
+              {howWeHelped && howWeHelped.length > 0 && (
+                <div>
+                  <h2 class="micro-section-heading" style="font-family: var(--font-button); font-weight: var(--font-bold); font-size: var(--text-2xl); margin-bottom: var(--typography-spacing-md);">
+                    How we helped
+                  </h2>
+                  <ul class="list-disc pl-6 space-y-2">
+                    {howWeHelped.map((item) => (
+                      <li class="text-text-dark leading-relaxed" style="font-family: var(--font-body); font-size: var(--text-base);">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           </div>
-          
-          <!-- Right Column: Placeholder Containers -->
-          {(quote && quoteAuthor && quoteOrganisation) || statistic ? (
-            <div class="md:col-span-5 lg:col-span-4 order-2 pt-8">
-              <div class="flex flex-col gap-6 case-study-sidebar">
-                <!-- Quote Card -->
-                {quote && quoteAuthor && quoteOrganisation ? (
-                  <div>
-                    <h3 class="quote-section-heading" style="font-family: var(--font-button); font-weight: var(--font-regular); font-size: var(--text-lg); margin-bottom: var(--typography-spacing-sm);">
-                      {quoteOrganisation} say:
-                    </h3>
-                    <QuoteCard
-                      quote={quote}
-                      customerName={quoteAuthor}
-                      customerOrganisation={quoteOrganisation}
-                      avatar={quoteAvatar ? { src: quoteAvatar.src, alt: `${quoteAuthor} from ${quoteOrganisation}` } : undefined}
-                    />
-                  </div>
-                ) : null}
-                
-                <!-- Black Container -->
-                {statistic ? (
-                  <div class="statistics-block">
-                    <!-- Search Icon SVG -->
-                    <img 
-                      src={smallLensIcon.src} 
-                      alt="Statistics icon" 
-                      width="50.24" 
-                      height="49.93" 
-                      class="flex-shrink-0"
-                    />
-                    <p class="statistics-text">
-                      {statistic}
-                    </p>
-                  </div>
-                ) : null}
+        ) : (
+          <!-- Full Case Study Layout -->
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
+            <!-- Left Column: Main Text Content -->
+            <div class="md:col-span-7 lg:col-span-8 order-1">
+              <div class="case-study-content markdown-content">
+                <Content />
               </div>
             </div>
-          ) : null}
-        </div>
+            
+            <!-- Right Column: Placeholder Containers -->
+            {(quote && quoteAuthor && quoteOrganisation) || statistic ? (
+              <div class="md:col-span-5 lg:col-span-4 order-2 pt-8">
+                <div class="flex flex-col gap-6 case-study-sidebar">
+                  <!-- Quote Card -->
+                  {quote && quoteAuthor && quoteOrganisation ? (
+                    <div>
+                      <h3 class="quote-section-heading" style="font-family: var(--font-button); font-weight: var(--font-regular); font-size: var(--text-lg); margin-bottom: var(--typography-spacing-sm);">
+                        {quoteOrganisation} say:
+                      </h3>
+                      <QuoteCard
+                        quote={quote}
+                        customerName={quoteAuthor}
+                        customerOrganisation={quoteOrganisation}
+                        avatar={quoteAvatar ? { src: quoteAvatar.src, alt: `${quoteAuthor} from ${quoteOrganisation}` } : undefined}
+                      />
+                    </div>
+                  ) : null}
+                  
+                  <!-- Black Container -->
+                  {statistic ? (
+                    <div class="statistics-block">
+                      <!-- Search Icon SVG -->
+                      <img 
+                        src={smallLensIcon.src} 
+                        alt="Statistics icon" 
+                        width="50.24" 
+                        height="49.93" 
+                        class="flex-shrink-0"
+                      />
+                      <p class="statistics-text">
+                        {statistic}
+                      </p>
+                    </div>
+                  ) : null}
+                </div>
+              </div>
+            ) : null}
+          </div>
+        )}
       </div>
     </div>
   </main>
@@ -378,6 +467,84 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
   @media (min-width: 1024px) {
     .hero-image-overlay {
       z-index: 30 !important;
+    }
+  }
+  
+  /* Micro case study badge positioning */
+  .micro-badge-hero-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .micro-badge-hero {
+    width: 180px;
+    height: auto;
+    display: block;
+  }
+  
+  .micro-badge-text {
+    position: absolute;
+    top: 42%;
+    left: 42%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: var(--font-heading);
+    font-weight: var(--font-bold);
+    font-size: 14px;
+    line-height: 1.2;
+    text-align: center;
+  }
+  
+  @media (min-width: 768px) {
+    .micro-badge-hero {
+      width: 200px;
+    }
+    .micro-badge-text {
+      font-size: 16px;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .micro-badge-hero {
+      width: 240px;
+    }
+    .micro-badge-text {
+      font-size: 18px;
+    }
+  }
+  
+  @media (min-width: 1280px) {
+    .micro-badge-hero {
+      width: 280px;
+    }
+    .micro-badge-text {
+      font-size: 20px;
+    }
+  }
+  
+  /* Micro case study content image - larger size */
+  .micro-content-image-wrapper {
+    width: 100%;
+  }
+  
+  .micro-content-image {
+    width: 100%;
+    height: auto;
+  }
+  
+  /* Only extend image on large desktop screens where there's enough space */
+  @media (min-width: 1280px) {
+    .micro-content-image-wrapper {
+      margin-right: -3rem;
+    }
+    
+    .micro-content-image {
+      width: calc(100% + 3rem);
+      max-width: none;
     }
   }
 </style>

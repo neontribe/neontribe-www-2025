@@ -25,7 +25,7 @@ const {
         
         <div class="who-youll-be-working-with-body">
           {bodyText.map((paragraph) => (
-            <p class="who-youll-be-working-with-paragraph">{paragraph}</p>
+            <p class="who-youll-be-working-with-paragraph" set:html={paragraph} />
           ))}
         </div>
         
@@ -48,3 +48,15 @@ const {
   </div>
 </section>
 
+<style>
+  .who-youll-be-working-with-body :global(a) {
+    color: var(--color-accent-amethyst);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.2s ease;
+  }
+  
+  .who-youll-be-working-with-body :global(a:hover) {
+    color: var(--color-brand-amethyst-dark, #3a00b8);
+  }
+</style>

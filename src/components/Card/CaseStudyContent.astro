@@ -106,7 +106,7 @@ const {
   }
 
   .case-study-content__text-section {
-    flex: 0 0 auto;
+    flex: 1 1 auto;
     display: flex;
     flex-direction: column;
     gap: var(--case-study-title-to-text-spacing);
@@ -130,7 +130,6 @@ const {
   }
 
   .case-study-content__link {
-    margin-top: auto;
     flex: 0 0 auto;
   }
 
@@ -167,12 +166,12 @@ const {
     }
 
     .case-study-content__text-section {
-      flex: 0 0 auto;
+      flex: 1 1 auto;
       display: flex;
       flex-direction: column;
       gap: var(--case-study-title-to-text-spacing);
       margin-bottom: var(--case-study-text-to-image-spacing);
-      /* Fixed spacing ensures images align across cards in the same row */
+      /* Text section grows to push images to align at the bottom */
     }
 
     .case-study-content__image-wrapper {
@@ -181,7 +180,6 @@ const {
     }
 
     .case-study-content__link {
-      margin-top: auto;
       flex: 0 0 auto;
     }
   }

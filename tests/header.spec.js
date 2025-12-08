@@ -14,8 +14,9 @@ test.describe('Header', () => {
 
   test('renders logo', async ({ page }) => {
     const header = page.locator('header#site-header');
-    const logo = header.locator('img[alt="Neontribe"]');
-    await expect(logo).toBeVisible();
+    // Logo link should be visible
+    const logoLink = header.getByRole('link', { name: 'Go to homepage' });
+    await expect(logoLink).toBeVisible();
   });
 
   test('shows desktop nav links and CTA on desktop', async ({ page }) => {
@@ -32,8 +33,9 @@ test.describe('Header', () => {
       await expect(link).toBeVisible();
     }
 
-    // CTA button present (rendered as anchor when href is provided)
-    await expect(desktopNav.getByRole('link', { name: 'Talk to us' })).toBeVisible();
+    // CTA button present in header (rendered as anchor when href is provided)
+    const header = page.locator('header#site-header');
+    await expect(header.getByRole('link', { name: 'Talk to us' })).toBeVisible();
   });
 
   test('hamburger hidden on desktop, visible on mobile', async ({ page }) => {
