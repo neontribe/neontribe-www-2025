@@ -89,3 +89,19 @@ test.describe('Case Study Cards', () => {
   });
 });
 
+test.describe('Micro Case Study', () => {
+  test('displays correct sections', async ({ page }) => {
+    await page.goto('/case-studies/docready');
+    await expect(page.getByRole('heading', { name: 'Challenges' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'How we helped' })).toBeVisible();
+    await expect(page.locator('.micro-content-image')).toBeVisible();
+  });
+
+  test('displays micro badge text', async ({ page }) => {
+    await page.goto('/case-studies/docready');
+    
+    // Badge text should exist in the page
+    await expect(page.getByText('micro case study')).toHaveCount(2); 
+  });
+});
+
