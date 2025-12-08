@@ -21,7 +21,8 @@ const {
 
 const siteUrl = Astro.site?.toString().replace(/\/$/, "") || "https://neontribe.co.uk";
 const currentUrl = canonicalUrl || new URL(Astro.url.pathname, siteUrl).toString();
-const fullOgImage = ogImage.startsWith("http") ? ogImage : `${siteUrl}${ogImage}`;
+const resolvedOgImage = ogImage || "/og-image.png";
+const fullOgImage = resolvedOgImage.startsWith("http") ? resolvedOgImage : `${siteUrl}${resolvedOgImage}`;
 
 const fullTitle = title === "Neontribe" ? title : `${title} | Neontribe`;
 ---
