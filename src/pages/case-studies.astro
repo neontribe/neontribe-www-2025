@@ -18,8 +18,6 @@ const caseStudies = await getCollection('case-studies');
 
 // Sort case studies by date descending (newest first)
 const sortedCaseStudies = sortCaseStudiesByDateDesc(caseStudies);
-
-// Use all case studies (no placeholder cards needed now)
 const allCards = [...sortedCaseStudies];
 ---
 
@@ -72,17 +70,13 @@ const allCards = [...sortedCaseStudies];
 <style>
   /* Align card images by ensuring text sections have consistent height - replaces JavaScript */
   @media (min-width: 768px) {
-    /* Grid already stretches items, ensure cards fill height */
     .case-studies-grid .case-study-card {
       height: 100%;
     }
     
-    /* Make text sections use flexbox for consistent alignment */
-    /* Since cards are same height from grid, text sections will align naturally */
     .case-study-content__text-section {
       display: flex;
       flex-direction: column;
-      /* Cards in same row will have same height, so text sections align */
     }
   }
 </style>
