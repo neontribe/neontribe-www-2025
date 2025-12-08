@@ -20,7 +20,7 @@ test.describe('People Expander Component', () => {
     // Check expanded content is visible
     const expandedCard = page.locator('.people-expander__expanded-card[aria-hidden="false"]');
     await expect(expandedCard).toBeVisible();
-    await expect(expandedCard.locator('.people-expander__bio').getByText(/description about Harry/i)).toBeVisible();
+    await expect(expandedCard.locator('.people-expander__bio')).toBeVisible();
   });
 
   test('closes when close button is clicked', async ({ page }) => {

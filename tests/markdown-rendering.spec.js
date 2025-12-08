@@ -34,7 +34,7 @@ test('case study page uses correct meta tags', async ({ page }) => {
   await expect(page).toHaveTitle(/Helping Alexandra Rose Charity support vulnerable families/);
   
   const metaDescription = await page.locator('meta[name="description"]').getAttribute('content');
-  expect(metaDescription).toContain('The Alexandra Rose Charity needed to scale their service');
+  expect(metaDescription).toContain('Scaling a voucher service');
 });
 
 test('case study page renders hero image', async ({ page }) => {
