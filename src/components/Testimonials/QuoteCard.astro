@@ -1,4 +1,6 @@
 ---
+import personSilhouette from '../../assets/person-silhouette.svg';
+
 export interface Props {
   quote: string;
   customerName: string;
@@ -33,6 +35,12 @@ const {
       </div>
     ) : (
       <div class="quote-avatar-placeholder" aria-hidden="true">
+        <img 
+          src={personSilhouette.src} 
+          alt=""
+          class="person-silhouette"
+          aria-hidden="true"
+        />
       </div>
     )}
     
