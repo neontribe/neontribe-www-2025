@@ -1,6 +1,6 @@
 # Neontribe Website
 
-The official website for [Neontribe](https://neontribe.co.uk), a tech-for-good agency working with charities and social enterprises since 2007.
+The official website for Neontribe, a tech-for-good agency working with charities and social enterprises since 2007.
 
 Built with Astro, Tailwind CSS, and a static-first architecture for fast, accessible, and maintainable web experiences.
 
@@ -49,8 +49,8 @@ Built with Astro, Tailwind CSS, and a static-first architecture for fast, access
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/neontribe/neontribe-www.git
-   cd neontribe-www
+   git clone https://github.com/neontribe/neontribe-www-2025.git
+   cd neontribe-www-2025
    ```
 
 2. Install dependencies:
@@ -189,7 +189,7 @@ Case studies are managed as Markdown files in `src/content/case-studies/`.
 | `challenges`       | string     | No       | Challenges addressed                  |
 | `howWeHelped`      | string[]   | No       | List of how Neontribe helped          |
 
-## Adding or Updating Team Members (Tribers)
+## Adding or Updating Team Members
 
 Team members are displayed on the "How we work" page using the `PeopleExpander` component.
 
