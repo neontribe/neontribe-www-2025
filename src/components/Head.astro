@@ -2,7 +2,6 @@
 export interface Props {
   title: string;
   description?: string;
-  canonicalUrl?: string;
   ogImage?: string;
   ogImageAlt?: string;
   ogType?: "website" | "article";
@@ -12,15 +11,15 @@ export interface Props {
 const {
   title,
   description = "Neontribe is a digital agency committed to tech for good. We build digital services for charities and social enterprises.",
-  canonicalUrl,
   ogImage = "/og-image.png",
   ogImageAlt = "Neontribe - Digital agency for tech for good",
   ogType = "website",
   noIndex = false,
 } = Astro.props;
 
-const siteUrl = Astro.site?.toString().replace(/\/$/, "") || "https://neontribe.co.uk";
-const currentUrl = canonicalUrl || new URL(Astro.url.pathname, siteUrl).toString();
+// Site URL comes from astro.config.mjs 
+const siteUrl = Astro.site!.toString().replace(/\/$/, "");
+const currentUrl = new URL(Astro.url.pathname, siteUrl).toString();
 const resolvedOgImage = ogImage || "/og-image.png";
 const fullOgImage = resolvedOgImage.startsWith("http") ? resolvedOgImage : `${siteUrl}${resolvedOgImage}`;
 
