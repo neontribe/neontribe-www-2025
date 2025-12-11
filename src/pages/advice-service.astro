@@ -16,7 +16,7 @@ const sectionHeading = "We'd like to know <span class=\"text-[#48E9CE]\">&#8595;
 
 ---
 
-<Layout title="Advice Service">
+<Layout title="Advice Service" description="Get free digital advice from Neontribe. We're happy to lend charities our expertise for an hour - no charge.">
   <HeaderHeroContainer 
     title="Advice service" 
     subtitle="We're always happy to lend charities our minds for an hour or so. If there's something you think a bit of digital expertise could help, just drop us a line."
@@ -78,6 +78,7 @@ const sectionHeading = "We'd like to know <span class=\"text-[#48E9CE]\">&#8595;
                 name="name" 
                 label="Name" 
                 required 
+                autocomplete="name"
                 class="form-field-half"
               />
               <FormField 
@@ -85,6 +86,7 @@ const sectionHeading = "We'd like to know <span class=\"text-[#48E9CE]\">&#8595;
                 name="email" 
                 label="Email address" 
                 required 
+                autocomplete="email"
                 class="form-field-half"
               />
             </div>
@@ -93,18 +95,21 @@ const sectionHeading = "We'd like to know <span class=\"text-[#48E9CE]\">&#8595;
               name="contact_preference" 
               label="How is it best for us to reach you?" 
               required 
+              autocomplete="off"
             />
             <FormField 
               type="text" 
               name="organisation" 
               label="What organisation(s) do you work for?" 
               required 
+              autocomplete="organization"
             />
             <FormField 
               type="textarea" 
               name="problem" 
               label="Describe the problem" 
               required 
+              autocomplete="off"
               rows={6}
             />
             <div class="form-submit">

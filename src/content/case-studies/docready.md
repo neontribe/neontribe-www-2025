@@ -10,7 +10,7 @@ categories:
   - "Live"
 cardImage: ./images/docready.jpg
 heroImageAlt: "A hand holding a phone showing the Docready app with a checklist builder."
-date: "2012-01-01"
+date: "2011-01-01"
 isMicro: true
 challenges: >
   Comic Relief's 2012 Innovation Labs brought the voice of young people right into the design of services for them to use. Neontribe were one of a consortium who facilitated the labs. Eight of the ideas that came out of that process were selected for funding. One was Docready, which we were chosen to develop. 8 years later, it's still helping hundreds of people every week.

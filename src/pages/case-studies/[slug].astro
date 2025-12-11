@@ -51,7 +51,13 @@ const {
 const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : customer;
 ---
 
-<Layout title={title} description={description}>
+<Layout 
+  title={title} 
+  description={description}
+  ogType="article"
+  ogImage={cardImage?.src}
+  ogImageAlt={heroImageAlt || `${title} - case study`}
+>
   <Header />
   <!-- Hero Section with Dark Background and Overlapping White Intro -->
   <div class="relative" style="overflow: visible;">

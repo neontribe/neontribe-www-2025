@@ -9,6 +9,7 @@ export interface Props {
   rows?: number;
   class?: string;
   id?: string;
+  autocomplete?: string;
 }
 
 const {
@@ -21,6 +22,7 @@ const {
   rows = 4,
   class: className = '',
   id,
+  autocomplete,
 } = Astro.props;
 
 const fieldId = id || `field-${name}`;
@@ -46,6 +48,7 @@ const isTextarea = type === 'textarea';
       aria-required={required}
       aria-invalid="false"
       aria-describedby={errorId}
+      autocomplete={autocomplete}
     ></textarea>
   ) : (
     <input
@@ -59,6 +62,7 @@ const isTextarea = type === 'textarea';
       aria-required={required}
       aria-invalid="false"
       aria-describedby={errorId}
+      autocomplete={autocomplete}
     />
   )}
   

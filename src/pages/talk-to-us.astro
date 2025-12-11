@@ -31,6 +31,7 @@ const formAction = import.meta.env.FORMBOLD_ENDPOINT || '';
                 name="name" 
                 label="Name" 
                 required 
+                autocomplete="name"
                 class="form-field-half"
               />
               <FormField 
@@ -38,6 +39,7 @@ const formAction = import.meta.env.FORMBOLD_ENDPOINT || '';
                 name="email" 
                 label="Email address" 
                 required 
+                autocomplete="email"
                 class="form-field-half"
               />
             </div>
@@ -46,6 +48,7 @@ const formAction = import.meta.env.FORMBOLD_ENDPOINT || '';
               name="message" 
               label="Your enquiry" 
               required 
+              autocomplete="off"
               rows={6}
             />
             <div class="form-submit">
