@@ -1,0 +1,63 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import Button from '../components/Button/Button.astro';
+---
+
+<Layout title="Page not found" description="The page you're looking for doesn't exist." noIndex={true}>
+  <div class="error-page-container bg-bg-dark w-full flex flex-col min-h-screen">
+    <Header />
+    
+    <main id="content" class="flex-1 flex items-center justify-center section section-dark">
+      <div class="w-full md:max-w-[1336px] md:mx-auto px-8 md:px-10 text-center py-16 md:py-24">
+        <p class="error-code text-accent-turquoise font-heading font-bold mb-4" aria-hidden="true">404</p>
+        <h1 class="error-title font-heading font-bold text-text-light mb-6">
+          Page not found
+        </h1>
+        <p class="error-message text-text-light mb-8 max-w-xl mx-auto">
+          Sorry, the page you're looking for doesn't exist or has been moved. 
+          Let's get you back on track.
+        </p>
+        <Button href="/" variant="teal" ariaLabel="Return to homepage">
+          Back to homepage
+        </Button>
+      </div>
+    </main>
+    
+    <Footer />
+  </div>
+</Layout>
+
+<style>
+  .error-code {
+    font-size: 6rem;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  
+  .error-title {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+  
+  .error-message {
+    font-family: var(--font-body);
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+  }
+  
+  @media (min-width: 768px) {
+    .error-code {
+      font-size: 10rem;
+    }
+    
+    .error-title {
+      font-size: 3rem;
+    }
+    
+    .error-message {
+      font-size: var(--text-xl);
+    }
+  }
+</style>
