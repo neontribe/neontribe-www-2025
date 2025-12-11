@@ -10,7 +10,7 @@ categories:
   - "Live"
 cardImage: ./images/ncvo.jpg
 heroImageAlt: "A person viewing the NCVO Digital and Technology guidance website."
-date: "2019-01-01"
+date: "2018-01-01"
 isMicro: true
 challenges: >
   The project aimed to provide clear, simple safeguarding advice for small charities. It focused on supporting organisations that only work with young people or adults at risk from time to time. Existing information could be hard to find and confusing.

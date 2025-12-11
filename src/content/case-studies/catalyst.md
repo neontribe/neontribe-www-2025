@@ -10,7 +10,7 @@ categories:
   - "Live"
 cardImage: ./images/catalyst.jpg
 heroImageAlt: "A laptop showing the Discovery Learning Programme Trello board."
-date: "2020-01-01"
+date: "2018-01-01"
 isMicro: true
 challenges: >
   More and more charities are turning to digital projects to help them make a difference. They need skills and confidence to help them make clear decisions about technology. Training, mentoring and peer learning have to fit around very busy day jobs. This project needed to support charities of different sizes. They also had varied knowledge and different projects to complete.
