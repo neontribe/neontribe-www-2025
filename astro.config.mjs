@@ -6,8 +6,9 @@ import tailwindcss from '@tailwindcss/vite';
 import remarkGfm from 'remark-gfm';
 import rehypeExternalLinks from 'rehype-external-links';
 
-// https://astro.build/config
+
 export default defineConfig({
+  site: 'https://neontribe.co.uk',
   integrations: [react(), mdx()],
   markdown: {
     remarkPlugins: [remarkGfm],
