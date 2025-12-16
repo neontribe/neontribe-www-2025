@@ -111,11 +111,11 @@ const buttonHref = slug ? `/case-studies/${slug}` : null;
 
         <div class="w-full md:self-stretch order-1 md:order-2">
           {cardImageSrc ? (
-            <div class="relative w-full h-full overflow-hidden">
+            <div class="relative w-full h-full overflow-hidden bg-white flex items-center justify-center">
               <img
                 src={typeof cardImageSrc === 'string' ? cardImageSrc : cardImageSrc.src}
                 alt={imageAlt}
-                class="w-full h-full object-cover block"
+                class="w-full h-full object-contain block"
               />
             </div>
           ) : (
