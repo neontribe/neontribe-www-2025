@@ -948,7 +948,7 @@ header.section-dark + section.section-dark {
 }
 
 .markdown-content a:hover {
-  color: var(--color-accent-turquoise);
+  color: #8751F8;
   text-decoration: none;
 }
 
