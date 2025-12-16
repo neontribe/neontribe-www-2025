@@ -22,7 +22,7 @@ const latestCaseStudy = sortedCaseStudies[0];
 // Extract data from latest case study
 const slug = latestCaseStudy ? latestCaseStudy.id.replace(/\.md$/, '') : null;
 const customer = slug === 'infosecurity' ? 'Infosec at Neontribe' : (latestCaseStudy?.data.customer || 'No case studies available');
-const projectName = latestCaseStudy?.data.projectName || '';
+const projectTitle = latestCaseStudy?.data.title || '';
 const description = latestCaseStudy?.data.description || '';
 const challenges = latestCaseStudy?.data.challenges || '';
 const howWeHelped = latestCaseStudy?.data.howWeHelped || [];
@@ -62,9 +62,9 @@ const buttonHref = slug ? `/case-studies/${slug}` : null;
           <h2 class="font-heading text-2xl font-bold text-[#090909] mb-2">
             {customer}
           </h2>
-          {projectName && (
+          {projectTitle && (
             <h3 class="font-heading text-xl font-bold text-brand-amethyst mb-4">
-              {projectName}
+              {projectTitle}
             </h3>
           )}
           <p class="font-body text-base font-normal text-[#090909] mb-6">
@@ -111,11 +111,11 @@ const buttonHref = slug ? `/case-studies/${slug}` : null;
 
         <div class="w-full md:self-stretch order-1 md:order-2">
           {cardImageSrc ? (
-            <div class="relative w-full h-full overflow-hidden">
+            <div class="relative w-full h-full overflow-hidden bg-white flex items-center justify-center">
               <img
                 src={typeof cardImageSrc === 'string' ? cardImageSrc : cardImageSrc.src}
                 alt={imageAlt}
-                class="w-full h-full object-cover block"
+                class="w-full h-full object-contain block"
               />
             </div>
           ) : (
