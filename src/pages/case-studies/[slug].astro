@@ -60,13 +60,10 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
   ogImageAlt={heroImageAlt || `${title} - case study`}
 >
   <Header />
-  <!-- Hero Section with Dark Background and Overlapping White Intro -->
   <div class="relative" style="overflow: visible;">
     <!-- Dark Hero Section -->
-    <!-- For landscape images: image is inside section on mobile/tablet, needs bottom padding -->
     <section class={`section section-dark pt-8 sm:pt-20 md:pt-24 lg:pt-32 relative ${isMicro ? 'pb-8 sm:pb-12 md:pb-16 lg:pb-20' : heroImageLandscape ? 'pb-8 lg:pb-86 landscape-hero' : 'pb-8 sm:pb-40 md:pb-48 lg:pb-86'}`} aria-label="Case study hero">
       <div class="container">
-        <!-- For landscape images: no fixed height on mobile/tablet since image is in-flow -->
         <div class={`mx-auto relative max-w-[1200px] ${isMicro ? '' : heroImageLandscape ? 'lg:min-h-[320px] lg:h-[320px]' : 'sm:min-h-[280px] md:min-h-[320px] sm:h-[280px] md:h-[320px]'}`}>
           {isMicro && (
             <div class="sm:hidden flex justify-center mb-6">
@@ -128,7 +125,6 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
             </div>
           </div>
           
-          <!-- Mobile/Tablet Hero Image for landscape - inside dark section -->
           {heroImage && !isMicro && heroImageLandscape && (
             <div class="lg:hidden flex justify-center mt-8" style="padding: 0 1.5rem;">
               <div class="mobile-image-container relative" style="max-width: 600px; width: 100%;">
@@ -146,10 +142,7 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
       </div>
     </section>
 
-
-    <!-- Mobile Hero Image (in document flow) - NOT shown for micro case studies -->
-    <!-- For portrait images only: show on mobile (<640px), with -mt-16 to overlap -->
-    <!-- Landscape images are now shown inside the dark hero section -->
+    <!-- Mobile Portrait Hero Image -->
     {heroImage && !isMicro && !heroImageLandscape && (
       <div class="flex justify-center mb-8 sm:hidden -mt-16" style="padding: 0 1.5rem;">
         <div class="mobile-image-container relative" style="max-width: 333px; width: 100%; aspect-ratio: 333 / 484;">
@@ -164,7 +157,7 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
       </div>
     )}
 
-    <!-- White Introduction Section (overlapping) - NOT shown for micro case studies -->
+    <!-- White Introduction Section -->
     {!isMicro && (
       <section class="section section-light relative z-10 pt-8 md:pt-12 md:pb-12 -mt-16 sm:-mt-20 md:-mt-24 lg:-mt-32" style="overflow: visible;">
         <div class="container">
@@ -186,9 +179,7 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
       </section>
     )}
     
-    <!-- Tablet/Desktop Hero Image Container - NOT shown for micro case studies -->
-    <!-- For portrait images: show from 640px+ -->
-    <!-- For landscape images: show from 1024px+ only (tablet shows in-flow image above) -->
+    <!-- Desktop Hero Image Overlay -->
     {heroImage && !isMicro && (
       <div
         class={`
@@ -217,14 +208,11 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
     )}
   </div>
 
-  <!-- Main Content Section with Light Grey Background -->
   <main id="content" class="section section-intro pt-6 pb-12 md:py-16">
     <div class="container">
       <div class="mx-auto" style="max-width: 1200px;">
         {isMicro ? (
-          <!-- Micro Case Study Layout -->
           <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
-            <!-- Card Image - order-1 on mobile (first), stays right on desktop -->
             <div class="md:col-span-5 lg:col-span-5 order-1 md:order-2">
               {cardImage && (
                 <div class="micro-content-image-wrapper">
@@ -238,7 +226,6 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
               )}
             </div>
             
-            <!-- Challenges and How we helped Section -->
             <div class="md:col-span-7 lg:col-span-7 order-2 md:order-1">
               {challenges && (
                 <div class="mb-8">
@@ -268,7 +255,6 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
             </div>
           </div>
         ) : (
-          <!-- Full Case Study Layout -->
           <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
             <!-- Left Column: Main Text Content -->
             <div class="md:col-span-7 lg:col-span-8 order-1">
@@ -277,11 +263,9 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
               </div>
             </div>
             
-            <!-- Right Column: Placeholder Containers -->
             {(quote && quoteAuthor && quoteOrganisation) || statistic ? (
               <div class="md:col-span-5 lg:col-span-4 order-2 pt-8">
                 <div class="flex flex-col gap-6 case-study-sidebar">
-                  <!-- Quote Card -->
                   {quote && quoteAuthor && quoteOrganisation ? (
                     <div>
                       <h3 class="quote-section-heading" style="font-family: var(--font-button); font-weight: var(--font-regular); font-size: var(--text-lg); margin-bottom: var(--typography-spacing-sm);">
@@ -296,10 +280,8 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
                     </div>
                   ) : null}
                   
-                  <!-- Black Container -->
                   {statistic ? (
                     <div class="statistics-block">
-                      <!-- Search Icon SVG -->
                       <img 
                         src={smallLensIcon.src} 
                         alt="Statistics icon" 
@@ -328,31 +310,29 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
 </Layout>
 
 <style>
-  /* Responsive case study title sizing */
   .case-study-title {
-    font-size: 28px; /* Mobile: 28px - reduced from 48px */
+    font-size: 28px;
     line-height: 1.2;
   }
   
   @media (min-width: 640px) {
     .case-study-title {
-      font-size: 36px; /* Small tablet: 36px */
+      font-size: 36px;
     }
   }
   
   @media (min-width: 768px) {
     .case-study-title {
-      font-size: 40px; /* Tablet: 40px */
+      font-size: 40px;
     }
   }
   
   @media (min-width: 1024px) {
     .case-study-title {
-      font-size: 48px; /* Desktop: 48px (var(--text-5xl)) */
+      font-size: 48px;
     }
   }
   
-  /* Hero image overlay - ensure it appears above text */
   .hero-image-overlay {
     z-index: 30 !important;
   }
@@ -363,30 +343,26 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
     .case-study-title {
       word-wrap: break-word !important;
       overflow-wrap: break-word !important;
-      word-break: break-word !important; /* Allow breaking even short words like "AI" */
+      word-break: break-word !important;
       hyphens: auto;
       max-width: 100%;
     }
     
-    /* Reduce bottom padding on dark section since image is between sections - NOT for landscape hero images */
     section.section-dark:not(.landscape-hero) {
-      padding-bottom: 20rem !important; /* Reduced to minimize black space */
+      padding-bottom: 20rem !important;
     }
     
-    /* Reduce negative margin on light section to bring sections closer - NOT for landscape hero pages */
     section.section-light {
-      margin-top: -12rem !important; /* Reduced negative margin to minimize gap */
+      margin-top: -12rem !important;
     }
     
-    /* For landscape hero pages, use smaller overlap since image is in dark section */
     .landscape-hero ~ section.section-light {
       margin-top: -2rem !important;
     }
     
-    /* Ensure text columns have proper spacing - NOT for landscape hero */
     section.section-dark:not(.landscape-hero) [class*="sm:col-span-8"],
     section.section-dark:not(.landscape-hero) [class*="md:col-span-8"] {
-      padding-right: 2.5rem !important; /* Extra space to prevent overlap */
+      padding-right: 2.5rem !important;
       max-width: calc(100% - 2.5rem) !important;
     }
     
@@ -396,7 +372,6 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
       max-width: calc(100% - 2.5rem) !important;
     }
     
-    /* Ensure customer and categories text also wrap */
     section.section-dark p {
       word-wrap: break-word !important;
       overflow-wrap: break-word !important;
@@ -409,15 +384,13 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
   @media (min-width: 667px) and (max-width: 667px) {
     .case-study-title {
       word-wrap: break-word !important;
-      overflow-wrap: anywhere !important; /* More aggressive wrapping for short words */
+      overflow-wrap: anywhere !important;
       word-break: break-word !important;
       hyphens: auto;
       max-width: 100%;
-      /* Force break after "generative" if needed */
       white-space: normal !important;
     }
     
-    /* Additional spacing for iPhone SE */
     section.section-dark [class*="sm:col-span-8"] {
       padding-right: 3rem !important;
       max-width: calc(100% - 3rem) !important;
@@ -429,11 +402,10 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
     }
   }
   
-  /* Fix overlap for Samsung Galaxy S8+ landscape (740px) */
   @media (min-width: 740px) and (max-width: 740px) {
     section.section-dark [class*="sm:col-span-8"],
     section.section-dark [class*="md:col-span-8"] {
-      padding-right: 3.5rem !important; /* Extra space for this specific device */
+      padding-right: 3.5rem !important;
       max-width: calc(100% - 3.5rem) !important;
     }
     
@@ -444,11 +416,10 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
     }
   }
   
-  /* Fix overlap for Surface Duo (720px) */
   @media (min-width: 720px) and (max-width: 720px) {
     section.section-dark [class*="sm:col-span-8"],
     section.section-dark [class*="md:col-span-8"] {
-      padding-right: 3.5rem !important; /* Extra space for this specific device */
+      padding-right: 3.5rem !important;
       max-width: calc(100% - 3.5rem) !important;
     }
     
@@ -459,49 +430,32 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
     }
   }
   
-  /* Position image for mobile landscape (640px-767px) */
   @media (min-width: 640px) and (max-width: 767px) {
     .hero-image-overlay {
-      top: 10rem !important; /* Position image to overlap sections */
+      top: 10rem !important;
       z-index: 30 !important;
     }
   }
   
-  /* Position image for tablet (768px-1023px) */
   @media (min-width: 768px) and (max-width: 1023px) {
     .hero-image-overlay {
-      top: 12rem !important; /* Position image to overlap sections */
+      top: 12rem !important;
       z-index: 30 !important;
     }
   }
   
-  /* Desktop and larger screens - keep original positioning (handled by Tailwind classes) */
   @media (min-width: 1024px) {
     .hero-image-overlay {
-      /* Original positioning maintained via Tailwind classes md:top-48 lg:top-52 */
       z-index: 30 !important;
     }
   }
   
-  /* Ensure text sections have lower z-index so image appears above */
-  section.section-dark .relative.z-10 {
-    z-index: 10;
-    position: relative;
-  }
-  
+  section.section-dark .relative.z-10,
   section.section-light .relative.z-10 {
     z-index: 10;
     position: relative;
   }
   
-  /* On desktop, ensure image is above text */
-  @media (min-width: 1024px) {
-    .hero-image-overlay {
-      z-index: 30 !important;
-    }
-  }
-  
-  /* Micro case study badge positioning */
   .micro-badge-hero-container {
     position: relative;
     display: inline-block;
@@ -557,7 +511,6 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
     }
   }
   
-  /* Micro case study content image - larger size */
   .micro-content-image-wrapper {
     width: 100%;
   }
@@ -567,7 +520,6 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
     height: auto;
   }
   
-  /* Only extend image on large desktop screens where there's enough space */
   @media (min-width: 1280px) {
     .micro-content-image-wrapper {
       margin-right: -3rem;
@@ -579,13 +531,11 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
     }
   }
   
-  /* Portrait hero image size */
   .portrait-hero-size {
     width: 333px;
     height: 484px;
   }
   
-  /* Landscape hero image size - only shown on desktop (1024px+) */
   .landscape-hero-size {
     width: 480px;
     max-width: 45%;
@@ -598,7 +548,6 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
     }
   }
   
-  /* Landscape hero image positioning - only for desktop */
   .hero-image-landscape {
     top: 12rem !important;
   }
