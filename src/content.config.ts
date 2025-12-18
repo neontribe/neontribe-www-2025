@@ -11,6 +11,7 @@ export const caseStudiesCollection = defineCollection({
     statistic: z.string().optional(),
     heroImage: image().optional(),
     heroImageAlt: z.string().optional(),
+    heroImageLandscape: z.boolean().default(false),
     cardImage: image().optional(),
     tags: z.array(z.string()).default([]),
     date: z.string().optional(),

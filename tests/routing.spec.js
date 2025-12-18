@@ -7,8 +7,6 @@ test('core routes load successfully', async ({ page }) => {
 
   await page.goto('/case-studies');
   await expect(page.getByRole('heading', { name: 'Case studies' })).toBeVisible();
-  
-  
   await page.goto('/how-we-work');
   await expect(page.getByRole('heading', { name: 'How we work' })).toBeVisible();
   

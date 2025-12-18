@@ -4,6 +4,9 @@ description: "A summer experiment goes into production, re-purposing time once s
 customer: "Martingale Foundation"
 projectName: "AI in funding"
 cardImage: ./images/Martingale Foundation Summer Ai project journey.jpeg
+heroImage: ./images/Martingale_casestudy_screenshot.png
+heroImageAlt: 'A screenshot of the Martingale Foundation AI scheduling tool interface'
+heroImageLandscape: true
 categories:
   - "Discovery"
   - "Alpha"
