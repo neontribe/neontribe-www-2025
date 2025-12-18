@@ -4,11 +4,11 @@ import PageHero from './PageHero.astro';
 
 export interface Props {
   title: string;
-  subtitle: string;
+  subtitle?: string;
   icon?: 'case-studies' | 'how-we-work' | 'advice-service' | 'talk-to-us';
 }
 
-const { title, subtitle, icon = 'case-studies' } = Astro.props;
+const { title, subtitle = '', icon = 'case-studies' } = Astro.props;
 ---
 
 <!-- Container that matches Figma: 1512px width, 576px height -->
