@@ -63,9 +63,11 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
   <!-- Hero Section with Dark Background and Overlapping White Intro -->
   <div class="relative" style="overflow: visible;">
     <!-- Dark Hero Section -->
-    <section class={`section section-dark pt-8 sm:pt-20 md:pt-24 lg:pt-32 relative ${isMicro ? 'pb-8 sm:pb-12 md:pb-16 lg:pb-20' : 'pb-8 sm:pb-40 md:pb-48 lg:pb-86'}`} aria-label="Case study hero">
+    <!-- For landscape images: image is inside section on mobile/tablet, needs bottom padding -->
+    <section class={`section section-dark pt-8 sm:pt-20 md:pt-24 lg:pt-32 relative ${isMicro ? 'pb-8 sm:pb-12 md:pb-16 lg:pb-20' : heroImageLandscape ? 'pb-8 lg:pb-86 landscape-hero' : 'pb-8 sm:pb-40 md:pb-48 lg:pb-86'}`} aria-label="Case study hero">
       <div class="container">
-        <div class={`mx-auto relative max-w-[1200px] ${isMicro ? '' : 'sm:min-h-[280px] md:min-h-[320px] sm:h-[280px] md:h-[320px]'}`}>
+        <!-- For landscape images: no fixed height on mobile/tablet since image is in-flow -->
+        <div class={`mx-auto relative max-w-[1200px] ${isMicro ? '' : heroImageLandscape ? 'lg:min-h-[320px] lg:h-[320px]' : 'sm:min-h-[280px] md:min-h-[320px] sm:h-[280px] md:h-[320px]'}`}>
           {isMicro && (
             <div class="sm:hidden flex justify-center mb-6">
               <div class="micro-badge-hero-container" style="width: 150px;">
@@ -99,11 +101,11 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
               )}
               
               {categories.length > 0 ? (
-                <p class={`leading-normal ${isMicro ? 'mb-0' : 'mb-8 md:mb-12'}`} style="font-family: var(--font-body); font-weight: var(--font-regular); font-size: var(--text-xl); color: #FFFFFF;">
+                <p class={`leading-normal ${isMicro ? 'mb-0' : heroImageLandscape ? 'mb-2 lg:mb-12' : 'mb-8 md:mb-12'}`} style="font-family: var(--font-body); font-weight: var(--font-regular); font-size: var(--text-xl); color: #FFFFFF;">
                   Categories: {categories.join(', ')}
                 </p>
               ) : (
-                <div class={`${isMicro ? '' : 'mb-8 md:mb-12'}`} style="height: 0;"></div>
+                <div class={`${isMicro ? '' : heroImageLandscape ? 'mb-2 lg:mb-12' : 'mb-8 md:mb-12'}`} style="height: 0;"></div>
               )}
             </div>
             
@@ -126,17 +128,31 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
             </div>
           </div>
           
+          <!-- Mobile/Tablet Hero Image for landscape - inside dark section -->
+          {heroImage && !isMicro && heroImageLandscape && (
+            <div class="lg:hidden flex justify-center mt-8" style="padding: 0 1.5rem;">
+              <div class="mobile-image-container relative" style="max-width: 600px; width: 100%;">
+                <img
+                  src={heroImage.src}
+                  alt={heroImageAlt || `${title} - case study hero image`}
+                  class="block h-auto w-full drop-shadow-xl"
+                  loading="eager"
+                  style="object-fit: contain;"
+                />
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </section>
 
 
     <!-- Mobile Hero Image (in document flow) - NOT shown for micro case studies -->
-    <!-- For portrait images: only show on mobile (<640px) -->
-    <!-- For landscape images: show on mobile and tablet (<1024px) -->
-    {heroImage && !isMicro && (
-      <div class={`flex justify-center -mt-16 mb-8 ${heroImageLandscape ? 'lg:hidden' : 'sm:hidden'}`} style="padding: 0 1.5rem;">
-        <div class="mobile-image-container relative" style={heroImageLandscape ? "max-width: 600px; width: 100%;" : "max-width: 333px; width: 100%; aspect-ratio: 333 / 484;"}>
+    <!-- For portrait images only: show on mobile (<640px), with -mt-16 to overlap -->
+    <!-- Landscape images are now shown inside the dark hero section -->
+    {heroImage && !isMicro && !heroImageLandscape && (
+      <div class="flex justify-center mb-8 sm:hidden -mt-16" style="padding: 0 1.5rem;">
+        <div class="mobile-image-container relative" style="max-width: 333px; width: 100%; aspect-ratio: 333 / 484;">
           <img
             src={heroImage.src}
             alt={heroImageAlt || `${title} - case study hero image`}
@@ -150,24 +166,20 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
 
     <!-- White Introduction Section (overlapping) - NOT shown for micro case studies -->
     {!isMicro && (
-      <section class="section section-light -mt-16 sm:-mt-20 md:-mt-24 lg:-mt-32 relative z-10 pt-8 md:pt-12 md:pb-12" style="overflow: visible;">
+      <section class="section section-light relative z-10 pt-8 md:pt-12 md:pb-12 -mt-16 sm:-mt-20 md:-mt-24 lg:-mt-32" style="overflow: visible;">
         <div class="container">
           <div class="mx-auto relative" style="max-width: 1200px;">
             <div class="grid grid-cols-1 sm:grid-cols-12 gap-6 md:gap-8">
-              <!-- Left Column: Intro Text - full width for landscape images on tablet, partial on desktop -->
-              <div class={`relative z-10 sm:mt-0 ${heroImageLandscape ? 'sm:col-span-12 lg:col-span-7' : 'sm:col-span-8 lg:col-span-7'}`}>
+              <!-- Left Column: Intro Text - full width for landscape images -->
+              <div class={`relative z-10 sm:mt-0 ${heroImageLandscape ? 'col-span-12' : 'sm:col-span-8 lg:col-span-7'}`}>
                 {description && (
                   <p class="text-text-dark leading-relaxed" style="font-family: var(--font-body); font-weight: var(--font-bold); font-size: var(--text-xl);">
                     {description}
                   </p>
                 )}
               </div>
-              <!-- Right Column: Spacer for image overlap -->
-              {heroImageLandscape ? (
-                <div class="hidden lg:block lg:col-span-5"></div>
-              ) : (
-                <div class="sm:col-span-4 lg:col-span-5"></div>
-              )}
+              <!-- Right Column: Spacer for image overlap - only for portrait images -->
+              {!heroImageLandscape && <div class="sm:col-span-4 lg:col-span-5"></div>}
             </div>
           </div>
         </div>
@@ -356,19 +368,24 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
       max-width: 100%;
     }
     
-    /* Reduce bottom padding on dark section since image is between sections */
-    section.section-dark {
+    /* Reduce bottom padding on dark section since image is between sections - NOT for landscape hero images */
+    section.section-dark:not(.landscape-hero) {
       padding-bottom: 20rem !important; /* Reduced to minimize black space */
     }
     
-    /* Reduce negative margin on light section to bring sections closer */
+    /* Reduce negative margin on light section to bring sections closer - NOT for landscape hero pages */
     section.section-light {
       margin-top: -12rem !important; /* Reduced negative margin to minimize gap */
     }
     
-    /* Ensure text columns have proper spacing */
-    section.section-dark [class*="sm:col-span-8"],
-    section.section-dark [class*="md:col-span-8"] {
+    /* For landscape hero pages, use smaller overlap since image is in dark section */
+    .landscape-hero ~ section.section-light {
+      margin-top: -2rem !important;
+    }
+    
+    /* Ensure text columns have proper spacing - NOT for landscape hero */
+    section.section-dark:not(.landscape-hero) [class*="sm:col-span-8"],
+    section.section-dark:not(.landscape-hero) [class*="md:col-span-8"] {
       padding-right: 2.5rem !important; /* Extra space to prevent overlap */
       max-width: calc(100% - 2.5rem) !important;
     }
