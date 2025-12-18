@@ -104,8 +104,13 @@ const currentPath = Astro.url.pathname;
     display: block;
   }
   .dxw-family-link svg {
-    height: 1.5rem;
+    height: 1.25rem;
     width: auto;
+  }
+  @media (min-width: 400px) {
+    .dxw-family-link svg {
+      height: 1.5rem;
+    }
   }
   @media (min-width: 640px) {
     .dxw-family-link svg {

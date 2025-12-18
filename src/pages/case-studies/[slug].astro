@@ -85,7 +85,7 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
           
           <div class={`grid grid-cols-1 sm:grid-cols-12 gap-6 md:gap-8 ${isMicro ? 'items-center' : 'items-start'}`}>
             <!-- Left Column: Title, Customer, Categories -->
-            <div class="sm:col-span-7 lg:col-span-7 relative z-10">
+            <div class={`relative z-10 ${heroImageLandscape ? 'sm:col-span-12 lg:col-span-6' : 'sm:col-span-7 lg:col-span-7'}`}>
               <h1 class="text-text-light mb-4 md:mb-5 leading-tight case-study-title" style="font-family: var(--font-button); font-weight: var(--font-regular);">
                 {title}
               </h1>
@@ -108,7 +108,7 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
             </div>
             
             <!-- Right Column: Micro case study badge OR spacer for hero image -->
-            <div class="sm:col-span-5 lg:col-span-5 hidden sm:flex justify-end items-center">
+            <div class={`justify-end items-center ${heroImageLandscape ? 'hidden lg:flex lg:col-span-6' : 'hidden sm:flex sm:col-span-5 lg:col-span-5'}`}>
               {isMicro && (
                 <div class="micro-badge-hero-container">
                   <img
@@ -131,10 +131,12 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
     </section>
 
 
-    <!-- Mobile Hero Image (in document flow, only for very small screens) - NOT shown for micro case studies -->
+    <!-- Mobile Hero Image (in document flow) - NOT shown for micro case studies -->
+    <!-- For portrait images: only show on mobile (<640px) -->
+    <!-- For landscape images: show on mobile and tablet (<1024px) -->
     {heroImage && !isMicro && (
-      <div class="sm:hidden flex justify-center -mt-16 mb-8" style="padding: 0 1.5rem;">
-        <div class="mobile-image-container relative" style={heroImageLandscape ? "max-width: 100%; width: 100%;" : "max-width: 333px; width: 100%; aspect-ratio: 333 / 484;"}>
+      <div class={`flex justify-center -mt-16 mb-8 ${heroImageLandscape ? 'lg:hidden' : 'sm:hidden'}`} style="padding: 0 1.5rem;">
+        <div class="mobile-image-container relative" style={heroImageLandscape ? "max-width: 600px; width: 100%;" : "max-width: 333px; width: 100%; aspect-ratio: 333 / 484;"}>
           <img
             src={heroImage.src}
             alt={heroImageAlt || `${title} - case study hero image`}
@@ -152,37 +154,42 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
         <div class="container">
           <div class="mx-auto relative" style="max-width: 1200px;">
             <div class="grid grid-cols-1 sm:grid-cols-12 gap-6 md:gap-8">
-              <!-- Left Column: Intro Text - full width for landscape images -->
-              <div class={`relative z-10 sm:mt-0 ${heroImageLandscape ? 'sm:col-span-12' : 'sm:col-span-8 lg:col-span-7'}`}>
+              <!-- Left Column: Intro Text - full width for landscape images on tablet, partial on desktop -->
+              <div class={`relative z-10 sm:mt-0 ${heroImageLandscape ? 'sm:col-span-12 lg:col-span-7' : 'sm:col-span-8 lg:col-span-7'}`}>
                 {description && (
                   <p class="text-text-dark leading-relaxed" style="font-family: var(--font-body); font-weight: var(--font-bold); font-size: var(--text-xl);">
                     {description}
                   </p>
                 )}
               </div>
-              <!-- Right Column: Spacer for image overlap - only for portrait images -->
-              {!heroImageLandscape && <div class="sm:col-span-4 lg:col-span-5"></div>}
+              <!-- Right Column: Spacer for image overlap -->
+              {heroImageLandscape ? (
+                <div class="hidden lg:block lg:col-span-5"></div>
+              ) : (
+                <div class="sm:col-span-4 lg:col-span-5"></div>
+              )}
             </div>
           </div>
         </div>
       </section>
     )}
     
-    <!-- Tablet/Desktop Hero Image Container (visible from 640px+) - NOT shown for micro case studies -->
+    <!-- Tablet/Desktop Hero Image Container - NOT shown for micro case studies -->
+    <!-- For portrait images: show from 640px+ -->
+    <!-- For landscape images: show from 1024px+ only (tablet shows in-flow image above) -->
     {heroImage && !isMicro && (
       <div
         class={`
-          hidden sm:block
           pointer-events-none
           absolute w-full
           hero-image-overlay
-          ${heroImageLandscape ? 'hero-image-landscape sm:top-32 md:top-36 lg:top-40' : 'sm:top-40 md:top-48 lg:top-52'}
+          ${heroImageLandscape ? 'hidden lg:block hero-image-landscape lg:top-40' : 'hidden sm:block sm:top-40 md:top-48 lg:top-52'}
         `}
         style="max-width: 1200px; left: 50%; transform: translateX(-50%); padding: 0 1.5rem; z-index: 30;"
         aria-hidden="true"
       >
         <div class="flex justify-end">
-          <div class="relative" style={heroImageLandscape ? "width: 500px; max-width: 50%;" : "width: 333px; height: 484px;"}>
+          <div class={`relative ${heroImageLandscape ? 'landscape-hero-size' : 'portrait-hero-size'}`}>
             <img
               src={heroImage.src}
               alt={heroImageAlt || `${title} - case study hero image`}
@@ -555,26 +562,33 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
     }
   }
   
-  /* Landscape hero image positioning adjustments */
-  .hero-image-landscape {
-    top: 8rem !important;
+  /* Portrait hero image size */
+  .portrait-hero-size {
+    width: 333px;
+    height: 484px;
   }
   
-  @media (min-width: 640px) {
-    .hero-image-landscape {
-      top: 8rem !important;
+  /* Landscape hero image size - only shown on desktop (1024px+) */
+  .landscape-hero-size {
+    width: 480px;
+    max-width: 45%;
+  }
+  
+  @media (min-width: 1280px) {
+    .landscape-hero-size {
+      width: 520px;
+      max-width: 50%;
     }
   }
   
-  @media (min-width: 768px) {
+  /* Landscape hero image positioning - only for desktop */
+  .hero-image-landscape {
+    top: 12rem !important;
+  }
+  
+  @media (min-width: 1280px) {
     .hero-image-landscape {
       top: 10rem !important;
-    }
-  }
-  
-  @media (min-width: 1024px) {
-    .hero-image-landscape {
-      top: 12rem !important;
     }
   }
 </style>
