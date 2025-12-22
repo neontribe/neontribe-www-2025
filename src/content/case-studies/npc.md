@@ -9,7 +9,7 @@ heroImage: ./images/npc.png
 heroImageAlt: 'A graphic of the New Philanthropy Capital Signposting+ document'
 date: '2023-01-01'
 quote: "Harry and the Neontribe team made a meaningful impact on the project's quality. They were pivotal in sharpening our plan and delivering the research activities. Their work delivered the user-centred insights that are so useful to the signposting services that help young people get the best outcomes they can."
-quoteAuthor: 'Penny Nkrumah'
+quoteAuthor: 'Tris Lumley'
 quoteOrganisation: 'New Philanthropy Capital'
 quoteAvatar: ./images/New_Philanthropy_Capital_organisation_logo.jpg
 ---
@@ -47,5 +47,3 @@ In the second round, we moved on to considering the breadth of services offered 
 For the next round, we focussed on specifics of the experience for each of our partner organisations' sites, using the same personas from the previous round, but going deeper into particular features. Notably, 2 of our partners had iterated their services since the second sprint and we wanted to investigate the impact of their changes. 
 
 In the final workshop, we identified the data that young people found most useful when being signposted. We then distilled their experience of the project into recommendations for improvements, both for our practice and for the project partners' services.
-
-> [Tris Lumley](https://www.linkedin.com/in/ACoAAAANELIBngq2e32Y0YF07xu0zPj-JabNJlg), Director of Innovation & Development at NPC,  said, **"Harry and the [Neontribe](https://www.linkedin.com/company/neontribe-ltd/) team made a meaningful impact on the project's quality. They were pivotal in sharpening our plan and delivering the research activities. Their work delivered the user-centred insights that are so useful to the signposting services that help young people get the best outcomes they can."**
