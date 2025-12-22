@@ -14,8 +14,8 @@ categories:
 statistic: "20 hours of human work saved, expecting 30 hours savings a year in 2026 and beyond"
 date: "2025-12-16"
 quote: "We are thrilled with the time we have saved. We're using the time on interpersonal things that AI / digital tech can't (yet!) take on! Liaising with candidates who have additional support and access needs for interviews, to ensure they could deliver the best possible performance; chasing outstanding references; event planning and logistics for our assessment centres in good time; and getting a head start with preparations for post-offer support."
-quoteAuthor: "Mary Henes"
-quoteOrganisation: "Head of Strategy and Operations at the Martingale Foundation"
+quoteAuthor: "Mary Henes, Head of Strategy and Operations"
+quoteOrganisation: "Martingale Foundation"
 challenges: >
   The Martingale Foundation enables talented individuals from low-socioeconomic backgrounds to thrive within world-leading postgraduate research. They knew administration took substantial effort, and felt the use of AI could reduce the time spent on processing applications, freeing their team to use their skills and expertise towards supporting current and incoming Scholars.
 
