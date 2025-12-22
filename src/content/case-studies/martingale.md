@@ -3,8 +3,8 @@ title: "AI in funding: an experiment in time-saving"
 description: "A summer experiment goes into production, re-purposing time once spent on administration as space to give personal support to those who need it most."
 customer: "Martingale Foundation"
 projectName: "AI in funding"
-cardImage: ./images/Martingale Foundation Summer Ai project journey.jpeg
-heroImage: ./images/Martingale_casestudy_screenshot.png
+cardImage: ./images/Martingale_casestudy_screenshot_border.png
+heroImage: ./images/Martingale_casestudy_screenshot_border.png
 heroImageAlt: 'A screenshot of the Martingale Foundation AI scheduling tool interface'
 heroImageLandscape: true
 categories:
