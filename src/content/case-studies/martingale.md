@@ -17,7 +17,15 @@ quote: "We are thrilled with the time we have saved. We're using the time on int
 quoteAuthor: "Mary Henes"
 quoteOrganisation: "Head of Strategy and Operations at the Martingale Foundation"
 challenges: >
-  The Martingale Foundation supports a new generation of postgraduates to thrive in research. Through fully-funded Scholarships and access to a community of pioneering researchers, they enable and nurture talented individuals from low-socioeconomic backgrounds to thrive within world-leading postgraduate research. They knew that processing applications took a lot of human effort, and felt that the use of AI could reduce the time spent on data extraction and matching, so that the team could use their skills and expertise towards supporting current and incoming Scholars. Neontribe offered them a pro-bono summer project to explore the possibilities. Martingale was so pleased by the initial findings, they paid for the work to be rolled out on live data.
+  The Martingale Foundation enables talented individuals from low-socioeconomic backgrounds to thrive within world-leading postgraduate research. They knew administration took substantial effort, and felt the use of AI could reduce the time spent on processing applications, freeing their team to use their skills and expertise towards supporting current and incoming Scholars.
+
+howWeHelped:
+  - "Used Python code to match candidates' availability and research interests with academic assessors' availability and research expertise for in-person interviews"
+  - "Built a tool that saves days of staff time in scheduling interviews, vital in a tight admissions window"
+  - "Used GenAI to extract key data from PDFs into a readable field in their CRM"
+  - "Eliminated the need for staff to manually review hundreds of documents"
+  - "Delivered time-saving use of LLMs for document categorisation and targeted data pulls"
+    
 ---
 
 Our work for the Martingale Foundation was based on the Design Council's Double Diamond methodology, which explains a project in four stages: discover, define, develop, deliver.
@@ -29,13 +37,6 @@ We started with a pro-bono project. We were lucky to be approached by a Laidlaw 
 ## What we did
 
 For that first stage of the project, we started with a workshop to discover some pinch points in Martingale's process, and then defined solutions to two where we felt a short project could do some good. Our intern was mentored by a senior developer, and between them they developed two tools to alleviate specific sources of wasted time. One takes letters from student finance bodies submitted by students, and extracts a key datapoint. The other helps schedule the dozens of interviews Martingale needs to run.
-
-howWeHelped:
-  - "Used Python code to match candidates' availability and research interests with academic assessors' availability and research expertise for in-person interviews"
-  - "Built a tool that saves days of staff time in scheduling interviews, vital in a tight admissions window"
-  - "Used GenAI to extract key data from PDFs into a readable field in their CRM"
-  - "Eliminated the need for staff to manually review hundreds of documents"
-  - "Delivered time-saving use of LLMs for document categorisation and targeted data pulls"
 
 We tested the tools with Martingale staff, to see if the help they gave was of use. It was; and that success secured project funding to re-work the tools for use on live data, helping save time on this year's application process.
 
