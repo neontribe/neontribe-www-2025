@@ -17,14 +17,13 @@ quote: "We are thrilled with the time we have saved. We're using the time on int
 quoteAuthor: "Mary Henes, Head of Strategy and Operations"
 quoteOrganisation: "Martingale Foundation"
 challenges: >
-  The Martingale Foundation enables talented individuals from low-socioeconomic backgrounds to thrive within world-leading postgraduate research. They knew administration took substantial effort, and felt the use of AI could reduce the time spent on processing applications, freeing their team to use their skills and expertise towards supporting current and incoming Scholars.
+  The Martingale Foundation helps talented individuals from low-socioeconomic backgrounds to thrive in world-leading postgraduate research. Administration of applications took substantial effort, and they felt that using AI would free them up to offer more support to students.
 
 howWeHelped:
-  - "Used Python code to match candidates' availability and research interests with academic assessors' availability and research expertise for in-person interviews"
-  - "Built a tool that saves days of staff time in scheduling interviews, vital in a tight admissions window"
+  - "Designed an algorithm to schedule applicants' in person interviews with the most suitable academic assessors."
+  - "Saved days of staff time in scheduling interviews, vital in a tight admissions window"
   - "Used GenAI to extract key data from PDFs into a readable field in their CRM"
   - "Eliminated the need for staff to manually review hundreds of documents"
-  - "Delivered time-saving use of LLMs for document categorisation and targeted data pulls"
     
 ---
 
