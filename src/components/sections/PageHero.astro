@@ -30,70 +30,28 @@ const iconDesktopMap = {
 <section class="section section-dark">
   <div class="w-full md:max-w-[1336px] md:mx-auto px-8 md:px-10">
     <div class="flex flex-col md:flex-row items-center md:items-start gap-6 lg:gap-8 pt-8 pb-12 md:py-12 lg:py-16 text-center md:text-left">
-      <!-- Icon sized -->
+<!-- Icon sized -->
       <div class="w-24 h-24 md:w-32 md:h-32 flex items-center justify-center flex-shrink-0" aria-hidden="true">
-        <!-- Mobile icon -->
+<!-- Mobile icon -->
         <img 
           src={iconMap[icon].src} 
           alt="" 
           class="md:hidden w-full h-full object-contain" 
         />
-        <!-- Desktop icon -->
         <img 
           src={iconDesktopMap[icon].src} 
           alt="" 
           class="hidden md:block w-full h-full object-contain" 
         />
       </div>
-      
-      <!-- Content -->
       <div class="flex-1 max-w-4xl">
-        <h1 class="page-hero-title font-bold text-white mb-2">
+        <h1 class="hero-title">
           {title}
         </h1>
-        <p class="hero-subtitle text-text-light leading-relaxed max-w-3xl font-normal mx-auto md:mx-0" 
-           style="font-family: 'Mulish', sans-serif; font-weight: 400;">
+        <p class="hero-subtitle">
           {subtitle}
         </p>
       </div>
     </div>
   </div>
 </section>
-
-<style>
-  .page-hero-title {
-    font-size: 32px; /* Mobile: 32px - reduced from 40px */
-    line-height: 1.0; /* 100% line-height */
-    letter-spacing: 0; /* Normal letter-spacing */
-  }
-  
-  @media (min-width: 768px) {
-    .page-hero-title {
-      font-size: 50px; /* Tablet: 50px - intermediate size */
-      line-height: 1.0; /* 100% line-height */
-      letter-spacing: 0; /* Normal letter-spacing */
-    }
-  }
-  
-  @media (min-width: 1024px) {
-    .page-hero-title {
-      font-size: 74px; /* Desktop: 74px */
-      line-height: 1.0; /* 100% line-height */
-      letter-spacing: 0; /* Normal letter-spacing */
-    }
-  }
-  
-  .hero-subtitle {
-    font-size: 18px; /* Mobile: 18px */
-    line-height: 1.4; /* Appropriate line-height for body text */
-    letter-spacing: 0; /* Normal letter-spacing */
-  }
-  
-  @media (min-width: 768px) {
-    .hero-subtitle {
-      font-size: 20px; /* Desktop: 20px */
-      line-height: 1.4; 
-      letter-spacing: 0; /* Normal letter-spacing */
-    }
-  }
-</style>
