@@ -58,7 +58,7 @@ const buttonHref = slug ? `/case-studies/${slug}` : null;
   <div class="w-full md:max-w-[1336px] md:mx-auto relative">
     <div class="bg-white flex flex-col w-full md:max-w-[1336px] min-h-[509px]">
       <div class="grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-0 items-start md:items-stretch flex-1 h-full">
-        <div class="flex flex-col order-2 md:order-1 p-8 md:p-10">
+        <div class="flex flex-col order-2 md:order-1 p-12 md:p-10">
           <h2 class="font-heading text-2xl font-bold text-[#090909] mb-2">
             {customer}
           </h2>
@@ -115,7 +115,7 @@ const buttonHref = slug ? `/case-studies/${slug}` : null;
               <img
                 src={typeof cardImageSrc === 'string' ? cardImageSrc : cardImageSrc.src}
                 alt={imageAlt}
-                class="w-full h-full object-contain block"
+                class="h-full object-cover block"
               />
             </div>
           ) : (

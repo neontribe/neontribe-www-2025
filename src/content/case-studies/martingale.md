@@ -3,9 +3,9 @@ title: "AI in funding: an experiment in time-saving"
 description: "A summer experiment goes into production, re-purposing time once spent on administration as space to give personal support to those who need it most."
 customer: "Martingale Foundation"
 projectName: "AI in funding"
-cardImage: ./images/Martingale_casestudy_screenshot_border.png
-heroImage: ./images/Martingale_casestudy_screenshot_border.png
-heroImageAlt: 'A screenshot of the Martingale Foundation AI scheduling tool interface'
+cardImage: ../../assets/martingale-case-study-cropped.jpg
+heroImage: ../../assets/martingale-case-study.jpg
+heroImageAlt: "A screenshot of the Martingale Foundation AI scheduling tool interface"
 heroImageLandscape: true
 categories:
   - "Discovery"
@@ -24,7 +24,6 @@ howWeHelped:
   - "Saved days of staff time in scheduling interviews, vital in a tight admissions window"
   - "Used GenAI to extract key data from PDFs into a readable field in their CRM"
   - "Eliminated the need for staff to manually review hundreds of documents"
-    
 ---
 
 Our work for the Martingale Foundation was based on the Design Council's Double Diamond methodology, which explains a project in four stages: discover, define, develop, deliver.
