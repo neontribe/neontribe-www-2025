@@ -17,7 +17,7 @@ const {
   noIndex = false,
 } = Astro.props;
 
-// Site URL comes from astro.config.mjs 
+// Site URL comes from astro.config.mjs
 const siteUrl = Astro.site!.toString().replace(/\/$/, "");
 const currentUrl = new URL(Astro.url.pathname, siteUrl).toString();
 const resolvedOgImage = ogImage || "/og-image.png";
@@ -32,6 +32,7 @@ const fullTitle = title === "Neontribe" ? title : `${title} | Neontribe`;
 <title>{fullTitle}</title>
 <meta name="description" content={description} />
 
+<link rel="sitemap" href="/sitemap-index.xml" />
 <link rel="icon" type="image/png" href="/favicon.png" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 <link rel="canonical" href={currentUrl} />
