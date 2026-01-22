@@ -5,9 +5,11 @@ import tailwindcss from '@tailwindcss/vite';
 import remarkGfm from 'remark-gfm';
 import rehypeExternalLinks from 'rehype-external-links';
 
+import sitemap from '@astrojs/sitemap';
+
 export default defineConfig({
-    site: 'https://neontribe.co.uk',
-    integrations: [react(), mdx()],
+    site: 'https://www.neontribe.co.uk',
+    integrations: [react(), mdx(), sitemap()],
     redirects: {
         '/our-work': '/case-studies',
         '/the-tribe': '/how-we-work',
