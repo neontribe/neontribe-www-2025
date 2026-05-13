@@ -70,9 +70,9 @@ const currentPath = Astro.url.pathname;
   <!-- Mobile Menu Overlay -->
   <nav id="mobile-menu" class="mobile-menu hidden" aria-label="Mobile navigation" aria-hidden="true">
     <div class="mobile-content">
-      <a href="/case-studies"  class={`mobile-link ${currentPath === '/case-studies'  ? 'active' : ''}`} aria-current={currentPath === '/case-studies' ? 'page' : undefined}>Case Studies</a>
-      <a href="/how-we-work"   class={`mobile-link ${currentPath === '/how-we-work'   ? 'active' : ''}`} aria-current={currentPath === '/how-we-work' ? 'page' : undefined}>How We Work</a>
-      <a href="/advice-service" class={`mobile-link ${currentPath === '/advice-service' ? 'active' : ''}`} aria-current={currentPath === '/advice-service' ? 'page' : undefined}>Advice Service</a>
+      <a href="/case-studies"  class={`mobile-link ${currentPath === '/case-studies'  ? 'active' : ''}`} aria-current={currentPath === '/case-studies' ? 'page' : undefined}>Case studies</a>
+      <a href="/how-we-work"   class={`mobile-link ${currentPath === '/how-we-work'   ? 'active' : ''}`} aria-current={currentPath === '/how-we-work' ? 'page' : undefined}>How we work</a>
+      <a href="/advice-service" class={`mobile-link ${currentPath === '/advice-service' ? 'active' : ''}`} aria-current={currentPath === '/advice-service' ? 'page' : undefined}>Advice service</a>
       <div class="mobile-cta">
         <Button href="/talk-to-us" variant="teal" size="sm">Talk to us</Button>
       </div>
@@ -128,22 +128,22 @@ const currentPath = Astro.url.pathname;
   .mobile-toggle{ z-index:1101; }
   .mobile-toggle:focus{ outline:2px solid var(--color-accent-turquoise); outline-offset:2px; }
   .mobile-toggle:hover{ background:rgba(255,255,255,.1); }
-  .hamburger-line{ 
-    width:18px; 
-    height:2px; 
-    background:var(--color-text-light); 
+  .hamburger-line{
+    width:18px;
+    height:2px;
+    background:var(--color-text-light);
     transition:transform .3s, opacity .3s, background .2s ease;
   }
   .mobile-toggle:hover .hamburger-line{ background:#48E9CE; }
   .mobile-toggle[aria-expanded="true"] .hamburger-line{ background:var(--color-accent-turquoise); }
-  
+
   /* More space between logo and hamburger on mobile portrait */
   @media (max-width: 639px) {
     .mobile-toggle { right: 0.5rem !important; }
   }
-  
+
   /* Base close state transform - for mobile (< 640px) - regular X */
-  .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(1){ 
+  .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(1){
     transform: rotate(45deg);
     position: absolute;
     top: 50%;
@@ -151,10 +151,10 @@ const currentPath = Astro.url.pathname;
     margin-left: -9px;
     margin-top: -1px;
   }
-  .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(2){ 
+  .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(2){
     opacity: 0;
   }
-  .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(3){ 
+  .mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(3){
     transform: rotate(-45deg);
     position: absolute;
     top: 50%;
@@ -162,7 +162,7 @@ const currentPath = Astro.url.pathname;
     margin-left: -9px;
     margin-top: -1px;
   }
-  
+
   /* Larger hamburger menu on mobile landscape (640px-1023px) */
   @media (min-width: 640px) and (max-width: 1023px) {
     .hamburger-line{ width:19px; height:2.5px; }
@@ -172,7 +172,7 @@ const currentPath = Astro.url.pathname;
       margin-top: -1.25px;
     }
   }
-  
+
   /* Larger hamburger menu on tablet (1024px-1279px) */
   @media (min-width: 1024px) and (max-width: 1279px) {
     .hamburger-line{ width:22px; height:3px; }
@@ -204,36 +204,36 @@ const currentPath = Astro.url.pathname;
   }
 
   .mobile-link{
-    color:var(--color-text-light); 
-    text-decoration:none; 
-    font-size:1.5rem; 
+    color:var(--color-text-light);
+    text-decoration:none;
+    font-size:1.5rem;
     font-weight:500;
-    padding:12px 24px; 
-    min-height:44px; 
-    display:flex; 
-    align-items:center; 
+    padding:12px 24px;
+    min-height:44px;
+    display:flex;
+    align-items:center;
     transition:color .2s ease, text-decoration .2s ease, text-decoration-color .2s ease, text-decoration-thickness .2s ease;
     white-space:nowrap;
   }
-  .mobile-link.active{ 
-    color:var(--color-accent-turquoise); 
+  .mobile-link.active{
+    color:var(--color-accent-turquoise);
     text-decoration:none;
   }
   .mobile-link:hover,
-  .mobile-link.active:hover{ 
-    color:#48E9CE !important; 
+  .mobile-link.active:hover{
+    color:#48E9CE !important;
     text-decoration:underline !important;
     text-decoration-color:#48E9CE !important;
     text-decoration-thickness:2px !important;
     text-underline-offset:0.25rem !important;
   }
-  .mobile-link:focus{ 
-    outline:2px solid var(--color-accent-turquoise); 
-    outline-offset:2px; 
-    border-radius:2px; 
+  .mobile-link:focus{
+    outline:2px solid var(--color-accent-turquoise);
+    outline-offset:2px;
+    border-radius:2px;
   }
-  .mobile-link:active{ 
-    outline:none; 
+  .mobile-link:active{
+    outline:none;
   }
 
   .mobile-cta{ margin-top:1rem; }
@@ -273,7 +273,7 @@ const currentPath = Astro.url.pathname;
 
     toggle.addEventListener('click', ()=> (isOpen ? closeMenu() : openMenu()));
 
-    
+
     Array.from(links).forEach((a) => {
       if (a instanceof HTMLAnchorElement) a.addEventListener('click', closeMenu);
     });

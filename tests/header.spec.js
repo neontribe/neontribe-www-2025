@@ -2,9 +2,9 @@
 import { test, expect } from '@playwright/test';
 
 const NAV_LINKS = [
-  { href: '/case-studies', text: 'Case Studies' },
-  { href: '/how-we-work', text: 'How We Work' },
-  { href: '/advice-service', text: 'Advice Service' },
+  { href: '/case-studies', text: 'Case studies' },
+  { href: '/how-we-work', text: 'How we work' },
+  { href: '/advice-service', text: 'Advice service' },
 ];
 
 test.describe('Header', () => {

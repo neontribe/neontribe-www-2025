@@ -221,16 +221,13 @@ Team members are displayed on the "How we work" page using the `PeopleExpander` 
 
 ## Testing
 
-This project uses [Playwright](https://playwright.dev) for end-to-end testing.
+This project uses [Playwright](https://playwright.dev) in an attached docker container for end-to-end testing.
+This is managed from a bash script, `pw.sh`
 
 ### Running Tests
 
 ```bash
-# Run all tests
-npm run test
-
-# Run tests with interactive UI
-npm run test:ui
+./pw.sh
 ```
 
 ### Test Structure

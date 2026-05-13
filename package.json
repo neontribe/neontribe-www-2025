@@ -1,31 +1,32 @@
 {
-  "name": "neontribe-www-2025",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "build": "astro check && astro build",
-    "preview": "astro preview",
-    "test": "playwright test",
-    "test:ui": "playwright test --ui",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "@astrojs/check": "^0.9.4",
-    "@astrojs/mdx": "^4.3.9",
-    "@astrojs/react": "^4.4.0",
-    "@fontsource/inter": "^5.2.8",
-    "@tailwindcss/typography": "^0.5.19",
-    "@tailwindcss/vite": "^4.1.14",
-    "astro": "5.15.9",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3",
-    "rehype-external-links": "^3.0.0",
-    "remark-gfm": "^4.0.1",
-    "tailwindcss": "^4.1.14",
-    "typescript": "^5.9.3"
-  },
-  "devDependencies": {
-    "@playwright/test": "^1.56.0"
-  }
+    "name": "neontribe-www-2025",
+    "type": "module",
+    "version": "1.1.0",
+    "scripts": {
+        "dev": "astro dev",
+        "build": "astro check && astro build",
+        "preview": "astro preview",
+        "test": "playwright test",
+        "test:ui": "playwright test --ui",
+        "astro": "astro"
+    },
+    "dependencies": {
+        "@astrojs/check": "0.9.9",
+        "@astrojs/mdx": "4.3.14",
+        "@astrojs/react": "5.0.4",
+        "@astrojs/sitemap": "3.7.2",
+        "@fontsource/inter": "5.2.8",
+        "@tailwindcss/typography": "0.5.19",
+        "@tailwindcss/vite": "4.3.0",
+        "astro": "5.18.1",
+        "react": "19.2.6",
+        "react-dom": "19.2.6",
+        "rehype-external-links": "3.0.0",
+        "remark-gfm": "4.0.1",
+        "tailwindcss": "4.3.0",
+        "typescript": "5.9.3"
+    },
+    "devDependencies": {
+        "@playwright/test": "1.60.0"
+    }
 }
