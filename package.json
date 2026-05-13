@@ -6,8 +6,6 @@
         "dev": "astro dev",
         "build": "astro check && astro build",
         "preview": "astro preview",
-        "test": "playwright test",
-        "test:ui": "playwright test --ui",
         "astro": "astro"
     },
     "dependencies": {

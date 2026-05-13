@@ -38,7 +38,6 @@ const {
   heroImageAlt,
   heroImageLandscape = false,
   cardImage,
-  tags = [],
   quote,
   quoteAuthor,
   quoteOrganisation,
@@ -52,8 +51,8 @@ const {
 const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : customer;
 ---
 
-<Layout 
-  title={title} 
+<Layout
+  title={title}
   description={description}
   ogType="article"
   ogImage={cardImage?.src}
@@ -81,14 +80,14 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
               </div>
             </div>
           )}
-          
+
           <div class={`grid grid-cols-1 sm:grid-cols-12 gap-6 md:gap-8 ${isMicro ? 'items-center' : 'items-start'}`}>
             <!-- Left Column: Title, Customer, Categories -->
             <div class={`relative z-10 ${heroImageLandscape ? 'sm:col-span-12 lg:col-span-6' : 'sm:col-span-7 lg:col-span-7'}`}>
               <h1 class="text-text-light mb-4 md:mb-5 leading-tight case-study-title" style="font-family: var(--font-button); font-weight: var(--font-regular);">
                 {title}
               </h1>
-              
+
               {displayCustomer ? (
                 <p class="mb-3 md:mb-4 leading-normal" style="font-family: var(--font-button); font-weight: var(--font-regular); font-size: var(--text-xl); color: #87FAE7;">
                   {displayCustomer}
@@ -96,7 +95,7 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
               ) : (
                 <div class="mb-3 md:mb-4" style="height: 0;"></div>
               )}
-              
+
               {categories.length > 0 ? (
                 <p class={`leading-normal ${isMicro ? 'mb-0' : heroImageLandscape ? 'mb-2 lg:mb-12' : 'mb-8 md:mb-12'}`} style="font-family: var(--font-body); font-weight: var(--font-regular); font-size: var(--text-xl); color: #FFFFFF;">
                   Categories: {categories.join(', ')}
@@ -105,7 +104,7 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
                 <div class={`${isMicro ? '' : heroImageLandscape ? 'mb-2 lg:mb-12' : 'mb-8 md:mb-12'}`} style="height: 0;"></div>
               )}
             </div>
-            
+
             <!-- Right Column: Micro case study badge OR spacer for hero image -->
             <div class={`justify-end items-center ${heroImageLandscape ? 'hidden lg:flex lg:col-span-6' : 'hidden sm:flex sm:col-span-5 lg:col-span-5'}`}>
               {isMicro && (
@@ -124,7 +123,7 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
               )}
             </div>
           </div>
-          
+
           {heroImage && !isMicro && heroImageLandscape && (
             <div class="lg:hidden flex justify-center mt-8" style="padding: 0 1.5rem;">
               <div class="mobile-image-container relative" style="max-width: 600px; width: 100%;">
@@ -178,7 +177,7 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
         </div>
       </section>
     )}
-    
+
     <!-- Desktop Hero Image Overlay -->
     {heroImage && !isMicro && (
       <div
@@ -225,7 +224,7 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
                 </div>
               )}
             </div>
-            
+
             <div class="md:col-span-7 lg:col-span-7 order-2 md:order-1">
               {challenges && (
                 <div class="mb-8">
@@ -237,7 +236,7 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
                   </p>
                 </div>
               )}
-              
+
               {howWeHelped && howWeHelped.length > 0 && (
                 <div>
                   <h2 class="micro-section-heading" style="font-family: var(--font-button); font-weight: var(--font-bold); font-size: var(--text-2xl); margin-bottom: var(--typography-spacing-md);">
@@ -262,7 +261,7 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
                 <Content />
               </div>
             </div>
-            
+
             {(quote && quoteAuthor && quoteOrganisation) || statistic ? (
               <div class="md:col-span-5 lg:col-span-4 order-2 pt-8">
                 <div class="flex flex-col gap-6 case-study-sidebar">
@@ -279,14 +278,14 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
                       />
                     </div>
                   ) : null}
-                  
+
                   {statistic ? (
                     <div class="statistics-block">
-                      <img 
-                        src={smallLensIcon.src} 
-                        alt="Statistics icon" 
-                        width="50.24" 
-                        height="49.93" 
+                      <img
+                        src={smallLensIcon.src}
+                        alt="Statistics icon"
+                        width="50.24"
+                        height="49.93"
                         class="flex-shrink-0"
                       />
                       <p class="statistics-text">
@@ -302,7 +301,7 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
       </div>
     </div>
   </main>
-  
+
   <div class="bg-bg-dark w-full">
     <GetInTouch />
     <Footer />
@@ -314,29 +313,29 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
     font-size: 28px;
     line-height: 1.2;
   }
-  
+
   @media (min-width: 640px) {
     .case-study-title {
       font-size: 36px;
     }
   }
-  
+
   @media (min-width: 768px) {
     .case-study-title {
       font-size: 40px;
     }
   }
-  
+
   @media (min-width: 1024px) {
     .case-study-title {
       font-size: 48px;
     }
   }
-  
+
   .hero-image-overlay {
     z-index: 30 !important;
   }
-  
+
   /* Fix for all mobile and tablet landscape (640px-1023px) when not in stack mode */
   @media (min-width: 640px) and (max-width: 1023px) {
     /* Force text wrapping to prevent going under image */
@@ -347,31 +346,31 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
       hyphens: auto;
       max-width: 100%;
     }
-    
+
     section.section-dark:not(.landscape-hero) {
       padding-bottom: 20rem !important;
     }
-    
+
     section.section-light {
       margin-top: -12rem !important;
     }
-    
+
     .landscape-hero ~ section.section-light {
       margin-top: -2rem !important;
     }
-    
+
     section.section-dark:not(.landscape-hero) [class*="sm:col-span-8"],
     section.section-dark:not(.landscape-hero) [class*="md:col-span-8"] {
       padding-right: 2.5rem !important;
       max-width: calc(100% - 2.5rem) !important;
     }
-    
+
     section.section-light [class*="sm:col-span-8"],
     section.section-light [class*="md:col-span-8"] {
       padding-right: 2.5rem !important;
       max-width: calc(100% - 2.5rem) !important;
     }
-    
+
     section.section-dark p {
       word-wrap: break-word !important;
       overflow-wrap: break-word !important;
@@ -379,7 +378,7 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
       max-width: 100% !important;
     }
   }
-  
+
   /* Specific fix for iPhone SE landscape (667px)*/
   @media (min-width: 667px) and (max-width: 667px) {
     .case-study-title {
@@ -390,83 +389,83 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
       max-width: 100%;
       white-space: normal !important;
     }
-    
+
     section.section-dark [class*="sm:col-span-8"] {
       padding-right: 3rem !important;
       max-width: calc(100% - 3rem) !important;
     }
-    
+
     section.section-light [class*="sm:col-span-8"] {
       padding-right: 3rem !important;
       max-width: calc(100% - 3rem) !important;
     }
   }
-  
+
   @media (min-width: 740px) and (max-width: 740px) {
     section.section-dark [class*="sm:col-span-8"],
     section.section-dark [class*="md:col-span-8"] {
       padding-right: 3.5rem !important;
       max-width: calc(100% - 3.5rem) !important;
     }
-    
+
     section.section-light [class*="sm:col-span-8"],
     section.section-light [class*="md:col-span-8"] {
       padding-right: 3.5rem !important;
       max-width: calc(100% - 3.5rem) !important;
     }
   }
-  
+
   @media (min-width: 720px) and (max-width: 720px) {
     section.section-dark [class*="sm:col-span-8"],
     section.section-dark [class*="md:col-span-8"] {
       padding-right: 3.5rem !important;
       max-width: calc(100% - 3.5rem) !important;
     }
-    
+
     section.section-light [class*="sm:col-span-8"],
     section.section-light [class*="md:col-span-8"] {
       padding-right: 3.5rem !important;
       max-width: calc(100% - 3.5rem) !important;
     }
   }
-  
+
   @media (min-width: 640px) and (max-width: 767px) {
     .hero-image-overlay {
       top: 10rem !important;
       z-index: 30 !important;
     }
   }
-  
+
   @media (min-width: 768px) and (max-width: 1023px) {
     .hero-image-overlay {
       top: 12rem !important;
       z-index: 30 !important;
     }
   }
-  
+
   @media (min-width: 1024px) {
     .hero-image-overlay {
       z-index: 30 !important;
     }
   }
-  
+
   section.section-dark .relative.z-10,
   section.section-light .relative.z-10 {
     z-index: 10;
     position: relative;
   }
-  
+
   .micro-badge-hero-container {
     position: relative;
     display: inline-block;
   }
-  
+
   .micro-badge-hero {
     width: 180px;
     height: auto;
     display: block;
   }
-  
+
   .micro-badge-text {
     position: absolute;
     top: 42%;
@@ -483,7 +482,7 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
     line-height: 1.2;
     text-align: center;
   }
-  
+
   @media (min-width: 768px) {
     .micro-badge-hero {
       width: 200px;
@@ -492,7 +491,7 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
       font-size: 16px;
     }
   }
-  
+
   @media (min-width: 1024px) {
     .micro-badge-hero {
       width: 240px;
@@ -501,7 +500,7 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
       font-size: 18px;
     }
   }
-  
+
   @media (min-width: 1280px) {
     .micro-badge-hero {
       width: 280px;
@@ -510,48 +509,48 @@ const displayCustomer = slug === 'infosecurity' ? 'Infosec at Neontribe' : custo
       font-size: 20px;
     }
   }
-  
+
   .micro-content-image-wrapper {
     width: 100%;
   }
-  
+
   .micro-content-image {
     width: 100%;
     height: auto;
   }
-  
+
   @media (min-width: 1280px) {
     .micro-content-image-wrapper {
       margin-right: -3rem;
     }
-    
+
     .micro-content-image {
       width: calc(100% + 3rem);
       max-width: none;
     }
   }
-  
+
   .portrait-hero-size {
     width: 333px;
     height: 484px;
   }
-  
+
   .landscape-hero-size {
     width: 480px;
     max-width: 45%;
   }
-  
+
   @media (min-width: 1280px) {
     .landscape-hero-size {
       width: 520px;
       max-width: 50%;
     }
   }
-  
+
   .hero-image-landscape {
     top: 12rem !important;
   }
-  
+
   @media (min-width: 1280px) {
     .hero-image-landscape {
       top: 10rem !important;

@@ -30,7 +30,7 @@ test.describe('How we work page', () => {
     await expect(page.getByText(/discovery, definition, development and delivery/i)).toBeVisible();
   });
 
-  test('desktop layout has correct order (text left, image right)', async ({ page, viewport }) => {
+  test('desktop layout has correct order (text left, image right)', async ({ page }) => {
     // Set desktop viewport
     await page.setViewportSize({ width: 1024, height: 768 });
     await page.goto('/how-we-work');
