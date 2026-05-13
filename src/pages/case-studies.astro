@@ -22,15 +22,15 @@ const allCards = [...sortedCaseStudies];
 ---
 
 <Layout title="Case studies" description="Explore Neontribe's case studies showcasing our tech for good work with charities and social enterprises.">
-  <HeaderHeroContainer 
-    title="Case studies" 
-    icon="case-studies" 
+  <HeaderHeroContainer
+    title="Case studies"
+    icon="case-studies"
   />
   <main id="content">
     <section class="section section-intro py-10 lg:py-12">
       <div class="w-full md:max-w-[1336px] md:mx-auto px-8 md:px-10">
         <div class="case-studies-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 items-stretch">
-          {allCards.map((entry, index) => {
+          {allCards.map((entry) => {
             const slug = entry.id.replace(/\.md$/, '');
             const customer = slug === 'infosecurity' ? 'Infosec at Neontribe' : (entry.data.customer || '');
             const projectName = entry.data.projectName || '';
@@ -72,7 +72,7 @@ const allCards = [...sortedCaseStudies];
     .case-studies-grid .case-study-card {
       height: 100%;
     }
-    
+
     .case-study-content__text-section {
       display: flex;
       flex-direction: column;

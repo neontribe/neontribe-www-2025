@@ -1,0 +1,36 @@
+services:
+  playwright:
+    image: ${PLAYWRIGHT_IMAGE:-mcr.microsoft.com/playwright:v1.60.0-noble}
+    working_dir: /app
+    ipc: host  # recommended by Playwright for browser stability
+    environment:
+      - CI=${CI:-false}
+      - BASE_URL=${BASE_URL:-http://localhost:4321}
+      # Keeps Playwright from trying to download browsers (already in image)
+      - PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
+    volumes:
+      # Mount the whole project, but isolate node_modules so the host's
+      # Rocky Linux binaries don't bleed into the container.
+      - .:/app
+      - playwright_node_modules:/app/node_modules
+    command: >
+      sh -c "npm install --prefer-offline &&
+             npx playwright test --reporter=list"
+
+  # Optional: run the Astro dev/preview server as a sidecar instead of
+  # relying on Playwright's webServer config. Uncomment if you prefer
+  # to keep the two processes separate.
+  #
+  # astro:
+  #   image: node:22-alpine
+  #   working_dir: /app
+  #   volumes:
+  #     - .:/app
+  #     - astro_node_modules:/app/node_modules
+  #   command: sh -c "npm install && npm run dev -- --host 0.0.0.0"
+  #   ports:
+  #     - "4321:4321"
+
+volumes:
+  playwright_node_modules:
+  # astro_node_modules:
