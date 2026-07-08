@@ -299,7 +299,7 @@ We welcome contributions! Here's how to get started:
 
 **Code**: This project's source code is licensed under the [MIT Licence](https://opensource.org/licenses/MIT).
 
-**Content**: All website content (text, images, case studies, and branding) is © Neontribe Ltd. All rights reserved. Content may not be reproduced without permission.
+**Content**: All website content (text, images, case studies, and branding) is © dxw Ltd. All rights reserved. Content may not be reproduced without permission.
 
 ---
 
