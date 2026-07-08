@@ -1,6 +1,6 @@
 # Neontribe Website
 
-The official website for Neontribe, a tech-for-good team working with charities and social enterprises since 2007, and part of the dxw family and dxw ltd.
+The official website for Neontribe, a tech-for-good team working with charities and social enterprises since 2007, now part of the dxw family.
 
 Built with Astro, Tailwind CSS, and a static-first architecture for fast, accessible, and maintainable web experiences.
 
