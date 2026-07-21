@@ -6,7 +6,7 @@ test('Footer displays all elements', async ({ page }) => {
 
   await expect(footer).toBeVisible();
   await expect(footer.getByRole('link', { name: /Go to homepage/i })).toBeVisible();
-  await expect(footer.locator('address')).toContainText('Studio 1.05c 4 The Boulevard, Leeds, LS10 1PZ');
+  await expect(footer.locator('address')).toContainText('Studio 1.05c, 4 The Boulevard, Leeds, LS10 1PZ');
   await expect(footer.getByRole('link', { name: /^blog$/i })).toHaveAttribute('href', 'https://www.dxw.com/author/cap-harry-harold/');
   await expect(footer.getByRole('link', { name: /privacy policy/i })).toBeVisible();
 });
